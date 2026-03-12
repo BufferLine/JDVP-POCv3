@@ -54,6 +54,13 @@ Current M6 note:
 - scenario packs live under `config/datasets/` and drive reproducible synthetic interaction generation
 - generated interactions stay raw-input compatible and can flow directly into `src.pipeline.run_poc`
 
+Current M7 note:
+
+- few-shot example packs are built from stored run extracts, not handwritten inline prompt blobs
+- `src.dataset.build_fewshot_pack` materializes reusable example packs for observer research
+- `fewshot_prompt` reuses the LLM observer adapter and injects serialized examples into the prompt
+- benchmark slices remain the validation target for future retrieval or learned observers
+
 ## Validation Requirements
 
 Every run must verify:

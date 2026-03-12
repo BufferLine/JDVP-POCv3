@@ -157,3 +157,26 @@ Expected dataset outputs:
 - `data/generated/<dataset_name>/<dataset_version>/interactions/*.json`
 - `data/generated/<dataset_name>/<dataset_version>/manifest.json`
 - `data/generated/<dataset_name>/<dataset_version>/splits.json`
+
+M7 few-shot pack command:
+
+```bash
+python3 -m src.dataset.build_fewshot_pack \
+  --run-dir data/runs/fixture-run \
+  --output data/fewshot/general-fixture-pack-v1.json \
+  --max-examples 3
+```
+
+M7 few-shot observer command:
+
+```bash
+export JDVP_LLM_BASE_URL=http://localhost:11434/v1
+export JDVP_LLM_API_KEY=dummy
+export JDVP_LLM_MODEL=llama3.2
+export JDVP_FEWSHOT_PACK_PATH=data/fewshot/general-fixture-pack-v1.json
+
+python3 -m src.pipeline.run_poc \
+  --input data/generated/synthetic-general/v1/interactions/synthetic-general-job-offer-000.json \
+  --run-id fewshot-local \
+  --track fewshot_prompt
+```
