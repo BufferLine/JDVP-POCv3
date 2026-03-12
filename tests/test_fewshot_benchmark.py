@@ -19,18 +19,19 @@ class FewshotBenchmarkTests(unittest.TestCase):
     def test_selector_excludes_target_interaction(self) -> None:
         pack = {
             "examples": [
-                {"interaction_id": "a", "context_module": "general"},
-                {"interaction_id": "b", "context_module": "general"},
-                {"interaction_id": "c", "context_module": "financial"},
+                {"interaction_id": "a", "context_module": "general", "jsv_hint": {"judgment_holder": "Human"}},
+                {"interaction_id": "b", "context_module": "general", "jsv_hint": {"judgment_holder": "Shared"}},
+                {"interaction_id": "c", "context_module": "general", "jsv_hint": {"judgment_holder": "AI"}},
+                {"interaction_id": "d", "context_module": "financial", "jsv_hint": {"judgment_holder": "AI"}},
             ]
         }
         selected = select_examples(
             pack=pack,
             target_interaction_id="a",
             context_module="general",
-            max_examples=3,
+            max_examples=2,
         )
-        self.assertEqual([example["interaction_id"] for example in selected], ["b"])
+        self.assertEqual([example["interaction_id"] for example in selected], ["c", "b"])
 
     def test_benchmark_plan_uses_dataset_split(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"

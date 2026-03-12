@@ -97,9 +97,15 @@ def run_fewshot_benchmark_plan(
         "split": plan["split"],
         "item_count": len(item_summaries),
         "comparison_track": comparison_track,
+        "average_fewshot_example_count": (
+            sum(item["fewshot_example_count"] for item in item_summaries) / len(item_summaries) if item_summaries else 0.0
+        ),
         "average_field_disagreement_rate": (
             sum(disagreement_rates) / len(disagreement_rates) if disagreement_rates else 0.0
         ),
+        "min_field_disagreement_rate": min(disagreement_rates) if disagreement_rates else 0.0,
+        "max_field_disagreement_rate": max(disagreement_rates) if disagreement_rates else 0.0,
+        "zero_disagreement_items": sum(1 for rate in disagreement_rates if rate == 0.0),
         "items": item_summaries,
     }
     write_json(output_root / "benchmark_results.json", summary)

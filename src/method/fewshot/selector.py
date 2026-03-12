@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -24,4 +25,20 @@ def select_examples(
         for example in pack["examples"]
         if example["interaction_id"] != target_interaction_id and example["context_module"] == context_module
     ]
-    return examples[:max_examples]
+    buckets: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for example in examples:
+        judgment_holder = str(example.get("jsv_hint", {}).get("judgment_holder", "Unknown"))
+        buckets[judgment_holder].append(example)
+
+    ordered_examples: list[dict[str, Any]] = []
+    bucket_names = sorted(buckets.keys())
+    while bucket_names and len(ordered_examples) < max_examples:
+        next_round: list[str] = []
+        for bucket_name in bucket_names:
+            bucket = buckets[bucket_name]
+            if bucket and len(ordered_examples) < max_examples:
+                ordered_examples.append(bucket.pop(0))
+            if bucket:
+                next_round.append(bucket_name)
+        bucket_names = next_round
+    return ordered_examples

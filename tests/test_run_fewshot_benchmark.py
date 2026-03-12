@@ -88,6 +88,7 @@ class RunFewshotBenchmarkTests(unittest.TestCase):
             results = json.loads(results_path.read_text(encoding="utf-8"))
             self.assertEqual(results["item_count"], 2)
             self.assertEqual(results["comparison_track"], "heuristic_baseline")
+            self.assertEqual(results["average_fewshot_example_count"], 2.0)
             self.assertEqual(len(results["items"]), 2)
             self.assertTrue(Path(results["items"][0]["fewshot_run_dir"]).is_dir())
             self.assertTrue(Path(results["items"][0]["comparison_report_dir"]).is_dir())
