@@ -14,6 +14,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout JDVP protocol
+        uses: actions/checkout@v4
+        with:
+          repository: BufferLine/JDVP-protocol
+          path: ../JDVP-protocol
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
