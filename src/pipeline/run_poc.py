@@ -8,6 +8,7 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
+from src.contracts.raw_interaction_validate import RawInteractionValidator
 from src.method.tracks.factory import create_track
 from src.method.tracks.fixture_hint import FixtureHintTrack
 from src.pipeline.run_storage import RunStorage, write_json, write_jsonl
@@ -131,6 +132,7 @@ def run_poc(
     resume: bool = False,
 ) -> Path:
     raw_interaction = _load_input(input_path)
+    RawInteractionValidator().validate(raw_interaction)
     validator = CanonicalSchemaValidator(protocol_schema_root=protocol_schema_root)
     run_dir = output_root / run_id
     storage = RunStorage(run_dir=run_dir, track_name=track_name)

@@ -47,6 +47,13 @@ Current M5 note:
 - output includes `benchmark_summary.json`, `turn_comparisons.jsonl`, and an ensemble manifest
 - simple ensemble output is derived from majority agreement across track JSV hints
 
+Current M6 note:
+
+- synthetic datasets are generated under `data/generated/<dataset_name>/<dataset_version>/`
+- each dataset writes a versioned `manifest.json` plus `splits.json`
+- scenario packs live under `config/datasets/` and drive reproducible synthetic interaction generation
+- generated interactions stay raw-input compatible and can flow directly into `src.pipeline.run_poc`
+
 ## Validation Requirements
 
 Every run must verify:

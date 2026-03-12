@@ -1,0 +1,109 @@
+{
+  "schema_version": "pocv3-dataset-manifest-v1",
+  "dataset_id": "generated/synthetic-general/v1",
+  "dataset_name": "synthetic-general",
+  "dataset_version": "v1",
+  "dataset_kind": "generated",
+  "context_module": "general",
+  "scenario_pack_id": "general-scenarios-v1",
+  "item_count": 6,
+  "split_counts": {
+    "train": 3,
+    "validation": 1,
+    "test": 2
+  },
+  "generation": {
+    "seed": 11,
+    "count_per_scenario": 2,
+    "scenario_pack_path": "config/datasets/general_scenarios_v1.json",
+    "train_ratio": 0.6,
+    "validation_ratio": 0.2,
+    "test_ratio": 0.2
+  },
+  "items": [
+    {
+      "interaction_id": "synthetic-general-job-offer-000",
+      "scenario_id": "job-offer",
+      "scenario_title": "Job Offer Comparison",
+      "slot_values": {
+        "decision": "accept the startup role",
+        "criterion_a": "remote flexibility",
+        "criterion_b": "commute time"
+      },
+      "relative_path": "interactions/synthetic-general-job-offer-000.json",
+      "context_module": "general",
+      "turn_count": 3,
+      "split": "train"
+    },
+    {
+      "interaction_id": "synthetic-general-job-offer-001",
+      "scenario_id": "job-offer",
+      "scenario_title": "Job Offer Comparison",
+      "slot_values": {
+        "decision": "accept the startup role",
+        "criterion_a": "remote flexibility",
+        "criterion_b": "learning opportunities"
+      },
+      "relative_path": "interactions/synthetic-general-job-offer-001.json",
+      "context_module": "general",
+      "turn_count": 3,
+      "split": "train"
+    },
+    {
+      "interaction_id": "synthetic-general-travel-planning-000",
+      "scenario_id": "travel-planning",
+      "scenario_title": "Travel Planning",
+      "slot_values": {
+        "destination": "Tokyo",
+        "priority": "budget",
+        "constraint": "good public transit"
+      },
+      "relative_path": "interactions/synthetic-general-travel-planning-000.json",
+      "context_module": "general",
+      "turn_count": 3,
+      "split": "test"
+    },
+    {
+      "interaction_id": "synthetic-general-travel-planning-001",
+      "scenario_id": "travel-planning",
+      "scenario_title": "Travel Planning",
+      "slot_values": {
+        "destination": "Seoul",
+        "priority": "walkability",
+        "constraint": "good public transit"
+      },
+      "relative_path": "interactions/synthetic-general-travel-planning-001.json",
+      "context_module": "general",
+      "turn_count": 3,
+      "split": "test"
+    },
+    {
+      "interaction_id": "synthetic-general-study-plan-000",
+      "scenario_id": "study-plan",
+      "scenario_title": "Study Plan Prioritization",
+      "slot_values": {
+        "goal": "prepare for a product interview",
+        "time_window": "two weeks",
+        "weakness": "practice consistency"
+      },
+      "relative_path": "interactions/synthetic-general-study-plan-000.json",
+      "context_module": "general",
+      "turn_count": 3,
+      "split": "validation"
+    },
+    {
+      "interaction_id": "synthetic-general-study-plan-001",
+      "scenario_id": "study-plan",
+      "scenario_title": "Study Plan Prioritization",
+      "slot_values": {
+        "goal": "pass a certification exam",
+        "time_window": "two weeks",
+        "weakness": "system design"
+      },
+      "relative_path": "interactions/synthetic-general-study-plan-001.json",
+      "context_module": "general",
+      "turn_count": 3,
+      "split": "train"
+    }
+  ]
+}

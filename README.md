@@ -140,3 +140,20 @@ python3 -m src.eval.ensemble_benchmark \
   --run-dir data/runs/baseline-run \
   --output-dir data/runs/benchmark-report
 ```
+
+M6 dataset generation command:
+
+```bash
+python3 -m src.dataset.generate_dataset \
+  --dataset-name synthetic-general \
+  --dataset-version v1 \
+  --scenario-pack config/datasets/general_scenarios_v1.json \
+  --count-per-scenario 2 \
+  --seed 11
+```
+
+Expected dataset outputs:
+
+- `data/generated/<dataset_name>/<dataset_version>/interactions/*.json`
+- `data/generated/<dataset_name>/<dataset_version>/manifest.json`
+- `data/generated/<dataset_name>/<dataset_version>/splits.json`
