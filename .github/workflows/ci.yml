@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: BufferLine/JDVP-protocol
-          path: ../JDVP-protocol
+          path: vendor/JDVP-protocol
 
       - name: Set up Python
         uses: actions/setup-python@v5

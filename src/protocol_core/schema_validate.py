@@ -11,15 +11,21 @@ from referencing import Registry, Resource
 
 
 POCV3_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_PROTOCOL_ROOT = POCV3_ROOT.parent / "JDVP-protocol" / "v1" / "schemas"
+VENDORED_PROTOCOL_ROOT = POCV3_ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas"
+SIBLING_PROTOCOL_ROOT = POCV3_ROOT.parent / "JDVP-protocol" / "v1" / "schemas"
 
 
 class CanonicalSchemaValidator:
     """Validate generated artifacts against canonical JDVP schemas."""
 
     def __init__(self, protocol_schema_root: Path | None = None) -> None:
-        self.protocol_schema_root = protocol_schema_root or DEFAULT_PROTOCOL_ROOT
+        self.protocol_schema_root = protocol_schema_root or self._resolve_default_root()
         self._schemas = self._load_schemas()
+
+    def _resolve_default_root(self) -> Path:
+        if VENDORED_PROTOCOL_ROOT.is_dir():
+            return VENDORED_PROTOCOL_ROOT
+        return SIBLING_PROTOCOL_ROOT
 
     def _load_schemas(self) -> dict[str, dict[str, Any]]:
         schema_files = {
