@@ -49,3 +49,10 @@ This means:
 The first target is not a research automation platform.
 
 It is one correct command that takes one interaction and emits schema-valid JDVP artifacts under the current canonical specification.
+
+## Schema Snapshot Rule
+
+POCv3 uses a vendored copy of canonical protocol schemas for repeatable CI.
+
+This is an operational snapshot, not a new source of truth.
+The canonical semantics still belong to `JDVP-protocol`, and schema snapshots here must be refreshed from there.

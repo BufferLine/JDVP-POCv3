@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JDVP Delegation Vector (DV)",
+  "type": "object",
+  "required": [
+    "interaction_id",
+    "from_turn",
+    "to_turn",
+    "delta_judgment_holder",
+    "delta_delegation_awareness",
+    "delta_cognitive_engagement",
+    "delta_information_seeking"
+  ],
+  "properties": {
+    "interaction_id": { "type": "string" },
+    "from_turn": { "type": "integer", "minimum": 0 },
+    "to_turn": { "type": "integer", "minimum": 0 },
+    "delta_judgment_holder": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+    "delta_delegation_awareness": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
+    "delta_cognitive_engagement": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
+    "delta_information_seeking": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
+    "context_module": {
+      "enum": ["general", "mental_health", "policy_admin", "financial", "education"]
+    },
+    "extensions": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "required": ["extensions"] },
+      "then": {
+        "required": ["context_module"],
+        "properties": {
+          "context_module": { "enum": ["mental_health", "policy_admin", "financial", "education"] }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "general" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "not": { "required": ["extensions"] }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "mental_health" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": { "$ref": "#/$defs/mental_health" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "policy_admin" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": { "$ref": "#/$defs/policy_admin" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "financial" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": { "$ref": "#/$defs/financial" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "education" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": { "$ref": "#/$defs/education" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "mental_health": {
+      "type": "object",
+      "properties": {
+        "delta_emotional_validation_source": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+        "delta_coping_authority": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+        "delta_self_perception_anchor": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 }
+      },
+      "required": [
+        "delta_emotional_validation_source",
+        "delta_coping_authority",
+        "delta_self_perception_anchor"
+      ],
+      "additionalProperties": false
+    },
+    "policy_admin": {
+      "type": "object",
+      "properties": {
+        "delta_authority_attribution": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+        "delta_compliance_posture": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+        "delta_option_awareness": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 }
+      },
+      "required": [
+        "delta_authority_attribution",
+        "delta_compliance_posture",
+        "delta_option_awareness"
+      ],
+      "additionalProperties": false
+    },
+    "financial": {
+      "type": "object",
+      "properties": {
+        "delta_risk_ownership": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+        "delta_outcome_attribution": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+        "delta_loss_responsibility": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 }
+      },
+      "required": [
+        "delta_risk_ownership",
+        "delta_outcome_attribution",
+        "delta_loss_responsibility"
+      ],
+      "additionalProperties": false
+    },
+    "education": {
+      "type": "object",
+      "properties": {
+        "delta_reasoning_autonomy": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+        "delta_curiosity_state": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
+        "delta_epistemic_source": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 }
+      },
+      "required": [
+        "delta_reasoning_autonomy",
+        "delta_curiosity_state",
+        "delta_epistemic_source"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

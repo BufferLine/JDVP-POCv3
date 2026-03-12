@@ -96,6 +96,11 @@ It uses:
 - `/Users/sangwon0001/Projects/bufferline/JDVP-protocol/v1/schemas/dv-schema.json`
 - `/Users/sangwon0001/Projects/bufferline/JDVP-protocol/v1/schemas/trajectory-schema.json`
 
+Operational note:
+
+- POCv3 keeps a vendored schema snapshot in `vendor/JDVP-protocol/v1/schemas/` for CI and local portability
+- when canonical protocol schemas change, the vendored snapshot must be refreshed in the same change set
+
 ### Overlay Contract
 
 POCv3 may define non-canonical overlay records for extraction metadata.
