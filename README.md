@@ -131,3 +131,12 @@ Additional run outputs now include:
 
 - `data/runs/<run_id>/extracts/<track_name>/`
 - `data/runs/<run_id>/checkpoints/progress.json`
+
+M5 benchmark command:
+
+```bash
+python3 -m src.eval.ensemble_benchmark \
+  --run-dir data/runs/fixture-run \
+  --run-dir data/runs/baseline-run \
+  --output-dir data/runs/benchmark-report
+```

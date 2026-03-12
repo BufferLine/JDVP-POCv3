@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from src.eval.ensemble_benchmark import compare_runs
 from src.pipeline.run_poc import run_poc
 
 
@@ -92,6 +93,32 @@ class PipelineSmokeTests(unittest.TestCase):
             manifest_after = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
             self.assertEqual(manifest_after["resumed_turns"], [0, 1, 2])
             self.assertEqual(manifest_after["written_turns"], [])
+
+    def test_compare_runs_writes_benchmark_outputs(self) -> None:
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            fixture_run = run_poc(
+                input_path=fixture,
+                run_id="fixture-run",
+                output_root=output_root,
+                track_name="fixture_hint",
+            )
+            baseline_run = run_poc(
+                input_path=fixture,
+                run_id="baseline-run",
+                output_root=output_root,
+                track_name="heuristic_baseline",
+            )
+            benchmark_dir = output_root / "benchmark-report"
+            summary = compare_runs(
+                run_dirs=[fixture_run, baseline_run],
+                output_dir=benchmark_dir,
+            )
+            self.assertEqual(summary["turns_compared"], 3)
+            self.assertTrue((benchmark_dir / "benchmark_summary.json").is_file())
+            self.assertTrue((benchmark_dir / "turn_comparisons.jsonl").is_file())
+            self.assertIn("heuristic_baseline", summary["track_names"])
 
 
 if __name__ == "__main__":
