@@ -43,6 +43,9 @@ def main() -> None:
         ROOT / "docs" / "MIGRATION_MATRIX.md",
         ROOT / "docs" / "MIGRATION_NOTES.md",
         ROOT / "docs" / "OPERATIONS.md",
+        ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas" / "jsv-schema.json",
+        ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas" / "dv-schema.json",
+        ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas" / "trajectory-schema.json",
     ]
     for path in required_docs:
         require_file(path)

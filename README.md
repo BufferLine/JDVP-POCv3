@@ -78,7 +78,8 @@ Protocol semantics still originate in the canonical protocol repository and must
 ```bash
 python3 -m src.pipeline.run_poc \
   --input data/fixtures/sample_interaction.json \
-  --run-id smoke-local
+  --run-id smoke-local \
+  --track fixture_hint
 ```
 
 Expected outputs:
@@ -86,4 +87,14 @@ Expected outputs:
 - `data/runs/<run_id>/canonical/jsv/`
 - `data/runs/<run_id>/canonical/dv/`
 - `data/runs/<run_id>/canonical/trajectory.json`
+- `data/runs/<run_id>/overlays/track_outputs.jsonl`
 - `data/runs/<run_id>/manifest.json`
+
+M2 baseline command:
+
+```bash
+python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id baseline-local \
+  --track heuristic_baseline
+```
