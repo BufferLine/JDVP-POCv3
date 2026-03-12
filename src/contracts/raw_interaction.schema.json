@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bufferline.dev/schemas/pocv3/raw_interaction.schema.json",
+  "title": "POCv3 Raw Interaction",
+  "type": "object",
+  "required": [
+    "interaction_id",
+    "context_module",
+    "participants",
+    "turns"
+  ],
+  "properties": {
+    "interaction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context_module": {
+      "type": "string",
+      "enum": [
+        "general",
+        "mental_health",
+        "policy_admin",
+        "financial",
+        "education"
+      ]
+    },
+    "participants": {
+      "type": "object",
+      "required": [
+        "human_id",
+        "ai_id"
+      ],
+      "properties": {
+        "human_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ai_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "turns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "turn_number",
+          "human_input",
+          "ai_response"
+        ],
+        "properties": {
+          "turn_number": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "human_input": {
+            "type": "string"
+          },
+          "ai_response": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

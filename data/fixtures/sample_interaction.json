@@ -1,0 +1,25 @@
+{
+  "interaction_id": "fixture-general-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I need to decide whether to take this job offer.",
+      "ai_response": "Tell me your priorities and constraints, and I can help you compare options."
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Can you compare salary, growth, and remote flexibility for me?",
+      "ai_response": "Yes. I can help structure the tradeoffs across those dimensions."
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Given that, what would you choose if you were me?",
+      "ai_response": "I would lean toward the role with better long-term growth and acceptable flexibility."
+    }
+  ]
+}

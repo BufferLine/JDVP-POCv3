@@ -1,0 +1,71 @@
+# JDVP PoC v3
+
+Proof-of-concept workspace for implementing JDVP against the current canonical protocol surface in `/Users/sangwon0001/Projects/bufferline/JDVP-protocol`.
+
+## Intent
+
+POCv3 is a core-first implementation workspace.
+
+It separates:
+
+- `protocol core`: canonical JSV/DV/Trajectory generation and schema validation
+- `method layer`: how JSVs are extracted from interaction evidence
+- `pipeline layer`: raw turns -> extraction -> protocol artifacts -> reports
+
+## Scope
+
+Initial scope is deliberately narrow:
+
+- one human and one AI
+- one interaction at a time
+- `general` context first
+- machine-facing JSON artifacts first
+- descriptive outputs only
+
+## Design Rule
+
+POCv3 follows JDVP `v1.4` exactly for protocol artifacts.
+
+- JSV output must align to canonical `v1/schemas/jsv-schema.json`
+- DV output must use ordinal derivation, not arbitrary transition constants
+- `delta_judgment_holder` becomes `null` when a transition includes `Undefined`
+- Trajectories contain adjacent-turn DVs only
+
+## Repository Layout
+
+```text
+JDVP-POCv3/
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── MIGRATION_MATRIX.md
+│   ├── MIGRATION_NOTES.md
+│   └── OPERATIONS.md
+├── config/
+│   └── prompts/
+├── data/
+│   ├── fixtures/
+│   ├── raw/
+│   └── runs/
+├── src/
+│   ├── contracts/
+│   ├── method/
+│   ├── pipeline/
+│   └── protocol_core/
+└── tests/
+```
+
+## Build Order
+
+1. protocol core
+2. schema-aligned fixtures and tests
+3. heuristic baseline track
+4. one LLM extraction track
+5. benchmark and automation only after the core path is stable
+
+## Source Dependency
+
+POCv3 depends on the protocol repository as the semantic source of truth:
+
+- `/Users/sangwon0001/Projects/bufferline/JDVP-protocol/protocol.md`
+- `/Users/sangwon0001/Projects/bufferline/JDVP-protocol/docs/whitepaper.md`
+- `/Users/sangwon0001/Projects/bufferline/JDVP-protocol/v1/`
