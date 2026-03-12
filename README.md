@@ -180,3 +180,14 @@ python3 -m src.pipeline.run_poc \
   --run-id fewshot-local \
   --track fewshot_prompt
 ```
+
+M7 benchmark plan command:
+
+```bash
+python3 -m src.eval.fewshot_benchmark \
+  --dataset-root data/generated/synthetic-general/v1 \
+  --fewshot-pack data/fewshot/general-fixture-pack-v1.json \
+  --split test \
+  --output data/runs/fewshot-test-plan.json \
+  --max-examples 3
+```

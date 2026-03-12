@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 from typing import Any
 
+from src.method.fewshot.selector import load_fewshot_pack, select_examples
 from src.pipeline.run_storage import read_json
 
 from .llm_observer import LLMObserverTrack, OpenAICompatibleProvider
@@ -27,12 +28,18 @@ class FewshotPromptTrack(LLMObserverTrack):
     ) -> None:
         super().__init__(provider=provider, model_id=model_id, prompt_version=prompt_version)
         self.fewshot_pack_path = fewshot_pack_path
-        self.fewshot_pack = read_json(fewshot_pack_path)
+        self.fewshot_pack = load_fewshot_pack(fewshot_pack_path)
         self.system_prompt = self.system_prompt + "\n\nUse the few-shot examples embedded in the user prompt."
 
-    def _fewshot_examples_block(self) -> str:
+    def _fewshot_examples_block(self, *, target_interaction_id: str, context_module: str) -> str:
+        selected_examples = select_examples(
+            pack=self.fewshot_pack,
+            target_interaction_id=target_interaction_id,
+            context_module=context_module,
+            max_examples=len(self.fewshot_pack["examples"]),
+        )
         rendered_examples: list[str] = []
-        for example in self.fewshot_pack["examples"]:
+        for example in selected_examples:
             rendered_examples.append(
                 json.dumps(
                     {
@@ -79,7 +86,7 @@ class FewshotPromptTrack(LLMObserverTrack):
         return (
             f"fewshot_pack_id: {self.fewshot_pack_path}\n"
             "fewshot_examples:\n"
-            f"{self._fewshot_examples_block()}\n\n"
+            f"{self._fewshot_examples_block(target_interaction_id=interaction_id, context_module=context_module)}\n\n"
             "target_turn:\n"
             f"{base_prompt}"
         )
