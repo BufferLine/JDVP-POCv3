@@ -203,3 +203,18 @@ python3 -m src.eval.run_fewshot_benchmark \
   --plan data/runs/fewshot-test-plan.json \
   --output-root data/runs/fewshot-test-results
 ```
+
+M8 service-facing Python entrypoint:
+
+```python
+from pathlib import Path
+
+from src.service import run_interaction_file
+
+run_dir = run_interaction_file(
+    input_path=Path("data/fixtures/sample_interaction.json"),
+    run_id="service-local",
+    output_root=Path("data/runs"),
+    track_name="fixture_hint",
+)
+```

@@ -92,6 +92,12 @@ Future expansion:
 - persist per-track extracts separately from canonical artifacts
 - support ensemble and benchmark passes over stored run outputs
 
+Current M8 shape:
+
+- `src.service.poc_service` exposes service-facing orchestration functions separate from the CLI wrapper
+- `src.pipeline.run_poc` becomes a thin command entrypoint over the reusable service surface
+- external consumers can call the service module without importing benchmark or dataset tooling
+
 Current M4 shape:
 
 - `extracts/<track_name>/turn-<n>.json` stores per-turn intermediate extract state
