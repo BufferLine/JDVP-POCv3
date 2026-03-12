@@ -68,31 +68,99 @@ Tasks:
 3. normalize model responses into canonical JSV assignments
 4. reject malformed model output before protocol artifact generation
 5. compare LLM output against baseline on shared fixtures
+6. keep real provider execution as a local research path, not a CI dependency
 
 Exit condition:
 
 - one LLM track runs through the same pipeline without special-casing protocol logic
 
-## Phase 4: M4 Comparative Evaluation
+## Phase 4: M4 Run Storage And Checkpointing
 
 Goal:
 
-- compare methods without changing canonical artifact semantics
+- persist method outputs and resume longer research runs safely
 
 Tasks:
 
-1. add overlay disagreement report
-2. add fixture batch comparison runner
-3. add simple per-field agreement metrics
-4. add protocol-alignment regression report
+1. add per-run extract storage separate from canonical outputs
+2. add checkpoint/progress persistence for interrupted runs
+3. add run manifests that capture track, prompt, dataset, and code revision inputs
+4. keep canonical artifacts reproducible from stored intermediate results
 
 Exit condition:
 
-- track comparison is available as overlay output
+- long-running extraction jobs can resume without corrupting canonical outputs
 
-## Phase 5: Deferred Research Automation
+## Phase 5: M5 Ensemble And Benchmark
 
-Only start this phase after M1-M4 are stable.
+Goal:
+
+- compare and combine track outputs over stored runs
+
+Tasks:
+
+1. add disagreement report generation
+2. add simple ensemble rules over multiple track outputs
+3. add benchmark fixtures or dataset slices
+4. add regression comparisons against the heuristic baseline
+
+Exit condition:
+
+- benchmark and ensemble outputs are available without changing protocol-core semantics
+
+## Phase 6: M6 Dataset And Generation Loop
+
+Goal:
+
+- support durable research inputs rather than one-off smoke fixtures
+
+Tasks:
+
+1. add dataset manifests and version keys
+2. add synthetic chat generation and scenario packs
+3. add generated/raw/fixture dataset separation
+4. add split definitions for future evaluation and few-shot work
+
+Exit condition:
+
+- datasets are versioned, reproducible, and reusable across runs
+
+## Phase 7: M7 Few-Shot And Learned Tracks
+
+Goal:
+
+- prepare future trainable or retrieval-based observers
+
+Tasks:
+
+1. build few-shot example packs from vetted extracts
+2. add retrieval-based or learned observer track entrypoints
+3. validate learned-track outputs against benchmark slices
+4. keep protocol-core logic independent from training logic
+
+Exit condition:
+
+- a few-shot or learned track can run under the same extraction contract
+
+## Phase 8: M8 Service Modularization
+
+Goal:
+
+- make the system consumable by external services without exposing research internals
+
+Tasks:
+
+1. define stable module boundaries for protocol core, tracks, and validation
+2. isolate service-facing APIs from research orchestration
+3. document reusable integration surfaces
+
+Exit condition:
+
+- external systems can consume extraction and validation modules without importing the full research workspace
+
+## Deferred Automation
+
+Only start this phase after M1-M8 justify the extra complexity.
 
 Deferred tasks:
 
