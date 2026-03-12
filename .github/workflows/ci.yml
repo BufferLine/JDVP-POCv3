@@ -14,11 +14,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Checkout JDVP protocol
-        uses: actions/checkout@v4
-        with:
-          repository: BufferLine/JDVP-protocol
-          path: vendor/JDVP-protocol
+      - name: Clone JDVP protocol
+        run: git clone --depth 1 https://github.com/BufferLine/JDVP-protocol.git vendor/JDVP-protocol
 
       - name: Set up Python
         uses: actions/setup-python@v5
