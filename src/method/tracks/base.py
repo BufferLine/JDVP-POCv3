@@ -19,6 +19,15 @@ class TrackOutput:
     observer_notes: str = ""
     raw: dict[str, Any] = field(default_factory=dict)
 
+    def track_metadata(self) -> dict[str, Any]:
+        return {
+            "track_id": self.track_id,
+            "model_id": self.model_id,
+            "prompt_version": self.prompt_version,
+            "observer_confidence": self.observer_confidence,
+            "observer_notes": self.observer_notes,
+        }
+
     def to_overlay_record(self, interaction_id: str, turn_number: int) -> dict[str, Any]:
         payload: dict[str, Any] = {
             "interaction_id": interaction_id,

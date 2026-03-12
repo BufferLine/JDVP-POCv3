@@ -35,6 +35,12 @@ Current M3 note:
 - `llm_observer` uses provider-backed extraction for local research runs
 - CI validates normalization and adapter behavior with fake provider responses, not live network calls
 
+Current M4 note:
+
+- runs now persist per-turn extracts under `extracts/<track_name>/`
+- progress snapshots are written to `checkpoints/progress.json`
+- `--resume` reuses stored turn extracts for the same `run_id`
+
 ## Validation Requirements
 
 Every run must verify:
