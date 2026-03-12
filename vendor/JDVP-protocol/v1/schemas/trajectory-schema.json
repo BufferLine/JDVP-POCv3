@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JDVP Trajectory",
+  "type": "object",
+  "required": ["interaction_id", "vectors"],
+  "properties": {
+    "interaction_id": { "type": "string" },
+    "vectors": {
+      "type": "array",
+      "items": { "$ref": "dv-schema.json" },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

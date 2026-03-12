@@ -14,9 +14,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Clone JDVP protocol
-        run: git clone --depth 1 "https://x-access-token:${{ github.token }}@github.com/BufferLine/JDVP-protocol.git" vendor/JDVP-protocol
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JDVP Judgment State Vector (JSV)",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "interaction_id",
+    "turn_number",
+    "judgment_holder",
+    "delegation_awareness",
+    "cognitive_engagement",
+    "information_seeking"
+  ],
+  "properties": {
+    "timestamp": { "type": "string", "format": "date-time" },
+    "interaction_id": { "type": "string" },
+    "turn_number": { "type": "integer", "minimum": 0 },
+    "judgment_holder": { "enum": ["Human", "AI", "Shared", "Undefined"] },
+    "delegation_awareness": { "enum": ["Explicit", "Implicit", "Absent"] },
+    "cognitive_engagement": { "enum": ["Active", "Reactive", "Passive"] },
+    "information_seeking": { "enum": ["Active", "Passive", "None"] },
+    "confidence": {
+      "type": "object",
+      "properties": {
+        "judgment_holder": { "enum": ["high", "medium", "low"] },
+        "delegation_awareness": { "enum": ["high", "medium", "low"] },
+        "cognitive_engagement": { "enum": ["high", "medium", "low"] },
+        "information_seeking": { "enum": ["high", "medium", "low"] }
+      },
+      "additionalProperties": false
+    },
+    "context_module": {
+      "enum": ["general", "mental_health", "policy_admin", "financial", "education"]
+    },
+    "extensions": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "required": ["extensions"] },
+      "then": {
+        "required": ["context_module"],
+        "properties": {
+          "context_module": { "enum": ["mental_health", "policy_admin", "financial", "education"] }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "general" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "not": { "required": ["extensions"] }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "mental_health" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": { "$ref": "#/$defs/mental_health" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "policy_admin" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": { "$ref": "#/$defs/policy_admin" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "financial" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": { "$ref": "#/$defs/financial" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "context_module": { "const": "education" } },
+        "required": ["context_module"]
+      },
+      "then": {
+        "required": ["extensions"],
+        "properties": {
+          "extensions": { "$ref": "#/$defs/education" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "mental_health": {
+      "type": "object",
+      "properties": {
+        "emotional_validation_source": { "enum": ["Self", "AI", "External", "Mixed"] },
+        "coping_authority": { "enum": ["Self", "AI", "Shared", "Undefined"] },
+        "self_perception_anchor": { "enum": ["Internal", "AI_Influenced", "External"] }
+      },
+      "required": [
+        "emotional_validation_source",
+        "coping_authority",
+        "self_perception_anchor"
+      ],
+      "additionalProperties": false
+    },
+    "policy_admin": {
+      "type": "object",
+      "properties": {
+        "authority_attribution": { "enum": ["System", "AI", "Human", "Ambiguous"] },
+        "compliance_posture": { "enum": ["Independent", "Deferential", "Resistant"] },
+        "option_awareness": { "enum": ["Full", "Partial", "Narrowed", "None"] }
+      },
+      "required": [
+        "authority_attribution",
+        "compliance_posture",
+        "option_awareness"
+      ],
+      "additionalProperties": false
+    },
+    "financial": {
+      "type": "object",
+      "properties": {
+        "risk_ownership": { "enum": ["Self", "AI", "Shared", "Displaced"] },
+        "outcome_attribution": { "enum": ["Self", "AI", "Market", "Mixed"] },
+        "loss_responsibility": { "enum": ["Accepted", "Displaced", "Denied", "Unaware"] }
+      },
+      "required": [
+        "risk_ownership",
+        "outcome_attribution",
+        "loss_responsibility"
+      ],
+      "additionalProperties": false
+    },
+    "education": {
+      "type": "object",
+      "properties": {
+        "reasoning_autonomy": { "enum": ["Independent", "Guided", "Dependent"] },
+        "curiosity_state": { "enum": ["Exploring", "Satisfied", "Suppressed"] },
+        "epistemic_source": { "enum": ["Self_Derived", "AI_Provided", "Mixed"] }
+      },
+      "required": [
+        "reasoning_autonomy",
+        "curiosity_state",
+        "epistemic_source"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
