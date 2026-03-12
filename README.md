@@ -69,3 +69,18 @@ POCv3 depends on the protocol repository as the semantic source of truth:
 - `/Users/sangwon0001/Projects/bufferline/JDVP-protocol/protocol.md`
 - `/Users/sangwon0001/Projects/bufferline/JDVP-protocol/docs/whitepaper.md`
 - `/Users/sangwon0001/Projects/bufferline/JDVP-protocol/v1/`
+
+## M1 Smoke Command
+
+```bash
+python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id smoke-local
+```
+
+Expected outputs:
+
+- `data/runs/<run_id>/canonical/jsv/`
+- `data/runs/<run_id>/canonical/dv/`
+- `data/runs/<run_id>/canonical/trajectory.json`
+- `data/runs/<run_id>/manifest.json`

@@ -18,8 +18,12 @@ Expected outputs:
 - `data/runs/<run_id>/canonical/jsv/*.json`
 - `data/runs/<run_id>/canonical/dv/*.json`
 - `data/runs/<run_id>/canonical/trajectory.json`
-- `data/runs/<run_id>/overlays/track_outputs.jsonl`
 - `data/runs/<run_id>/manifest.json`
+
+Current M1 note:
+
+- the pipeline uses fixture-provided `meta.jsv_hint` values to exercise canonical protocol generation
+- extraction tracks are added in M2
 
 ## Validation Requirements
 
