@@ -41,6 +41,12 @@ Current M4 note:
 - progress snapshots are written to `checkpoints/progress.json`
 - `--resume` reuses stored turn extracts for the same `run_id`
 
+Current M5 note:
+
+- benchmark runs compare stored extracts from multiple runs of the same interaction
+- output includes `benchmark_summary.json`, `turn_comparisons.jsonl`, and an ensemble manifest
+- simple ensemble output is derived from majority agreement across track JSV hints
+
 ## Validation Requirements
 
 Every run must verify:

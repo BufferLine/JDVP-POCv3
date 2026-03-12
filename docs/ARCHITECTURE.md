@@ -98,6 +98,12 @@ Current M4 shape:
 - `extracts/<track_name>/extracts.jsonl` stores batch-oriented extract rows
 - `checkpoints/progress.json` stores resumable run progress
 
+Current M5 shape:
+
+- `src/eval/ensemble_benchmark.py` compares stored extract rows across runs
+- benchmark output is written separately from canonical protocol artifacts
+- simple ensemble output is derived at the JSV-hint layer and does not alter canonical stored artifacts
+
 ## Contracts
 
 ### Canonical Protocol Contract
