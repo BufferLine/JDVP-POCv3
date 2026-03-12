@@ -30,6 +30,11 @@ Current M2 note:
 - `heuristic_baseline` is now available as the first method-layer track
 - canonical JSV, DV, and Trajectory artifacts are still derived in the protocol core, not inside the track
 
+Current M3 note:
+
+- `llm_observer` uses provider-backed extraction for local research runs
+- CI validates normalization and adapter behavior with fake provider responses, not live network calls
+
 ## Validation Requirements
 
 Every run must verify:

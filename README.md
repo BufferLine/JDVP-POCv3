@@ -101,3 +101,18 @@ python3 -m src.pipeline.run_poc \
   --run-id baseline-local \
   --track heuristic_baseline
 ```
+
+M3 local LLM command:
+
+```bash
+export JDVP_LLM_BASE_URL=http://localhost:11434/v1
+export JDVP_LLM_API_KEY=dummy
+export JDVP_LLM_MODEL=llama3.2
+
+python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id llm-local \
+  --track llm_observer
+```
+
+CI does not call real providers. Real LLM execution is for local research runs only.

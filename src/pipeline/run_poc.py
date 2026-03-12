@@ -117,7 +117,7 @@ def main() -> None:
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--output-root", type=Path, default=Path("data/runs"))
     parser.add_argument("--protocol-schema-root", type=Path, default=None)
-    parser.add_argument("--track", default="fixture_hint", choices=["fixture_hint", "heuristic_baseline"])
+    parser.add_argument("--track", default="fixture_hint", choices=["fixture_hint", "heuristic_baseline", "llm_observer"])
     args = parser.parse_args()
 
     run_dir = run_poc(
