@@ -9,7 +9,7 @@ Target command shape:
 ```bash
 python3 -m src.pipeline.run_poc \
   --input "data/raw/sample_interaction.json" \
-  --track "heuristic_baseline" \
+  --track "fixture_hint" \
   --run-id "smoke-001"
 ```
 
@@ -24,6 +24,11 @@ Current M1 note:
 
 - the pipeline uses fixture-provided `meta.jsv_hint` values to exercise canonical protocol generation
 - extraction tracks are added in M2
+
+Current M2 note:
+
+- `heuristic_baseline` is now available as the first method-layer track
+- canonical JSV, DV, and Trajectory artifacts are still derived in the protocol core, not inside the track
 
 ## Validation Requirements
 
