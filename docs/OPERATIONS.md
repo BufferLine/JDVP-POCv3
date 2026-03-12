@@ -60,6 +60,7 @@ Current M7 note:
 - `src.dataset.build_fewshot_pack` materializes reusable example packs for observer research
 - `fewshot_prompt` reuses the LLM observer adapter and injects serialized examples into the prompt
 - `src.eval.fewshot_benchmark` turns dataset splits into executable few-shot evaluation plans
+- `src.eval.run_fewshot_benchmark` executes those plans and writes per-interaction comparison reports
 - benchmark slices remain the validation target for future retrieval or learned observers
 
 ## Validation Requirements

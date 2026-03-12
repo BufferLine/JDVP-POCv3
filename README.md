@@ -191,3 +191,15 @@ python3 -m src.eval.fewshot_benchmark \
   --output data/runs/fewshot-test-plan.json \
   --max-examples 3
 ```
+
+M7 benchmark runner command:
+
+```bash
+export JDVP_LLM_BASE_URL=http://localhost:11434/v1
+export JDVP_LLM_API_KEY=dummy
+export JDVP_LLM_MODEL=llama3.2
+
+python3 -m src.eval.run_fewshot_benchmark \
+  --plan data/runs/fewshot-test-plan.json \
+  --output-root data/runs/fewshot-test-results
+```
