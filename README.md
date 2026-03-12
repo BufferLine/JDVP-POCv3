@@ -60,7 +60,10 @@ JDVP-POCv3/
 2. schema-aligned fixtures and tests
 3. heuristic baseline track
 4. one LLM extraction track
-5. benchmark and automation only after the core path is stable
+5. run storage and checkpointed result persistence
+6. ensemble and benchmark evaluation
+7. dataset generation and few-shot preparation
+8. external-service modularization
 
 ## Source Dependency
 

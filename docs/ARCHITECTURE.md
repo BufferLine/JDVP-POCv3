@@ -37,8 +37,9 @@ Non-responsibilities:
 
 - LLM prompting
 - heuristic extraction
-- dataset governance
-- silver/gold promotion
+- dataset governance policy
+- benchmark orchestration
+- service integration
 
 ### 2. Method Layer
 
@@ -63,6 +64,7 @@ Track order:
 1. `heuristic_baseline`
 2. `llm_observer_local`
 3. `llm_observer_remote`
+4. `fewshot_retrieval_track`
 
 ### 3. Pipeline Layer
 
@@ -83,6 +85,12 @@ Responsibilities:
 - build JSV/DV/Trajectory
 - run schema validation
 - write outputs under `data/runs/<run_id>/`
+
+Future expansion:
+
+- checkpoint intermediate results
+- persist per-track extracts separately from canonical artifacts
+- support ensemble and benchmark passes over stored run outputs
 
 ## Contracts
 
@@ -151,6 +159,17 @@ data/runs/<run_id>/
 └── manifest.json
 ```
 
+Future expansion:
+
+```text
+data/runs/<run_id>/
+├── checkpoints/
+├── extracts/
+├── ensembles/
+├── reports/
+└── benchmark/
+```
+
 ## Milestones
 
 ### M1: Core Valid Path
@@ -170,22 +189,45 @@ data/runs/<run_id>/
 - local or remote track adapter
 - strict JSON output normalization
 - extraction failure fallback path
+- local real-model execution path for direct research runs
 
-### M4: Comparative Evaluation
+### M4: Run Storage And Checkpointing
 
-- compare tracks on same fixtures
-- disagreement summary as overlay output
+- persist per-track extracts and overlay outputs under versioned run directories
+- add resumable intermediate state for long-running extraction jobs
+- separate canonical artifacts from method-specific intermediate outputs
 
-### M5: Research Automation
+### M5: Ensemble And Benchmark
 
-- only if needed
-- silver/gold promotion and release gating can return after the core path is stable
+- compare tracks on the same fixture or dataset slice
+- disagreement summary and simple ensemble output
+- benchmark reports over stored extracts
+- regression comparisons against heuristic baseline
+
+### M6: Dataset And Generation Loop
+
+- version raw, generated, and fixture datasets
+- add synthetic chat generation and scenario packs
+- prepare train/valid/test style splits for future few-shot work
+- store provenance for generated conversations and extracted labels
+
+### M7: Few-Shot And Learned Tracks
+
+- build few-shot example packs from stored extracts
+- support retrieval-based or trained observer tracks
+- add validation flow for learned-track outputs against stable benchmarks
+
+### M8: Service Modularization
+
+- package reusable modules for external service use
+- expose stable boundaries for extraction, protocol-core generation, and validation
+- keep service-facing interfaces separate from research-only orchestration
 
 ## Explicit Omissions For Initial Build
 
 - web dashboard
 - silver/gold governance loops
 - registry systems
-- storage backend abstraction
-- benchmark farms
+- heavyweight storage backend abstraction
+- benchmark farms before run storage exists
 - productized reporting surfaces
