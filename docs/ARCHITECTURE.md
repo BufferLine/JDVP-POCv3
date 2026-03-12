@@ -92,6 +92,12 @@ Future expansion:
 - persist per-track extracts separately from canonical artifacts
 - support ensemble and benchmark passes over stored run outputs
 
+Current M4 shape:
+
+- `extracts/<track_name>/turn-<n>.json` stores per-turn intermediate extract state
+- `extracts/<track_name>/extracts.jsonl` stores batch-oriented extract rows
+- `checkpoints/progress.json` stores resumable run progress
+
 ## Contracts
 
 ### Canonical Protocol Contract

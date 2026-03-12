@@ -49,6 +49,50 @@ class PipelineSmokeTests(unittest.TestCase):
             first = json.loads(rows[0])
             self.assertEqual(first["track"]["track_id"], "heuristic_baseline")
 
+    def test_run_storage_writes_extracts_and_checkpoint(self) -> None:
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            run_dir = run_poc(
+                input_path=fixture,
+                run_id="storage-test",
+                output_root=Path(tmp_dir),
+                track_name="heuristic_baseline",
+            )
+            extracts_jsonl = run_dir / "extracts" / "heuristic_baseline" / "extracts.jsonl"
+            checkpoint_path = run_dir / "checkpoints" / "progress.json"
+            manifest_path = run_dir / "manifest.json"
+            self.assertTrue(extracts_jsonl.is_file())
+            self.assertTrue(checkpoint_path.is_file())
+            self.assertTrue(manifest_path.is_file())
+
+            checkpoint = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+            self.assertEqual(checkpoint["status"], "completed")
+            self.assertEqual(checkpoint["completed_turns"], 3)
+
+    def test_resume_reuses_existing_turn_extracts(self) -> None:
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            run_dir = run_poc(
+                input_path=fixture,
+                run_id="resume-test",
+                output_root=output_root,
+                track_name="heuristic_baseline",
+            )
+            manifest_before = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest_before["resumed_turns"], [])
+
+            run_dir = run_poc(
+                input_path=fixture,
+                run_id="resume-test",
+                output_root=output_root,
+                track_name="heuristic_baseline",
+                resume=True,
+            )
+            manifest_after = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest_after["resumed_turns"], [0, 1, 2])
+            self.assertEqual(manifest_after["written_turns"], [])
+
 
 if __name__ == "__main__":
     unittest.main()

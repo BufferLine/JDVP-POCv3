@@ -116,3 +116,18 @@ python3 -m src.pipeline.run_poc \
 ```
 
 CI does not call real providers. Real LLM execution is for local research runs only.
+
+M4 resumable run command:
+
+```bash
+python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id baseline-local \
+  --track heuristic_baseline \
+  --resume
+```
+
+Additional run outputs now include:
+
+- `data/runs/<run_id>/extracts/<track_name>/`
+- `data/runs/<run_id>/checkpoints/progress.json`
