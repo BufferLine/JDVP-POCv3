@@ -117,8 +117,12 @@ class PipelineSmokeTests(unittest.TestCase):
             )
             self.assertEqual(summary["turns_compared"], 3)
             self.assertTrue((benchmark_dir / "benchmark_summary.json").is_file())
-            self.assertTrue((benchmark_dir / "turn_comparisons.jsonl").is_file())
+            comparisons_path = benchmark_dir / "turn_comparisons.jsonl"
+            self.assertTrue(comparisons_path.is_file())
             self.assertIn("heuristic_baseline", summary["track_names"])
+            rows = [json.loads(line) for line in comparisons_path.read_text(encoding="utf-8").splitlines()]
+            self.assertIn("track_field_values", rows[0])
+            self.assertIn("fixture_hint", rows[0]["track_field_values"])
 
 
 if __name__ == "__main__":

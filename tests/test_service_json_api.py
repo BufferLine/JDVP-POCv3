@@ -105,6 +105,31 @@ class ServiceJsonApiTests(unittest.TestCase):
             self.assertEqual(response["result"]["split"], "test")
             self.assertIn("average_field_disagreement_rate", response["result"])
 
+    def test_handle_json_payload_runs_dataset(self) -> None:
+        scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            dataset_root = generate_dataset(
+                dataset_name="synthetic-general",
+                dataset_version="v1",
+                output_root=output_root,
+                scenario_pack_path=scenario_pack,
+                count_per_scenario=2,
+                seed=11,
+            )
+            response = handle_json_payload(
+                {
+                    "operation": "run_dataset",
+                    "dataset_root": str(dataset_root),
+                    "output_root": str(output_root / "dataset-runs"),
+                    "track_name": "fixture_hint",
+                    "split": "test",
+                }
+            )
+            self.assertTrue(response["ok"])
+            self.assertEqual(response["result"]["item_count"], 2)
+            self.assertEqual(response["result"]["failed_count"], 0)
+
     def test_handle_json_payload_surfaces_benchmark_threshold_failure(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
         fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"

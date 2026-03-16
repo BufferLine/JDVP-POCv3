@@ -5,7 +5,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from src.method.normalization.llm_response import LLMNormalizationError, normalize_llm_response
-from src.method.tracks.llm_observer import LLMObserverTrack, create_env_backed_llm_track
+from src.method.tracks.llm_observer import LLMObserverTrack, StaticResponseProvider, create_env_backed_llm_track
 
 
 VALID_RESPONSE = """
@@ -119,6 +119,52 @@ class LLMObserverTrackTests(unittest.TestCase):
             context_module="general",
         )
         self.assertEqual(output.jsv_hint["judgment_holder"], "AI")
+
+    def test_static_response_provider_supports_turn_aware_payloads(self) -> None:
+        provider = StaticResponseProvider(
+            response_text="""
+            {
+              "responses_by_turn": {
+                "0": {
+                  "judgment_holder": "Human",
+                  "delegation_awareness": "Explicit",
+                  "cognitive_engagement": "Active",
+                  "information_seeking": "Active",
+                  "confidence": {
+                    "judgment_holder": "high",
+                    "delegation_awareness": "high",
+                    "cognitive_engagement": "high",
+                    "information_seeking": "high"
+                  },
+                  "evidence_spans": [
+                    {"text": "help deciding", "category": "decision_support_signal"}
+                  ]
+                }
+              },
+              "default_response": {
+                "judgment_holder": "AI",
+                "delegation_awareness": "Implicit",
+                "cognitive_engagement": "Reactive",
+                "information_seeking": "Passive",
+                "confidence": {
+                  "judgment_holder": "medium",
+                  "delegation_awareness": "medium",
+                  "cognitive_engagement": "medium",
+                  "information_seeking": "medium"
+                },
+                "evidence_spans": [
+                  {"text": "recommend", "category": "delegation_signal"}
+                ]
+              }
+            }
+            """,
+        )
+        response = provider.generate(
+            system_prompt="system",
+            user_prompt="interaction_id: session-1\nturn_number: 0\nhuman_input: hi\n",
+        )
+        normalized = normalize_llm_response(response)
+        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], "Human")
 
 
 if __name__ == "__main__":

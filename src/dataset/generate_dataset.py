@@ -9,6 +9,7 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
+from src.catalog.sqlite_store import CatalogDatasetRecord, CatalogStore
 from src.contracts.raw_interaction_validate import RawInteractionValidator
 from src.pipeline.run_storage import write_json
 
@@ -35,6 +36,72 @@ def _choose_slots(slot_options: Mapping[str, Sequence[str]], rng: random.Random)
     return {name: str(rng.choice(list(values))) for name, values in slot_options.items()}
 
 
+def _select_variant(
+    template: dict[str, Any],
+    *,
+    field_name: str,
+    rng: random.Random,
+) -> tuple[str | None, int | None]:
+    options_key = f"{field_name}_options"
+    options = template.get(options_key)
+    if not isinstance(options, list) or not options:
+        value = template.get(field_name)
+        return (str(value) if isinstance(value, str) else None), None
+
+    selected_index = rng.randrange(len(options))
+    selected_value = options[selected_index]
+    if not isinstance(selected_value, str):
+        raise ValueError(f"{options_key} entries must be strings")
+    return selected_value, selected_index
+
+
+def _materialize_turn_template(
+    turn_template: Mapping[str, Any],
+    *,
+    slots: Mapping[str, str],
+    rng: random.Random,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    template = dict(turn_template)
+    human_input, human_variant_index = _select_variant(template, field_name="human_input", rng=rng)
+    ai_response, ai_variant_index = _select_variant(template, field_name="ai_response", rng=rng)
+    if human_input is not None:
+        template["human_input"] = human_input
+    if ai_response is not None:
+        template["ai_response"] = ai_response
+    template.pop("human_input_options", None)
+    template.pop("ai_response_options", None)
+
+    rendered = _render_template(template, slots)
+    variant_metadata = {
+        "turn_number": int(rendered["turn_number"]),
+        "human_input_variant_index": human_variant_index,
+        "ai_response_variant_index": ai_variant_index,
+    }
+    return rendered, variant_metadata
+
+
+def _select_turn_templates(
+    scenario: Mapping[str, Any],
+    *,
+    rng: random.Random,
+) -> tuple[list[dict[str, Any]], str | None]:
+    blueprints = scenario.get("blueprints")
+    if isinstance(blueprints, list) and blueprints:
+        selected_blueprint = blueprints[rng.randrange(len(blueprints))]
+        if not isinstance(selected_blueprint, dict):
+            raise ValueError("scenario blueprints must be objects")
+        turn_templates = selected_blueprint.get("turn_templates")
+        if not isinstance(turn_templates, list) or not turn_templates:
+            raise ValueError("scenario blueprint turn_templates must be a non-empty list")
+        blueprint_id = selected_blueprint.get("blueprint_id")
+        return list(turn_templates), (str(blueprint_id) if blueprint_id is not None else None)
+
+    turn_templates = scenario.get("turn_templates")
+    if not isinstance(turn_templates, list) or not turn_templates:
+        raise ValueError("scenario must define turn_templates or blueprints")
+    return list(turn_templates), None
+
+
 def _build_interaction(
     *,
     dataset_name: str,
@@ -43,11 +110,18 @@ def _build_interaction(
     rng: random.Random,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     slots = _choose_slots(scenario.get("slot_options", {}), rng)
+    turn_templates, blueprint_id = _select_turn_templates(scenario, rng=rng)
     interaction_id = f"{dataset_name}-{scenario['scenario_id']}-{sample_index:03d}"
     turns = []
-    for turn_template in scenario["turn_templates"]:
-        turn_payload = _render_template(turn_template, slots)
+    turn_variant_choices = []
+    for turn_template in turn_templates:
+        turn_payload, variant_metadata = _materialize_turn_template(
+            turn_template,
+            slots=slots,
+            rng=rng,
+        )
         turns.append(turn_payload)
+        turn_variant_choices.append(variant_metadata)
     interaction = {
         "interaction_id": interaction_id,
         "context_module": scenario["context_module"],
@@ -62,6 +136,8 @@ def _build_interaction(
         "scenario_id": scenario["scenario_id"],
         "scenario_title": scenario.get("title", scenario["scenario_id"]),
         "slot_values": slots,
+        "blueprint_id": blueprint_id,
+        "turn_variant_choices": turn_variant_choices,
     }
     return interaction, item_metadata
 
@@ -182,6 +258,17 @@ def generate_dataset(
     }
     write_json(dataset_root / "manifest.json", manifest)
     write_json(dataset_root / "splits.json", split_map)
+    CatalogStore().upsert_dataset(
+        CatalogDatasetRecord(
+            dataset_id=str(manifest["dataset_id"]),
+            dataset_root=str(dataset_root),
+            dataset_kind=str(manifest["dataset_kind"]),
+            scenario_pack_id=str(manifest["scenario_pack_id"]),
+            generation_seed=int(seed),
+            count_per_scenario=int(count_per_scenario),
+        ),
+        items=manifest["items"],
+    )
     return dataset_root
 
 

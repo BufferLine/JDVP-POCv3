@@ -71,6 +71,41 @@ class StaticResponseProvider:
     response_text: str
 
     def generate(self, *, system_prompt: str, user_prompt: str) -> str:
+        try:
+            payload = json.loads(self.response_text)
+        except json.JSONDecodeError:
+            return self.response_text
+
+        if not isinstance(payload, dict):
+            return self.response_text
+
+        interaction_id = None
+        turn_number = None
+        for line in user_prompt.splitlines():
+            if line.startswith("interaction_id: "):
+                interaction_id = line.removeprefix("interaction_id: ").strip()
+            elif line.startswith("turn_number: "):
+                turn_value = line.removeprefix("turn_number: ").strip()
+                if turn_value.isdigit():
+                    turn_number = turn_value
+
+        responses_by_key = payload.get("responses_by_key")
+        if isinstance(responses_by_key, dict) and interaction_id is not None and turn_number is not None:
+            key = f"{interaction_id}:{turn_number}"
+            selected = responses_by_key.get(key)
+            if isinstance(selected, dict):
+                return json.dumps(selected)
+
+        responses_by_turn = payload.get("responses_by_turn")
+        if isinstance(responses_by_turn, dict) and turn_number is not None:
+            selected = responses_by_turn.get(turn_number)
+            if isinstance(selected, dict):
+                return json.dumps(selected)
+
+        default_response = payload.get("default_response")
+        if isinstance(default_response, dict):
+            return json.dumps(default_response)
+
         return self.response_text
 
 

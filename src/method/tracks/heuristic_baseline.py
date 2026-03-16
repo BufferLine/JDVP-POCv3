@@ -13,6 +13,8 @@ AI_DELEGATION_PHRASES = (
     "just tell me",
     "what should i do",
     "decide for me",
+    "recommend one",
+    "recommend for me",
 )
 EXPLORATION_PHRASES = (
     "compare",
@@ -31,6 +33,11 @@ HEDGING_PHRASES = (
     "not sure",
     "i guess",
     "probably",
+)
+HUMAN_LED_DECISION_PHRASES = (
+    "need help deciding",
+    "help me decide",
+    "trying to decide",
 )
 
 
@@ -65,8 +72,18 @@ class HeuristicBaselineTrack(TrackExtractor):
         confidence = 0.68
         notes: list[str] = []
 
+        if any(phrase in text for phrase in HUMAN_LED_DECISION_PHRASES):
+            jsv_hint["judgment_holder"] = "Human"
+            jsv_hint["delegation_awareness"] = "Explicit"
+            jsv_hint["cognitive_engagement"] = "Active"
+            jsv_hint["information_seeking"] = "Active"
+            evidence_spans.append({"text": human_input[:160], "category": "decision_support_signal"})
+            confidence = 0.8
+            notes.append("Detected human-led decision support request")
+
         if any(phrase in text for phrase in EXPLORATION_PHRASES):
             jsv_hint["judgment_holder"] = "Shared"
+            jsv_hint["delegation_awareness"] = "Explicit"
             jsv_hint["cognitive_engagement"] = "Active"
             jsv_hint["information_seeking"] = "Active"
             evidence_spans.append({"text": human_input[:160], "category": "exploration_signal"})

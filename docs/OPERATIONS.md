@@ -75,6 +75,14 @@ Current M8 note:
 - transport responses are versioned and serialized as success/error envelopes
 - HTTP transport is intentionally deferred until a real consumer needs it
 
+Current operational note:
+
+- `scripts/run_validation_suite.py` is the standard local and CI validation entrypoint
+- `data/catalog/pocv3.sqlite3` is the default lightweight catalog for dataset and run tracking
+- `scripts/list_failed_runs.py` and `scripts/rerun_failed_runs.py` are the current recovery tools for unreliable LLM runs
+- `config/datasets/general_scenarios_v1.json` remains the stable regression pack
+- `config/datasets/general_scenarios_v2.json` is the richer research pack and should be reviewed through preview flows before it influences baseline policy
+
 Schema sync check:
 
 - run `python3 scripts/check_protocol_schema_sync.py --require-upstream` before or alongside vendor snapshot refreshes

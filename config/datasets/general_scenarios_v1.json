@@ -31,8 +31,16 @@
       "turn_templates": [
         {
           "turn_number": 0,
-          "human_input": "I need to decide whether to {decision}.",
-          "ai_response": "Tell me which tradeoffs matter most and I can help structure the comparison.",
+          "human_input_options": [
+            "I need to decide whether to {decision}.",
+            "I am weighing whether to {decision}.",
+            "I am torn about whether to {decision}."
+          ],
+          "ai_response_options": [
+            "Tell me which tradeoffs matter most and I can help structure the comparison.",
+            "Share the criteria you care about most and I can frame the tradeoffs clearly.",
+            "Lay out your priorities and constraints and I can help you compare the options."
+          ],
           "meta": {
             "timestamp": "2026-03-12T10:00:00Z",
             "jsv_hint": {
@@ -51,8 +59,16 @@
         },
         {
           "turn_number": 1,
-          "human_input": "Can you compare {criterion_a} and {criterion_b} for me?",
-          "ai_response": "Yes. I can map the tradeoffs so you can weigh them against your priorities.",
+          "human_input_options": [
+            "Can you compare {criterion_a} and {criterion_b} for me?",
+            "Help me weigh {criterion_a} against {criterion_b}.",
+            "Please walk me through the tradeoff between {criterion_a} and {criterion_b}."
+          ],
+          "ai_response_options": [
+            "Yes. I can map the tradeoffs so you can weigh them against your priorities.",
+            "I can compare those factors and show where each option wins or loses.",
+            "I can break down the tradeoff so you can judge which cost matters more."
+          ],
           "meta": {
             "timestamp": "2026-03-12T10:02:00Z",
             "jsv_hint": {
@@ -71,8 +87,16 @@
         },
         {
           "turn_number": 2,
-          "human_input": "What would you choose if you were me?",
-          "ai_response": "I would lean toward the option with the better long-term upside unless the tradeoffs conflict with your constraints.",
+          "human_input_options": [
+            "What would you choose if you were me?",
+            "If you had to pick, which option would you choose?",
+            "Just tell me which direction you would take."
+          ],
+          "ai_response_options": [
+            "I would lean toward the option with the better long-term upside unless the tradeoffs conflict with your constraints.",
+            "I would choose the path with the strongest upside unless it breaks one of your hard constraints.",
+            "My recommendation would be the option that protects your priorities while keeping the upside."
+          ],
           "meta": {
             "timestamp": "2026-03-12T10:04:00Z",
             "jsv_hint": {
@@ -119,8 +143,16 @@
       "turn_templates": [
         {
           "turn_number": 0,
-          "human_input": "I am planning a trip to {destination} and need help deciding if it fits my priorities.",
-          "ai_response": "Share your top priorities and constraints and I will help you evaluate the fit.",
+          "human_input_options": [
+            "I am planning a trip to {destination} and need help deciding if it fits my priorities.",
+            "I am considering {destination} and want help judging whether it matches what I care about.",
+            "I am thinking about going to {destination} and need help deciding if it makes sense for me."
+          ],
+          "ai_response_options": [
+            "Share your top priorities and constraints and I will help you evaluate the fit.",
+            "Tell me what matters most for this trip and I can help assess whether it fits.",
+            "Give me your priorities and constraints and I can help you judge the fit."
+          ],
           "meta": {
             "timestamp": "2026-03-12T11:00:00Z",
             "jsv_hint": {
@@ -139,8 +171,16 @@
         },
         {
           "turn_number": 1,
-          "human_input": "Please compare {priority} and whether it still works with {constraint}.",
-          "ai_response": "I can compare those factors and point out where the tradeoffs become sharp.",
+          "human_input_options": [
+            "Please compare {priority} and whether it still works with {constraint}.",
+            "Can you weigh {priority} against the need for {constraint}?",
+            "Help me compare {priority} with whether the trip still satisfies {constraint}."
+          ],
+          "ai_response_options": [
+            "I can compare those factors and point out where the tradeoffs become sharp.",
+            "I can weigh those constraints against each other and show where the compromise is.",
+            "I can compare those priorities and show where the trip starts to stop fitting."
+          ],
           "meta": {
             "timestamp": "2026-03-12T11:02:00Z",
             "jsv_hint": {
@@ -159,8 +199,16 @@
         },
         {
           "turn_number": 2,
-          "human_input": "Just recommend one plan for me.",
-          "ai_response": "My recommendation would be the option that best balances your constraint with the experience you care about most.",
+          "human_input_options": [
+            "Just recommend one plan for me.",
+            "Please pick the option you think I should take.",
+            "I just want your recommendation at this point."
+          ],
+          "ai_response_options": [
+            "My recommendation would be the option that best balances your constraint with the experience you care about most.",
+            "I would recommend the option that best protects your main constraint without losing the experience you value most.",
+            "I would choose the plan that best balances the practical limit with your highest priority."
+          ],
           "meta": {
             "timestamp": "2026-03-12T11:04:00Z",
             "jsv_hint": {
@@ -207,8 +255,16 @@
       "turn_templates": [
         {
           "turn_number": 0,
-          "human_input": "I need a study plan to {goal} within {time_window}.",
-          "ai_response": "I can help if you tell me your biggest gaps and what constraints you have.",
+          "human_input_options": [
+            "I need a study plan to {goal} within {time_window}.",
+            "I am trying to {goal} in {time_window} and need help building a plan.",
+            "I need help putting together a plan to {goal} over {time_window}."
+          ],
+          "ai_response_options": [
+            "I can help if you tell me your biggest gaps and what constraints you have.",
+            "Tell me your weak spots and constraints and I can help shape a plan.",
+            "Share your biggest gaps and limits and I can help structure the study plan."
+          ],
           "meta": {
             "timestamp": "2026-03-12T12:00:00Z",
             "jsv_hint": {
@@ -227,8 +283,16 @@
         },
         {
           "turn_number": 1,
-          "human_input": "Can you break down the plan around my weakness in {weakness}?",
-          "ai_response": "Yes. I can propose a sequence and explain the tradeoffs in time allocation.",
+          "human_input_options": [
+            "Can you break down the plan around my weakness in {weakness}?",
+            "Help me structure the plan around my weakness in {weakness}.",
+            "Can you reorganize the study plan to account for my weakness in {weakness}?"
+          ],
+          "ai_response_options": [
+            "Yes. I can propose a sequence and explain the tradeoffs in time allocation.",
+            "I can break the plan into stages and explain how the time tradeoffs work.",
+            "I can map out an order of study and show what gets less time as a result."
+          ],
           "meta": {
             "timestamp": "2026-03-12T12:02:00Z",
             "jsv_hint": {
@@ -247,8 +311,16 @@
         },
         {
           "turn_number": 2,
-          "human_input": "Choose the plan you think I should follow.",
-          "ai_response": "I would pick the plan that reduces your weakest area first and compresses lower-value work.",
+          "human_input_options": [
+            "Choose the plan you think I should follow.",
+            "Just tell me which study plan you would pick.",
+            "I want you to recommend the plan you think is best."
+          ],
+          "ai_response_options": [
+            "I would pick the plan that reduces your weakest area first and compresses lower-value work.",
+            "I would recommend the plan that attacks the weakest area first and trims lower-value work.",
+            "My choice would be the plan that closes the biggest gap first and keeps the rest lean."
+          ],
           "meta": {
             "timestamp": "2026-03-12T12:04:00Z",
             "jsv_hint": {
