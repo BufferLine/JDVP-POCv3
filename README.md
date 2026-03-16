@@ -88,6 +88,7 @@ JDVP-POCv3/
 ## Roadmap
 
 The detailed roadmap and milestone status live in [docs/IMPLEMENTATION_PLAN.md](/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/docs/IMPLEMENTATION_PLAN.md).
+Naming conventions and track/dataset terminology live in [docs/NAMING.md](/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/docs/NAMING.md).
 
 ## Source Dependency
 
@@ -308,6 +309,22 @@ python3 -m src.pipeline.run_poc \
 ```
 
 This trains a lightweight Naive Bayes predictor from the few-shot pack and runs it through the same JDVP extraction contract.
+
+Train and reuse a cheap ML model artifact:
+
+```bash
+python3 scripts/train_cheap_ml.py \
+  --fewshot-pack data/fewshot/general-fixture-pack-v1.json \
+  --output data/models/cheap_ml/general-fixture-pack-v1.json
+
+export JDVP_CHEAP_ML_MODEL_PATH=data/models/cheap_ml/general-fixture-pack-v1.json
+python3 -m src.pipeline.run_poc \
+  --input data/generated/synthetic-general/v1/interactions/synthetic-general-job-offer-000.json \
+  --run-id cheap-ml-trained \
+  --track cheap_ml_baseline
+```
+
+The current model path is still lightweight and local, but it opens the training-artifact boundary needed for a fuller learned-track workflow later.
 
 M7 benchmark plan command:
 

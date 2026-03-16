@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import json
 import os
 import re
 from collections import Counter, defaultdict
@@ -53,6 +54,29 @@ class _FieldModel:
         margin = best_score - second_best if second_best != float("-inf") else 1.0
         return best_label, margin
 
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "class_doc_counts": self.class_doc_counts,
+            "class_token_counts": {
+                label: dict(counter)
+                for label, counter in self.class_token_counts.items()
+            },
+            "class_total_tokens": self.class_total_tokens,
+            "vocabulary": sorted(self.vocabulary),
+        }
+
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> "_FieldModel":
+        return cls(
+            class_doc_counts={str(key): int(value) for key, value in payload["class_doc_counts"].items()},
+            class_token_counts={
+                str(label): Counter({str(token): int(count) for token, count in counts.items()})
+                for label, counts in payload["class_token_counts"].items()
+            },
+            class_total_tokens={str(key): int(value) for key, value in payload["class_total_tokens"].items()},
+            vocabulary={str(token) for token in payload["vocabulary"]},
+        )
+
 
 def _margin_to_confidence(margin: float) -> str:
     if margin >= 1.5:
@@ -67,12 +91,25 @@ class CheapMLBaselineTrack(TrackExtractor):
 
     track_id = "cheap_ml_baseline"
 
-    def __init__(self, *, fewshot_pack_path: Path, model_id: str = "naive-bayes-v1") -> None:
+    def __init__(
+        self,
+        *,
+        fewshot_pack_path: Path | None,
+        field_models: dict[str, _FieldModel] | None = None,
+        model_artifact_path: Path | None = None,
+        model_id: str = "naive-bayes-v1",
+    ) -> None:
         self.fewshot_pack_path = fewshot_pack_path
+        self.model_artifact_path = model_artifact_path
         self.model_id = model_id
         self.prompt_version = "cheap-ml-v1"
-        pack = load_fewshot_pack(fewshot_pack_path)
-        self.field_models = self._train_models(pack["examples"])
+        if field_models is not None:
+            self.field_models = field_models
+        else:
+            if fewshot_pack_path is None:
+                raise RuntimeError("fewshot_pack_path is required when field_models are not provided")
+            pack = load_fewshot_pack(fewshot_pack_path)
+            self.field_models = self._train_models(pack["examples"])
 
     def _train_models(self, examples: list[dict[str, Any]]) -> dict[str, _FieldModel]:
         field_doc_counts: dict[str, dict[str, int]] = {field: defaultdict(int) for field in CORE_FIELD_NAMES}
@@ -100,6 +137,40 @@ class CheapMLBaselineTrack(TrackExtractor):
             )
             for field in CORE_FIELD_NAMES
         }
+
+    def to_artifact_dict(self) -> dict[str, Any]:
+        return {
+            "schema_version": "pocv3-cheap-ml-model-v1",
+            "model_id": self.model_id,
+            "prompt_version": self.prompt_version,
+            "fewshot_pack_path": str(self.fewshot_pack_path) if self.fewshot_pack_path is not None else None,
+            "field_models": {
+                field_name: model.to_dict()
+                for field_name, model in self.field_models.items()
+            },
+        }
+
+    def write_artifact(self, output_path: Path) -> Path:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(json.dumps(self.to_artifact_dict(), indent=2) + "\n", encoding="utf-8")
+        return output_path
+
+    @classmethod
+    def from_model_artifact(cls, model_artifact_path: Path) -> "CheapMLBaselineTrack":
+        payload = json.loads(model_artifact_path.read_text(encoding="utf-8"))
+        if payload.get("schema_version") != "pocv3-cheap-ml-model-v1":
+            raise ValueError(f"unexpected cheap ML artifact schema: {payload.get('schema_version')}")
+        field_models = {
+            str(field_name): _FieldModel.from_dict(field_payload)
+            for field_name, field_payload in payload["field_models"].items()
+        }
+        fewshot_pack_path = payload.get("fewshot_pack_path")
+        return cls(
+            fewshot_pack_path=Path(fewshot_pack_path) if fewshot_pack_path else None,
+            field_models=field_models,
+            model_artifact_path=model_artifact_path,
+            model_id=str(payload.get("model_id", "naive-bayes-v1")),
+        )
 
     def extract(
         self,
@@ -135,7 +206,12 @@ class CheapMLBaselineTrack(TrackExtractor):
             observer_confidence=0.55,
             observer_notes="Naive Bayes prediction from few-shot pack",
             raw={
-                "fewshot_pack_path": str(self.fewshot_pack_path),
+                "fewshot_pack_path": str(self.fewshot_pack_path) if self.fewshot_pack_path is not None else None,
+                "model_artifact_path": (
+                    str(self.model_artifact_path)
+                    if self.model_artifact_path is not None
+                    else None
+                ),
                 "token_count": len(tokens),
                 "context_turn_count": len(context_turns),
                 "context_module": context_module,
@@ -144,7 +220,10 @@ class CheapMLBaselineTrack(TrackExtractor):
 
 
 def create_env_backed_cheap_ml_track() -> CheapMLBaselineTrack:
+    model_artifact_path = os.getenv("JDVP_CHEAP_ML_MODEL_PATH")
+    if model_artifact_path:
+        return CheapMLBaselineTrack.from_model_artifact(Path(model_artifact_path))
     fewshot_pack_path = os.getenv("JDVP_FEWSHOT_PACK_PATH")
     if not fewshot_pack_path:
-        raise RuntimeError("JDVP_FEWSHOT_PACK_PATH is required")
+        raise RuntimeError("JDVP_CHEAP_ML_MODEL_PATH or JDVP_FEWSHOT_PACK_PATH is required")
     return CheapMLBaselineTrack(fewshot_pack_path=Path(fewshot_pack_path))
