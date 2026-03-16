@@ -14,6 +14,14 @@ from src.pipeline.run_poc import run_poc
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def _write_single_scenario_pack(*, tmp_dir: str, scenario_pack: Path) -> Path:
+    payload = json.loads(scenario_pack.read_text(encoding="utf-8"))
+    payload["scenarios"] = [payload["scenarios"][0]]
+    out_path = Path(tmp_dir) / "single-scenario-pack.json"
+    out_path.write_text(json.dumps(payload), encoding="utf-8")
+    return out_path
+
+
 class DatasetGenerationTests(unittest.TestCase):
     def test_dataset_generation_writes_manifest_and_splits(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
@@ -161,14 +169,27 @@ class DatasetGenerationTests(unittest.TestCase):
                 if "human side" in system_prompt:
                     value = self.human_calls
                     self.human_calls += 1
-                    payload = {"human_input": f"human turn {value} based on prior context"}
+                    payload = {
+                        "human_input": [
+                            "I am trying to think this through and want help comparing the tradeoffs.",
+                            "Can you walk me through the difference between the two main factors?",
+                            "If you had to recommend one direction, which would you take?",
+                        ][value]
+                    }
                     return json.dumps(payload)
                 value = self.ai_calls
                 self.ai_calls += 1
-                payload = {"ai_response": f"assistant turn {value} responding to the user"}
+                payload = {
+                    "ai_response": [
+                        "Yes. Tell me which tradeoffs matter most and I can help structure the comparison.",
+                        "I can compare those factors and show where each option wins or loses.",
+                        "I would recommend the option that best protects your priorities while keeping the upside.",
+                    ][value]
+                }
                 return json.dumps(payload)
 
         with tempfile.TemporaryDirectory() as tmp_dir:
+            single_scenario_pack = _write_single_scenario_pack(tmp_dir=tmp_dir, scenario_pack=scenario_pack)
             with patch(
                 "src.dataset.generate_dataset.create_env_backed_provider",
                 return_value=(StubTurnSimProvider(), "stub-turn-sim-model"),
@@ -177,18 +198,25 @@ class DatasetGenerationTests(unittest.TestCase):
                     dataset_name="synthetic-general-turn-sim",
                     dataset_version="v2",
                     output_root=Path(tmp_dir),
-                    scenario_pack_path=scenario_pack,
+                    scenario_pack_path=single_scenario_pack,
                     count_per_scenario=1,
                     seed=11,
                     generation_mode="llm_turn_simulated",
+                    enable_quality_gate=False,
                 )
             manifest = json.loads((dataset_root / "manifest.json").read_text(encoding="utf-8"))
             first_item = manifest["items"][0]
             interaction = json.loads((dataset_root / first_item["relative_path"]).read_text(encoding="utf-8"))
             self.assertEqual(manifest["generation"]["mode"], "llm_turn_simulated")
             self.assertEqual(manifest["generation"]["llm_model_id"], "stub-turn-sim-model")
-            self.assertEqual(interaction["turns"][0]["human_input"], "human turn 0 based on prior context")
-            self.assertEqual(interaction["turns"][1]["ai_response"], "assistant turn 1 responding to the user")
+            self.assertEqual(
+                interaction["turns"][0]["human_input"],
+                "I am trying to think this through and want help comparing the tradeoffs.",
+            )
+            self.assertEqual(
+                interaction["turns"][1]["ai_response"],
+                "I can compare those factors and show where each option wins or loses.",
+            )
 
     def test_llm_turn_simulation_retries_invalid_json(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
@@ -202,10 +230,13 @@ class DatasetGenerationTests(unittest.TestCase):
                 if self.calls == 1:
                     return "not json at all"
                 if "human side" in system_prompt:
-                    return json.dumps({"human_input": "recovered human turn"})
-                return json.dumps({"ai_response": "recovered ai turn"})
+                    return json.dumps({"human_input": "I want help comparing these two options before I decide."})
+                return json.dumps(
+                    {"ai_response": "I can compare them step by step and then give you a recommendation if you want one."}
+                )
 
         with tempfile.TemporaryDirectory() as tmp_dir:
+            single_scenario_pack = _write_single_scenario_pack(tmp_dir=tmp_dir, scenario_pack=scenario_pack)
             with patch(
                 "src.dataset.generate_dataset.create_env_backed_provider",
                 return_value=(FlakyTurnSimProvider(), "stub-flaky-model"),
@@ -214,15 +245,19 @@ class DatasetGenerationTests(unittest.TestCase):
                     dataset_name="synthetic-general-turn-retry",
                     dataset_version="v2",
                     output_root=Path(tmp_dir),
-                    scenario_pack_path=scenario_pack,
+                    scenario_pack_path=single_scenario_pack,
                     count_per_scenario=1,
                     seed=11,
                     generation_mode="llm_turn_simulated",
+                    enable_quality_gate=False,
                 )
             manifest = json.loads((dataset_root / "manifest.json").read_text(encoding="utf-8"))
             first_item = manifest["items"][0]
             interaction = json.loads((dataset_root / first_item["relative_path"]).read_text(encoding="utf-8"))
-            self.assertEqual(interaction["turns"][0]["human_input"], "recovered human turn")
+            self.assertEqual(
+                interaction["turns"][0]["human_input"],
+                "I want help comparing these two options before I decide.",
+            )
 
     def test_llm_turn_simulation_salvages_truncated_json(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
@@ -234,12 +269,15 @@ class DatasetGenerationTests(unittest.TestCase):
             def generate(self, *, system_prompt: str, user_prompt: str) -> str:
                 self.calls += 1
                 if self.calls == 1:
-                    return '{\n  "human_input": "truncated but usable"'
+                    return '{\n  "human_input": "I want help thinking this through before I make the call."'
                 if "human side" in system_prompt:
-                    return json.dumps({"human_input": "normal human turn"})
-                return json.dumps({"ai_response": "normal ai turn"})
+                    return json.dumps({"human_input": "Can you compare the main tradeoffs for me?"})
+                return json.dumps(
+                    {"ai_response": "Yes. I can compare the tradeoffs and point out which option fits your priorities better."}
+                )
 
         with tempfile.TemporaryDirectory() as tmp_dir:
+            single_scenario_pack = _write_single_scenario_pack(tmp_dir=tmp_dir, scenario_pack=scenario_pack)
             with patch(
                 "src.dataset.generate_dataset.create_env_backed_provider",
                 return_value=(TruncatedTurnSimProvider(), "stub-truncated-model"),
@@ -248,15 +286,19 @@ class DatasetGenerationTests(unittest.TestCase):
                     dataset_name="synthetic-general-turn-truncated",
                     dataset_version="v2",
                     output_root=Path(tmp_dir),
-                    scenario_pack_path=scenario_pack,
+                    scenario_pack_path=single_scenario_pack,
                     count_per_scenario=1,
                     seed=11,
                     generation_mode="llm_turn_simulated",
+                    enable_quality_gate=False,
                 )
             manifest = json.loads((dataset_root / "manifest.json").read_text(encoding="utf-8"))
             first_item = manifest["items"][0]
             interaction = json.loads((dataset_root / first_item["relative_path"]).read_text(encoding="utf-8"))
-            self.assertEqual(interaction["turns"][0]["human_input"], "truncated but usable")
+            self.assertEqual(
+                interaction["turns"][0]["human_input"],
+                "I want help thinking this through before I make the call.",
+            )
 
     def test_dataset_generation_reruns_only_failed_items(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
@@ -272,8 +314,22 @@ class DatasetGenerationTests(unittest.TestCase):
                     self.failed = True
                     raise RuntimeError("transient generation failure")
                 if "human side" in system_prompt:
-                    return json.dumps({"human_input": f"human call {self.call_count}"})
-                return json.dumps({"ai_response": f"ai call {self.call_count}"})
+                    payload = {
+                        "human_input": [
+                            "I need help comparing the options before I decide.",
+                            "Can you compare the two biggest tradeoffs for me?",
+                            "If you had to recommend one option, which would you pick?",
+                        ][(self.call_count - 2) // 2 % 3]
+                    }
+                    return json.dumps(payload)
+                payload = {
+                    "ai_response": [
+                        "Yes. Tell me which priorities matter most and I can help structure the comparison.",
+                        "I can compare those tradeoffs and show where each option wins or loses.",
+                        "I would recommend the option that best protects your priorities while keeping the upside.",
+                    ][(self.call_count - 2) // 2 % 3]
+                }
+                return json.dumps(payload)
 
         with tempfile.TemporaryDirectory() as tmp_dir:
             db_path = Path(tmp_dir) / "catalog.sqlite3"
@@ -294,6 +350,7 @@ class DatasetGenerationTests(unittest.TestCase):
                             count_per_scenario=1,
                             seed=11,
                             generation_mode="llm_turn_simulated",
+                            enable_quality_gate=False,
                         )
                     first_call_count = provider.call_count
                     dataset_root = generate_dataset(
@@ -304,12 +361,59 @@ class DatasetGenerationTests(unittest.TestCase):
                         count_per_scenario=1,
                         seed=11,
                         generation_mode="llm_turn_simulated",
+                        enable_quality_gate=False,
                     )
                 manifest = json.loads((dataset_root / "manifest.json").read_text(encoding="utf-8"))
                 progress = json.loads((dataset_root / "generation_progress.json").read_text(encoding="utf-8"))
                 self.assertEqual(manifest["item_count"], 3)
                 self.assertTrue(progress["is_complete"])
                 self.assertLess(provider.call_count - first_call_count, 18)
+            finally:
+                if previous is None:
+                    os.environ.pop("JDVP_CATALOG_DB_PATH", None)
+                else:
+                    os.environ["JDVP_CATALOG_DB_PATH"] = previous
+
+    def test_dataset_generation_rejects_low_quality_items(self) -> None:
+        scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
+
+        class LowQualityProvider:
+            def generate(self, *, system_prompt: str, user_prompt: str) -> str:
+                if "human side" in system_prompt:
+                    return json.dumps({"human_input": "As an AI, I think you should decide."})
+                return json.dumps({"ai_response": "As a language model, I recommend the first option."})
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            db_path = Path(tmp_dir) / "catalog.sqlite3"
+            previous = os.environ.get("JDVP_CATALOG_DB_PATH")
+            try:
+                os.environ["JDVP_CATALOG_DB_PATH"] = str(db_path)
+                with patch(
+                    "src.dataset.generate_dataset.create_env_backed_provider",
+                    return_value=(LowQualityProvider(), "low-quality-model"),
+                ):
+                    with self.assertRaises(RuntimeError):
+                        generate_dataset(
+                            dataset_name="synthetic-general-rejected",
+                            dataset_version="v2",
+                            output_root=Path(tmp_dir),
+                            scenario_pack_path=scenario_pack,
+                            count_per_scenario=1,
+                            seed=11,
+                            generation_mode="llm_turn_simulated",
+                        )
+                progress = json.loads((Path(tmp_dir) / "synthetic-general-rejected" / "v2" / "generation_progress.json").read_text(encoding="utf-8"))
+                self.assertFalse(progress["is_complete"])
+                from src.catalog.sqlite_store import CatalogStore
+
+                generation_run_id = (
+                    f"{(Path(tmp_dir) / 'synthetic-general-rejected' / 'v2').resolve(strict=False)}"
+                    "::llm_turn_simulated"
+                )
+                failed_items = CatalogStore(db_path).list_failed_dataset_generation_items(
+                    generation_run_id=generation_run_id
+                )
+                self.assertTrue(any(row["status"] == "rejected" for row in failed_items))
             finally:
                 if previous is None:
                     os.environ.pop("JDVP_CATALOG_DB_PATH", None)

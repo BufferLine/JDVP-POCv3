@@ -27,6 +27,7 @@ DEFAULT_SCENARIO_PACK = Path("config/datasets/general_scenarios_v1.json")
 DATASET_GENERATION_PROMPT_VERSION = "dataset-utterance-generator-v1"
 DATASET_TURN_SIM_PROMPT_VERSION = "dataset-turn-simulator-v1"
 DEFAULT_LLM_JSON_RETRY_COUNT = 3
+QUALITY_BANNED_PATTERN = re.compile(r"(as an ai|language model|i cannot|i can't provide)")
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -123,6 +124,51 @@ def _write_generation_progress(
             "is_complete": accepted_count == target_item_count,
         },
     )
+
+
+def _tokenize(text: str) -> list[str]:
+    return re.findall(r"[a-z0-9']+", text.lower())
+
+
+def _quality_gate_interaction(interaction: dict[str, Any]) -> list[str]:
+    turns = interaction.get("turns", [])
+    reasons: list[str] = []
+    if not isinstance(turns, list) or not turns:
+        return ["missing_turns"]
+
+    all_text = []
+    seen_turn_texts: set[str] = set()
+    duplicate_turns = 0
+    for turn in turns:
+        human_input = str(turn.get("human_input", "")).strip()
+        ai_response = str(turn.get("ai_response", "")).strip()
+        combined = f"{human_input} || {ai_response}".lower()
+        if combined in seen_turn_texts:
+            duplicate_turns += 1
+        seen_turn_texts.add(combined)
+        if QUALITY_BANNED_PATTERN.search(human_input.lower()) or QUALITY_BANNED_PATTERN.search(ai_response.lower()):
+            reasons.append("meta_ai_phrase")
+        all_text.extend(_tokenize(human_input))
+        all_text.extend(_tokenize(ai_response))
+        jsv_hint = turn.get("meta", {}).get("jsv_hint", {})
+        holder = str(jsv_hint.get("judgment_holder", ""))
+        if holder == "AI" and not re.search(
+            r"(recommend|choose|pick|what would you|your recommendation|just tell me|if you had to pick)",
+            human_input.lower(),
+        ):
+            reasons.append("weak_ai_delegation_signal")
+        if holder == "Human" and re.search(r"(just decide|you choose|pick for me)", human_input.lower()):
+            reasons.append("human_turn_overdelegates")
+
+    if duplicate_turns > 0:
+        reasons.append("duplicate_turn_pair")
+    if len(all_text) < 30:
+        reasons.append("too_short_tokens")
+    if all_text:
+        lexical_diversity = len(set(all_text)) / len(all_text)
+        if lexical_diversity < 0.32:
+            reasons.append("low_lexical_diversity")
+    return sorted(set(reasons))
 
 
 @dataclass(frozen=True)
@@ -517,6 +563,7 @@ def generate_dataset(
     train_ratio: float = 0.6,
     validation_ratio: float = 0.2,
     generation_mode: str = "template",
+    enable_quality_gate: bool = True,
 ) -> Path:
     if count_per_scenario < 1:
         raise ValueError("count_per_scenario must be at least 1")
@@ -563,6 +610,7 @@ def generate_dataset(
     interaction_ids: list[str] = []
     accepted_count = 0
     failed_count = 0
+    rejected_count = 0
 
     for scenario in scenario_pack["scenarios"]:
         for sample_index in range(count_per_scenario):
@@ -596,6 +644,27 @@ def generate_dataset(
                     utterance_generator=utterance_generator,
                 )
                 validator.validate(interaction)
+                quality_reasons = (
+                    _quality_gate_interaction(interaction)
+                    if enable_quality_gate and generation_mode != "template"
+                    else []
+                )
+                if quality_reasons:
+                    rejected_count += 1
+                    catalog.upsert_dataset_generation_item(
+                        CatalogDatasetGenerationItemRecord(
+                            generation_run_id=generation_run_id,
+                            item_id=item_id,
+                            interaction_id=str(interaction["interaction_id"]),
+                            scenario_id=str(scenario["scenario_id"]),
+                            sample_index=sample_index,
+                            relative_path=str(planned_relative_path),
+                            status="rejected",
+                            attempt_count=attempt_count + 1,
+                            error_message="; ".join(quality_reasons),
+                        )
+                    )
+                    continue
                 relative_path = Path("interactions") / f"{interaction['interaction_id']}.json"
                 write_json(dataset_root / relative_path, interaction)
                 item_payload = {
@@ -678,7 +747,7 @@ def generate_dataset(
         generation_mode=generation_mode,
         target_item_count=target_item_count,
         accepted_count=accepted_count,
-        failed_count=failed_count,
+        failed_count=failed_count + rejected_count,
         pending_count=pending_count,
     )
     if accepted_count != target_item_count:
@@ -691,14 +760,15 @@ def generate_dataset(
                 scenario_pack_path=str(scenario_pack_path),
                 target_item_count=target_item_count,
                 accepted_count=accepted_count,
-                failed_count=failed_count,
+                failed_count=failed_count + rejected_count,
                 status="partial",
-                error_message="dataset generation incomplete; rerun the same command to retry failed items",
+                error_message="dataset generation incomplete; rerun the same command to retry failed or rejected items",
             )
         )
         raise RuntimeError(
             f"dataset generation incomplete: accepted={accepted_count}, "
-            f"failed={failed_count}, target={target_item_count}. rerun the same command to retry failed items"
+            f"failed={failed_count}, rejected={rejected_count}, target={target_item_count}. "
+            "rerun the same command to retry failed or rejected items"
         )
 
     write_json(dataset_root / "manifest.json", manifest)
@@ -723,7 +793,7 @@ def generate_dataset(
             scenario_pack_path=str(scenario_pack_path),
             target_item_count=target_item_count,
             accepted_count=accepted_count,
-            failed_count=failed_count,
+            failed_count=failed_count + rejected_count,
             status="completed",
         )
     )
@@ -742,6 +812,7 @@ def main() -> None:
     parser.add_argument("--train-ratio", type=float, default=0.6)
     parser.add_argument("--validation-ratio", type=float, default=0.2)
     parser.add_argument("--generation-mode", choices=["template", "llm", "llm_turn_simulated"], default="template")
+    parser.add_argument("--disable-quality-gate", action="store_true")
     args = parser.parse_args()
 
     dataset_root = generate_dataset(
@@ -755,6 +826,7 @@ def main() -> None:
         train_ratio=args.train_ratio,
         validation_ratio=args.validation_ratio,
         generation_mode=args.generation_mode,
+        enable_quality_gate=not args.disable_quality_gate,
     )
     print(f"Dataset written: {dataset_root}")
 
