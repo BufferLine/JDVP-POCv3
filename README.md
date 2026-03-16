@@ -241,3 +241,19 @@ payload = run_interaction_response(
 print(payload["ok"])
 print(payload["schema_version"])
 ```
+
+M8 JSON CLI adapter:
+
+```bash
+cat > /tmp/jdvp-run.json <<'JSON'
+{
+  "operation": "run_interaction",
+  "input_path": "data/fixtures/sample_interaction.json",
+  "run_id": "json-cli-local",
+  "output_root": "data/runs",
+  "track_name": "fixture_hint"
+}
+JSON
+
+python3 -m src.service.json_api --input /tmp/jdvp-run.json
+```
