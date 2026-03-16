@@ -70,6 +70,16 @@ Current M8 note:
 - transport responses are versioned and serialized as success/error envelopes
 - HTTP transport is intentionally deferred until a real consumer needs it
 
+Schema sync check:
+
+- run `python3 scripts/check_protocol_schema_sync.py --require-upstream` before or alongside vendor snapshot refreshes
+- the command compares the sibling `JDVP-protocol/v1/schemas/` files against `vendor/JDVP-protocol/v1/schemas/`
+- without `--require-upstream`, the command exits cleanly when the sibling protocol repository is not present locally
+- refresh the vendored snapshot with `python3 scripts/sync_protocol_schema_snapshot.py`
+- the refresh command copies the three canonical schema files and then rechecks for drift
+- refresh also rewrites `vendor/JDVP-protocol/v1/schema_snapshot.json` with upstream revision and vendored file hashes
+- CI validates that manifest against the vendored files even when the sibling protocol repository is absent
+
 ## Validation Requirements
 
 Every run must verify:

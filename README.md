@@ -76,6 +76,20 @@ POCv3 depends on the protocol repository as the semantic source of truth:
 For local and CI validation, this repository keeps a vendored schema snapshot under `vendor/JDVP-protocol/v1/schemas/`.
 Protocol semantics still originate in the canonical protocol repository and must be resynced from there when the spec changes.
 
+Local schema sync check:
+
+```bash
+python3 scripts/check_protocol_schema_sync.py --require-upstream
+```
+
+Refresh vendored schema snapshot:
+
+```bash
+python3 scripts/sync_protocol_schema_snapshot.py
+```
+
+The refresh command also updates `vendor/JDVP-protocol/v1/schema_snapshot.json` so CI can verify vendored file integrity without requiring the sibling protocol repository.
+
 ## M1 Smoke Command
 
 ```bash

@@ -30,3 +30,6 @@ jobs:
 
       - name: Validate repository contracts
         run: python scripts/validate_contracts.py
+
+      - name: Check vendored schema sync when upstream repo is available
+        run: python scripts/check_protocol_schema_sync.py

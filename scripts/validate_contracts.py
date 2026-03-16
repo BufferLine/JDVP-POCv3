@@ -4,12 +4,17 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 from jsonschema.validators import Draft202012Validator
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from src.protocol_core.schema_sync import validate_snapshot_manifest
 
 
 def load_json(path: Path) -> dict:
@@ -46,6 +51,7 @@ def main() -> None:
         ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas" / "jsv-schema.json",
         ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas" / "dv-schema.json",
         ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas" / "trajectory-schema.json",
+        ROOT / "vendor" / "JDVP-protocol" / "v1" / "schema_snapshot.json",
     ]
     for path in required_docs:
         require_file(path)
@@ -57,6 +63,8 @@ def main() -> None:
     raw_schema = validate_schema(raw_schema_path)
     validate_schema(overlay_schema_path)
     validate_instance(fixture_path, raw_schema, "fixture")
+    validate_snapshot_manifest(ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas")
+    print("OK: vendored schema snapshot manifest")
 
 
 if __name__ == "__main__":

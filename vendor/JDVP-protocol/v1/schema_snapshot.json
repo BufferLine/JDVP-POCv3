@@ -1,0 +1,10 @@
+{
+  "files": {
+    "dv-schema.json": "27c938a904990862fcabc0a02d9104d2b78b7e3263f562e736a97a8259dcf89b",
+    "jsv-schema.json": "59fbe75bbce646036cb150ae0a48a39f8da02b40d7033152f4bbf08bcca0712d",
+    "trajectory-schema.json": "9794b4a78785109880b48eeea16712ea1c57b368718f52e737c57e4bb5e6faba"
+  },
+  "schema_version": "pocv3-vendored-schema-snapshot-v1",
+  "upstream_revision": "ece577484685ba09be750ac08e5b2341642a8540",
+  "upstream_root": "/Users/sangwon0001/Projects/bufferline/JDVP-protocol/v1/schemas"
+}
