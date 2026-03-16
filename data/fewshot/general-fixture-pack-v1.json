@@ -1,0 +1,98 @@
+{
+  "schema_version": "pocv3-fewshot-pack-v1",
+  "source_run_id": "fixture-run",
+  "source_track_name": "fixture_hint",
+  "interaction_id": "fixture-general-001",
+  "prompt_contract": {
+    "task": "Infer JDVP JSV hints for one human-AI turn and return JSON only.",
+    "output_fields": [
+      "judgment_holder",
+      "delegation_awareness",
+      "cognitive_engagement",
+      "information_seeking",
+      "confidence",
+      "evidence_spans",
+      "observer_notes"
+    ]
+  },
+  "examples": [
+    {
+      "interaction_id": "fixture-general-001",
+      "turn_number": 0,
+      "context_module": "general",
+      "human_input": "I need to decide whether to take this job offer.",
+      "ai_response": "Tell me your priorities and constraints, and I can help you compare options.",
+      "jsv_hint": {
+        "judgment_holder": "Human",
+        "delegation_awareness": "Explicit",
+        "cognitive_engagement": "Active",
+        "information_seeking": "Active",
+        "confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        }
+      },
+      "evidence_spans": [
+        {
+          "text": "I need to decide whether to take this job offer.",
+          "category": "fixture_hint_source"
+        }
+      ],
+      "observer_notes": "Canonical fixture hint"
+    },
+    {
+      "interaction_id": "fixture-general-001",
+      "turn_number": 1,
+      "context_module": "general",
+      "human_input": "Can you compare salary, growth, and remote flexibility for me?",
+      "ai_response": "Yes. I can help structure the tradeoffs across those dimensions.",
+      "jsv_hint": {
+        "judgment_holder": "Shared",
+        "delegation_awareness": "Explicit",
+        "cognitive_engagement": "Active",
+        "information_seeking": "Active",
+        "confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        }
+      },
+      "evidence_spans": [
+        {
+          "text": "Can you compare salary, growth, and remote flexibility for me?",
+          "category": "fixture_hint_source"
+        }
+      ],
+      "observer_notes": "Canonical fixture hint"
+    },
+    {
+      "interaction_id": "fixture-general-001",
+      "turn_number": 2,
+      "context_module": "general",
+      "human_input": "Given that, what would you choose if you were me?",
+      "ai_response": "I would lean toward the role with better long-term growth and acceptable flexibility.",
+      "jsv_hint": {
+        "judgment_holder": "AI",
+        "delegation_awareness": "Implicit",
+        "cognitive_engagement": "Reactive",
+        "information_seeking": "Passive",
+        "confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        }
+      },
+      "evidence_spans": [
+        {
+          "text": "Given that, what would you choose if you were me?",
+          "category": "fixture_hint_source"
+        }
+      ],
+      "observer_notes": "Canonical fixture hint"
+    }
+  ]
+}

@@ -47,6 +47,29 @@ Current M5 note:
 - output includes `benchmark_summary.json`, `turn_comparisons.jsonl`, and an ensemble manifest
 - simple ensemble output is derived from majority agreement across track JSV hints
 
+Current M6 note:
+
+- synthetic datasets are generated under `data/generated/<dataset_name>/<dataset_version>/`
+- each dataset writes a versioned `manifest.json` plus `splits.json`
+- scenario packs live under `config/datasets/` and drive reproducible synthetic interaction generation
+- generated interactions stay raw-input compatible and can flow directly into `src.pipeline.run_poc`
+
+Current M7 note:
+
+- few-shot example packs are built from stored run extracts, not handwritten inline prompt blobs
+- `src.dataset.build_fewshot_pack` materializes reusable example packs for observer research
+- `fewshot_prompt` reuses the LLM observer adapter and injects serialized examples into the prompt
+- `src.eval.fewshot_benchmark` turns dataset splits into executable few-shot evaluation plans
+- `src.eval.run_fewshot_benchmark` executes those plans and writes per-interaction comparison reports
+- benchmark slices remain the validation target for future retrieval or learned observers
+
+Current M8 note:
+
+- `src.service` is the official reusable boundary for external consumers
+- `src.service.json_api` is the official transport adapter for this milestone
+- transport responses are versioned and serialized as success/error envelopes
+- HTTP transport is intentionally deferred until a real consumer needs it
+
 ## Validation Requirements
 
 Every run must verify:

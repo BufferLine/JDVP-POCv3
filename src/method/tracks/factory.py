@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from .base import TrackExtractor
+from .fewshot_prompt import create_env_backed_fewshot_track
 from .fixture_hint import FixtureHintTrack
 from .heuristic_baseline import HeuristicBaselineTrack
 from .llm_observer import create_env_backed_llm_track
@@ -15,4 +16,6 @@ def create_track(track_name: str) -> TrackExtractor:
         return HeuristicBaselineTrack()
     if track_name == "llm_observer":
         return create_env_backed_llm_track()
+    if track_name == "fewshot_prompt":
+        return create_env_backed_fewshot_track()
     raise ValueError(f"unknown track: {track_name}")

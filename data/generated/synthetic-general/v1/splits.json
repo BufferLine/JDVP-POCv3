@@ -1,0 +1,14 @@
+{
+  "train": [
+    "synthetic-general-study-plan-001",
+    "synthetic-general-job-offer-001",
+    "synthetic-general-job-offer-000"
+  ],
+  "validation": [
+    "synthetic-general-study-plan-000"
+  ],
+  "test": [
+    "synthetic-general-travel-planning-000",
+    "synthetic-general-travel-planning-001"
+  ]
+}

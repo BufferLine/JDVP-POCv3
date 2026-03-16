@@ -1,0 +1,70 @@
+{
+  "interaction_id": "synthetic-general-job-offer-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I need to decide whether to accept the startup role.",
+      "ai_response": "Tell me which tradeoffs matter most and I can help structure the comparison.",
+      "meta": {
+        "timestamp": "2026-03-12T10:00:00Z",
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Can you compare remote flexibility and learning opportunities for me?",
+      "ai_response": "Yes. I can map the tradeoffs so you can weigh them against your priorities.",
+      "meta": {
+        "timestamp": "2026-03-12T10:02:00Z",
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "What would you choose if you were me?",
+      "ai_response": "I would lean toward the option with the better long-term upside unless the tradeoffs conflict with your constraints.",
+      "meta": {
+        "timestamp": "2026-03-12T10:04:00Z",
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        }
+      }
+    }
+  ]
+}

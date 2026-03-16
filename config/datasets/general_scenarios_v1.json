@@ -1,0 +1,271 @@
+{
+  "scenario_pack_id": "general-scenarios-v1",
+  "context_module": "general",
+  "description": "Synthetic general-purpose decision support conversations for M6 research loops.",
+  "scenarios": [
+    {
+      "scenario_id": "job-offer",
+      "title": "Job Offer Comparison",
+      "context_module": "general",
+      "participants": {
+        "human_id": "human-1",
+        "ai_id": "ai-1"
+      },
+      "slot_options": {
+        "decision": [
+          "take this new job offer",
+          "accept the startup role",
+          "stay with my current team"
+        ],
+        "criterion_a": [
+          "salary",
+          "growth potential",
+          "remote flexibility"
+        ],
+        "criterion_b": [
+          "team stability",
+          "commute time",
+          "learning opportunities"
+        ]
+      },
+      "turn_templates": [
+        {
+          "turn_number": 0,
+          "human_input": "I need to decide whether to {decision}.",
+          "ai_response": "Tell me which tradeoffs matter most and I can help structure the comparison.",
+          "meta": {
+            "timestamp": "2026-03-12T10:00:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Human",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "high",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 1,
+          "human_input": "Can you compare {criterion_a} and {criterion_b} for me?",
+          "ai_response": "Yes. I can map the tradeoffs so you can weigh them against your priorities.",
+          "meta": {
+            "timestamp": "2026-03-12T10:02:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 2,
+          "human_input": "What would you choose if you were me?",
+          "ai_response": "I would lean toward the option with the better long-term upside unless the tradeoffs conflict with your constraints.",
+          "meta": {
+            "timestamp": "2026-03-12T10:04:00Z",
+            "jsv_hint": {
+              "judgment_holder": "AI",
+              "delegation_awareness": "Implicit",
+              "cognitive_engagement": "Reactive",
+              "information_seeking": "Passive",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "medium",
+                "cognitive_engagement": "medium",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "travel-planning",
+      "title": "Travel Planning",
+      "context_module": "general",
+      "participants": {
+        "human_id": "human-1",
+        "ai_id": "ai-1"
+      },
+      "slot_options": {
+        "destination": [
+          "Tokyo",
+          "Seoul",
+          "Taipei"
+        ],
+        "priority": [
+          "budget",
+          "food options",
+          "walkability"
+        ],
+        "constraint": [
+          "a short flight",
+          "low hotel prices",
+          "good public transit"
+        ]
+      },
+      "turn_templates": [
+        {
+          "turn_number": 0,
+          "human_input": "I am planning a trip to {destination} and need help deciding if it fits my priorities.",
+          "ai_response": "Share your top priorities and constraints and I will help you evaluate the fit.",
+          "meta": {
+            "timestamp": "2026-03-12T11:00:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Human",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "high",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 1,
+          "human_input": "Please compare {priority} and whether it still works with {constraint}.",
+          "ai_response": "I can compare those factors and point out where the tradeoffs become sharp.",
+          "meta": {
+            "timestamp": "2026-03-12T11:02:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "medium",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 2,
+          "human_input": "Just recommend one plan for me.",
+          "ai_response": "My recommendation would be the option that best balances your constraint with the experience you care about most.",
+          "meta": {
+            "timestamp": "2026-03-12T11:04:00Z",
+            "jsv_hint": {
+              "judgment_holder": "AI",
+              "delegation_awareness": "Implicit",
+              "cognitive_engagement": "Reactive",
+              "information_seeking": "Passive",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "medium",
+                "cognitive_engagement": "medium",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "study-plan",
+      "title": "Study Plan Prioritization",
+      "context_module": "general",
+      "participants": {
+        "human_id": "human-1",
+        "ai_id": "ai-1"
+      },
+      "slot_options": {
+        "goal": [
+          "prepare for a product interview",
+          "pass a certification exam",
+          "learn enough Python for work"
+        ],
+        "time_window": [
+          "two weeks",
+          "one month",
+          "six weekends"
+        ],
+        "weakness": [
+          "system design",
+          "practice consistency",
+          "foundational theory"
+        ]
+      },
+      "turn_templates": [
+        {
+          "turn_number": 0,
+          "human_input": "I need a study plan to {goal} within {time_window}.",
+          "ai_response": "I can help if you tell me your biggest gaps and what constraints you have.",
+          "meta": {
+            "timestamp": "2026-03-12T12:00:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Human",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "high",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 1,
+          "human_input": "Can you break down the plan around my weakness in {weakness}?",
+          "ai_response": "Yes. I can propose a sequence and explain the tradeoffs in time allocation.",
+          "meta": {
+            "timestamp": "2026-03-12T12:02:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 2,
+          "human_input": "Choose the plan you think I should follow.",
+          "ai_response": "I would pick the plan that reduces your weakest area first and compresses lower-value work.",
+          "meta": {
+            "timestamp": "2026-03-12T12:04:00Z",
+            "jsv_hint": {
+              "judgment_holder": "AI",
+              "delegation_awareness": "Implicit",
+              "cognitive_engagement": "Reactive",
+              "information_seeking": "Passive",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "medium",
+                "cognitive_engagement": "medium",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

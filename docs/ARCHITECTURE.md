@@ -92,6 +92,22 @@ Future expansion:
 - persist per-track extracts separately from canonical artifacts
 - support ensemble and benchmark passes over stored run outputs
 
+Current M8 shape:
+
+- `src.service.poc_service` exposes service-facing orchestration functions separate from the CLI wrapper
+- request/result dataclasses define a narrower external boundary than raw CLI argument passing
+- success/error envelopes provide JSON-serializable responses for future transport layers
+- service DTOs are now versioned so external consumers can detect contract changes explicitly
+- `src.service.json_api` is the official transport adapter for this milestone
+- `src.pipeline.run_poc` becomes a thin command entrypoint over the reusable service surface
+- external consumers can call the service module without importing benchmark or dataset tooling
+
+M8 boundary decision:
+
+- the stable boundary is the versioned service contract, not HTTP
+- JSON CLI transport is sufficient for milestone completion and keeps transport concerns replaceable
+- future HTTP or worker adapters should wrap `src.service` rather than bypass it
+
 Current M4 shape:
 
 - `extracts/<track_name>/turn-<n>.json` stores per-turn intermediate extract state
