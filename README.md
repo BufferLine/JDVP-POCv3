@@ -216,6 +216,17 @@ python3 scripts/run_dataset_matrix.py --config path/to/matrix-config.json
 
 The config should point at one dataset slice and a list of track/model environment setups. The script writes `dataset_matrix_summary.json` so repeated model runs can be compared on the same slice.
 
+Benchmark a dataset matrix against one baseline label:
+
+```bash
+python3 scripts/benchmark_dataset_matrix.py \
+  --matrix-summary path/to/dataset_matrix_summary.json \
+  --baseline-label fixture \
+  --output-root data/runs/matrix-benchmark
+```
+
+This writes pairwise comparison reports plus interaction-level ensemble reports for the completed runs in the matrix.
+
 Richer research pack with mixed blueprints:
 
 ```bash
