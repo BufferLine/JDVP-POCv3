@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from src.catalog.sqlite_store import CatalogDatasetRunRecord, CatalogStore
 from src.dataset.manifest_loader import load_dataset_manifest
 from src.pipeline.run_storage import write_json
 from src.service.contracts import (
@@ -30,6 +31,7 @@ class DatasetRunRequest:
 
 @dataclass(frozen=True)
 class DatasetRunResult:
+    dataset_run_id: str
     dataset_id: str
     split: str | None
     track_name: str
@@ -41,6 +43,7 @@ class DatasetRunResult:
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "dataset_run_id": self.dataset_run_id,
             "dataset_id": self.dataset_id,
             "split": self.split,
             "track_name": self.track_name,
@@ -53,6 +56,7 @@ class DatasetRunResult:
 
     def to_external_dict(self) -> dict[str, Any]:
         return ExternalDatasetRunResult(
+            dataset_run_id=self.dataset_run_id,
             dataset_id=self.dataset_id,
             split=self.split,
             track_name=self.track_name,
@@ -62,6 +66,18 @@ class DatasetRunResult:
             failed_count=self.failed_count,
             summary_path=str(self.summary_path),
         ).to_dict()
+
+
+def _build_dataset_run_id(output_root: Path) -> str:
+    return str(output_root.resolve(strict=False))
+
+
+def _dataset_run_status(*, item_count: int, completed_count: int, failed_count: int) -> str:
+    if failed_count == 0:
+        return "completed"
+    if completed_count == 0 and item_count > 0:
+        return "failed"
+    return "partial"
 
 
 def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
@@ -76,6 +92,24 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
             items = items[: request.max_items]
 
         batch_root = request.output_root
+        dataset_run_id = _build_dataset_run_id(batch_root)
+        summary_path = batch_root / "dataset_run_summary.json"
+        catalog = CatalogStore()
+        catalog.upsert_dataset_run(
+            CatalogDatasetRunRecord(
+                dataset_run_id=dataset_run_id,
+                dataset_id=manifest.dataset_id,
+                track_name=request.track_name,
+                output_root=str(batch_root),
+                summary_path=str(summary_path),
+                split=request.split,
+                scenario_id=request.scenario_id,
+                item_count=len(items),
+                completed_count=0,
+                failed_count=0,
+                status="running",
+            )
+        )
         rows: list[dict[str, Any]] = []
         completed_count = 0
         failed_count = 0
@@ -90,6 +124,7 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
                         track_name=request.track_name,
                         resume=request.resume,
                         dataset_id=manifest.dataset_id,
+                        dataset_run_id=dataset_run_id,
                     )
                 )
                 completed_count += 1
@@ -119,11 +154,16 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
                     }
                 )
 
-        summary_path = batch_root / "dataset_run_summary.json"
+        status = _dataset_run_status(
+            item_count=len(items),
+            completed_count=completed_count,
+            failed_count=failed_count,
+        )
         write_json(
             summary_path,
             {
                 "schema_version": DATASET_RUN_RESULT_SCHEMA_VERSION,
+                "dataset_run_id": dataset_run_id,
                 "dataset_id": manifest.dataset_id,
                 "split": request.split,
                 "scenario_id": request.scenario_id,
@@ -135,7 +175,23 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
                 "items": rows,
             },
         )
+        catalog.upsert_dataset_run(
+            CatalogDatasetRunRecord(
+                dataset_run_id=dataset_run_id,
+                dataset_id=manifest.dataset_id,
+                track_name=request.track_name,
+                output_root=str(batch_root),
+                summary_path=str(summary_path),
+                split=request.split,
+                scenario_id=request.scenario_id,
+                item_count=len(items),
+                completed_count=completed_count,
+                failed_count=failed_count,
+                status=status,
+            )
+        )
         return DatasetRunResult(
+            dataset_run_id=dataset_run_id,
             dataset_id=manifest.dataset_id,
             split=request.split,
             track_name=request.track_name,
@@ -151,6 +207,26 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
             message=f"dataset manifest not found under: {request.dataset_root}",
             details={"dataset_root": str(request.dataset_root)},
         ) from exc
+    except Exception as exc:
+        if "dataset_run_id" in locals() and "manifest" in locals():
+            catalog = CatalogStore()
+            catalog.upsert_dataset_run(
+                CatalogDatasetRunRecord(
+                    dataset_run_id=dataset_run_id,
+                    dataset_id=manifest.dataset_id,
+                    track_name=request.track_name,
+                    output_root=str(request.output_root),
+                    summary_path=str(request.output_root / "dataset_run_summary.json"),
+                    split=request.split,
+                    scenario_id=request.scenario_id,
+                    item_count=len(items),
+                    completed_count=locals().get("completed_count", 0),
+                    failed_count=locals().get("failed_count", 0),
+                    status="failed",
+                    error_message=str(exc),
+                )
+            )
+        raise
 
 
 def run_dataset_response(request: DatasetRunRequest) -> dict[str, Any]:

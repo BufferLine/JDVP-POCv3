@@ -45,6 +45,7 @@ class ListFailedRunsTests(unittest.TestCase):
                         run_id="failed-run-1",
                         interaction_id="interaction-1",
                         dataset_id="generated/synthetic-general/v1",
+                        dataset_run_id=None,
                         track_name="llm_observer",
                         model_id="test-model",
                         input_path=str(ROOT / "data" / "fixtures" / "sample_interaction.json"),
@@ -74,6 +75,7 @@ class ListFailedRunsTests(unittest.TestCase):
                         run_id="failed-run-2",
                         interaction_id="interaction-2",
                         dataset_id=None,
+                        dataset_run_id=None,
                         track_name="llm_observer",
                         model_id="test-model",
                         input_path=str(ROOT / "data" / "fixtures" / "sample_interaction.json"),
@@ -102,6 +104,7 @@ class ListFailedRunsTests(unittest.TestCase):
                         run_id="failed-run-dataset-a",
                         interaction_id="interaction-a",
                         dataset_id="generated/synthetic-general/v1",
+                        dataset_run_id=None,
                         track_name="llm_observer",
                         model_id="test-model",
                         input_path=str(ROOT / "data" / "fixtures" / "sample_interaction.json"),
@@ -115,6 +118,7 @@ class ListFailedRunsTests(unittest.TestCase):
                         run_id="failed-run-dataset-b",
                         interaction_id="interaction-b",
                         dataset_id="generated/synthetic-general-rich/v1",
+                        dataset_run_id=None,
                         track_name="llm_observer",
                         model_id="test-model",
                         input_path=str(ROOT / "data" / "fixtures" / "sample_interaction.json"),
@@ -130,6 +134,39 @@ class ListFailedRunsTests(unittest.TestCase):
                 )
                 self.assertEqual(len(rows), 1)
                 self.assertEqual(rows[0]["run_id"], "failed-run-dataset-a")
+            finally:
+                if previous is None:
+                    os.environ.pop("JDVP_CATALOG_DB_PATH", None)
+                else:
+                    os.environ["JDVP_CATALOG_DB_PATH"] = previous
+
+    def test_catalog_lists_failed_dataset_runs(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            db_path = Path(tmp_dir) / "catalog.sqlite3"
+            previous = os.environ.get("JDVP_CATALOG_DB_PATH")
+            try:
+                os.environ["JDVP_CATALOG_DB_PATH"] = str(db_path)
+                store = CatalogStore(db_path)
+                from src.catalog.sqlite_store import CatalogDatasetRunRecord
+
+                store.upsert_dataset_run(
+                    CatalogDatasetRunRecord(
+                        dataset_run_id="dataset-run-a",
+                        dataset_id="generated/synthetic-general/v1",
+                        track_name="llm_observer",
+                        output_root=str(Path(tmp_dir) / "dataset-runs" / "a"),
+                        summary_path=str(Path(tmp_dir) / "dataset-runs" / "a" / "dataset_run_summary.json"),
+                        split="test",
+                        scenario_id=None,
+                        item_count=4,
+                        completed_count=1,
+                        failed_count=3,
+                        status="partial",
+                    )
+                )
+                rows = store.list_dataset_runs(status="partial", limit=10)
+                self.assertEqual(len(rows), 1)
+                self.assertEqual(rows[0]["dataset_run_id"], "dataset-run-a")
             finally:
                 if previous is None:
                     os.environ.pop("JDVP_CATALOG_DB_PATH", None)

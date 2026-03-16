@@ -9,7 +9,7 @@ from typing import Any
 SERVICE_RESPONSE_SCHEMA_VERSION = "pocv3-service-response-v1"
 RUN_RESULT_SCHEMA_VERSION = "pocv3-run-result-v1"
 FEWSHOT_BENCHMARK_RESULT_SCHEMA_VERSION = "pocv3-fewshot-benchmark-result-v1"
-DATASET_RUN_RESULT_SCHEMA_VERSION = "pocv3-dataset-run-result-v1"
+DATASET_RUN_RESULT_SCHEMA_VERSION = "pocv3-dataset-run-result-v2"
 SERVICE_ERROR_SCHEMA_VERSION = "pocv3-service-error-v1"
 
 
@@ -61,6 +61,7 @@ class ExternalFewshotBenchmarkResult:
 
 @dataclass(frozen=True)
 class ExternalDatasetRunResult:
+    dataset_run_id: str
     dataset_id: str
     split: str | None
     track_name: str
@@ -74,6 +75,7 @@ class ExternalDatasetRunResult:
     def to_dict(self) -> dict[str, Any]:
         return {
             "schema_version": self.schema_version,
+            "dataset_run_id": self.dataset_run_id,
             "dataset_id": self.dataset_id,
             "split": self.split,
             "track_name": self.track_name,
