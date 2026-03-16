@@ -96,6 +96,8 @@ class ServiceApiTests(unittest.TestCase):
             external = result.to_external_dict()
             self.assertEqual(external["schema_version"], RUN_RESULT_SCHEMA_VERSION)
             self.assertNotIn("extracts_path", external)
+            self.assertIn("model_id", result.to_dict())
+            self.assertIn("prompt_version", result.to_dict())
 
     def test_run_dataset_returns_typed_result(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"

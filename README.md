@@ -208,6 +208,14 @@ python3 scripts/run_dataset.py \
 
 This writes `dataset_run_summary.json` plus one run directory per selected interaction.
 
+Model-by-model dataset run matrix:
+
+```bash
+python3 scripts/run_dataset_matrix.py --config path/to/matrix-config.json
+```
+
+The config should point at one dataset slice and a list of track/model environment setups. The script writes `dataset_matrix_summary.json` so repeated model runs can be compared on the same slice.
+
 Richer research pack with mixed blueprints:
 
 ```bash

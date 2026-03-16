@@ -100,6 +100,8 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
                         "split": item.split,
                         "status": "completed",
                         "run_id": result.run_id,
+                        "model_id": result.model_id,
+                        "prompt_version": result.prompt_version,
                         "run_dir": str(result.run_dir),
                     }
                 )

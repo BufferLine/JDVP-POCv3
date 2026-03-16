@@ -49,6 +49,8 @@ class RunResult:
     run_id: str
     interaction_id: str
     track_name: str
+    model_id: str
+    prompt_version: str
     run_dir: Path
     manifest_path: Path
     trajectory_path: Path
@@ -59,6 +61,8 @@ class RunResult:
             "run_id": self.run_id,
             "interaction_id": self.interaction_id,
             "track_name": self.track_name,
+            "model_id": self.model_id,
+            "prompt_version": self.prompt_version,
             "run_dir": str(self.run_dir),
             "manifest_path": str(self.manifest_path),
             "trajectory_path": str(self.trajectory_path),
@@ -219,6 +223,13 @@ def write_run_outputs(
     resume: bool,
 ) -> RunResult:
     storage = RunStorage(run_dir=run_dir, track_name=track_name)
+    track_metadata = (
+        artifacts.extract_rows[0].get("track_metadata", {})
+        if artifacts.extract_rows
+        else {}
+    )
+    model_id = str(track_metadata.get("model_id", "unknown"))
+    prompt_version = str(track_metadata.get("prompt_version", "unknown"))
 
     write_json(run_dir / "input" / input_path.name, artifacts.raw_interaction)
     for jsv in artifacts.jsv_sequence:
@@ -246,6 +257,8 @@ def write_run_outputs(
             "input_path": str(input_path),
             "interaction_id": artifacts.raw_interaction["interaction_id"],
             "track_name": track_name,
+            "model_id": model_id,
+            "prompt_version": prompt_version,
             "resume_enabled": resume,
             "jsv_count": len(artifacts.jsv_sequence),
             "dv_count": len(artifacts.dv_sequence),
@@ -266,6 +279,8 @@ def write_run_outputs(
         run_id=run_id,
         interaction_id=str(artifacts.raw_interaction["interaction_id"]),
         track_name=track_name,
+        model_id=model_id,
+        prompt_version=prompt_version,
         run_dir=run_dir,
         manifest_path=manifest_path,
         trajectory_path=trajectory_path,
@@ -312,7 +327,7 @@ def run_interaction(request: RunRequest) -> RunResult:
                 interaction_id=result.interaction_id,
                 dataset_id=request.dataset_id,
                 track_name=request.track_name,
-                model_id=None,
+                model_id=result.model_id,
                 input_path=str(request.input_path),
                 run_dir=str(run_dir),
                 status="completed",
