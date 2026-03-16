@@ -7,20 +7,6 @@ from .contracts import (
     SERVICE_RESPONSE_SCHEMA_VERSION,
 )
 from .errors import ServiceError
-from .eval_service import (
-    FewshotBenchmarkRequest,
-    FewshotBenchmarkResult,
-    run_fewshot_benchmark,
-    run_fewshot_benchmark_response,
-)
-from .poc_service import (
-    PipelineArtifacts,
-    RunRequest,
-    RunResult,
-    run_interaction,
-    run_interaction_file,
-    run_interaction_response,
-)
 
 __all__ = [
     "FewshotBenchmarkRequest",
@@ -39,3 +25,27 @@ __all__ = [
     "run_interaction_file",
     "run_interaction_response",
 ]
+
+
+def __getattr__(name: str):
+    if name in {
+        "FewshotBenchmarkRequest",
+        "FewshotBenchmarkResult",
+        "run_fewshot_benchmark",
+        "run_fewshot_benchmark_response",
+    }:
+        from . import eval_service
+
+        return getattr(eval_service, name)
+    if name in {
+        "PipelineArtifacts",
+        "RunRequest",
+        "RunResult",
+        "run_interaction",
+        "run_interaction_file",
+        "run_interaction_response",
+    }:
+        from . import poc_service
+
+        return getattr(poc_service, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
