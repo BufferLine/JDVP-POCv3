@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-03-12T11:02:00Z",
+  "interaction_id": "synthetic-general-regression-travel-planning-000",
+  "turn_number": 1,
+  "judgment_holder": "Shared",
+  "delegation_awareness": "Implicit",
+  "cognitive_engagement": "Active",
+  "information_seeking": "Active",
+  "context_module": "general",
+  "confidence": {
+    "judgment_holder": "medium",
+    "delegation_awareness": "medium",
+    "cognitive_engagement": "medium",
+    "information_seeking": "medium"
+  }
+}

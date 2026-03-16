@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-03-12T10:02:00Z",
+  "interaction_id": "fixture-general-001",
+  "turn_number": 1,
+  "judgment_holder": "Shared",
+  "delegation_awareness": "Explicit",
+  "cognitive_engagement": "Active",
+  "information_seeking": "Active",
+  "context_module": "general",
+  "confidence": {
+    "judgment_holder": "medium",
+    "delegation_awareness": "medium",
+    "cognitive_engagement": "high",
+    "information_seeking": "high"
+  }
+}

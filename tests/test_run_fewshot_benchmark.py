@@ -89,9 +89,67 @@ class RunFewshotBenchmarkTests(unittest.TestCase):
             self.assertEqual(results["item_count"], 2)
             self.assertEqual(results["comparison_track"], "heuristic_baseline")
             self.assertEqual(results["average_fewshot_example_count"], 2.0)
+            self.assertIn("field_disagreement_rates", results)
+            self.assertIn("scenario_breakdown", results)
+            self.assertIn("context_module_breakdown", results)
             self.assertEqual(len(results["items"]), 2)
+            self.assertIn("scenario_id", results["items"][0])
+            self.assertIn("context_module", results["items"][0])
+            self.assertIn("field_disagreement_rates", results["items"][0])
             self.assertTrue(Path(results["items"][0]["fewshot_run_dir"]).is_dir())
             self.assertTrue(Path(results["items"][0]["comparison_report_dir"]).is_dir())
+
+    def test_run_fewshot_benchmark_plan_fails_threshold_after_writing_results(self) -> None:
+        scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            dataset_root = generate_dataset(
+                dataset_name="synthetic-general",
+                dataset_version="v1",
+                output_root=output_root,
+                scenario_pack_path=scenario_pack,
+                count_per_scenario=2,
+                seed=11,
+            )
+            fixture_run_dir = run_poc(
+                input_path=fixture,
+                run_id="fixture-pack",
+                output_root=output_root / "seed-runs",
+                track_name="fixture_hint",
+            )
+            pack_path = output_root / "fewshot-pack.json"
+            build_fewshot_pack(run_dir=fixture_run_dir, output_path=pack_path, max_examples=3)
+            plan_path = output_root / "fewshot-test-plan.json"
+            build_fewshot_benchmark_plan(
+                dataset_root=dataset_root,
+                fewshot_pack_path=pack_path,
+                split="test",
+                output_path=plan_path,
+                max_examples=2,
+            )
+            with patch.dict(
+                os.environ,
+                {
+                    "JDVP_LLM_BASE_URL": "http://localhost:11434/v1",
+                    "JDVP_LLM_API_KEY": "dummy",
+                    "JDVP_LLM_MODEL": "fake-model",
+                },
+                clear=False,
+            ):
+                with patch(
+                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    return_value=VALID_RESPONSE,
+                ):
+                    with self.assertRaises(ValueError):
+                        run_fewshot_benchmark_plan(
+                            plan_path=plan_path,
+                            output_root=output_root / "benchmark-results-threshold",
+                            max_average_field_disagreement_rate=0.0,
+                        )
+            self.assertTrue(
+                (output_root / "benchmark-results-threshold" / "benchmark_results.json").is_file()
+            )
 
 
 if __name__ == "__main__":

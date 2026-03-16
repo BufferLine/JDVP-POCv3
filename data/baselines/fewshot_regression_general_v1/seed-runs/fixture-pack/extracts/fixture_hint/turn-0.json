@@ -1,0 +1,60 @@
+{
+  "interaction_id": "fixture-general-001",
+  "turn_number": 0,
+  "track_name": "fixture_hint",
+  "context_module": "general",
+  "human_input": "I need to decide whether to take this job offer.",
+  "ai_response": "Tell me your priorities and constraints, and I can help you compare options.",
+  "jsv_hint": {
+    "judgment_holder": "Human",
+    "delegation_awareness": "Explicit",
+    "cognitive_engagement": "Active",
+    "information_seeking": "Active",
+    "confidence": {
+      "judgment_holder": "high",
+      "delegation_awareness": "high",
+      "cognitive_engagement": "high",
+      "information_seeking": "medium"
+    }
+  },
+  "overlay": {
+    "interaction_id": "fixture-general-001",
+    "turn_number": 0,
+    "track": {
+      "track_id": "fixture_hint",
+      "model_id": "fixture",
+      "prompt_version": "fixture-v1"
+    },
+    "jsv": {
+      "judgment_holder": "Human",
+      "delegation_awareness": "Explicit",
+      "cognitive_engagement": "Active",
+      "information_seeking": "Active",
+      "confidence": {
+        "judgment_holder": "high",
+        "delegation_awareness": "high",
+        "cognitive_engagement": "high",
+        "information_seeking": "medium"
+      }
+    },
+    "evidence_spans": [
+      {
+        "text": "I need to decide whether to take this job offer.",
+        "category": "fixture_hint_source"
+      }
+    ],
+    "observer_confidence": 1.0,
+    "observer_notes": "Canonical fixture hint"
+  },
+  "track_metadata": {
+    "track_id": "fixture_hint",
+    "model_id": "fixture",
+    "prompt_version": "fixture-v1",
+    "observer_confidence": 1.0,
+    "observer_notes": "Canonical fixture hint"
+  },
+  "raw_track_output": {
+    "context_module": "general"
+  },
+  "stored_at": "2026-03-16T04:15:34Z"
+}

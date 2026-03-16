@@ -1,0 +1,19 @@
+{
+  "interaction_id": "synthetic-general-regression-travel-planning-001",
+  "run_ids": [
+    "fewshot-synthetic-general-regression-travel-planning-001",
+    "heuristic_baseline-synthetic-general-regression-travel-planning-001"
+  ],
+  "track_names": [
+    "fewshot_prompt",
+    "heuristic_baseline"
+  ],
+  "turns_compared": 3,
+  "field_disagreement_rate": 0.4166666666666667,
+  "field_disagreement_rates": {
+    "judgment_holder": 1.0,
+    "delegation_awareness": 0.0,
+    "cognitive_engagement": 0.3333333333333333,
+    "information_seeking": 0.3333333333333333
+  }
+}

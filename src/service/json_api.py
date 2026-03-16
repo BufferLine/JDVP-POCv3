@@ -33,6 +33,16 @@ def _run_fewshot_benchmark_from_payload(payload: dict[str, Any]) -> dict[str, An
         plan_path=Path(payload["plan_path"]),
         output_root=Path(payload["output_root"]),
         comparison_track=str(payload.get("comparison_track", "heuristic_baseline")),
+        max_average_field_disagreement_rate=(
+            float(payload["max_average_field_disagreement_rate"])
+            if payload.get("max_average_field_disagreement_rate") is not None
+            else None
+        ),
+        max_field_disagreement_rate=(
+            float(payload["max_field_disagreement_rate"])
+            if payload.get("max_field_disagreement_rate") is not None
+            else None
+        ),
     )
     return run_fewshot_benchmark_response(request)
 

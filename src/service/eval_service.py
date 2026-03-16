@@ -17,6 +17,8 @@ class FewshotBenchmarkRequest:
     plan_path: Path
     output_root: Path
     comparison_track: str = "heuristic_baseline"
+    max_average_field_disagreement_rate: float | None = None
+    max_field_disagreement_rate: float | None = None
 
 
 @dataclass(frozen=True)
@@ -25,6 +27,8 @@ class FewshotBenchmarkResult:
     item_count: int
     comparison_track: str
     results_path: Path
+    average_field_disagreement_rate: float
+    max_field_disagreement_rate: float
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -32,6 +36,8 @@ class FewshotBenchmarkResult:
             "item_count": self.item_count,
             "comparison_track": self.comparison_track,
             "results_path": str(self.results_path),
+            "average_field_disagreement_rate": self.average_field_disagreement_rate,
+            "max_field_disagreement_rate": self.max_field_disagreement_rate,
         }
 
     def to_external_dict(self) -> dict[str, Any]:
@@ -40,6 +46,8 @@ class FewshotBenchmarkResult:
             item_count=self.item_count,
             comparison_track=self.comparison_track,
             results_path=str(self.results_path),
+            average_field_disagreement_rate=self.average_field_disagreement_rate,
+            max_field_disagreement_rate=self.max_field_disagreement_rate,
         ).to_dict()
 
 
@@ -49,6 +57,8 @@ def run_fewshot_benchmark(request: FewshotBenchmarkRequest) -> FewshotBenchmarkR
             plan_path=request.plan_path,
             output_root=request.output_root,
             comparison_track=request.comparison_track,
+            max_average_field_disagreement_rate=request.max_average_field_disagreement_rate,
+            max_field_disagreement_rate=request.max_field_disagreement_rate,
         )
         summary = read_json(results_path)
         return FewshotBenchmarkResult(
@@ -56,6 +66,8 @@ def run_fewshot_benchmark(request: FewshotBenchmarkRequest) -> FewshotBenchmarkR
             item_count=int(summary["item_count"]),
             comparison_track=str(summary["comparison_track"]),
             results_path=results_path,
+            average_field_disagreement_rate=float(summary["average_field_disagreement_rate"]),
+            max_field_disagreement_rate=float(summary["max_field_disagreement_rate"]),
         )
     except FileNotFoundError as exc:
         raise ServiceError(
@@ -65,6 +77,19 @@ def run_fewshot_benchmark(request: FewshotBenchmarkRequest) -> FewshotBenchmarkR
         ) from exc
     except ServiceError:
         raise
+    except ValueError as exc:
+        raise ServiceError(
+            code="benchmark_threshold_failed",
+            message="few-shot benchmark exceeded configured disagreement thresholds",
+            details={
+                "plan_path": str(request.plan_path),
+                "output_root": str(request.output_root),
+                "comparison_track": request.comparison_track,
+                "max_average_field_disagreement_rate": request.max_average_field_disagreement_rate,
+                "max_field_disagreement_rate": request.max_field_disagreement_rate,
+                "cause": str(exc),
+            },
+        ) from exc
     except Exception as exc:
         raise ServiceError(
             code="benchmark_execution_failed",

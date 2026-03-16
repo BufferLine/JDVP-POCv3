@@ -8,7 +8,7 @@ from typing import Any
 from src.service.contracts import SERVICE_ERROR_SCHEMA_VERSION
 
 
-@dataclass(frozen=True)
+@dataclass
 class ServiceError(Exception):
     code: str
     message: str

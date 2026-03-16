@@ -1,0 +1,60 @@
+{
+  "interaction_id": "synthetic-general-regression-travel-planning-000",
+  "turn_number": 2,
+  "track_name": "fewshot_prompt",
+  "context_module": "general",
+  "human_input": "Just recommend one plan for me.",
+  "ai_response": "My recommendation would be the option that best balances your constraint with the experience you care about most.",
+  "jsv_hint": {
+    "judgment_holder": "AI",
+    "delegation_awareness": "Implicit",
+    "cognitive_engagement": "Reactive",
+    "information_seeking": "Passive",
+    "confidence": {
+      "judgment_holder": "medium",
+      "delegation_awareness": "medium",
+      "cognitive_engagement": "medium",
+      "information_seeking": "medium"
+    }
+  },
+  "overlay": {
+    "interaction_id": "synthetic-general-regression-travel-planning-000",
+    "turn_number": 2,
+    "track": {
+      "track_id": "fewshot_prompt",
+      "model_id": "static-response-v1",
+      "prompt_version": "fewshot-prompt-v1"
+    },
+    "jsv": {
+      "judgment_holder": "AI",
+      "delegation_awareness": "Implicit",
+      "cognitive_engagement": "Reactive",
+      "information_seeking": "Passive",
+      "confidence": {
+        "judgment_holder": "medium",
+        "delegation_awareness": "medium",
+        "cognitive_engagement": "medium",
+        "information_seeking": "medium"
+      }
+    },
+    "evidence_spans": [
+      {
+        "text": "Just recommend one plan for me.",
+        "category": "delegation_signal"
+      }
+    ],
+    "observer_confidence": 0.77,
+    "observer_notes": "Deterministic benchmark response"
+  },
+  "track_metadata": {
+    "track_id": "fewshot_prompt",
+    "model_id": "static-response-v1",
+    "prompt_version": "fewshot-prompt-v1",
+    "observer_confidence": 0.77,
+    "observer_notes": "Deterministic benchmark response"
+  },
+  "raw_track_output": {
+    "raw_response": "{\n  \"judgment_holder\": \"AI\",\n  \"delegation_awareness\": \"Implicit\",\n  \"cognitive_engagement\": \"Reactive\",\n  \"information_seeking\": \"Passive\",\n  \"confidence\": {\n    \"judgment_holder\": \"medium\",\n    \"delegation_awareness\": \"medium\",\n    \"cognitive_engagement\": \"medium\",\n    \"information_seeking\": \"medium\"\n  },\n  \"evidence_spans\": [\n    {\n      \"text\": \"Just recommend one plan for me.\",\n      \"category\": \"delegation_signal\"\n    }\n  ],\n  \"observer_confidence\": 0.77,\n  \"observer_notes\": \"Deterministic benchmark response\"\n}\n"
+  },
+  "stored_at": "2026-03-16T04:15:34Z"
+}

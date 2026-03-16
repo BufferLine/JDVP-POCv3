@@ -61,6 +61,11 @@ Current M7 note:
 - `fewshot_prompt` reuses the LLM observer adapter and injects serialized examples into the prompt
 - `src.eval.fewshot_benchmark` turns dataset splits into executable few-shot evaluation plans
 - `src.eval.run_fewshot_benchmark` executes those plans and writes per-interaction comparison reports
+- few-shot benchmark results now include per-field disagreement rates plus scenario and context-module breakdowns
+- benchmark execution can fail on configured disagreement thresholds while still writing `benchmark_results.json`
+- `scripts/run_fewshot_regression_suite.py` is the standard end-to-end benchmark entrypoint for this milestone
+- `config/eval/fewshot_regression_general_v1.json` defines the checked-in deterministic regression policy and thresholds
+- `data/baselines/fewshot_regression_general_v1/` holds the current deterministic baseline artifacts
 - benchmark slices remain the validation target for future retrieval or learned observers
 
 Current M8 note:

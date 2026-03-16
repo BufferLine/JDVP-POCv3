@@ -1,0 +1,82 @@
+{
+  "schema_version": "pocv3-fewshot-benchmark-results-v1",
+  "plan_path": "data/baselines/fewshot_regression_general_v1/fewshot-plan.json",
+  "split": "test",
+  "item_count": 2,
+  "comparison_track": "heuristic_baseline",
+  "average_fewshot_example_count": 3.0,
+  "average_field_disagreement_rate": 0.4166666666666667,
+  "min_field_disagreement_rate": 0.4166666666666667,
+  "max_field_disagreement_rate": 0.4166666666666667,
+  "zero_disagreement_items": 0,
+  "field_disagreement_rates": {
+    "cognitive_engagement": 0.3333333333333333,
+    "delegation_awareness": 0.0,
+    "information_seeking": 0.3333333333333333,
+    "judgment_holder": 1.0
+  },
+  "scenario_breakdown": {
+    "travel-planning": {
+      "item_count": 2,
+      "average_field_disagreement_rate": 0.4166666666666667,
+      "average_fewshot_example_count": 3.0,
+      "field_disagreement_rates": {
+        "cognitive_engagement": 0.3333333333333333,
+        "delegation_awareness": 0.0,
+        "information_seeking": 0.3333333333333333,
+        "judgment_holder": 1.0
+      }
+    }
+  },
+  "context_module_breakdown": {
+    "general": {
+      "item_count": 2,
+      "average_field_disagreement_rate": 0.4166666666666667,
+      "average_fewshot_example_count": 3.0,
+      "field_disagreement_rates": {
+        "cognitive_engagement": 0.3333333333333333,
+        "delegation_awareness": 0.0,
+        "information_seeking": 0.3333333333333333,
+        "judgment_holder": 1.0
+      }
+    }
+  },
+  "items": [
+    {
+      "interaction_id": "synthetic-general-regression-travel-planning-000",
+      "input_path": "data/baselines/fewshot_regression_general_v1/generated/synthetic-general-regression/v1/interactions/synthetic-general-regression-travel-planning-000.json",
+      "scenario_id": "travel-planning",
+      "context_module": "general",
+      "fewshot_run_dir": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-000",
+      "comparison_run_dir": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/heuristic_baseline-synthetic-general-regression-travel-planning-000",
+      "comparison_track": "heuristic_baseline",
+      "fewshot_example_count": 3,
+      "field_disagreement_rate": 0.4166666666666667,
+      "field_disagreement_rates": {
+        "judgment_holder": 1.0,
+        "delegation_awareness": 0.0,
+        "cognitive_engagement": 0.3333333333333333,
+        "information_seeking": 0.3333333333333333
+      },
+      "comparison_report_dir": "data/baselines/fewshot_regression_general_v1/benchmark-results/reports/synthetic-general-regression-travel-planning-000"
+    },
+    {
+      "interaction_id": "synthetic-general-regression-travel-planning-001",
+      "input_path": "data/baselines/fewshot_regression_general_v1/generated/synthetic-general-regression/v1/interactions/synthetic-general-regression-travel-planning-001.json",
+      "scenario_id": "travel-planning",
+      "context_module": "general",
+      "fewshot_run_dir": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-001",
+      "comparison_run_dir": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/heuristic_baseline-synthetic-general-regression-travel-planning-001",
+      "comparison_track": "heuristic_baseline",
+      "fewshot_example_count": 3,
+      "field_disagreement_rate": 0.4166666666666667,
+      "field_disagreement_rates": {
+        "judgment_holder": 1.0,
+        "delegation_awareness": 0.0,
+        "cognitive_engagement": 0.3333333333333333,
+        "information_seeking": 0.3333333333333333
+      },
+      "comparison_report_dir": "data/baselines/fewshot_regression_general_v1/benchmark-results/reports/synthetic-general-regression-travel-planning-001"
+    }
+  ]
+}

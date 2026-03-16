@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Protocol
 from urllib import error, request
 
@@ -61,6 +62,16 @@ class OpenAICompatibleProvider:
         if not isinstance(content, str) or not content.strip():
             raise RuntimeError("provider response missing message content")
         return content
+
+
+@dataclass
+class StaticResponseProvider:
+    """Deterministic provider for offline benchmark and regression runs."""
+
+    response_text: str
+
+    def generate(self, *, system_prompt: str, user_prompt: str) -> str:
+        return self.response_text
 
 
 class LLMObserverTrack(TrackExtractor):
@@ -127,12 +138,34 @@ class LLMObserverTrack(TrackExtractor):
 
 def create_env_backed_llm_track() -> LLMObserverTrack:
     provider_kind = os.getenv("JDVP_LLM_PROVIDER", "openai_compatible")
-    if provider_kind != "openai_compatible":
-        raise RuntimeError(f"unsupported JDVP_LLM_PROVIDER: {provider_kind}")
-    base_url = os.getenv("JDVP_LLM_BASE_URL")
-    api_key = os.getenv("JDVP_LLM_API_KEY")
     model = os.getenv("JDVP_LLM_MODEL")
-    if not base_url or not api_key or not model:
-        raise RuntimeError("JDVP_LLM_BASE_URL, JDVP_LLM_API_KEY, and JDVP_LLM_MODEL are required")
-    provider = OpenAICompatibleProvider(base_url=base_url, model=model, api_key=api_key)
-    return LLMObserverTrack(provider=provider, model_id=model)
+
+    provider, resolved_model_id = create_env_backed_provider()
+    return LLMObserverTrack(provider=provider, model_id=model or resolved_model_id)
+
+
+def create_env_backed_provider() -> tuple[LLMProvider, str]:
+    provider_kind = os.getenv("JDVP_LLM_PROVIDER", "openai_compatible")
+    model = os.getenv("JDVP_LLM_MODEL")
+
+    if provider_kind == "openai_compatible":
+        base_url = os.getenv("JDVP_LLM_BASE_URL")
+        api_key = os.getenv("JDVP_LLM_API_KEY")
+        if not base_url or not api_key or not model:
+            raise RuntimeError("JDVP_LLM_BASE_URL, JDVP_LLM_API_KEY, and JDVP_LLM_MODEL are required")
+        provider: LLMProvider = OpenAICompatibleProvider(base_url=base_url, model=model, api_key=api_key)
+        return provider, model
+
+    if provider_kind == "static_response":
+        response_text = os.getenv("JDVP_LLM_STATIC_RESPONSE")
+        response_path = os.getenv("JDVP_LLM_STATIC_RESPONSE_PATH")
+        if not response_text and response_path:
+            response_text = Path(response_path).read_text(encoding="utf-8")
+        if not response_text:
+            raise RuntimeError(
+                "JDVP_LLM_STATIC_RESPONSE or JDVP_LLM_STATIC_RESPONSE_PATH is required "
+                "when JDVP_LLM_PROVIDER=static_response"
+            )
+        return StaticResponseProvider(response_text=response_text), (model or "static-response")
+
+    raise RuntimeError(f"unsupported JDVP_LLM_PROVIDER: {provider_kind}")

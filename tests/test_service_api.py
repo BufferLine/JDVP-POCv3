@@ -146,6 +146,8 @@ class ServiceApiTests(unittest.TestCase):
             external = result.to_external_dict()
             self.assertEqual(external["schema_version"], FEWSHOT_BENCHMARK_RESULT_SCHEMA_VERSION)
             self.assertEqual(external["item_count"], 2)
+            self.assertIn("average_field_disagreement_rate", external)
+            self.assertIn("max_field_disagreement_rate", external)
 
     def test_run_interaction_response_serializes_success(self) -> None:
         fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
@@ -247,6 +249,62 @@ class ServiceApiTests(unittest.TestCase):
                 FEWSHOT_BENCHMARK_RESULT_SCHEMA_VERSION,
             )
             self.assertEqual(response["result"]["item_count"], 2)
+            self.assertIn("average_field_disagreement_rate", response["result"])
+            self.assertIn("max_field_disagreement_rate", response["result"])
+
+    def test_run_fewshot_benchmark_response_serializes_threshold_failure(self) -> None:
+        scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            dataset_root = generate_dataset(
+                dataset_name="synthetic-general",
+                dataset_version="v1",
+                output_root=output_root,
+                scenario_pack_path=scenario_pack,
+                count_per_scenario=2,
+                seed=11,
+            )
+            seed_run_dir = run_interaction_file(
+                input_path=fixture,
+                run_id="fixture-pack",
+                output_root=output_root / "seed-runs",
+                track_name="fixture_hint",
+            )
+            pack_path = output_root / "fewshot-pack.json"
+            build_fewshot_pack(run_dir=seed_run_dir, output_path=pack_path, max_examples=3)
+            plan_path = output_root / "fewshot-test-plan.json"
+            build_fewshot_benchmark_plan(
+                dataset_root=dataset_root,
+                fewshot_pack_path=pack_path,
+                split="test",
+                output_path=plan_path,
+                max_examples=2,
+            )
+            with patch.dict(
+                os.environ,
+                {
+                    "JDVP_LLM_BASE_URL": "http://localhost:11434/v1",
+                    "JDVP_LLM_API_KEY": "dummy",
+                    "JDVP_LLM_MODEL": "fake-model",
+                },
+                clear=False,
+            ):
+                with patch(
+                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    return_value=VALID_RESPONSE,
+                ):
+                    response = run_fewshot_benchmark_response(
+                        FewshotBenchmarkRequest(
+                            plan_path=plan_path,
+                            output_root=output_root / "benchmark-results-threshold",
+                            max_average_field_disagreement_rate=0.0,
+                        )
+                    )
+            self.assertEqual(response["schema_version"], SERVICE_RESPONSE_SCHEMA_VERSION)
+            self.assertFalse(response["ok"])
+            self.assertEqual(response["error"]["code"], "benchmark_threshold_failed")
+            self.assertEqual(response["error"]["schema_version"], SERVICE_ERROR_SCHEMA_VERSION)
 
 
 if __name__ == "__main__":

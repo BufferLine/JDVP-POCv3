@@ -218,6 +218,17 @@ python3 -m src.eval.run_fewshot_benchmark \
   --output-root data/runs/fewshot-test-results
 ```
 
+M7 regression suite command:
+
+```bash
+python3 scripts/run_fewshot_regression_suite.py \
+  --config config/eval/fewshot_regression_general_v1.json \
+  --output-root data/baselines/fewshot_regression_general_v1 \
+  --clean
+```
+
+The checked-in deterministic baseline lives under `data/baselines/fewshot_regression_general_v1/`.
+
 M8 service-facing Python entrypoint:
 
 ```python

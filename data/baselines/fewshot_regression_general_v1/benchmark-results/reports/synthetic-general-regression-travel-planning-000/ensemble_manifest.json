@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "interaction_id": "synthetic-general-regression-travel-planning-000",
+    "run_ids": [
+      "fewshot-synthetic-general-regression-travel-planning-000",
+      "heuristic_baseline-synthetic-general-regression-travel-planning-000"
+    ],
+    "track_names": [
+      "fewshot_prompt",
+      "heuristic_baseline"
+    ],
+    "turns_compared": 3,
+    "field_disagreement_rate": 0.4166666666666667,
+    "field_disagreement_rates": {
+      "judgment_holder": 1.0,
+      "delegation_awareness": 0.0,
+      "cognitive_engagement": 0.3333333333333333,
+      "information_seeking": 0.3333333333333333
+    }
+  },
+  "source_run_dirs": [
+    "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-000",
+    "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/heuristic_baseline-synthetic-general-regression-travel-planning-000"
+  ],
+  "files": {
+    "summary": "data/baselines/fewshot_regression_general_v1/benchmark-results/reports/synthetic-general-regression-travel-planning-000/benchmark_summary.json",
+    "comparisons": "data/baselines/fewshot_regression_general_v1/benchmark-results/reports/synthetic-general-regression-travel-planning-000/turn_comparisons.jsonl"
+  }
+}
