@@ -1,0 +1,24 @@
+{
+  "run_id": "fixture-pack",
+  "input_path": "/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/data/fixtures/sample_interaction.json",
+  "interaction_id": "fixture-general-001",
+  "track_name": "fixture_hint",
+  "resume_enabled": false,
+  "jsv_count": 3,
+  "dv_count": 2,
+  "resumed_turns": [],
+  "written_turns": [
+    0,
+    1,
+    2
+  ],
+  "code_revision": "ea13d7c75a7dd5c90d93c4585cda352e5e9f6c0c",
+  "paths": {
+    "input": "data/baselines/fewshot_regression_general_v1/seed-runs/fixture-pack/input/sample_interaction.json",
+    "canonical_root": "data/baselines/fewshot_regression_general_v1/seed-runs/fixture-pack/canonical",
+    "overlay_track_outputs": "data/baselines/fewshot_regression_general_v1/seed-runs/fixture-pack/overlays/track_outputs.jsonl",
+    "extracts_jsonl": "data/baselines/fewshot_regression_general_v1/seed-runs/fixture-pack/extracts/fixture_hint/extracts.jsonl",
+    "checkpoint": "data/baselines/fewshot_regression_general_v1/seed-runs/fixture-pack/checkpoints/progress.json"
+  },
+  "output_root": "data/baselines/fewshot_regression_general_v1/seed-runs/fixture-pack"
+}

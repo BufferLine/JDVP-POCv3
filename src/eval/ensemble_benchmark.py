@@ -90,6 +90,8 @@ def compare_runs(
     comparisons: list[dict[str, Any]] = []
     total_field_comparisons = 0
     total_field_disagreements = 0
+    field_comparisons = {field_name: 0 for field_name in CORE_FIELDS}
+    field_disagreements = {field_name: 0 for field_name in CORE_FIELDS}
 
     for turn_number in turn_numbers:
         present_rows = []
@@ -106,6 +108,10 @@ def compare_runs(
         disagreements = _disagreement_fields(present_rows)
         total_field_comparisons += len(CORE_FIELDS)
         total_field_disagreements += len(disagreements)
+        for field_name in CORE_FIELDS:
+            field_comparisons[field_name] += 1
+            if field_name in disagreements:
+                field_disagreements[field_name] += 1
         comparisons.append(
             {
                 "interaction_id": manifests[0]["interaction_id"],
@@ -126,6 +132,14 @@ def compare_runs(
         "field_disagreement_rate": (
             total_field_disagreements / total_field_comparisons if total_field_comparisons else 0.0
         ),
+        "field_disagreement_rates": {
+            field_name: (
+                field_disagreements[field_name] / field_comparisons[field_name]
+                if field_comparisons[field_name]
+                else 0.0
+            )
+            for field_name in CORE_FIELDS
+        },
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)

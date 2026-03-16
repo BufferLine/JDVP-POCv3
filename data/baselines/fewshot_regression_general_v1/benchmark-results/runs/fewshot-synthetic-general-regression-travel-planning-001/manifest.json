@@ -1,0 +1,24 @@
+{
+  "run_id": "fewshot-synthetic-general-regression-travel-planning-001",
+  "input_path": "data/baselines/fewshot_regression_general_v1/generated/synthetic-general-regression/v1/interactions/synthetic-general-regression-travel-planning-001.json",
+  "interaction_id": "synthetic-general-regression-travel-planning-001",
+  "track_name": "fewshot_prompt",
+  "resume_enabled": false,
+  "jsv_count": 3,
+  "dv_count": 2,
+  "resumed_turns": [],
+  "written_turns": [
+    0,
+    1,
+    2
+  ],
+  "code_revision": "ea13d7c75a7dd5c90d93c4585cda352e5e9f6c0c",
+  "paths": {
+    "input": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-001/input/synthetic-general-regression-travel-planning-001.json",
+    "canonical_root": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-001/canonical",
+    "overlay_track_outputs": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-001/overlays/track_outputs.jsonl",
+    "extracts_jsonl": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-001/extracts/fewshot_prompt/extracts.jsonl",
+    "checkpoint": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-001/checkpoints/progress.json"
+  },
+  "output_root": "data/baselines/fewshot_regression_general_v1/benchmark-results/runs/fewshot-synthetic-general-regression-travel-planning-001"
+}

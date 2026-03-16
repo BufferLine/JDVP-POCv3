@@ -1,0 +1,18 @@
+{
+  "schema_version": "pocv3-fewshot-regression-suite-v1",
+  "config_path": "config/eval/fewshot_regression_general_v1.json",
+  "output_root": "data/baselines/fewshot_regression_general_v1",
+  "dataset_root": "data/baselines/fewshot_regression_general_v1/generated/synthetic-general-regression/v1",
+  "seed_run_dir": "data/baselines/fewshot_regression_general_v1/seed-runs/fixture-pack",
+  "fewshot_pack_path": "data/baselines/fewshot_regression_general_v1/fewshot-pack.json",
+  "plan_path": "data/baselines/fewshot_regression_general_v1/fewshot-plan.json",
+  "results_path": "data/baselines/fewshot_regression_general_v1/benchmark-results/benchmark_results.json",
+  "summary": {
+    "split": "test",
+    "item_count": 2,
+    "comparison_track": "heuristic_baseline",
+    "average_field_disagreement_rate": 0.4166666666666667,
+    "max_field_disagreement_rate": 0.4166666666666667,
+    "zero_disagreement_items": 0
+  }
+}

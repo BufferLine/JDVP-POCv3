@@ -1,0 +1,60 @@
+{
+  "interaction_id": "fixture-general-001",
+  "turn_number": 2,
+  "track_name": "fixture_hint",
+  "context_module": "general",
+  "human_input": "Given that, what would you choose if you were me?",
+  "ai_response": "I would lean toward the role with better long-term growth and acceptable flexibility.",
+  "jsv_hint": {
+    "judgment_holder": "AI",
+    "delegation_awareness": "Implicit",
+    "cognitive_engagement": "Reactive",
+    "information_seeking": "Passive",
+    "confidence": {
+      "judgment_holder": "medium",
+      "delegation_awareness": "medium",
+      "cognitive_engagement": "medium",
+      "information_seeking": "medium"
+    }
+  },
+  "overlay": {
+    "interaction_id": "fixture-general-001",
+    "turn_number": 2,
+    "track": {
+      "track_id": "fixture_hint",
+      "model_id": "fixture",
+      "prompt_version": "fixture-v1"
+    },
+    "jsv": {
+      "judgment_holder": "AI",
+      "delegation_awareness": "Implicit",
+      "cognitive_engagement": "Reactive",
+      "information_seeking": "Passive",
+      "confidence": {
+        "judgment_holder": "medium",
+        "delegation_awareness": "medium",
+        "cognitive_engagement": "medium",
+        "information_seeking": "medium"
+      }
+    },
+    "evidence_spans": [
+      {
+        "text": "Given that, what would you choose if you were me?",
+        "category": "fixture_hint_source"
+      }
+    ],
+    "observer_confidence": 1.0,
+    "observer_notes": "Canonical fixture hint"
+  },
+  "track_metadata": {
+    "track_id": "fixture_hint",
+    "model_id": "fixture",
+    "prompt_version": "fixture-v1",
+    "observer_confidence": 1.0,
+    "observer_notes": "Canonical fixture hint"
+  },
+  "raw_track_output": {
+    "context_module": "general"
+  },
+  "stored_at": "2026-03-16T04:15:34Z"
+}

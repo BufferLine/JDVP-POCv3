@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from src.method.normalization.llm_response import LLMNormalizationError, normalize_llm_response
-from src.method.tracks.llm_observer import LLMObserverTrack
+from src.method.tracks.llm_observer import LLMObserverTrack, create_env_backed_llm_track
 
 
 VALID_RESPONSE = """
@@ -81,6 +83,42 @@ class LLMObserverTrackTests(unittest.TestCase):
         self.assertEqual(output.track_id, "llm_observer")
         self.assertEqual(output.jsv_hint["judgment_holder"], "AI")
         self.assertEqual(output.evidence_spans[0]["category"], "delegation_signal")
+
+    def test_env_backed_track_supports_static_response_provider(self) -> None:
+        with TemporaryDirectory() as tmp_dir:
+            response_path = Path(tmp_dir) / "response.json"
+            response_path.write_text(VALID_RESPONSE, encoding="utf-8")
+            previous_provider = __import__("os").environ.get("JDVP_LLM_PROVIDER")
+            previous_model = __import__("os").environ.get("JDVP_LLM_MODEL")
+            previous_path = __import__("os").environ.get("JDVP_LLM_STATIC_RESPONSE_PATH")
+            try:
+                __import__("os").environ["JDVP_LLM_PROVIDER"] = "static_response"
+                __import__("os").environ["JDVP_LLM_MODEL"] = "static-model"
+                __import__("os").environ["JDVP_LLM_STATIC_RESPONSE_PATH"] = str(response_path)
+                track = create_env_backed_llm_track()
+            finally:
+                if previous_provider is None:
+                    __import__("os").environ.pop("JDVP_LLM_PROVIDER", None)
+                else:
+                    __import__("os").environ["JDVP_LLM_PROVIDER"] = previous_provider
+                if previous_model is None:
+                    __import__("os").environ.pop("JDVP_LLM_MODEL", None)
+                else:
+                    __import__("os").environ["JDVP_LLM_MODEL"] = previous_model
+                if previous_path is None:
+                    __import__("os").environ.pop("JDVP_LLM_STATIC_RESPONSE_PATH", None)
+                else:
+                    __import__("os").environ["JDVP_LLM_STATIC_RESPONSE_PATH"] = previous_path
+
+        output = track.extract(
+            interaction_id="session-1",
+            turn_number=2,
+            human_input="What would you choose if you were me?",
+            ai_response="I would choose option A.",
+            context_turns=[],
+            context_module="general",
+        )
+        self.assertEqual(output.jsv_hint["judgment_holder"], "AI")
 
 
 if __name__ == "__main__":

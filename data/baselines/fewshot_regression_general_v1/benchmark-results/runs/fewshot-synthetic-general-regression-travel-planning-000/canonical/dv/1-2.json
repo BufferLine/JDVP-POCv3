@@ -1,0 +1,10 @@
+{
+  "interaction_id": "synthetic-general-regression-travel-planning-000",
+  "from_turn": 1,
+  "to_turn": 2,
+  "delta_judgment_holder": 0.0,
+  "delta_delegation_awareness": 0.0,
+  "delta_cognitive_engagement": 0.0,
+  "delta_information_seeking": 0.0,
+  "context_module": "general"
+}

@@ -1,0 +1,25 @@
+{
+  "interaction_id": "fixture-general-001",
+  "vectors": [
+    {
+      "interaction_id": "fixture-general-001",
+      "from_turn": 0,
+      "to_turn": 1,
+      "delta_judgment_holder": 0.5,
+      "delta_delegation_awareness": 0.0,
+      "delta_cognitive_engagement": 0.0,
+      "delta_information_seeking": 0.0,
+      "context_module": "general"
+    },
+    {
+      "interaction_id": "fixture-general-001",
+      "from_turn": 1,
+      "to_turn": 2,
+      "delta_judgment_holder": 0.5,
+      "delta_delegation_awareness": 0.5,
+      "delta_cognitive_engagement": 0.5,
+      "delta_information_seeking": 0.5,
+      "context_module": "general"
+    }
+  ]
+}

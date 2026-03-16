@@ -103,6 +103,60 @@ class ServiceJsonApiTests(unittest.TestCase):
                     )
             self.assertTrue(response["ok"])
             self.assertEqual(response["result"]["split"], "test")
+            self.assertIn("average_field_disagreement_rate", response["result"])
+
+    def test_handle_json_payload_surfaces_benchmark_threshold_failure(self) -> None:
+        scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            dataset_root = generate_dataset(
+                dataset_name="synthetic-general",
+                dataset_version="v1",
+                output_root=output_root,
+                scenario_pack_path=scenario_pack,
+                count_per_scenario=2,
+                seed=11,
+            )
+            seed_run_dir = run_interaction_file(
+                input_path=fixture,
+                run_id="fixture-pack",
+                output_root=output_root / "seed-runs",
+                track_name="fixture_hint",
+            )
+            pack_path = output_root / "fewshot-pack.json"
+            build_fewshot_pack(run_dir=seed_run_dir, output_path=pack_path, max_examples=3)
+            plan_path = output_root / "fewshot-test-plan.json"
+            build_fewshot_benchmark_plan(
+                dataset_root=dataset_root,
+                fewshot_pack_path=pack_path,
+                split="test",
+                output_path=plan_path,
+                max_examples=2,
+            )
+            with patch.dict(
+                os.environ,
+                {
+                    "JDVP_LLM_BASE_URL": "http://localhost:11434/v1",
+                    "JDVP_LLM_API_KEY": "dummy",
+                    "JDVP_LLM_MODEL": "fake-model",
+                },
+                clear=False,
+            ):
+                with patch(
+                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    return_value=VALID_RESPONSE,
+                ):
+                    response = handle_json_payload(
+                        {
+                            "operation": "run_fewshot_benchmark",
+                            "plan_path": str(plan_path),
+                            "output_root": str(output_root / "benchmark-results-threshold"),
+                            "max_average_field_disagreement_rate": 0.0,
+                        }
+                    )
+            self.assertFalse(response["ok"])
+            self.assertEqual(response["error"]["code"], "benchmark_threshold_failed")
 
     def test_handle_json_payload_rejects_unknown_operation(self) -> None:
         response = handle_json_payload({"operation": "unknown"})

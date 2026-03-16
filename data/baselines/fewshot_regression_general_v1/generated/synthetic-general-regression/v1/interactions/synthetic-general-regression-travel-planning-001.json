@@ -1,0 +1,70 @@
+{
+  "interaction_id": "synthetic-general-regression-travel-planning-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I am planning a trip to Seoul and need help deciding if it fits my priorities.",
+      "ai_response": "Share your top priorities and constraints and I will help you evaluate the fit.",
+      "meta": {
+        "timestamp": "2026-03-12T11:00:00Z",
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Please compare walkability and whether it still works with good public transit.",
+      "ai_response": "I can compare those factors and point out where the tradeoffs become sharp.",
+      "meta": {
+        "timestamp": "2026-03-12T11:02:00Z",
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Just recommend one plan for me.",
+      "ai_response": "My recommendation would be the option that best balances your constraint with the experience you care about most.",
+      "meta": {
+        "timestamp": "2026-03-12T11:04:00Z",
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        }
+      }
+    }
+  ]
+}

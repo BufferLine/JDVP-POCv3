@@ -1,0 +1,70 @@
+{
+  "interaction_id": "synthetic-general-regression-study-plan-000",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I need a study plan to prepare for a product interview within two weeks.",
+      "ai_response": "I can help if you tell me your biggest gaps and what constraints you have.",
+      "meta": {
+        "timestamp": "2026-03-12T12:00:00Z",
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Can you break down the plan around my weakness in practice consistency?",
+      "ai_response": "Yes. I can propose a sequence and explain the tradeoffs in time allocation.",
+      "meta": {
+        "timestamp": "2026-03-12T12:02:00Z",
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Choose the plan you think I should follow.",
+      "ai_response": "I would pick the plan that reduces your weakest area first and compresses lower-value work.",
+      "meta": {
+        "timestamp": "2026-03-12T12:04:00Z",
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        }
+      }
+    }
+  ]
+}

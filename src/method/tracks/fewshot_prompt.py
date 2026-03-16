@@ -10,7 +10,7 @@ from typing import Any
 from src.method.fewshot.selector import load_fewshot_pack, select_examples
 from src.pipeline.run_storage import read_json
 
-from .llm_observer import LLMObserverTrack, OpenAICompatibleProvider
+from .llm_observer import LLMObserverTrack, LLMProvider, create_env_backed_provider
 
 
 class FewshotPromptTrack(LLMObserverTrack):
@@ -21,7 +21,7 @@ class FewshotPromptTrack(LLMObserverTrack):
     def __init__(
         self,
         *,
-        provider: OpenAICompatibleProvider,
+        provider: LLMProvider,
         model_id: str,
         fewshot_pack_path: Path,
         prompt_version: str = "fewshot-prompt-v1",
@@ -93,20 +93,12 @@ class FewshotPromptTrack(LLMObserverTrack):
 
 
 def create_env_backed_fewshot_track() -> FewshotPromptTrack:
-    provider_kind = os.getenv("JDVP_LLM_PROVIDER", "openai_compatible")
-    if provider_kind != "openai_compatible":
-        raise RuntimeError(f"unsupported JDVP_LLM_PROVIDER: {provider_kind}")
-    base_url = os.getenv("JDVP_LLM_BASE_URL")
-    api_key = os.getenv("JDVP_LLM_API_KEY")
-    model = os.getenv("JDVP_LLM_MODEL")
     fewshot_pack_path = os.getenv("JDVP_FEWSHOT_PACK_PATH")
-    if not base_url or not api_key or not model:
-        raise RuntimeError("JDVP_LLM_BASE_URL, JDVP_LLM_API_KEY, and JDVP_LLM_MODEL are required")
     if not fewshot_pack_path:
         raise RuntimeError("JDVP_FEWSHOT_PACK_PATH is required")
-    provider = OpenAICompatibleProvider(base_url=base_url, model=model, api_key=api_key)
+    provider, model_id = create_env_backed_provider()
     return FewshotPromptTrack(
         provider=provider,
-        model_id=model,
+        model_id=model_id,
         fewshot_pack_path=Path(fewshot_pack_path),
     )

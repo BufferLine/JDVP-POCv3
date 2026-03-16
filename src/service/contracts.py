@@ -42,6 +42,8 @@ class ExternalFewshotBenchmarkResult:
     item_count: int
     comparison_track: str
     results_path: str
+    average_field_disagreement_rate: float
+    max_field_disagreement_rate: float
     schema_version: str = FEWSHOT_BENCHMARK_RESULT_SCHEMA_VERSION
 
     def to_dict(self) -> dict[str, Any]:
@@ -51,4 +53,6 @@ class ExternalFewshotBenchmarkResult:
             "item_count": self.item_count,
             "comparison_track": self.comparison_track,
             "results_path": self.results_path,
+            "average_field_disagreement_rate": self.average_field_disagreement_rate,
+            "max_field_disagreement_rate": self.max_field_disagreement_rate,
         }

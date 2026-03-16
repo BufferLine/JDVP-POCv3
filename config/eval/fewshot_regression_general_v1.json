@@ -1,0 +1,27 @@
+{
+  "config_version": "pocv3-fewshot-regression-config-v1",
+  "dataset": {
+    "dataset_name": "synthetic-general-regression",
+    "dataset_version": "v1",
+    "scenario_pack_path": "config/datasets/general_scenarios_v1.json",
+    "count_per_scenario": 2,
+    "seed": 11
+  },
+  "fewshot_pack": {
+    "fixture_input_path": "data/fixtures/sample_interaction.json",
+    "seed_run_id": "fixture-pack",
+    "seed_track_name": "fixture_hint",
+    "max_examples": 3
+  },
+  "benchmark": {
+    "split": "test",
+    "comparison_track": "heuristic_baseline",
+    "provider_kind": "static_response",
+    "model_id": "static-response-v1",
+    "static_response_path": "config/eval/mock_llm_observer_response.json",
+    "thresholds": {
+      "max_average_field_disagreement_rate": 0.42,
+      "max_field_disagreement_rate": 0.42
+    }
+  }
+}
