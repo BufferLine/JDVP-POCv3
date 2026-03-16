@@ -158,6 +158,13 @@ Exit condition:
 
 - external systems can consume extraction and validation modules without importing the full research workspace
 
+Current status:
+
+- complete for the initial milestone
+- official external interface is `src.service` plus the JSON adapter in `src.service.json_api`
+- external contracts now use versioned DTOs and success/error envelopes
+- HTTP transport remains deferred because the service contract is the stable boundary, not the transport choice
+
 ## Deferred Automation
 
 Only start this phase after M1-M8 justify the extra complexity.

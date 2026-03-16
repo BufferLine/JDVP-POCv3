@@ -63,6 +63,13 @@ Current M7 note:
 - `src.eval.run_fewshot_benchmark` executes those plans and writes per-interaction comparison reports
 - benchmark slices remain the validation target for future retrieval or learned observers
 
+Current M8 note:
+
+- `src.service` is the official reusable boundary for external consumers
+- `src.service.json_api` is the official transport adapter for this milestone
+- transport responses are versioned and serialized as success/error envelopes
+- HTTP transport is intentionally deferred until a real consumer needs it
+
 ## Validation Requirements
 
 Every run must verify:
