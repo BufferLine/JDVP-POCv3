@@ -497,7 +497,7 @@ class CatalogStore:
         self.initialize()
         query = """
             SELECT * FROM dataset_generation_items
-            WHERE generation_run_id = ? AND status = 'failed'
+            WHERE generation_run_id = ? AND status IN ('failed', 'rejected')
             ORDER BY scenario_id, sample_index
         """
         parameters: list[Any] = [generation_run_id]
