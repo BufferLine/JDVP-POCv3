@@ -296,6 +296,19 @@ python3 -m src.pipeline.run_poc \
   --track fewshot_prompt
 ```
 
+Cheap ML baseline from a few-shot pack:
+
+```bash
+export JDVP_FEWSHOT_PACK_PATH=data/fewshot/general-fixture-pack-v1.json
+
+python3 -m src.pipeline.run_poc \
+  --input data/generated/synthetic-general/v1/interactions/synthetic-general-job-offer-000.json \
+  --run-id cheap-ml-local \
+  --track cheap_ml_baseline
+```
+
+This trains a lightweight Naive Bayes predictor from the few-shot pack and runs it through the same JDVP extraction contract.
+
 M7 benchmark plan command:
 
 ```bash
