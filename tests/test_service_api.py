@@ -10,7 +10,15 @@ from unittest.mock import patch
 from src.dataset.build_fewshot_pack import build_fewshot_pack
 from src.dataset.generate_dataset import generate_dataset
 from src.eval.fewshot_benchmark import build_fewshot_benchmark_plan
-from src.service import FewshotBenchmarkRequest, RunRequest, run_fewshot_benchmark, run_interaction, run_interaction_file
+from src.service import (
+    FewshotBenchmarkRequest,
+    RunRequest,
+    run_fewshot_benchmark,
+    run_fewshot_benchmark_response,
+    run_interaction,
+    run_interaction_file,
+    run_interaction_response,
+)
 from src.service.poc_service import build_pipeline_artifacts
 
 
@@ -76,6 +84,7 @@ class ServiceApiTests(unittest.TestCase):
             self.assertTrue(result.manifest_path.is_file())
             self.assertTrue(result.trajectory_path.is_file())
             self.assertTrue(result.extracts_path.is_file())
+            self.assertIn("run_dir", result.to_dict())
 
     def test_run_fewshot_benchmark_returns_typed_result(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
@@ -126,6 +135,45 @@ class ServiceApiTests(unittest.TestCase):
                         )
                     )
             self.assertTrue(result.results_path.is_file())
+            self.assertIn("results_path", result.to_dict())
+
+    def test_run_interaction_response_serializes_success(self) -> None:
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            response = run_interaction_response(
+                RunRequest(
+                    input_path=fixture,
+                    run_id="service-run",
+                    output_root=Path(tmp_dir),
+                    track_name="fixture_hint",
+                )
+            )
+            self.assertTrue(response["ok"])
+            self.assertIn("run_dir", response["result"])
+
+    def test_run_interaction_response_serializes_error(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            response = run_interaction_response(
+                RunRequest(
+                    input_path=Path(tmp_dir) / "missing.json",
+                    run_id="service-run",
+                    output_root=Path(tmp_dir),
+                    track_name="fixture_hint",
+                )
+            )
+            self.assertFalse(response["ok"])
+            self.assertEqual(response["error"]["code"], "input_not_found")
+
+    def test_run_fewshot_benchmark_response_serializes_error(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            response = run_fewshot_benchmark_response(
+                FewshotBenchmarkRequest(
+                    plan_path=Path(tmp_dir) / "missing-plan.json",
+                    output_root=Path(tmp_dir) / "benchmark-results",
+                )
+            )
+            self.assertFalse(response["ok"])
+            self.assertEqual(response["error"]["code"], "benchmark_plan_not_found")
 
 
 if __name__ == "__main__":

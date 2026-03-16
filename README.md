@@ -222,3 +222,21 @@ result = run_interaction(
 
 print(result.run_dir)
 ```
+
+Service responses can also be serialized as stable envelopes:
+
+```python
+from pathlib import Path
+
+from src.service import RunRequest, run_interaction_response
+
+payload = run_interaction_response(
+    RunRequest(
+        input_path=Path("data/fixtures/sample_interaction.json"),
+        run_id="service-local",
+        output_root=Path("data/runs"),
+    )
+)
+
+print(payload["ok"])
+```

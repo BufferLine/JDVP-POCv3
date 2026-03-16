@@ -16,6 +16,7 @@ from src.protocol_core.dv_ordinal import build_dv_sequence
 from src.protocol_core.jsv_types import build_jsv_from_hint
 from src.protocol_core.schema_validate import CanonicalSchemaValidator
 from src.protocol_core.trajectory import build_trajectory
+from src.service.errors import ServiceError, serialize_service_error
 
 
 @dataclass(frozen=True)
@@ -46,6 +47,14 @@ class RunResult:
     manifest_path: Path
     trajectory_path: Path
     extracts_path: Path
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "run_dir": str(self.run_dir),
+            "manifest_path": str(self.manifest_path),
+            "trajectory_path": str(self.trajectory_path),
+            "extracts_path": str(self.extracts_path),
+        }
 
 
 def _load_input(path: Path) -> dict[str, Any]:
@@ -242,23 +251,38 @@ def write_run_outputs(
 
 
 def run_interaction(request: RunRequest) -> RunResult:
-    raw_interaction = _load_input(request.input_path)
-    run_dir = request.output_root / request.run_id
-    artifacts = build_pipeline_artifacts(
-        raw_interaction=raw_interaction,
-        track_name=request.track_name,
-        run_dir=run_dir,
-        protocol_schema_root=request.protocol_schema_root,
-        resume=request.resume,
-    )
-    return write_run_outputs(
-        artifacts=artifacts,
-        input_path=request.input_path,
-        run_id=request.run_id,
-        run_dir=run_dir,
-        track_name=request.track_name,
-        resume=request.resume,
-    )
+    try:
+        raw_interaction = _load_input(request.input_path)
+        run_dir = request.output_root / request.run_id
+        artifacts = build_pipeline_artifacts(
+            raw_interaction=raw_interaction,
+            track_name=request.track_name,
+            run_dir=run_dir,
+            protocol_schema_root=request.protocol_schema_root,
+            resume=request.resume,
+        )
+        return write_run_outputs(
+            artifacts=artifacts,
+            input_path=request.input_path,
+            run_id=request.run_id,
+            run_dir=run_dir,
+            track_name=request.track_name,
+            resume=request.resume,
+        )
+    except FileNotFoundError as exc:
+        raise ServiceError(
+            code="input_not_found",
+            message=f"input file not found: {request.input_path}",
+            details={"input_path": str(request.input_path)},
+        ) from exc
+    except ServiceError:
+        raise
+    except Exception as exc:
+        raise ServiceError(
+            code="run_execution_failed",
+            message="failed to execute JDVP run",
+            details={"input_path": str(request.input_path), "track_name": request.track_name, "cause": str(exc)},
+        ) from exc
 
 
 def run_interaction_file(
@@ -281,3 +305,11 @@ def run_interaction_file(
         )
     )
     return result.run_dir
+
+
+def run_interaction_response(request: RunRequest) -> dict[str, Any]:
+    try:
+        result = run_interaction(request)
+    except Exception as exc:
+        return {"ok": False, "error": serialize_service_error(exc)}
+    return {"ok": True, "result": result.to_dict()}
