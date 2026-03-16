@@ -89,6 +89,7 @@ JDVP-POCv3/
 
 The detailed roadmap and milestone status live in [docs/IMPLEMENTATION_PLAN.md](/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/docs/IMPLEMENTATION_PLAN.md).
 Naming conventions and track/dataset terminology live in [docs/NAMING.md](/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/docs/NAMING.md).
+Assistant-tooling docs sync is validated by `scripts/check_assistant_docs_sync.py` and enforced through the validation suite and CI.
 
 ## Source Dependency
 

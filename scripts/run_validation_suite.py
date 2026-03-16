@@ -38,6 +38,21 @@ def run_pytest() -> dict[str, Any]:
     }
 
 
+def run_assistant_docs_sync_check() -> dict[str, Any]:
+    result = subprocess.run(
+        [sys.executable, "scripts/check_assistant_docs_sync.py"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    stdout_lines = [line for line in result.stdout.strip().splitlines() if line.strip()]
+    return {
+        "command": [sys.executable, "scripts/check_assistant_docs_sync.py"],
+        "summary": stdout_lines[-1] if stdout_lines else "",
+    }
+
+
 def run_schema_sync(*, require_upstream: bool) -> dict[str, Any]:
     if not SIBLING_PROTOCOL_ROOT.is_dir():
         if require_upstream:
@@ -121,6 +136,11 @@ def run_validation_suite(
 
     validate_contracts_main()
     summary["steps"]["contracts"] = {"status": "passed"}
+
+    summary["steps"]["assistant_docs_sync"] = {
+        "status": "passed",
+        **run_assistant_docs_sync_check(),
+    }
 
     summary["steps"]["schema_sync"] = run_schema_sync(require_upstream=require_upstream)
 
