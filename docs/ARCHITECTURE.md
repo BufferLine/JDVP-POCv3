@@ -95,6 +95,7 @@ Future expansion:
 Current M8 shape:
 
 - `src.service.poc_service` exposes service-facing orchestration functions separate from the CLI wrapper
+- request/result dataclasses define a narrower external boundary than raw CLI argument passing
 - `src.pipeline.run_poc` becomes a thin command entrypoint over the reusable service surface
 - external consumers can call the service module without importing benchmark or dataset tooling
 

@@ -30,6 +30,24 @@ class PipelineArtifacts:
     written_turns: list[int]
 
 
+@dataclass(frozen=True)
+class RunRequest:
+    input_path: Path
+    run_id: str
+    output_root: Path
+    protocol_schema_root: Path | None = None
+    track_name: str = "fixture_hint"
+    resume: bool = False
+
+
+@dataclass(frozen=True)
+class RunResult:
+    run_dir: Path
+    manifest_path: Path
+    trajectory_path: Path
+    extracts_path: Path
+
+
 def _load_input(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
@@ -170,7 +188,7 @@ def write_run_outputs(
     run_dir: Path,
     track_name: str,
     resume: bool,
-) -> Path:
+) -> RunResult:
     storage = RunStorage(run_dir=run_dir, track_name=track_name)
 
     write_json(run_dir / "input" / input_path.name, artifacts.raw_interaction)
@@ -189,8 +207,11 @@ def write_run_outputs(
         written_turns=artifacts.written_turns,
         status="completed",
     )
+    manifest_path = run_dir / "manifest.json"
+    trajectory_path = run_dir / "canonical" / "trajectory.json"
+    extracts_path = run_dir / "extracts" / track_name / "extracts.jsonl"
     write_json(
-        run_dir / "manifest.json",
+        manifest_path,
         {
             "run_id": run_id,
             "input_path": str(input_path),
@@ -206,13 +227,38 @@ def write_run_outputs(
                 "input": str(run_dir / "input" / input_path.name),
                 "canonical_root": str(run_dir / "canonical"),
                 "overlay_track_outputs": str(run_dir / "overlays" / "track_outputs.jsonl"),
-                "extracts_jsonl": str(run_dir / "extracts" / track_name / "extracts.jsonl"),
+                "extracts_jsonl": str(extracts_path),
                 "checkpoint": str(run_dir / "checkpoints" / "progress.json"),
             },
             "output_root": str(run_dir),
         },
     )
-    return run_dir
+    return RunResult(
+        run_dir=run_dir,
+        manifest_path=manifest_path,
+        trajectory_path=trajectory_path,
+        extracts_path=extracts_path,
+    )
+
+
+def run_interaction(request: RunRequest) -> RunResult:
+    raw_interaction = _load_input(request.input_path)
+    run_dir = request.output_root / request.run_id
+    artifacts = build_pipeline_artifacts(
+        raw_interaction=raw_interaction,
+        track_name=request.track_name,
+        run_dir=run_dir,
+        protocol_schema_root=request.protocol_schema_root,
+        resume=request.resume,
+    )
+    return write_run_outputs(
+        artifacts=artifacts,
+        input_path=request.input_path,
+        run_id=request.run_id,
+        run_dir=run_dir,
+        track_name=request.track_name,
+        resume=request.resume,
+    )
 
 
 def run_interaction_file(
@@ -224,20 +270,14 @@ def run_interaction_file(
     track_name: str = "fixture_hint",
     resume: bool = False,
 ) -> Path:
-    raw_interaction = _load_input(input_path)
-    run_dir = output_root / run_id
-    artifacts = build_pipeline_artifacts(
-        raw_interaction=raw_interaction,
-        track_name=track_name,
-        run_dir=run_dir,
-        protocol_schema_root=protocol_schema_root,
-        resume=resume,
+    result = run_interaction(
+        RunRequest(
+            input_path=input_path,
+            run_id=run_id,
+            output_root=output_root,
+            protocol_schema_root=protocol_schema_root,
+            track_name=track_name,
+            resume=resume,
+        )
     )
-    return write_run_outputs(
-        artifacts=artifacts,
-        input_path=input_path,
-        run_id=run_id,
-        run_dir=run_dir,
-        track_name=track_name,
-        resume=resume,
-    )
+    return result.run_dir

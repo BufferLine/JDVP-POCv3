@@ -1,15 +1,39 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
-from src.service import run_interaction_file
+from src.dataset.build_fewshot_pack import build_fewshot_pack
+from src.dataset.generate_dataset import generate_dataset
+from src.eval.fewshot_benchmark import build_fewshot_benchmark_plan
+from src.service import FewshotBenchmarkRequest, RunRequest, run_fewshot_benchmark, run_interaction, run_interaction_file
 from src.service.poc_service import build_pipeline_artifacts
 
 
 ROOT = Path(__file__).resolve().parents[1]
+VALID_RESPONSE = """
+{
+  "judgment_holder": "AI",
+  "delegation_awareness": "Implicit",
+  "cognitive_engagement": "Reactive",
+  "information_seeking": "Passive",
+  "confidence": {
+    "judgment_holder": "medium",
+    "delegation_awareness": "medium",
+    "cognitive_engagement": "medium",
+    "information_seeking": "medium"
+  },
+  "evidence_spans": [
+    {"text": "Just recommend one plan for me.", "category": "delegation_signal"}
+  ],
+  "observer_confidence": 0.77,
+  "observer_notes": "Detected direct delegation request"
+}
+"""
 
 
 class ServiceApiTests(unittest.TestCase):
@@ -37,6 +61,71 @@ class ServiceApiTests(unittest.TestCase):
             )
             self.assertTrue((run_dir / "manifest.json").is_file())
             self.assertTrue((run_dir / "canonical" / "trajectory.json").is_file())
+
+    def test_run_interaction_returns_typed_result(self) -> None:
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            result = run_interaction(
+                RunRequest(
+                    input_path=fixture,
+                    run_id="service-run",
+                    output_root=Path(tmp_dir),
+                    track_name="fixture_hint",
+                )
+            )
+            self.assertTrue(result.manifest_path.is_file())
+            self.assertTrue(result.trajectory_path.is_file())
+            self.assertTrue(result.extracts_path.is_file())
+
+    def test_run_fewshot_benchmark_returns_typed_result(self) -> None:
+        scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
+        fixture = ROOT / "data" / "fixtures" / "sample_interaction.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            dataset_root = generate_dataset(
+                dataset_name="synthetic-general",
+                dataset_version="v1",
+                output_root=output_root,
+                scenario_pack_path=scenario_pack,
+                count_per_scenario=2,
+                seed=11,
+            )
+            seed_run_dir = run_interaction_file(
+                input_path=fixture,
+                run_id="fixture-pack",
+                output_root=output_root / "seed-runs",
+                track_name="fixture_hint",
+            )
+            pack_path = output_root / "fewshot-pack.json"
+            build_fewshot_pack(run_dir=seed_run_dir, output_path=pack_path, max_examples=3)
+            plan_path = output_root / "fewshot-test-plan.json"
+            build_fewshot_benchmark_plan(
+                dataset_root=dataset_root,
+                fewshot_pack_path=pack_path,
+                split="test",
+                output_path=plan_path,
+                max_examples=2,
+            )
+            with patch.dict(
+                os.environ,
+                {
+                    "JDVP_LLM_BASE_URL": "http://localhost:11434/v1",
+                    "JDVP_LLM_API_KEY": "dummy",
+                    "JDVP_LLM_MODEL": "fake-model",
+                },
+                clear=False,
+            ):
+                with patch(
+                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    return_value=VALID_RESPONSE,
+                ):
+                    result = run_fewshot_benchmark(
+                        FewshotBenchmarkRequest(
+                            plan_path=plan_path,
+                            output_root=output_root / "benchmark-results",
+                        )
+                    )
+            self.assertTrue(result.results_path.is_file())
 
 
 if __name__ == "__main__":

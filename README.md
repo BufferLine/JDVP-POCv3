@@ -209,12 +209,16 @@ M8 service-facing Python entrypoint:
 ```python
 from pathlib import Path
 
-from src.service import run_interaction_file
+from src.service import RunRequest, run_interaction
 
-run_dir = run_interaction_file(
-    input_path=Path("data/fixtures/sample_interaction.json"),
-    run_id="service-local",
-    output_root=Path("data/runs"),
-    track_name="fixture_hint",
+result = run_interaction(
+    RunRequest(
+        input_path=Path("data/fixtures/sample_interaction.json"),
+        run_id="service-local",
+        output_root=Path("data/runs"),
+        track_name="fixture_hint",
+    )
 )
+
+print(result.run_dir)
 ```
