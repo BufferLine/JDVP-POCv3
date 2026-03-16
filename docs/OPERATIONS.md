@@ -54,6 +54,8 @@ Current M6 note:
 - scenario packs live under `config/datasets/` and drive reproducible synthetic interaction generation
 - `python3 -m src.dataset.generate_dataset --generation-mode llm` uses the configured JDVP LLM provider to rewrite turn utterances for research datasets while preserving scenario structure and `meta.jsv_hint`
 - `python3 -m src.dataset.generate_dataset --generation-mode llm_turn_simulated` runs a stateful turn-by-turn human/assistant simulation while keeping the selected scenario blueprint and hidden JDVP targets
+- LLM-backed generation now tracks accepted, failed, and rejected items in SQLite so reruns only retry incomplete items
+- `--disable-quality-gate` is available for debugging, but research runs should keep the quality gate enabled
 - generated interactions stay raw-input compatible and can flow directly into `src.pipeline.run_poc`
 
 Current M7 note:
@@ -88,6 +90,7 @@ Current operational note:
 - `scripts/list_generation_runs.py` lists dataset-generation runs and their partial/completed states
 - `scripts/list_failed_generation_items.py --generation-run-id <id>` shows which generated items failed and will be retried
 - rerun the same `python3 -m src.dataset.generate_dataset ...` command to retry only failed generation items for that dataset root and generation mode
+- the immediate next operational checkpoint is a local 100-item `llm_turn_simulated` run to tune model choice and rejection thresholds
 - `config/datasets/general_scenarios_v1.json` remains the stable regression pack
 - `config/datasets/general_scenarios_v2.json` is the richer research pack and should be reviewed through preview flows before it influences baseline policy
 
