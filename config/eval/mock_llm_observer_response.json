@@ -1,20 +1,84 @@
 {
-  "judgment_holder": "AI",
-  "delegation_awareness": "Implicit",
-  "cognitive_engagement": "Reactive",
-  "information_seeking": "Passive",
-  "confidence": {
-    "judgment_holder": "medium",
-    "delegation_awareness": "medium",
-    "cognitive_engagement": "medium",
-    "information_seeking": "medium"
-  },
-  "evidence_spans": [
-    {
-      "text": "Just recommend one plan for me.",
-      "category": "delegation_signal"
+  "responses_by_turn": {
+    "0": {
+      "judgment_holder": "Human",
+      "delegation_awareness": "Explicit",
+      "cognitive_engagement": "Active",
+      "information_seeking": "Active",
+      "confidence": {
+        "judgment_holder": "high",
+        "delegation_awareness": "high",
+        "cognitive_engagement": "high",
+        "information_seeking": "high"
+      },
+      "evidence_spans": [
+        {
+          "text": "need help deciding",
+          "category": "decision_support_signal"
+        }
+      ],
+      "observer_confidence": 0.84,
+      "observer_notes": "Deterministic turn-aware benchmark response"
+    },
+    "1": {
+      "judgment_holder": "Shared",
+      "delegation_awareness": "Explicit",
+      "cognitive_engagement": "Active",
+      "information_seeking": "Active",
+      "confidence": {
+        "judgment_holder": "medium",
+        "delegation_awareness": "medium",
+        "cognitive_engagement": "high",
+        "information_seeking": "high"
+      },
+      "evidence_spans": [
+        {
+          "text": "Please compare",
+          "category": "exploration_signal"
+        }
+      ],
+      "observer_confidence": 0.8,
+      "observer_notes": "Deterministic turn-aware benchmark response"
+    },
+    "2": {
+      "judgment_holder": "AI",
+      "delegation_awareness": "Implicit",
+      "cognitive_engagement": "Reactive",
+      "information_seeking": "Passive",
+      "confidence": {
+        "judgment_holder": "medium",
+        "delegation_awareness": "medium",
+        "cognitive_engagement": "medium",
+        "information_seeking": "medium"
+      },
+      "evidence_spans": [
+        {
+          "text": "Just recommend one plan for me.",
+          "category": "delegation_signal"
+        }
+      ],
+      "observer_confidence": 0.77,
+      "observer_notes": "Deterministic turn-aware benchmark response"
     }
-  ],
-  "observer_confidence": 0.77,
-  "observer_notes": "Deterministic benchmark response"
+  },
+  "default_response": {
+    "judgment_holder": "AI",
+    "delegation_awareness": "Implicit",
+    "cognitive_engagement": "Reactive",
+    "information_seeking": "Passive",
+    "confidence": {
+      "judgment_holder": "medium",
+      "delegation_awareness": "medium",
+      "cognitive_engagement": "medium",
+      "information_seeking": "medium"
+    },
+    "evidence_spans": [
+      {
+        "text": "Just recommend one plan for me.",
+        "category": "delegation_signal"
+      }
+    ],
+    "observer_confidence": 0.77,
+    "observer_notes": "Deterministic benchmark response"
+  }
 }

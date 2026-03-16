@@ -25,11 +25,5 @@ jobs:
       - name: Compile Python sources
         run: python -m compileall src tests scripts
 
-      - name: Run tests
-        run: python -m unittest discover -s tests -v
-
-      - name: Validate repository contracts
-        run: python scripts/validate_contracts.py
-
-      - name: Check vendored schema sync when upstream repo is available
-        run: python scripts/check_protocol_schema_sync.py
+      - name: Run validation suite
+        run: python scripts/run_validation_suite.py --allow-missing-upstream

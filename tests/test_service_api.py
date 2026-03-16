@@ -11,12 +11,16 @@ from src.dataset.build_fewshot_pack import build_fewshot_pack
 from src.dataset.generate_dataset import generate_dataset
 from src.eval.fewshot_benchmark import build_fewshot_benchmark_plan
 from src.service import (
+    DATASET_RUN_RESULT_SCHEMA_VERSION,
     FEWSHOT_BENCHMARK_RESULT_SCHEMA_VERSION,
     RUN_RESULT_SCHEMA_VERSION,
     SERVICE_ERROR_SCHEMA_VERSION,
     SERVICE_RESPONSE_SCHEMA_VERSION,
+    DatasetRunRequest,
     FewshotBenchmarkRequest,
     RunRequest,
+    run_dataset,
+    run_dataset_response,
     run_fewshot_benchmark,
     run_fewshot_benchmark_response,
     run_interaction,
@@ -92,6 +96,32 @@ class ServiceApiTests(unittest.TestCase):
             external = result.to_external_dict()
             self.assertEqual(external["schema_version"], RUN_RESULT_SCHEMA_VERSION)
             self.assertNotIn("extracts_path", external)
+
+    def test_run_dataset_returns_typed_result(self) -> None:
+        scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            dataset_root = generate_dataset(
+                dataset_name="synthetic-general",
+                dataset_version="v1",
+                output_root=output_root,
+                scenario_pack_path=scenario_pack,
+                count_per_scenario=2,
+                seed=11,
+            )
+            result = run_dataset(
+                DatasetRunRequest(
+                    dataset_root=dataset_root,
+                    output_root=output_root / "dataset-runs",
+                    track_name="fixture_hint",
+                    split="test",
+                )
+            )
+            self.assertTrue(result.summary_path.is_file())
+            self.assertEqual(result.item_count, 2)
+            external = result.to_external_dict()
+            self.assertEqual(external["schema_version"], DATASET_RUN_RESULT_SCHEMA_VERSION)
+            self.assertEqual(external["failed_count"], 0)
 
     def test_run_fewshot_benchmark_returns_typed_result(self) -> None:
         scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
@@ -180,6 +210,43 @@ class ServiceApiTests(unittest.TestCase):
             self.assertFalse(response["ok"])
             self.assertEqual(response["error"]["code"], "input_not_found")
             self.assertEqual(response["error"]["schema_version"], SERVICE_ERROR_SCHEMA_VERSION)
+
+    def test_run_dataset_response_serializes_success(self) -> None:
+        scenario_pack = ROOT / "config" / "datasets" / "general_scenarios_v1.json"
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            output_root = Path(tmp_dir)
+            dataset_root = generate_dataset(
+                dataset_name="synthetic-general",
+                dataset_version="v1",
+                output_root=output_root,
+                scenario_pack_path=scenario_pack,
+                count_per_scenario=2,
+                seed=11,
+            )
+            response = run_dataset_response(
+                DatasetRunRequest(
+                    dataset_root=dataset_root,
+                    output_root=output_root / "dataset-runs",
+                    track_name="fixture_hint",
+                    split="test",
+                )
+            )
+            self.assertEqual(response["schema_version"], SERVICE_RESPONSE_SCHEMA_VERSION)
+            self.assertTrue(response["ok"])
+            self.assertEqual(response["result"]["schema_version"], DATASET_RUN_RESULT_SCHEMA_VERSION)
+
+    def test_run_dataset_response_serializes_error(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            response = run_dataset_response(
+                DatasetRunRequest(
+                    dataset_root=Path(tmp_dir) / "missing-dataset",
+                    output_root=Path(tmp_dir) / "dataset-runs",
+                    track_name="fixture_hint",
+                )
+            )
+            self.assertEqual(response["schema_version"], SERVICE_RESPONSE_SCHEMA_VERSION)
+            self.assertFalse(response["ok"])
+            self.assertEqual(response["error"]["code"], "dataset_manifest_not_found")
 
     def test_run_fewshot_benchmark_response_serializes_error(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

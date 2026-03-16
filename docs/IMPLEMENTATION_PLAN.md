@@ -165,6 +165,139 @@ Current status:
 - external contracts now use versioned DTOs and success/error envelopes
 - HTTP transport remains deferred because the service contract is the stable boundary, not the transport choice
 
+## Current Status Snapshot
+
+Implemented and working:
+
+- M1 protocol-core generation and canonical schema validation
+- M2 deterministic heuristic baseline extraction
+- M3 provider-backed LLM observer plus few-shot prompt track
+- M4 run storage, per-turn extracts, manifests, and resumable checkpoints
+- M5 disagreement reporting, ensemble comparison, and few-shot regression suite
+- M6 dataset generation, versioned manifests, richer `v2` scenario packs, and preview generation
+- M7 few-shot pack creation plus benchmark planning and execution
+- M8 service boundary, JSON transport, and local/CI validation unification
+
+Operational additions beyond the original milestone text:
+
+- lightweight SQLite catalog for generated datasets and JDVP run state
+- failed-run inspection and rerun scripts for unreliable LLM execution
+- richer research dataset blueprints separated from the stable regression dataset
+
+## Roadmap
+
+### Priority 1: Operational Recovery
+
+Goal:
+
+- reduce wasted time when provider-backed runs fail repeatedly
+
+Tasks:
+
+1. expand catalog queries for dataset-level and track-level failure inspection
+2. connect rerun tooling to scenario, dataset, and status slices more cleanly
+3. decide when catalog state should drive resume behavior automatically
+
+Exit condition:
+
+- failed LLM runs can be identified and replayed quickly without manual filesystem triage
+
+### Priority 2: Dataset-Scoped Execution
+
+Goal:
+
+- move from single-run tooling to repeatable dataset-level JDVP execution
+
+Tasks:
+
+1. add a batch runner that executes JDVP across one dataset slice with one selected track/model
+2. persist dataset-level execution metadata so one dataset can be rerun or resumed cleanly
+3. connect catalog filters to dataset-level execution outputs instead of only single-run records
+
+Exit condition:
+
+- one command can run JDVP over a dataset slice and recover the failed subset without manual file selection
+
+### Priority 3: Model Benchmarking And Ensemble Evaluation
+
+Goal:
+
+- compare tracks and models as experiment units rather than isolated runs
+
+Tasks:
+
+1. record model/provider/prompt metadata more consistently for provider-backed runs
+2. add model-level benchmark summaries across dataset slices
+3. support dataset-level comparison inputs for ensemble experiments
+4. expose a lightweight leaderboard view for disagreement and failure rates by model or track
+
+Exit condition:
+
+- multiple models can be compared on the same dataset slice with reusable benchmark summaries
+
+### Priority 4: Research Dataset Quality
+
+Goal:
+
+- improve coverage quality before tightening benchmark policy
+
+Tasks:
+
+1. review `v2` preview samples and remove obviously synthetic or low-signal patterns
+2. widen scenario diversity without destabilizing the stable `v1` regression pack
+3. add more realistic multi-turn decision structures beyond the simple three-turn arc
+
+Exit condition:
+
+- richer datasets are useful for research loops and manual review, while `v1` remains a clean regression floor
+
+### Priority 5: Few-Shot To Low-Cost ML
+
+Goal:
+
+- test whether a cheaper learned baseline can replace some provider-backed research loops
+
+Tasks:
+
+1. define exportable training rows from stored few-shot or benchmark artifacts
+2. lock down train/validation/test usage for lightweight learned observers
+3. add one low-cost ML baseline track that can run through the same JDVP extraction contract
+4. benchmark the learned baseline against heuristic, few-shot, and provider-backed tracks
+
+Exit condition:
+
+- one cheap learned observer can be trained and evaluated through the same benchmark path as the existing tracks
+
+### Priority 6: Experiment Management Boundary
+
+Goal:
+
+- decide how far POCv3 should go toward POCv2-style experiment management
+
+Tasks:
+
+1. keep SQLite limited to cataloging unless recovery needs justify broader orchestration
+2. evaluate whether dataset generation and JDVP result sets should become first-class experiment entities
+3. postpone heavier process orchestration until lightweight catalog operations stop being enough
+
+Exit condition:
+
+- the project has a clear boundary between lightweight cataloging and more expensive orchestration work
+
+## Working Sequence
+
+Use this order for the next implementation passes:
+
+1. dataset generation and preview review
+2. dataset-scoped JDVP batch execution
+3. model-by-model test runs on shared dataset slices
+4. ensemble summaries and model benchmarking
+5. few-shot-derived low-cost ML baseline exploration
+
+Current next task:
+
+- implement dataset-scoped JDVP batch execution so one dataset can be run and recovered as a unit
+
 ## Deferred Automation
 
 Only start this phase after M1-M8 justify the extra complexity.

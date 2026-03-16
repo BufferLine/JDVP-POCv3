@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from src.service.dataset_run_service import DatasetRunRequest, run_dataset_response
 from src.service.eval_service import FewshotBenchmarkRequest, run_fewshot_benchmark_response
 from src.service.poc_service import RunRequest, run_interaction_response
 
@@ -47,12 +48,27 @@ def _run_fewshot_benchmark_from_payload(payload: dict[str, Any]) -> dict[str, An
     return run_fewshot_benchmark_response(request)
 
 
+def _run_dataset_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    request = DatasetRunRequest(
+        dataset_root=Path(payload["dataset_root"]),
+        output_root=Path(payload["output_root"]),
+        track_name=str(payload.get("track_name", "fixture_hint")),
+        split=(str(payload["split"]) if payload.get("split") is not None else None),
+        scenario_id=(str(payload["scenario_id"]) if payload.get("scenario_id") is not None else None),
+        max_items=(int(payload["max_items"]) if payload.get("max_items") is not None else None),
+        resume=bool(payload.get("resume", False)),
+    )
+    return run_dataset_response(request)
+
+
 def handle_json_payload(payload: dict[str, Any]) -> dict[str, Any]:
     operation = str(payload["operation"])
     if operation == "run_interaction":
         return _run_interaction_from_payload(payload)
     if operation == "run_fewshot_benchmark":
         return _run_fewshot_benchmark_from_payload(payload)
+    if operation == "run_dataset":
+        return _run_dataset_from_payload(payload)
     return {
         "schema_version": "pocv3-service-response-v1",
         "ok": False,

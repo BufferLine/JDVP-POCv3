@@ -22,6 +22,26 @@ Initial scope is deliberately narrow:
 - machine-facing JSON artifacts first
 - descriptive outputs only
 
+## Current Status
+
+Current workspace status as of 2026-03-16:
+
+- protocol-core generation and schema validation are implemented and covered by tests
+- extraction tracks are available for `fixture_hint`, `heuristic_baseline`, `llm_observer`, and `fewshot_prompt`
+- run storage persists canonical outputs, per-turn extracts, manifests, and resumable checkpoints
+- benchmark and few-shot regression flows are implemented and used by the validation suite
+- dataset generation supports stable `v1` regression packs plus richer `v2` research packs with turn variants and mixed blueprints
+- preview generation is available for quick human review of richer datasets
+- a lightweight SQLite catalog tracks generated datasets plus JDVP run state for recovery and reruns
+- failed runs can be listed and retried by catalog state or scenario filter
+- CI now uses the same validation entrypoint as local development
+
+Current focus:
+
+- keep `v1` stable as the regression baseline
+- use `v2` and preview flows to expand research coverage without destabilizing CI
+- improve operational recovery for unreliable LLM runs before adding heavier orchestration
+
 ## Design Rule
 
 POCv3 follows JDVP `v1.4` exactly for protocol artifacts.
@@ -64,6 +84,10 @@ JDVP-POCv3/
 6. ensemble and benchmark evaluation
 7. dataset generation and few-shot preparation
 8. external-service modularization
+
+## Roadmap
+
+The detailed roadmap and milestone status live in [docs/IMPLEMENTATION_PLAN.md](/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/docs/IMPLEMENTATION_PLAN.md).
 
 ## Source Dependency
 
@@ -172,6 +196,64 @@ Expected dataset outputs:
 - `data/generated/<dataset_name>/<dataset_version>/manifest.json`
 - `data/generated/<dataset_name>/<dataset_version>/splits.json`
 
+Dataset-scoped JDVP run:
+
+```bash
+python3 scripts/run_dataset.py \
+  --dataset-root data/generated/synthetic-general/v1 \
+  --output-root data/runs/dataset-fixture \
+  --track fixture_hint \
+  --split test
+```
+
+This writes `dataset_run_summary.json` plus one run directory per selected interaction.
+
+Richer research pack with mixed blueprints:
+
+```bash
+python3 -m src.dataset.generate_dataset \
+  --dataset-name synthetic-general-rich \
+  --dataset-version v1 \
+  --scenario-pack config/datasets/general_scenarios_v2.json \
+  --count-per-scenario 4 \
+  --seed 11
+```
+
+Quick preview for human review:
+
+```bash
+python3 scripts/preview_dataset.py
+```
+
+This writes `preview.json` next to the generated preview dataset so you can skim turn text, blueprint choice, and JSV hints without running the full benchmark loop.
+
+Operational catalog:
+
+- POCv3 now keeps a lightweight SQLite catalog at `data/catalog/pocv3.sqlite3` by default.
+- Set `JDVP_CATALOG_DB_PATH` to redirect the catalog location for local experiments or CI.
+- The catalog indexes generated datasets plus JDVP run status so failed LLM runs can be recovered without scanning the filesystem.
+
+Retry failed runs:
+
+```bash
+python3 scripts/rerun_failed_runs.py --limit 20
+python3 scripts/rerun_failed_runs.py --dataset-id generated/synthetic-general/v1 --limit 20
+python3 scripts/rerun_failed_runs.py --scenario-id travel-planning --limit 10
+```
+
+This replays failed cataloged runs using the original `input_path` and `track_name`. By default it creates new run ids with a `-retry-XX` suffix so previous failed artifacts remain inspectable.
+
+Inspect failed runs:
+
+```bash
+python3 scripts/list_failed_runs.py
+python3 scripts/list_failed_runs.py --dataset-id generated/synthetic-general/v1 --limit 10
+python3 scripts/list_failed_runs.py --scenario-id travel-planning --limit 10
+python3 scripts/list_failed_runs.py --summary-by-scenario
+```
+
+Use this before reruns to see which scenarios or inputs are failing most often.
+
 M7 few-shot pack command:
 
 ```bash
@@ -228,6 +310,15 @@ python3 scripts/run_fewshot_regression_suite.py \
 ```
 
 The checked-in deterministic baseline lives under `data/baselines/fewshot_regression_general_v1/`.
+
+Standard local validation bundle:
+
+```bash
+python3 scripts/run_validation_suite.py
+```
+
+This writes a step-by-step summary to `data/validation/latest/validation_summary.json`.
+CI uses the same entrypoint with `--allow-missing-upstream` so local and CI validation stay aligned.
 
 M8 service-facing Python entrypoint:
 

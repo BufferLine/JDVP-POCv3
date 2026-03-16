@@ -9,6 +9,7 @@ from typing import Any
 SERVICE_RESPONSE_SCHEMA_VERSION = "pocv3-service-response-v1"
 RUN_RESULT_SCHEMA_VERSION = "pocv3-run-result-v1"
 FEWSHOT_BENCHMARK_RESULT_SCHEMA_VERSION = "pocv3-fewshot-benchmark-result-v1"
+DATASET_RUN_RESULT_SCHEMA_VERSION = "pocv3-dataset-run-result-v1"
 SERVICE_ERROR_SCHEMA_VERSION = "pocv3-service-error-v1"
 
 
@@ -55,4 +56,30 @@ class ExternalFewshotBenchmarkResult:
             "results_path": self.results_path,
             "average_field_disagreement_rate": self.average_field_disagreement_rate,
             "max_field_disagreement_rate": self.max_field_disagreement_rate,
+        }
+
+
+@dataclass(frozen=True)
+class ExternalDatasetRunResult:
+    dataset_id: str
+    split: str | None
+    track_name: str
+    output_root: str
+    item_count: int
+    completed_count: int
+    failed_count: int
+    summary_path: str
+    schema_version: str = DATASET_RUN_RESULT_SCHEMA_VERSION
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "schema_version": self.schema_version,
+            "dataset_id": self.dataset_id,
+            "split": self.split,
+            "track_name": self.track_name,
+            "output_root": self.output_root,
+            "item_count": self.item_count,
+            "completed_count": self.completed_count,
+            "failed_count": self.failed_count,
+            "summary_path": self.summary_path,
         }

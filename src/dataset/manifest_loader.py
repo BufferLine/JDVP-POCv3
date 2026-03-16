@@ -19,6 +19,7 @@ class DatasetItem:
     split: str
     turn_count: int
     slot_values: dict[str, str]
+    blueprint_id: str | None = None
 
     def interaction_path(self, dataset_root: Path) -> Path:
         return dataset_root / self.relative_path
@@ -50,6 +51,11 @@ def load_dataset_manifest(dataset_root: Path) -> DatasetManifest:
             split=str(item["split"]),
             turn_count=int(item["turn_count"]),
             slot_values={str(key): str(value) for key, value in item.get("slot_values", {}).items()},
+            blueprint_id=(
+                str(item["blueprint_id"])
+                if item.get("blueprint_id") is not None
+                else None
+            ),
         )
         for item in payload["items"]
     ]

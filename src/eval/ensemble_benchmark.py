@@ -69,6 +69,16 @@ def _disagreement_fields(extract_rows: list[dict[str, Any]]) -> list[str]:
     return disagreements
 
 
+def _track_field_values(extract_rows: list[dict[str, Any]]) -> dict[str, dict[str, str]]:
+    return {
+        str(row["track_name"]): {
+            field_name: str(row["jsv_hint"][field_name])
+            for field_name in CORE_FIELDS
+        }
+        for row in extract_rows
+    }
+
+
 def compare_runs(
     *,
     run_dirs: list[Path],
@@ -120,6 +130,7 @@ def compare_runs(
                 "missing_tracks": missing_tracks,
                 "disagreement_fields": disagreements,
                 "disagreement_score": len(disagreements) / len(CORE_FIELDS),
+                "track_field_values": _track_field_values(present_rows),
                 "ensemble_jsv_hint": _ensemble_hint(present_rows),
             }
         )
