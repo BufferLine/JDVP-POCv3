@@ -16,6 +16,7 @@ from src.protocol_core.dv_ordinal import build_dv_sequence
 from src.protocol_core.jsv_types import build_jsv_from_hint
 from src.protocol_core.schema_validate import CanonicalSchemaValidator
 from src.protocol_core.trajectory import build_trajectory
+from src.service.contracts import ExternalRunResult, SERVICE_RESPONSE_SCHEMA_VERSION
 from src.service.errors import ServiceError, serialize_service_error
 
 
@@ -43,6 +44,9 @@ class RunRequest:
 
 @dataclass(frozen=True)
 class RunResult:
+    run_id: str
+    interaction_id: str
+    track_name: str
     run_dir: Path
     manifest_path: Path
     trajectory_path: Path
@@ -50,11 +54,25 @@ class RunResult:
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "run_id": self.run_id,
+            "interaction_id": self.interaction_id,
+            "track_name": self.track_name,
             "run_dir": str(self.run_dir),
             "manifest_path": str(self.manifest_path),
             "trajectory_path": str(self.trajectory_path),
             "extracts_path": str(self.extracts_path),
         }
+
+    def to_external_dict(self) -> dict[str, Any]:
+        return ExternalRunResult(
+            run_id=self.run_id,
+            interaction_id=self.interaction_id,
+            track_name=self.track_name,
+            output_root=str(self.run_dir),
+            canonical_root=str(self.run_dir / "canonical"),
+            trajectory_path=str(self.trajectory_path),
+            manifest_path=str(self.manifest_path),
+        ).to_dict()
 
 
 def _load_input(path: Path) -> dict[str, Any]:
@@ -243,6 +261,9 @@ def write_run_outputs(
         },
     )
     return RunResult(
+        run_id=run_id,
+        interaction_id=str(artifacts.raw_interaction["interaction_id"]),
+        track_name=track_name,
         run_dir=run_dir,
         manifest_path=manifest_path,
         trajectory_path=trajectory_path,
@@ -311,5 +332,13 @@ def run_interaction_response(request: RunRequest) -> dict[str, Any]:
     try:
         result = run_interaction(request)
     except Exception as exc:
-        return {"ok": False, "error": serialize_service_error(exc)}
-    return {"ok": True, "result": result.to_dict()}
+        return {
+            "schema_version": SERVICE_RESPONSE_SCHEMA_VERSION,
+            "ok": False,
+            "error": serialize_service_error(exc),
+        }
+    return {
+        "schema_version": SERVICE_RESPONSE_SCHEMA_VERSION,
+        "ok": True,
+        "result": result.to_external_dict(),
+    }

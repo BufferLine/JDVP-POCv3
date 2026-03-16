@@ -239,4 +239,5 @@ payload = run_interaction_response(
 )
 
 print(payload["ok"])
+print(payload["schema_version"])
 ```
