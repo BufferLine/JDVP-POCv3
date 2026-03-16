@@ -37,11 +37,56 @@ class CatalogRunRecord:
     run_id: str
     interaction_id: str | None
     dataset_id: str | None
+    dataset_run_id: str | None
     track_name: str
     model_id: str | None
     input_path: str
     run_dir: str
     status: str
+    error_message: str | None = None
+
+
+@dataclass(frozen=True)
+class CatalogDatasetRunRecord:
+    dataset_run_id: str
+    dataset_id: str
+    track_name: str
+    output_root: str
+    summary_path: str
+    split: str | None
+    scenario_id: str | None
+    item_count: int
+    completed_count: int
+    failed_count: int
+    status: str
+    error_message: str | None = None
+
+
+@dataclass(frozen=True)
+class CatalogDatasetGenerationRunRecord:
+    generation_run_id: str
+    dataset_id: str
+    dataset_root: str
+    generation_mode: str
+    scenario_pack_path: str
+    target_item_count: int
+    accepted_count: int
+    failed_count: int
+    status: str
+    error_message: str | None = None
+
+
+@dataclass(frozen=True)
+class CatalogDatasetGenerationItemRecord:
+    generation_run_id: str
+    item_id: str
+    interaction_id: str
+    scenario_id: str
+    sample_index: int
+    relative_path: str
+    status: str
+    attempt_count: int
+    item_payload_json: str | None = None
     error_message: str | None = None
 
 
@@ -87,6 +132,7 @@ class CatalogStore:
                     run_id TEXT PRIMARY KEY,
                     interaction_id TEXT,
                     dataset_id TEXT,
+                    dataset_run_id TEXT,
                     track_name TEXT NOT NULL,
                     model_id TEXT,
                     input_path TEXT NOT NULL,
@@ -96,8 +142,63 @@ class CatalogStore:
                     created_at TEXT NOT NULL,
                     updated_at TEXT NOT NULL
                 );
+
+                CREATE TABLE IF NOT EXISTS dataset_runs (
+                    dataset_run_id TEXT PRIMARY KEY,
+                    dataset_id TEXT NOT NULL,
+                    track_name TEXT NOT NULL,
+                    output_root TEXT NOT NULL,
+                    summary_path TEXT NOT NULL,
+                    split TEXT,
+                    scenario_id TEXT,
+                    item_count INTEGER NOT NULL,
+                    completed_count INTEGER NOT NULL,
+                    failed_count INTEGER NOT NULL,
+                    status TEXT NOT NULL,
+                    error_message TEXT,
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
+                );
+
+                CREATE TABLE IF NOT EXISTS dataset_generation_runs (
+                    generation_run_id TEXT PRIMARY KEY,
+                    dataset_id TEXT NOT NULL,
+                    dataset_root TEXT NOT NULL,
+                    generation_mode TEXT NOT NULL,
+                    scenario_pack_path TEXT NOT NULL,
+                    target_item_count INTEGER NOT NULL,
+                    accepted_count INTEGER NOT NULL,
+                    failed_count INTEGER NOT NULL,
+                    status TEXT NOT NULL,
+                    error_message TEXT,
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL
+                );
+
+                CREATE TABLE IF NOT EXISTS dataset_generation_items (
+                    generation_run_id TEXT NOT NULL,
+                    item_id TEXT NOT NULL,
+                    interaction_id TEXT NOT NULL,
+                    scenario_id TEXT NOT NULL,
+                    sample_index INTEGER NOT NULL,
+                    relative_path TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    attempt_count INTEGER NOT NULL,
+                    item_payload_json TEXT,
+                    error_message TEXT,
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL,
+                    PRIMARY KEY (generation_run_id, item_id),
+                    FOREIGN KEY (generation_run_id) REFERENCES dataset_generation_runs(generation_run_id)
+                );
                 """
             )
+            columns = {
+                row["name"]
+                for row in conn.execute("PRAGMA table_info(jdvp_runs)").fetchall()
+            }
+            if "dataset_run_id" not in columns:
+                conn.execute("ALTER TABLE jdvp_runs ADD COLUMN dataset_run_id TEXT")
 
     def upsert_dataset(self, record: CatalogDatasetRecord, items: list[dict[str, Any]]) -> None:
         timestamp = utc_now()
@@ -162,12 +263,13 @@ class CatalogStore:
             conn.execute(
                 """
                 INSERT INTO jdvp_runs (
-                    run_id, interaction_id, dataset_id, track_name, model_id,
-                    input_path, run_dir, status, error_message, created_at, updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    run_id, interaction_id, dataset_id, dataset_run_id, track_name,
+                    model_id, input_path, run_dir, status, error_message, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(run_id) DO UPDATE SET
                     interaction_id=excluded.interaction_id,
                     dataset_id=excluded.dataset_id,
+                    dataset_run_id=excluded.dataset_run_id,
                     track_name=excluded.track_name,
                     model_id=excluded.model_id,
                     input_path=excluded.input_path,
@@ -180,11 +282,132 @@ class CatalogStore:
                     record.run_id,
                     record.interaction_id,
                     record.dataset_id,
+                    record.dataset_run_id,
                     record.track_name,
                     record.model_id,
                     record.input_path,
                     record.run_dir,
                     record.status,
+                    record.error_message,
+                    timestamp,
+                    timestamp,
+                ),
+            )
+
+    def upsert_dataset_run(self, record: CatalogDatasetRunRecord) -> None:
+        timestamp = utc_now()
+        self.initialize()
+        with self._connect() as conn:
+            conn.execute(
+                """
+                INSERT INTO dataset_runs (
+                    dataset_run_id, dataset_id, track_name, output_root, summary_path,
+                    split, scenario_id, item_count, completed_count, failed_count,
+                    status, error_message, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(dataset_run_id) DO UPDATE SET
+                    dataset_id=excluded.dataset_id,
+                    track_name=excluded.track_name,
+                    output_root=excluded.output_root,
+                    summary_path=excluded.summary_path,
+                    split=excluded.split,
+                    scenario_id=excluded.scenario_id,
+                    item_count=excluded.item_count,
+                    completed_count=excluded.completed_count,
+                    failed_count=excluded.failed_count,
+                    status=excluded.status,
+                    error_message=excluded.error_message,
+                    updated_at=excluded.updated_at
+                """,
+                (
+                    record.dataset_run_id,
+                    record.dataset_id,
+                    record.track_name,
+                    record.output_root,
+                    record.summary_path,
+                    record.split,
+                    record.scenario_id,
+                    record.item_count,
+                    record.completed_count,
+                    record.failed_count,
+                    record.status,
+                    record.error_message,
+                    timestamp,
+                    timestamp,
+                ),
+            )
+
+    def upsert_dataset_generation_run(self, record: CatalogDatasetGenerationRunRecord) -> None:
+        timestamp = utc_now()
+        self.initialize()
+        with self._connect() as conn:
+            conn.execute(
+                """
+                INSERT INTO dataset_generation_runs (
+                    generation_run_id, dataset_id, dataset_root, generation_mode,
+                    scenario_pack_path, target_item_count, accepted_count, failed_count,
+                    status, error_message, created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(generation_run_id) DO UPDATE SET
+                    dataset_id=excluded.dataset_id,
+                    dataset_root=excluded.dataset_root,
+                    generation_mode=excluded.generation_mode,
+                    scenario_pack_path=excluded.scenario_pack_path,
+                    target_item_count=excluded.target_item_count,
+                    accepted_count=excluded.accepted_count,
+                    failed_count=excluded.failed_count,
+                    status=excluded.status,
+                    error_message=excluded.error_message,
+                    updated_at=excluded.updated_at
+                """,
+                (
+                    record.generation_run_id,
+                    record.dataset_id,
+                    record.dataset_root,
+                    record.generation_mode,
+                    record.scenario_pack_path,
+                    record.target_item_count,
+                    record.accepted_count,
+                    record.failed_count,
+                    record.status,
+                    record.error_message,
+                    timestamp,
+                    timestamp,
+                ),
+            )
+
+    def upsert_dataset_generation_item(self, record: CatalogDatasetGenerationItemRecord) -> None:
+        timestamp = utc_now()
+        self.initialize()
+        with self._connect() as conn:
+            conn.execute(
+                """
+                INSERT INTO dataset_generation_items (
+                    generation_run_id, item_id, interaction_id, scenario_id, sample_index,
+                    relative_path, status, attempt_count, item_payload_json, error_message,
+                    created_at, updated_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(generation_run_id, item_id) DO UPDATE SET
+                    interaction_id=excluded.interaction_id,
+                    scenario_id=excluded.scenario_id,
+                    sample_index=excluded.sample_index,
+                    relative_path=excluded.relative_path,
+                    status=excluded.status,
+                    attempt_count=excluded.attempt_count,
+                    item_payload_json=excluded.item_payload_json,
+                    error_message=excluded.error_message,
+                    updated_at=excluded.updated_at
+                """,
+                (
+                    record.generation_run_id,
+                    record.item_id,
+                    record.interaction_id,
+                    record.scenario_id,
+                    record.sample_index,
+                    record.relative_path,
+                    record.status,
+                    record.attempt_count,
+                    record.item_payload_json,
                     record.error_message,
                     timestamp,
                     timestamp,
@@ -203,11 +426,94 @@ class CatalogStore:
             row = conn.execute("SELECT * FROM datasets WHERE dataset_id = ?", (dataset_id,)).fetchone()
         return dict(row) if row is not None else None
 
+    def fetch_dataset_run(self, dataset_run_id: str) -> dict[str, Any] | None:
+        self.initialize()
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM dataset_runs WHERE dataset_run_id = ?",
+                (dataset_run_id,),
+            ).fetchone()
+        return dict(row) if row is not None else None
+
+    def fetch_dataset_generation_run(self, generation_run_id: str) -> dict[str, Any] | None:
+        self.initialize()
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM dataset_generation_runs WHERE generation_run_id = ?",
+                (generation_run_id,),
+            ).fetchone()
+        return dict(row) if row is not None else None
+
+    def list_dataset_generation_items(self, *, generation_run_id: str) -> list[dict[str, Any]]:
+        self.initialize()
+        with self._connect() as conn:
+            rows = conn.execute(
+                """
+                SELECT * FROM dataset_generation_items
+                WHERE generation_run_id = ?
+                ORDER BY scenario_id, sample_index
+                """,
+                (generation_run_id,),
+            ).fetchall()
+        return [dict(row) for row in rows]
+
+    def list_dataset_generation_runs(
+        self,
+        *,
+        status: str | None = None,
+        dataset_id: str | None = None,
+        generation_mode: str | None = None,
+        limit: int | None = None,
+    ) -> list[dict[str, Any]]:
+        self.initialize()
+        query = "SELECT * FROM dataset_generation_runs"
+        conditions: list[str] = []
+        parameters: list[Any] = []
+        if status is not None:
+            conditions.append("status = ?")
+            parameters.append(status)
+        if dataset_id is not None:
+            conditions.append("dataset_id = ?")
+            parameters.append(dataset_id)
+        if generation_mode is not None:
+            conditions.append("generation_mode = ?")
+            parameters.append(generation_mode)
+        if conditions:
+            query += " WHERE " + " AND ".join(conditions)
+        query += " ORDER BY updated_at DESC, generation_run_id"
+        if limit is not None:
+            query += " LIMIT ?"
+            parameters.append(limit)
+        with self._connect() as conn:
+            rows = conn.execute(query, tuple(parameters)).fetchall()
+        return [dict(row) for row in rows]
+
+    def list_failed_dataset_generation_items(
+        self,
+        *,
+        generation_run_id: str,
+        limit: int | None = None,
+    ) -> list[dict[str, Any]]:
+        self.initialize()
+        query = """
+            SELECT * FROM dataset_generation_items
+            WHERE generation_run_id = ? AND status = 'failed'
+            ORDER BY scenario_id, sample_index
+        """
+        parameters: list[Any] = [generation_run_id]
+        if limit is not None:
+            query += " LIMIT ?"
+            parameters.append(limit)
+        with self._connect() as conn:
+            rows = conn.execute(query, tuple(parameters)).fetchall()
+        return [dict(row) for row in rows]
+
     def list_runs(
         self,
         *,
         status: str | None = None,
         dataset_id: str | None = None,
+        dataset_run_id: str | None = None,
         scenario_id: str | None = None,
         limit: int | None = None,
     ) -> list[dict[str, Any]]:
@@ -229,12 +535,50 @@ class CatalogStore:
         if dataset_id is not None:
             conditions.append("jdvp_runs.dataset_id = ?")
             parameters.append(dataset_id)
+        if dataset_run_id is not None:
+            conditions.append("jdvp_runs.dataset_run_id = ?")
+            parameters.append(dataset_run_id)
         if scenario_id is not None:
             conditions.append("dataset_items.scenario_id = ?")
             parameters.append(scenario_id)
         if conditions:
             query += " WHERE " + " AND ".join(conditions)
         query += " ORDER BY jdvp_runs.updated_at DESC, jdvp_runs.run_id"
+        if limit is not None:
+            query += " LIMIT ?"
+            parameters.append(limit)
+        with self._connect() as conn:
+            rows = conn.execute(query, tuple(parameters)).fetchall()
+        return [dict(row) for row in rows]
+
+    def list_dataset_runs(
+        self,
+        *,
+        status: str | None = None,
+        dataset_id: str | None = None,
+        scenario_id: str | None = None,
+        track_name: str | None = None,
+        limit: int | None = None,
+    ) -> list[dict[str, Any]]:
+        self.initialize()
+        query = "SELECT * FROM dataset_runs"
+        conditions: list[str] = []
+        parameters: list[Any] = []
+        if status is not None:
+            conditions.append("status = ?")
+            parameters.append(status)
+        if dataset_id is not None:
+            conditions.append("dataset_id = ?")
+            parameters.append(dataset_id)
+        if scenario_id is not None:
+            conditions.append("scenario_id = ?")
+            parameters.append(scenario_id)
+        if track_name is not None:
+            conditions.append("track_name = ?")
+            parameters.append(track_name)
+        if conditions:
+            query += " WHERE " + " AND ".join(conditions)
+        query += " ORDER BY updated_at DESC, dataset_run_id"
         if limit is not None:
             query += " LIMIT ?"
             parameters.append(limit)

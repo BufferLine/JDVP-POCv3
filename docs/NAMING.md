@@ -87,7 +87,34 @@ Meaning:
 
 - richer research-oriented dataset packs
 - may include more varied wording, mixed blueprints, and less stable patterns
+- may be materialized from provider-backed LLM utterance generation while preserving scenario structure
+- may use `llm_turn_simulated` generation so human/assistant utterances are produced in sequence from shared conversation state
 - should be reviewed before influencing the stable baseline
+
+### `generation_mode=llm`
+
+Meaning:
+
+- one-shot provider-backed utterance rewriting over a selected scenario blueprint
+- does not simulate turn-by-turn hidden state updates between separate human and assistant roles
+
+Use when:
+
+- quickly improving wording naturalness for research datasets
+- preserving close structural similarity to template-authored turns
+
+### `generation_mode=llm_turn_simulated`
+
+Meaning:
+
+- provider-backed turn-by-turn simulation
+- human and assistant utterances are generated sequentially from shared history and scenario state
+- still preserves the selected scenario blueprint and `meta.jsv_hint` targets as hidden guidance
+
+Use when:
+
+- exploring more realistic conversational drift and contingent responses
+- generating research datasets where turn-to-turn state carryover matters
 
 Current examples:
 

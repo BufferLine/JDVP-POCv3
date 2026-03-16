@@ -27,6 +27,7 @@ def rerun_failed_runs(
     catalog: CatalogStore,
     status: str = "failed",
     dataset_id: str | None = None,
+    dataset_run_id: str | None = None,
     scenario_id: str | None = None,
     limit: int | None = None,
     reuse_run_id: bool = False,
@@ -35,6 +36,7 @@ def rerun_failed_runs(
     selected_runs = catalog.list_runs(
         status=status,
         dataset_id=dataset_id,
+        dataset_run_id=dataset_run_id,
         scenario_id=scenario_id,
         limit=limit,
     )
@@ -50,6 +52,12 @@ def rerun_failed_runs(
                     output_root=Path(str(Path(str(row["run_dir"])).parent)),
                     track_name=str(row["track_name"]),
                     resume=resume,
+                    dataset_id=(str(row["dataset_id"]) if row["dataset_id"] is not None else None),
+                    dataset_run_id=(
+                        str(row["dataset_run_id"])
+                        if row["dataset_run_id"] is not None
+                        else None
+                    ),
                 )
             )
             results.append(
@@ -78,6 +86,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Rerun failed JDVP runs from the catalog")
     parser.add_argument("--status", default="failed")
     parser.add_argument("--dataset-id", default=None)
+    parser.add_argument("--dataset-run-id", default=None)
     parser.add_argument("--scenario-id", default=None)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--reuse-run-id", action="store_true")
@@ -88,6 +97,7 @@ def main() -> None:
         catalog=CatalogStore(),
         status=args.status,
         dataset_id=args.dataset_id,
+        dataset_run_id=args.dataset_run_id,
         scenario_id=args.scenario_id,
         limit=args.limit,
         reuse_run_id=args.reuse_run_id,

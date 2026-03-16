@@ -123,6 +123,7 @@ class ServiceApiTests(unittest.TestCase):
             self.assertEqual(result.item_count, 2)
             external = result.to_external_dict()
             self.assertEqual(external["schema_version"], DATASET_RUN_RESULT_SCHEMA_VERSION)
+            self.assertEqual(external["dataset_run_id"], result.dataset_run_id)
             self.assertEqual(external["failed_count"], 0)
 
     def test_run_fewshot_benchmark_returns_typed_result(self) -> None:
@@ -236,6 +237,7 @@ class ServiceApiTests(unittest.TestCase):
             self.assertEqual(response["schema_version"], SERVICE_RESPONSE_SCHEMA_VERSION)
             self.assertTrue(response["ok"])
             self.assertEqual(response["result"]["schema_version"], DATASET_RUN_RESULT_SCHEMA_VERSION)
+            self.assertIn("dataset_run_id", response["result"])
 
     def test_run_dataset_response_serializes_error(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

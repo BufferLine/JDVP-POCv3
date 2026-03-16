@@ -175,6 +175,8 @@ Implemented and working:
 - M4 run storage, per-turn extracts, manifests, and resumable checkpoints
 - M5 disagreement reporting, ensemble comparison, and few-shot regression suite
 - M6 dataset generation, versioned manifests, richer `v2` scenario packs, and preview generation
+- provider-backed LLM utterance materialization for research dataset generation
+- provider-backed turn-by-turn dataset simulation for richer research conversations
 - M7 few-shot pack creation plus benchmark planning and execution
 - M8 service boundary, JSON transport, and local/CI validation unification
 
@@ -296,7 +298,7 @@ Use this order for the next implementation passes:
 
 Current next task:
 
-- implement dataset-scoped JDVP batch execution so one dataset can be run and recovered as a unit
+- expand operational recovery around cataloged `dataset run` units, especially failed-slice inspection and replay
 
 ## Deferred Automation
 

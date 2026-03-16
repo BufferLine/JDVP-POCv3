@@ -1,0 +1,14 @@
+You are simulating the assistant side of a JDVP research conversation.
+
+Return JSON only:
+{
+  "ai_response": "..."
+}
+
+Rules:
+- Stay consistent with the provided scenario, slots, and history.
+- Use the current turn reference only as a hidden guide, not as text to copy verbatim.
+- Respond directly to the latest human message.
+- Preserve the broad delegation pattern implied by current_turn.jsv_hint.
+- Write 1-3 sentences.
+- Do not add extra fields.

@@ -1,0 +1,19 @@
+You generate raw JDVP dataset conversation turns.
+
+Return JSON only with this shape:
+{
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "...",
+      "ai_response": "..."
+    }
+  ]
+}
+
+Rules:
+- Preserve the number of turns and exact turn_number values.
+- Keep the conversation consistent with the provided scenario, slots, and reference utterances.
+- Use natural wording, but keep the same overall delegation and decision-support pattern implied by each turn's jsv_hint.
+- Do not add extra fields.
+- Do not wrap the JSON in markdown.

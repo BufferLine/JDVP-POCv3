@@ -52,6 +52,8 @@ Current M6 note:
 - synthetic datasets are generated under `data/generated/<dataset_name>/<dataset_version>/`
 - each dataset writes a versioned `manifest.json` plus `splits.json`
 - scenario packs live under `config/datasets/` and drive reproducible synthetic interaction generation
+- `python3 -m src.dataset.generate_dataset --generation-mode llm` uses the configured JDVP LLM provider to rewrite turn utterances for research datasets while preserving scenario structure and `meta.jsv_hint`
+- `python3 -m src.dataset.generate_dataset --generation-mode llm_turn_simulated` runs a stateful turn-by-turn human/assistant simulation while keeping the selected scenario blueprint and hidden JDVP targets
 - generated interactions stay raw-input compatible and can flow directly into `src.pipeline.run_poc`
 
 Current M7 note:
@@ -80,6 +82,12 @@ Current operational note:
 - `scripts/run_validation_suite.py` is the standard local and CI validation entrypoint
 - `data/catalog/pocv3.sqlite3` is the default lightweight catalog for dataset and run tracking
 - `scripts/list_failed_runs.py` and `scripts/rerun_failed_runs.py` are the current recovery tools for unreliable LLM runs
+- `scripts/run_dataset.py` now registers one cataloged `dataset run` unit per batch output root, with aggregate status and counts
+- `scripts/list_failed_runs.py --dataset-runs` lists dataset-level recovery units in addition to per-run failures
+- `scripts/rerun_failed_runs.py --dataset-run-id <id>` replays the failed subset inside one cataloged dataset run
+- `scripts/list_generation_runs.py` lists dataset-generation runs and their partial/completed states
+- `scripts/list_failed_generation_items.py --generation-run-id <id>` shows which generated items failed and will be retried
+- rerun the same `python3 -m src.dataset.generate_dataset ...` command to retry only failed generation items for that dataset root and generation mode
 - `config/datasets/general_scenarios_v1.json` remains the stable regression pack
 - `config/datasets/general_scenarios_v2.json` is the richer research pack and should be reviewed through preview flows before it influences baseline policy
 

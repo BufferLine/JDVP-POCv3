@@ -42,6 +42,7 @@ class RunRequest:
     track_name: str = "fixture_hint"
     resume: bool = False
     dataset_id: str | None = None
+    dataset_run_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -298,6 +299,7 @@ def run_interaction(request: RunRequest) -> RunResult:
                 run_id=request.run_id,
                 interaction_id=None,
                 dataset_id=None,
+                dataset_run_id=request.dataset_run_id,
                 track_name=request.track_name,
                 model_id=None,
                 input_path=str(request.input_path),
@@ -326,6 +328,7 @@ def run_interaction(request: RunRequest) -> RunResult:
                 run_id=request.run_id,
                 interaction_id=result.interaction_id,
                 dataset_id=request.dataset_id,
+                dataset_run_id=request.dataset_run_id,
                 track_name=request.track_name,
                 model_id=result.model_id,
                 input_path=str(request.input_path),
@@ -344,6 +347,7 @@ def run_interaction(request: RunRequest) -> RunResult:
                     else None
                 ),
                 dataset_id=request.dataset_id,
+                dataset_run_id=request.dataset_run_id,
                 track_name=request.track_name,
                 model_id=None,
                 input_path=str(request.input_path),
@@ -367,6 +371,7 @@ def run_interaction(request: RunRequest) -> RunResult:
                     else None
                 ),
                 dataset_id=request.dataset_id,
+                dataset_run_id=request.dataset_run_id,
                 track_name=request.track_name,
                 model_id=None,
                 input_path=str(request.input_path),
@@ -386,6 +391,7 @@ def run_interaction(request: RunRequest) -> RunResult:
                     else None
                 ),
                 dataset_id=request.dataset_id,
+                dataset_run_id=request.dataset_run_id,
                 track_name=request.track_name,
                 model_id=None,
                 input_path=str(request.input_path),
