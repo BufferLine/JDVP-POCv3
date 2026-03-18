@@ -8,9 +8,21 @@ from .base import TrackExtractor, TrackOutput
 
 
 class FixtureHintTrack(TrackExtractor):
-    """Use `meta.jsv_hint` from the input fixture directly."""
+    """Use `meta.jsv_hint` from the input fixture directly.
+
+    Unlike other tracks, this track needs access to the full turn dict (including
+    ``meta.jsv_hint``).  Call ``set_turns()`` before ``extract()`` so the track
+    can look up the current turn's metadata.
+    """
 
     track_id = "fixture_hint"
+
+    def __init__(self) -> None:
+        self._turns_by_number: dict[int, dict[str, Any]] = {}
+
+    def set_turns(self, turns: list[dict[str, Any]]) -> None:
+        """Register the full interaction turns list for hint lookup."""
+        self._turns_by_number = {int(t["turn_number"]): t for t in turns}
 
     def extract(
         self,
@@ -21,7 +33,12 @@ class FixtureHintTrack(TrackExtractor):
         context_turns: list[dict[str, Any]],
         context_module: str,
     ) -> TrackOutput:
-        raise RuntimeError("fixture_hint track is driven by per-turn meta.jsv_hint and cannot be called directly")
+        current_turn = self._turns_by_number.get(turn_number)
+        if current_turn is None:
+            raise ValueError(
+                f"turn {turn_number} not found; call set_turns() before extract()"
+            )
+        return self.extract_from_turn(interaction_id, current_turn, context_module)
 
     def extract_from_turn(self, interaction_id: str, turn: dict[str, Any], context_module: str) -> TrackOutput:
         meta = turn.get("meta", {})

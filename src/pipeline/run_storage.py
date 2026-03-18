@@ -4,13 +4,10 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+from src.shared_utils import utc_now as _utc_now
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:

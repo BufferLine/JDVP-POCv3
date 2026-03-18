@@ -5,16 +5,13 @@ from __future__ import annotations
 import os
 import sqlite3
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from src.shared_utils import utc_now
+
 
 DEFAULT_CATALOG_PATH = Path("data/catalog/pocv3.sqlite3")
-
-
-def utc_now() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def resolve_catalog_path() -> Path:
@@ -91,119 +88,172 @@ class CatalogDatasetGenerationItemRecord:
 
 
 class CatalogStore:
+    """Lightweight SQLite catalog with a single persistent connection.
+
+    The connection is created lazily on first use and reused for all subsequent
+    operations.  Schema initialization also runs exactly once per instance
+    (guarded by ``_initialized``).
+
+    Thread-safety note: this class assumes single-threaded use (one instance
+    per thread/process).  Pass ``check_same_thread=False`` only if you manage
+    external locking yourself.
+    """
+
     def __init__(self, db_path: Path | None = None) -> None:
         self.db_path = db_path or resolve_catalog_path()
+        self._conn: sqlite3.Connection | None = None
+        self._initialized: bool = False
+
+    # ------------------------------------------------------------------
+    # Internal helpers
+    # ------------------------------------------------------------------
 
     def _connect(self) -> sqlite3.Connection:
-        self.db_path.parent.mkdir(parents=True, exist_ok=True)
-        connection = sqlite3.connect(self.db_path)
-        connection.row_factory = sqlite3.Row
-        return connection
+        """Return the persistent connection, creating it on first call."""
+        if self._conn is None:
+            self.db_path.parent.mkdir(parents=True, exist_ok=True)
+            self._conn = sqlite3.connect(self.db_path)
+            self._conn.row_factory = sqlite3.Row
+        return self._conn
 
     def initialize(self) -> None:
-        with self._connect() as conn:
-            conn.executescript(
-                """
-                CREATE TABLE IF NOT EXISTS datasets (
-                    dataset_id TEXT PRIMARY KEY,
-                    dataset_root TEXT NOT NULL,
-                    dataset_kind TEXT NOT NULL,
-                    scenario_pack_id TEXT NOT NULL,
-                    generation_seed INTEGER NOT NULL,
-                    count_per_scenario INTEGER NOT NULL,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL
-                );
+        """Run schema migrations exactly once per instance."""
+        if self._initialized:
+            return
+        conn = self._connect()
+        conn.executescript(
+            """
+            CREATE TABLE IF NOT EXISTS datasets (
+                dataset_id TEXT PRIMARY KEY,
+                dataset_root TEXT NOT NULL,
+                dataset_kind TEXT NOT NULL,
+                scenario_pack_id TEXT NOT NULL,
+                generation_seed INTEGER NOT NULL,
+                count_per_scenario INTEGER NOT NULL,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL
+            );
 
-                CREATE TABLE IF NOT EXISTS dataset_items (
-                    dataset_id TEXT NOT NULL,
-                    interaction_id TEXT NOT NULL,
-                    scenario_id TEXT NOT NULL,
-                    blueprint_id TEXT,
-                    split TEXT NOT NULL,
-                    relative_path TEXT NOT NULL,
-                    turn_count INTEGER NOT NULL,
-                    created_at TEXT NOT NULL,
-                    PRIMARY KEY (dataset_id, interaction_id),
-                    FOREIGN KEY (dataset_id) REFERENCES datasets(dataset_id)
-                );
+            CREATE TABLE IF NOT EXISTS dataset_items (
+                dataset_id TEXT NOT NULL,
+                interaction_id TEXT NOT NULL,
+                scenario_id TEXT NOT NULL,
+                blueprint_id TEXT,
+                split TEXT NOT NULL,
+                relative_path TEXT NOT NULL,
+                turn_count INTEGER NOT NULL,
+                created_at TEXT NOT NULL,
+                PRIMARY KEY (dataset_id, interaction_id),
+                FOREIGN KEY (dataset_id) REFERENCES datasets(dataset_id)
+            );
 
-                CREATE TABLE IF NOT EXISTS jdvp_runs (
-                    run_id TEXT PRIMARY KEY,
-                    interaction_id TEXT,
-                    dataset_id TEXT,
-                    dataset_run_id TEXT,
-                    track_name TEXT NOT NULL,
-                    model_id TEXT,
-                    input_path TEXT NOT NULL,
-                    run_dir TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    error_message TEXT,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL
-                );
+            CREATE TABLE IF NOT EXISTS jdvp_runs (
+                run_id TEXT PRIMARY KEY,
+                interaction_id TEXT,
+                dataset_id TEXT,
+                dataset_run_id TEXT,
+                track_name TEXT NOT NULL,
+                model_id TEXT,
+                input_path TEXT NOT NULL,
+                run_dir TEXT NOT NULL,
+                status TEXT NOT NULL,
+                error_message TEXT,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL
+            );
 
-                CREATE TABLE IF NOT EXISTS dataset_runs (
-                    dataset_run_id TEXT PRIMARY KEY,
-                    dataset_id TEXT NOT NULL,
-                    track_name TEXT NOT NULL,
-                    output_root TEXT NOT NULL,
-                    summary_path TEXT NOT NULL,
-                    split TEXT,
-                    scenario_id TEXT,
-                    item_count INTEGER NOT NULL,
-                    completed_count INTEGER NOT NULL,
-                    failed_count INTEGER NOT NULL,
-                    status TEXT NOT NULL,
-                    error_message TEXT,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL
-                );
+            CREATE TABLE IF NOT EXISTS dataset_runs (
+                dataset_run_id TEXT PRIMARY KEY,
+                dataset_id TEXT NOT NULL,
+                track_name TEXT NOT NULL,
+                output_root TEXT NOT NULL,
+                summary_path TEXT NOT NULL,
+                split TEXT,
+                scenario_id TEXT,
+                item_count INTEGER NOT NULL,
+                completed_count INTEGER NOT NULL,
+                failed_count INTEGER NOT NULL,
+                status TEXT NOT NULL,
+                error_message TEXT,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL
+            );
 
-                CREATE TABLE IF NOT EXISTS dataset_generation_runs (
-                    generation_run_id TEXT PRIMARY KEY,
-                    dataset_id TEXT NOT NULL,
-                    dataset_root TEXT NOT NULL,
-                    generation_mode TEXT NOT NULL,
-                    scenario_pack_path TEXT NOT NULL,
-                    target_item_count INTEGER NOT NULL,
-                    accepted_count INTEGER NOT NULL,
-                    failed_count INTEGER NOT NULL,
-                    status TEXT NOT NULL,
-                    error_message TEXT,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL
-                );
+            CREATE TABLE IF NOT EXISTS dataset_generation_runs (
+                generation_run_id TEXT PRIMARY KEY,
+                dataset_id TEXT NOT NULL,
+                dataset_root TEXT NOT NULL,
+                generation_mode TEXT NOT NULL,
+                scenario_pack_path TEXT NOT NULL,
+                target_item_count INTEGER NOT NULL,
+                accepted_count INTEGER NOT NULL,
+                failed_count INTEGER NOT NULL,
+                status TEXT NOT NULL,
+                error_message TEXT,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL
+            );
 
-                CREATE TABLE IF NOT EXISTS dataset_generation_items (
-                    generation_run_id TEXT NOT NULL,
-                    item_id TEXT NOT NULL,
-                    interaction_id TEXT NOT NULL,
-                    scenario_id TEXT NOT NULL,
-                    sample_index INTEGER NOT NULL,
-                    relative_path TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    attempt_count INTEGER NOT NULL,
-                    item_payload_json TEXT,
-                    error_message TEXT,
-                    created_at TEXT NOT NULL,
-                    updated_at TEXT NOT NULL,
-                    PRIMARY KEY (generation_run_id, item_id),
-                    FOREIGN KEY (generation_run_id) REFERENCES dataset_generation_runs(generation_run_id)
-                );
-                """
-            )
-            columns = {
-                row["name"]
-                for row in conn.execute("PRAGMA table_info(jdvp_runs)").fetchall()
-            }
-            if "dataset_run_id" not in columns:
-                conn.execute("ALTER TABLE jdvp_runs ADD COLUMN dataset_run_id TEXT")
+            CREATE TABLE IF NOT EXISTS dataset_generation_items (
+                generation_run_id TEXT NOT NULL,
+                item_id TEXT NOT NULL,
+                interaction_id TEXT NOT NULL,
+                scenario_id TEXT NOT NULL,
+                sample_index INTEGER NOT NULL,
+                relative_path TEXT NOT NULL,
+                status TEXT NOT NULL,
+                attempt_count INTEGER NOT NULL,
+                item_payload_json TEXT,
+                error_message TEXT,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL,
+                PRIMARY KEY (generation_run_id, item_id),
+                FOREIGN KEY (generation_run_id) REFERENCES dataset_generation_runs(generation_run_id)
+            );
+            """
+        )
+        columns = {
+            row["name"]
+            for row in conn.execute("PRAGMA table_info(jdvp_runs)").fetchall()
+        }
+        if "dataset_run_id" not in columns:
+            conn.execute("ALTER TABLE jdvp_runs ADD COLUMN dataset_run_id TEXT")
+        conn.commit()
+        self._initialized = True
+
+    def _conn_ready(self) -> sqlite3.Connection:
+        """Ensure initialized and return the connection."""
+        self.initialize()
+        return self._connect()
+
+    # ------------------------------------------------------------------
+    # Lifecycle
+    # ------------------------------------------------------------------
+
+    def close(self) -> None:
+        """Close the underlying connection.  Safe to call multiple times."""
+        if self._conn is not None:
+            self._conn.close()
+            self._conn = None
+            self._initialized = False
+
+    def __enter__(self) -> "CatalogStore":
+        return self
+
+    def __exit__(self, exc_type: object, exc_val: object, exc_tb: object) -> None:
+        self.close()
+
+    def __del__(self) -> None:
+        self.close()
+
+    # ------------------------------------------------------------------
+    # Write methods
+    # ------------------------------------------------------------------
 
     def upsert_dataset(self, record: CatalogDatasetRecord, items: list[dict[str, Any]]) -> None:
         timestamp = utc_now()
-        self.initialize()
-        with self._connect() as conn:
+        conn = self._conn_ready()
+        with conn:
             conn.execute(
                 """
                 INSERT INTO datasets (
@@ -258,8 +308,8 @@ class CatalogStore:
 
     def upsert_run(self, record: CatalogRunRecord) -> None:
         timestamp = utc_now()
-        self.initialize()
-        with self._connect() as conn:
+        conn = self._conn_ready()
+        with conn:
             conn.execute(
                 """
                 INSERT INTO jdvp_runs (
@@ -296,8 +346,8 @@ class CatalogStore:
 
     def upsert_dataset_run(self, record: CatalogDatasetRunRecord) -> None:
         timestamp = utc_now()
-        self.initialize()
-        with self._connect() as conn:
+        conn = self._conn_ready()
+        with conn:
             conn.execute(
                 """
                 INSERT INTO dataset_runs (
@@ -339,8 +389,8 @@ class CatalogStore:
 
     def upsert_dataset_generation_run(self, record: CatalogDatasetGenerationRunRecord) -> None:
         timestamp = utc_now()
-        self.initialize()
-        with self._connect() as conn:
+        conn = self._conn_ready()
+        with conn:
             conn.execute(
                 """
                 INSERT INTO dataset_generation_runs (
@@ -378,8 +428,8 @@ class CatalogStore:
 
     def upsert_dataset_generation_item(self, record: CatalogDatasetGenerationItemRecord) -> None:
         timestamp = utc_now()
-        self.initialize()
-        with self._connect() as conn:
+        conn = self._conn_ready()
+        with conn:
             conn.execute(
                 """
                 INSERT INTO dataset_generation_items (
@@ -414,47 +464,46 @@ class CatalogStore:
                 ),
             )
 
+    # ------------------------------------------------------------------
+    # Read methods
+    # ------------------------------------------------------------------
+
     def fetch_run(self, run_id: str) -> dict[str, Any] | None:
-        self.initialize()
-        with self._connect() as conn:
-            row = conn.execute("SELECT * FROM jdvp_runs WHERE run_id = ?", (run_id,)).fetchone()
+        conn = self._conn_ready()
+        row = conn.execute("SELECT * FROM jdvp_runs WHERE run_id = ?", (run_id,)).fetchone()
         return dict(row) if row is not None else None
 
     def fetch_dataset(self, dataset_id: str) -> dict[str, Any] | None:
-        self.initialize()
-        with self._connect() as conn:
-            row = conn.execute("SELECT * FROM datasets WHERE dataset_id = ?", (dataset_id,)).fetchone()
+        conn = self._conn_ready()
+        row = conn.execute("SELECT * FROM datasets WHERE dataset_id = ?", (dataset_id,)).fetchone()
         return dict(row) if row is not None else None
 
     def fetch_dataset_run(self, dataset_run_id: str) -> dict[str, Any] | None:
-        self.initialize()
-        with self._connect() as conn:
-            row = conn.execute(
-                "SELECT * FROM dataset_runs WHERE dataset_run_id = ?",
-                (dataset_run_id,),
-            ).fetchone()
+        conn = self._conn_ready()
+        row = conn.execute(
+            "SELECT * FROM dataset_runs WHERE dataset_run_id = ?",
+            (dataset_run_id,),
+        ).fetchone()
         return dict(row) if row is not None else None
 
     def fetch_dataset_generation_run(self, generation_run_id: str) -> dict[str, Any] | None:
-        self.initialize()
-        with self._connect() as conn:
-            row = conn.execute(
-                "SELECT * FROM dataset_generation_runs WHERE generation_run_id = ?",
-                (generation_run_id,),
-            ).fetchone()
+        conn = self._conn_ready()
+        row = conn.execute(
+            "SELECT * FROM dataset_generation_runs WHERE generation_run_id = ?",
+            (generation_run_id,),
+        ).fetchone()
         return dict(row) if row is not None else None
 
     def list_dataset_generation_items(self, *, generation_run_id: str) -> list[dict[str, Any]]:
-        self.initialize()
-        with self._connect() as conn:
-            rows = conn.execute(
-                """
-                SELECT * FROM dataset_generation_items
-                WHERE generation_run_id = ?
-                ORDER BY scenario_id, sample_index
-                """,
-                (generation_run_id,),
-            ).fetchall()
+        conn = self._conn_ready()
+        rows = conn.execute(
+            """
+            SELECT * FROM dataset_generation_items
+            WHERE generation_run_id = ?
+            ORDER BY scenario_id, sample_index
+            """,
+            (generation_run_id,),
+        ).fetchall()
         return [dict(row) for row in rows]
 
     def list_dataset_generation_runs(
@@ -465,7 +514,7 @@ class CatalogStore:
         generation_mode: str | None = None,
         limit: int | None = None,
     ) -> list[dict[str, Any]]:
-        self.initialize()
+        conn = self._conn_ready()
         query = "SELECT * FROM dataset_generation_runs"
         conditions: list[str] = []
         parameters: list[Any] = []
@@ -484,8 +533,7 @@ class CatalogStore:
         if limit is not None:
             query += " LIMIT ?"
             parameters.append(limit)
-        with self._connect() as conn:
-            rows = conn.execute(query, tuple(parameters)).fetchall()
+        rows = conn.execute(query, tuple(parameters)).fetchall()
         return [dict(row) for row in rows]
 
     def list_failed_dataset_generation_items(
@@ -494,7 +542,7 @@ class CatalogStore:
         generation_run_id: str,
         limit: int | None = None,
     ) -> list[dict[str, Any]]:
-        self.initialize()
+        conn = self._conn_ready()
         query = """
             SELECT * FROM dataset_generation_items
             WHERE generation_run_id = ? AND status IN ('failed', 'rejected')
@@ -504,8 +552,7 @@ class CatalogStore:
         if limit is not None:
             query += " LIMIT ?"
             parameters.append(limit)
-        with self._connect() as conn:
-            rows = conn.execute(query, tuple(parameters)).fetchall()
+        rows = conn.execute(query, tuple(parameters)).fetchall()
         return [dict(row) for row in rows]
 
     def list_runs(
@@ -517,7 +564,7 @@ class CatalogStore:
         scenario_id: str | None = None,
         limit: int | None = None,
     ) -> list[dict[str, Any]]:
-        self.initialize()
+        conn = self._conn_ready()
         query = """
             SELECT
                 jdvp_runs.*,
@@ -547,8 +594,7 @@ class CatalogStore:
         if limit is not None:
             query += " LIMIT ?"
             parameters.append(limit)
-        with self._connect() as conn:
-            rows = conn.execute(query, tuple(parameters)).fetchall()
+        rows = conn.execute(query, tuple(parameters)).fetchall()
         return [dict(row) for row in rows]
 
     def list_dataset_runs(
@@ -560,7 +606,7 @@ class CatalogStore:
         track_name: str | None = None,
         limit: int | None = None,
     ) -> list[dict[str, Any]]:
-        self.initialize()
+        conn = self._conn_ready()
         query = "SELECT * FROM dataset_runs"
         conditions: list[str] = []
         parameters: list[Any] = []
@@ -582,12 +628,11 @@ class CatalogStore:
         if limit is not None:
             query += " LIMIT ?"
             parameters.append(limit)
-        with self._connect() as conn:
-            rows = conn.execute(query, tuple(parameters)).fetchall()
+        rows = conn.execute(query, tuple(parameters)).fetchall()
         return [dict(row) for row in rows]
 
     def summarize_runs_by_scenario(self, *, status: str | None = None) -> list[dict[str, Any]]:
-        self.initialize()
+        conn = self._conn_ready()
         query = """
             SELECT
                 COALESCE(dataset_items.scenario_id, 'unknown') AS scenario_id,
@@ -605,6 +650,5 @@ class CatalogStore:
             GROUP BY COALESCE(dataset_items.scenario_id, 'unknown'), jdvp_runs.status
             ORDER BY run_count DESC, scenario_id
         """
-        with self._connect() as conn:
-            rows = conn.execute(query, tuple(parameters)).fetchall()
+        rows = conn.execute(query, tuple(parameters)).fetchall()
         return [dict(row) for row in rows]

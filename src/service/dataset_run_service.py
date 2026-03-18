@@ -81,6 +81,11 @@ def _dataset_run_status(*, item_count: int, completed_count: int, failed_count: 
 
 
 def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
+    dataset_run_id: str | None = None
+    manifest = None
+    items: list = []
+    completed_count: int = 0
+    failed_count: int = 0
     try:
         manifest = load_dataset_manifest(request.dataset_root)
         items = manifest.items
@@ -208,7 +213,7 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
             details={"dataset_root": str(request.dataset_root)},
         ) from exc
     except Exception as exc:
-        if "dataset_run_id" in locals() and "manifest" in locals():
+        if dataset_run_id is not None and manifest is not None:
             catalog = CatalogStore()
             catalog.upsert_dataset_run(
                 CatalogDatasetRunRecord(
@@ -220,8 +225,8 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
                     split=request.split,
                     scenario_id=request.scenario_id,
                     item_count=len(items),
-                    completed_count=locals().get("completed_count", 0),
-                    failed_count=locals().get("failed_count", 0),
+                    completed_count=completed_count,
+                    failed_count=failed_count,
                     status="failed",
                     error_message=str(exc),
                 )

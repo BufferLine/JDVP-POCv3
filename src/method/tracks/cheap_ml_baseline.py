@@ -5,7 +5,6 @@ from __future__ import annotations
 import math
 import json
 import os
-import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -13,15 +12,9 @@ from typing import Any
 
 from src.method.fewshot.selector import load_fewshot_pack
 from src.protocol_core.jsv_types import CORE_FIELD_NAMES
+from src.shared_utils import tokenize as _tokenize
 
 from .base import TrackExtractor, TrackOutput
-
-
-TOKEN_RE = re.compile(r"[a-z0-9']+")
-
-
-def _tokenize(text: str) -> list[str]:
-    return TOKEN_RE.findall(text.lower())
 
 
 @dataclass(frozen=True)
