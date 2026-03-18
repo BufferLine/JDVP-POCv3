@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Protocol
@@ -20,6 +21,10 @@ class LLMProvider(Protocol):
         ...
 
 
+_RETRYABLE_STATUS_CODES: frozenset[int] = frozenset({429, 500, 502, 503, 504})
+_RETRYABLE_EXCEPTIONS: tuple[type[Exception], ...] = (ConnectionError, TimeoutError, OSError)
+
+
 @dataclass
 class OpenAICompatibleProvider:
     """Minimal OpenAI-compatible chat-completions client."""
@@ -30,6 +35,8 @@ class OpenAICompatibleProvider:
     timeout_seconds: float = 30.0
     prefer_json_mode: bool = True
     max_tokens: int | None = None
+    max_retries: int = 3
+    _retry_after: float | None = None
 
     def generate(self, *, system_prompt: str, user_prompt: str) -> str:
         payload = {
@@ -56,8 +63,8 @@ class OpenAICompatibleProvider:
             raise RuntimeError("provider response missing message content")
         return content
 
-    def _request(self, *, endpoint: str, payload: dict[str, Any]) -> dict[str, Any]:
-        req = request.Request(
+    def _build_request(self, endpoint: str, payload: dict[str, Any]) -> request.Request:
+        return request.Request(
             endpoint,
             data=json.dumps(payload).encode("utf-8"),
             headers={
@@ -66,30 +73,53 @@ class OpenAICompatibleProvider:
             },
             method="POST",
         )
-        try:
-            with request.urlopen(req, timeout=self.timeout_seconds) as response:
-                return json.loads(response.read().decode("utf-8"))
-        except error.HTTPError as exc:
-            if payload.get("response_format") is not None and exc.code in {400, 404, 422}:
-                fallback_payload = dict(payload)
-                fallback_payload.pop("response_format", None)
-                req = request.Request(
-                    endpoint,
-                    data=json.dumps(fallback_payload).encode("utf-8"),
-                    headers={
-                        "Content-Type": "application/json",
-                        "Authorization": f"Bearer {self.api_key}",
-                    },
-                    method="POST",
-                )
-                try:
-                    with request.urlopen(req, timeout=self.timeout_seconds) as response:
-                        return json.loads(response.read().decode("utf-8"))
-                except error.URLError as fallback_exc:
-                    raise RuntimeError(f"provider request failed: {fallback_exc}") from fallback_exc
-            raise RuntimeError(f"provider request failed: {exc}") from exc
-        except error.URLError as exc:
-            raise RuntimeError(f"provider request failed: {exc}") from exc
+
+    def _request(self, *, endpoint: str, payload: dict[str, Any]) -> dict[str, Any]:
+        last_exc: Exception | None = None
+        for attempt in range(self.max_retries + 1):
+            if attempt > 0:
+                backoff = float(2 ** (attempt - 1))  # 1s, 2s, 4s, ...
+                # Honour Retry-After header when available (set by previous iteration)
+                if self._retry_after is not None:
+                    backoff = max(backoff, self._retry_after)
+                    self._retry_after = None
+                time.sleep(backoff)
+
+            req = self._build_request(endpoint, payload)
+            try:
+                with request.urlopen(req, timeout=self.timeout_seconds) as response:
+                    return json.loads(response.read().decode("utf-8"))
+            except error.HTTPError as exc:
+                # json_mode fallback: not retryable, try once without response_format
+                if payload.get("response_format") is not None and exc.code in {400, 404, 422}:
+                    fallback_payload = dict(payload)
+                    fallback_payload.pop("response_format", None)
+                    fallback_req = self._build_request(endpoint, fallback_payload)
+                    try:
+                        with request.urlopen(fallback_req, timeout=self.timeout_seconds) as response:
+                            return json.loads(response.read().decode("utf-8"))
+                    except error.URLError as fallback_exc:
+                        raise RuntimeError(f"provider request failed: {fallback_exc}") from fallback_exc
+
+                if exc.code in _RETRYABLE_STATUS_CODES:
+                    if exc.code == 429 and exc.headers:
+                        retry_after_raw = exc.headers.get("Retry-After")
+                        if retry_after_raw is not None:
+                            try:
+                                self._retry_after = float(retry_after_raw)
+                            except ValueError:
+                                pass
+                    last_exc = exc
+                    continue
+
+                raise RuntimeError(f"provider request failed: {exc}") from exc
+            except _RETRYABLE_EXCEPTIONS as exc:
+                last_exc = exc
+                continue
+            except error.URLError as exc:
+                raise RuntimeError(f"provider request failed: {exc}") from exc
+
+        raise RuntimeError(f"provider request failed after {self.max_retries} retries: {last_exc}") from last_exc
 
 
 @dataclass

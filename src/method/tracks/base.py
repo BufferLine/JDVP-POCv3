@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import abc
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -47,11 +48,12 @@ class TrackOutput:
         return payload
 
 
-class TrackExtractor:
+class TrackExtractor(abc.ABC):
     """Interface for all method-layer extraction tracks."""
 
     track_id: str
 
+    @abc.abstractmethod
     def extract(
         self,
         interaction_id: str,
@@ -61,4 +63,4 @@ class TrackExtractor:
         context_turns: list[dict[str, Any]],
         context_module: str,
     ) -> TrackOutput:
-        raise NotImplementedError
+        ...

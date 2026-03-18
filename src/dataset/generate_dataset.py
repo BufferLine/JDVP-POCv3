@@ -21,6 +21,8 @@ from src.contracts.raw_interaction_validate import RawInteractionValidator
 from src.method.evidence.prompt_loader import load_prompt
 from src.method.tracks.llm_observer import LLMProvider, create_env_backed_provider
 from src.pipeline.run_storage import write_json
+from src.shared_utils import load_json as _load_json
+from src.shared_utils import tokenize as _tokenize
 
 
 DEFAULT_SCENARIO_PACK = Path("config/datasets/general_scenarios_v1.json")
@@ -28,11 +30,6 @@ DATASET_GENERATION_PROMPT_VERSION = "dataset-utterance-generator-v1"
 DATASET_TURN_SIM_PROMPT_VERSION = "dataset-turn-simulator-v1"
 DEFAULT_LLM_JSON_RETRY_COUNT = 3
 QUALITY_BANNED_PATTERN = re.compile(r"(as an ai|language model|i cannot|i can't provide)")
-
-
-def _load_json(path: Path) -> dict[str, Any]:
-    with path.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
 
 
 def _json_candidates(text: str) -> list[str]:
@@ -124,10 +121,6 @@ def _write_generation_progress(
             "is_complete": accepted_count == target_item_count,
         },
     )
-
-
-def _tokenize(text: str) -> list[str]:
-    return re.findall(r"[a-z0-9']+", text.lower())
 
 
 def _quality_gate_interaction(interaction: dict[str, Any]) -> list[str]:

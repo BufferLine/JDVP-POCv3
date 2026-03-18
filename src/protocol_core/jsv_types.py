@@ -6,14 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 
-
-CONFIDENCE_LEVELS = {"high", "medium", "low"}
-CORE_FIELD_NAMES = (
-    "judgment_holder",
-    "delegation_awareness",
-    "cognitive_engagement",
-    "information_seeking",
-)
+from src.protocol_core.enums import CONFIDENCE_LEVELS, CORE_FIELD_NAMES  # noqa: F401  (re-exported)
 
 
 @dataclass(frozen=True)

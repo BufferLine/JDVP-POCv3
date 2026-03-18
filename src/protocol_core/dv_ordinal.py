@@ -5,13 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-
-CORE_ORDINALS: dict[str, dict[str, int]] = {
-    "judgment_holder": {"Human": 0, "Shared": 1, "AI": 2},
-    "delegation_awareness": {"Explicit": 0, "Implicit": 1, "Absent": 2},
-    "cognitive_engagement": {"Active": 0, "Reactive": 1, "Passive": 2},
-    "information_seeking": {"Active": 0, "Passive": 1, "None": 2},
-}
+from src.protocol_core.enums import CORE_ORDINALS  # noqa: F401  (re-exported)
 
 
 @dataclass(frozen=True)

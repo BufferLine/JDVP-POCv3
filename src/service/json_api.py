@@ -10,11 +10,7 @@ from typing import Any
 from src.service.dataset_run_service import DatasetRunRequest, run_dataset_response
 from src.service.eval_service import FewshotBenchmarkRequest, run_fewshot_benchmark_response
 from src.service.poc_service import RunRequest, run_interaction_response
-
-
-def _load_json(path: Path) -> dict[str, Any]:
-    with path.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
+from src.shared_utils import load_json as _load_json
 
 
 def _run_interaction_from_payload(payload: dict[str, Any]) -> dict[str, Any]:

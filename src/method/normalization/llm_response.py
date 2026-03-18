@@ -6,14 +6,7 @@ import json
 import re
 from typing import Any
 
-
-CORE_ENUMS: dict[str, set[str]] = {
-    "judgment_holder": {"Human", "Shared", "AI", "Undefined"},
-    "delegation_awareness": {"Explicit", "Implicit", "Absent"},
-    "cognitive_engagement": {"Active", "Reactive", "Passive"},
-    "information_seeking": {"Active", "Passive", "None"},
-}
-CONFIDENCE_ENUM = {"high", "medium", "low"}
+from src.protocol_core.enums import CONFIDENCE_ENUM, CORE_ENUMS  # noqa: F401  (re-exported)
 SMART_QUOTES = str.maketrans({
     "“": '"',
     "”": '"',

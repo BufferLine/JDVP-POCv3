@@ -121,7 +121,8 @@ def build_pipeline_artifacts(
     written_turns: list[int] = []
 
     track = create_track(track_name)
-    fixture_track = track if isinstance(track, FixtureHintTrack) else None
+    if isinstance(track, FixtureHintTrack):
+        track.set_turns(raw_interaction["turns"])
     for turn in raw_interaction["turns"]:
         meta = turn.get("meta", {})
         turn_number = int(turn["turn_number"])
@@ -149,17 +150,14 @@ def build_pipeline_artifacts(
             continue
 
         context_turns = raw_interaction["turns"][:turn_number]
-        if fixture_track is not None:
-            track_output = fixture_track.extract_from_turn(interaction_id, turn, context_module)
-        else:
-            track_output = track.extract(
-                interaction_id=interaction_id,
-                turn_number=turn_number,
-                human_input=str(turn.get("human_input", "")),
-                ai_response=str(turn.get("ai_response", "")),
-                context_turns=context_turns,
-                context_module=context_module,
-            )
+        track_output = track.extract(
+            interaction_id=interaction_id,
+            turn_number=turn_number,
+            human_input=str(turn.get("human_input", "")),
+            ai_response=str(turn.get("ai_response", "")),
+            context_turns=context_turns,
+            context_module=context_module,
+        )
         jsv = build_jsv_from_hint(
             interaction_id=interaction_id,
             turn_number=turn_number,
