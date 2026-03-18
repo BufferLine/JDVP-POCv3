@@ -1,0 +1,21 @@
+{
+  "dataset_root": "data/generated-local-trials/local-turn-sim-trial100/v2",
+  "output_root": "data/runs/local-turn-sim-trial100-matrix",
+  "resume": true,
+  "runs": [
+    {
+      "label": "heuristic",
+      "track_name": "heuristic_baseline"
+    },
+    {
+      "label": "fewshot_gemma3_4b",
+      "track_name": "fewshot_prompt",
+      "env": {
+        "JDVP_LLM_BASE_URL": "http://localhost:11434/v1",
+        "JDVP_LLM_API_KEY": "dummy",
+        "JDVP_LLM_MODEL": "gemma3:4b",
+        "JDVP_FEWSHOT_PACK_PATH": "data/baselines/fewshot_regression_general_v1/fewshot-pack.json"
+      }
+    }
+  ]
+}

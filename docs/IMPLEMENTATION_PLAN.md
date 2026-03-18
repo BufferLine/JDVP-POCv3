@@ -248,14 +248,25 @@ Goal:
 
 Tasks:
 
-1. run a 100-item local generation trial for `llm_turn_simulated` and inspect rejection/failure patterns
-2. review `v2` preview samples and remove obviously synthetic or low-signal patterns
-3. widen scenario diversity without destabilizing the stable `v1` regression pack
-4. add more realistic multi-turn decision structures beyond the simple three-turn arc
+1. keep the `5-turn` generation workflow as the current research default and treat `7-turn` as an explicit follow-up experiment, not the baseline
+2. continue comparing `gpt-oss:20b`, `gemma3:27b`, and `gemma3:4b` on the same `5-turn` scenario pack before scaling to larger research corpora
+3. review `v2` preview samples and remove obviously synthetic or low-signal patterns
+4. widen scenario diversity without destabilizing the stable `v1` regression pack
 
 Exit condition:
 
 - richer datasets are useful for research loops and manual review, while `v1` remains a clean regression floor
+
+Current checkpoint:
+
+- `5-turn` research generation produced usable small-sample outputs on `gpt-oss:20b` and `gemma3:27b`
+- `5-turn` research generation now also completed `300-item` runs for `gpt-oss:20b`, `gemma3:27b`, and `gemma3:4b`
+- `7-turn` generation remains exploratory because the current prompts introduce too much repetition
+- the completed `300-item` generation experiments are:
+  - `remote-5turn-gptoss20b-300`
+  - `local-5turn-gemma27b-300`
+  - `remote-5turn-gemma4b-300`
+- the next restart should use the exact commands captured in `docs/OPERATIONS.md`
 
 ### Priority 5: Few-Shot To Low-Cost ML
 

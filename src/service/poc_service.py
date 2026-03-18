@@ -293,6 +293,25 @@ def run_interaction(request: RunRequest) -> RunResult:
     run_dir = request.output_root / request.run_id
     catalog = CatalogStore()
     raw_interaction: dict[str, Any] | None = None
+
+    def _write_failure_artifact(exc: Exception) -> None:
+        payload: dict[str, Any] = {
+            "run_id": request.run_id,
+            "track_name": request.track_name,
+            "input_path": str(request.input_path),
+            "error_type": exc.__class__.__name__,
+            "error_message": str(exc),
+        }
+        raw_response = getattr(exc, "raw_response", None)
+        attempt_responses = getattr(exc, "attempt_responses", None)
+        if isinstance(raw_response, str):
+            payload["raw_response"] = raw_response
+        if isinstance(attempt_responses, list):
+            payload["attempt_responses"] = [str(item) for item in attempt_responses]
+        if raw_interaction is not None and "interaction_id" in raw_interaction:
+            payload["interaction_id"] = str(raw_interaction["interaction_id"])
+        write_json(run_dir / "errors" / "run_error.json", payload)
+
     try:
         catalog.upsert_run(
             CatalogRunRecord(
@@ -361,7 +380,8 @@ def run_interaction(request: RunRequest) -> RunResult:
             message=f"input file not found: {request.input_path}",
             details={"input_path": str(request.input_path)},
         ) from exc
-    except ServiceError:
+    except ServiceError as exc:
+        _write_failure_artifact(exc)
         catalog.upsert_run(
             CatalogRunRecord(
                 run_id=request.run_id,
@@ -382,6 +402,7 @@ def run_interaction(request: RunRequest) -> RunResult:
         )
         raise
     except Exception as exc:
+        _write_failure_artifact(exc)
         catalog.upsert_run(
             CatalogRunRecord(
                 run_id=request.run_id,

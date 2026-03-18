@@ -94,6 +94,81 @@ Current operational note:
 - `config/datasets/general_scenarios_v1.json` remains the stable regression pack
 - `config/datasets/general_scenarios_v2.json` is the richer research pack and should be reviewed through preview flows before it influences baseline policy
 
+## Current Research Commands
+
+Use these commands to reproduce the current `5-turn` generation experiments.
+
+Remote `gpt-oss:20b` on `192.168.50.201`:
+
+```bash
+export JDVP_LLM_BASE_URL=http://192.168.50.201:11434/v1
+export JDVP_LLM_API_KEY=dummy
+export JDVP_LLM_MODEL=gpt-oss:20b
+export JDVP_LLM_TIMEOUT_SECONDS=240
+
+python3 -m src.dataset.generate_dataset \
+  --dataset-name remote-5turn-gptoss20b-300 \
+  --dataset-version v2 \
+  --output-root data/generated-5turn-runs \
+  --scenario-pack config/datasets/general_scenarios_5turn_smoke.json \
+  --count-per-scenario 150 \
+  --generation-mode llm_turn_simulated
+```
+
+Local `gemma3:27b`:
+
+```bash
+export JDVP_LLM_BASE_URL=http://localhost:11434/v1
+export JDVP_LLM_API_KEY=dummy
+export JDVP_LLM_MODEL=gemma3:27b
+export JDVP_LLM_TIMEOUT_SECONDS=240
+
+python3 -m src.dataset.generate_dataset \
+  --dataset-name local-5turn-gemma27b-300 \
+  --dataset-version v2 \
+  --output-root data/generated-5turn-runs \
+  --scenario-pack config/datasets/general_scenarios_5turn_smoke.json \
+  --count-per-scenario 150 \
+  --generation-mode llm_turn_simulated
+```
+
+Remote `gemma3:4b` on `192.168.50.132`:
+
+```bash
+export JDVP_LLM_BASE_URL=http://192.168.50.132:11434/v1
+export JDVP_LLM_API_KEY=dummy
+export JDVP_LLM_MODEL=gemma3:4b
+export JDVP_LLM_TIMEOUT_SECONDS=240
+
+python3 -m src.dataset.generate_dataset \
+  --dataset-name remote-5turn-gemma4b-300 \
+  --dataset-version v2 \
+  --output-root data/generated-5turn-runs \
+  --scenario-pack config/datasets/general_scenarios_5turn_smoke.json \
+  --count-per-scenario 150 \
+  --generation-mode llm_turn_simulated
+```
+
+Progress checks:
+
+```bash
+find data/generated-5turn-runs/remote-5turn-gptoss20b-300/v2/interactions -name '*.json' | wc -l
+find data/generated-5turn-runs/local-5turn-gemma27b-300/v2/interactions -name '*.json' | wc -l
+find data/generated-5turn-runs/remote-5turn-gemma4b-300/v2/interactions -name '*.json' | wc -l
+```
+
+Current completed datasets:
+
+- `data/generated-5turn-runs/remote-5turn-gptoss20b-300/v2`
+- `data/generated-5turn-runs/local-5turn-gemma27b-300/v2`
+- `data/generated-5turn-runs/remote-5turn-gemma4b-300/v2`
+
+Manual review summary:
+
+- `gpt-oss:20b` produced the most natural `5-turn` conversations and the clearest gradual state change
+- `gemma3:27b` was slightly more rigid but still strong enough as the local high-quality fallback
+- `gemma3:4b` was usable for research-scale generation, but noticeably more generic and repetitive than the other two
+
 Schema sync check:
 
 - run `python3 scripts/check_protocol_schema_sync.py --require-upstream` before or alongside vendor snapshot refreshes

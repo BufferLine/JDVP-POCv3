@@ -4,3 +4,9 @@ __pycache__/
 data/runs/
 data/catalog/
 data/models/
+data/generated-5turn-runs/
+data/generated-5turn-smoke/
+data/generated-7turn-smoke/
+data/generated-local-trials/
+data/generated-smoke/
+data/logs/

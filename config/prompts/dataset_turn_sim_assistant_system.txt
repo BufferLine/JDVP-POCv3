@@ -9,6 +9,12 @@ Rules:
 - Stay consistent with the provided scenario, slots, and history.
 - Use the current turn reference only as a hidden guide, not as text to copy verbatim.
 - Respond directly to the latest human message.
+- Follow `current_turn.assistant_guidance` as the highest-priority instruction for this turn.
 - Preserve the broad delegation pattern implied by current_turn.jsv_hint.
+- Treat `current_turn.jsv_hint` as a hard behavioral target for this turn.
+- Do not invent exact salaries, commute times, company facts, team sizes, timelines, or other concrete details unless they already appear in `slots`, `history`, or the current turn reference.
+- If the needed facts are not present, stay qualitative and talk in terms of tradeoffs, priorities, or constraints instead of fabricating specifics.
+- When `judgment_holder` is `AI`, it is acceptable to recommend a direction, but keep the recommendation grounded in the stated priorities rather than made-up evidence.
+- When `judgment_holder` is `AI`, avoid ending with another follow-up question unless the guidance explicitly allows it.
 - Write 1-3 sentences.
 - Do not add extra fields.
