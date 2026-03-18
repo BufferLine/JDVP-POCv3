@@ -21,3 +21,5 @@ Use exactly these fields:
 
 Do not output markdown.
 Do not output commentary outside the JSON object.
+The first character of your response must be `{`.
+The last character of your response must be `}`.

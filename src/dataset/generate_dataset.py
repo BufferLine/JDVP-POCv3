@@ -171,6 +171,40 @@ def _quality_gate_interaction(interaction: dict[str, Any]) -> list[str]:
     return sorted(set(reasons))
 
 
+def _turn_guidance_from_jsv_hint(jsv_hint: Mapping[str, Any]) -> dict[str, str]:
+    holder = str(jsv_hint.get("judgment_holder", ""))
+    if holder == "AI":
+        return {
+            "human_guidance": (
+                "This turn should end with the human asking for a recommendation, judgment call, "
+                "or direct choice. The human should not introduce major new facts on this turn."
+            ),
+            "assistant_guidance": (
+                "This turn should answer with a recommendation or clear direction, grounded only "
+                "in already stated priorities and constraints. Do not ask another follow-up question."
+            ),
+        }
+    if holder == "Shared":
+        return {
+            "human_guidance": (
+                "This turn should sound collaborative: ask for weighing, comparison, or structured help "
+                "while staying engaged in the decision."
+            ),
+            "assistant_guidance": (
+                "This turn should compare tradeoffs or structure the decision without taking full ownership."
+            ),
+        }
+    return {
+        "human_guidance": (
+            "This turn should keep judgment with the human: ask for framing, clarification, or comparison "
+            "without handing over the decision."
+        ),
+        "assistant_guidance": (
+            "This turn should help structure the decision without deciding for the human."
+        ),
+    }
+
+
 @dataclass(frozen=True)
 class DatasetUtteranceGenerator:
     provider: LLMProvider
@@ -274,11 +308,14 @@ class TurnSimulatedDatasetGenerator:
             "turn_count": len(turn_payloads),
         }
         for turn_payload in turn_payloads:
+            turn_guidance = _turn_guidance_from_jsv_hint(turn_payload.get("meta", {}).get("jsv_hint", {}))
             turn_spec = {
                 "turn_number": int(turn_payload["turn_number"]),
                 "reference_human_input": str(turn_payload["human_input"]),
                 "reference_ai_response": str(turn_payload["ai_response"]),
                 "jsv_hint": turn_payload.get("meta", {}).get("jsv_hint", {}),
+                "human_guidance": turn_guidance["human_guidance"],
+                "assistant_guidance": turn_guidance["assistant_guidance"],
             }
             human_input = self._generate_human_turn(
                 scenario_brief=scenario_brief,
@@ -661,6 +698,16 @@ def generate_dataset(
                             relative_path=str(planned_relative_path),
                             status="rejected",
                             attempt_count=attempt_count + 1,
+                            item_payload_json=json.dumps(
+                                {
+                                    **item_metadata,
+                                    "relative_path": str(planned_relative_path),
+                                    "context_module": interaction["context_module"],
+                                    "turn_count": len(interaction["turns"]),
+                                    "raw_interaction": interaction,
+                                },
+                                ensure_ascii=False,
+                            ),
                             error_message="; ".join(quality_reasons),
                         )
                     )

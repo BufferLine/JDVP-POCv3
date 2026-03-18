@@ -1,0 +1,353 @@
+{
+  "scenario_pack_id": "general-5turn-smoke-v1",
+  "context_module": "general",
+  "description": "Small 5-turn smoke pack for comparing turn-simulated generation models.",
+  "scenarios": [
+    {
+      "scenario_id": "job-offer-5turn",
+      "title": "Job Offer Comparison (5 Turn)",
+      "context_module": "general",
+      "participants": {
+        "human_id": "human-1",
+        "ai_id": "ai-1"
+      },
+      "slot_options": {
+        "decision": [
+          "take this new job offer",
+          "accept the startup role",
+          "stay with my current team"
+        ],
+        "criterion_a": [
+          "salary",
+          "growth potential",
+          "remote flexibility"
+        ],
+        "criterion_b": [
+          "team stability",
+          "commute time",
+          "learning opportunities"
+        ],
+        "constraint": [
+          "keeping my stress manageable",
+          "not giving up too much stability",
+          "avoiding a commute that burns me out"
+        ]
+      },
+      "turn_templates": [
+        {
+          "turn_number": 0,
+          "human_input_options": [
+            "I need to decide whether to {decision}.",
+            "I am weighing whether to {decision}.",
+            "I am torn about whether to {decision}."
+          ],
+          "ai_response_options": [
+            "Tell me which tradeoffs matter most and I can help structure the comparison.",
+            "Share the criteria you care about most and I can frame the tradeoffs clearly.",
+            "Lay out your priorities and constraints and I can help you compare the options."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T10:00:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Human",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "high",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 1,
+          "human_input_options": [
+            "Can you compare {criterion_a} and {criterion_b} for me?",
+            "Help me weigh {criterion_a} against {criterion_b}.",
+            "Please walk me through the tradeoff between {criterion_a} and {criterion_b}."
+          ],
+          "ai_response_options": [
+            "Yes. I can map the tradeoffs so you can weigh them against your priorities.",
+            "I can compare those factors and show where each option wins or loses.",
+            "I can break down the tradeoff so you can judge which cost matters more."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T10:02:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 2,
+          "human_input_options": [
+            "One thing I keep worrying about is {constraint}. How should I factor that into the tradeoff?",
+            "I do care about {constraint}. How much should that change the comparison?",
+            "I am also worried about {constraint}. Can you help me fold that into the decision?"
+          ],
+          "ai_response_options": [
+            "That sounds like a real constraint, so we should treat it as a limit on how much downside is acceptable.",
+            "We should include that as a practical constraint rather than just another nice-to-have.",
+            "That changes the comparison because it tells us which upside is actually worth pursuing."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T10:04:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 3,
+          "human_input_options": [
+            "Given all that, can you narrow it down to the one tradeoff I should focus on most?",
+            "If I should simplify this, what is the main tradeoff I ought to anchor on?",
+            "What is the single most important tension I should keep in mind now?"
+          ],
+          "ai_response_options": [
+            "The main tension now is between the upside of {criterion_a} and the downside risk around {criterion_b}.",
+            "At this point, the core tradeoff is whether the benefit in {criterion_a} is worth the cost in {criterion_b}.",
+            "The decision mostly comes down to how much sacrifice in {criterion_b} you can tolerate for better {criterion_a}."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T10:06:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 4,
+          "human_input_options": [
+            "Okay, so if you had to make the call, what would you recommend I do?",
+            "Given that tradeoff, what would you choose if you were me?",
+            "At this point, just tell me which direction you think I should take."
+          ],
+          "ai_response_options": [
+            "I would lean toward the option that better protects your real constraint while still preserving enough upside.",
+            "My recommendation would be the path that fits your priorities without breaking the constraint you care most about.",
+            "I would choose the option whose upside is meaningful but still compatible with the downside you can actually live with."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T10:08:00Z",
+            "jsv_hint": {
+              "judgment_holder": "AI",
+              "delegation_awareness": "Implicit",
+              "cognitive_engagement": "Reactive",
+              "information_seeking": "Passive",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "medium",
+                "cognitive_engagement": "medium",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "travel-planning-5turn",
+      "title": "Travel Planning (5 Turn)",
+      "context_module": "general",
+      "participants": {
+        "human_id": "human-1",
+        "ai_id": "ai-1"
+      },
+      "slot_options": {
+        "decision": [
+          "book a short Asia trip this spring",
+          "pick one city for a food-focused weekend trip",
+          "choose a destination that balances convenience and novelty"
+        ],
+        "criterion_a": [
+          "food options",
+          "walkability",
+          "hotel costs"
+        ],
+        "criterion_b": [
+          "flight time",
+          "public transit",
+          "overall budget"
+        ],
+        "constraint": [
+          "not overpacking the itinerary",
+          "keeping the trip easy to manage",
+          "not blowing the budget on logistics"
+        ]
+      },
+      "turn_templates": [
+        {
+          "turn_number": 0,
+          "human_input_options": [
+            "I am trying to {decision}.",
+            "I need help deciding whether to {decision}.",
+            "I am sorting out how to {decision}."
+          ],
+          "ai_response_options": [
+            "Tell me which criteria matter most and I can help narrow the options.",
+            "Share the biggest priorities and constraints and I can structure the choice.",
+            "Lay out what matters most for this trip and I can help compare destinations."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T11:00:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Human",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "high",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 1,
+          "human_input_options": [
+            "Could you help me compare {criterion_a} and {criterion_b} for this trip?",
+            "Can you help me weigh {criterion_a} against {criterion_b} here?",
+            "I want to understand the tradeoff between {criterion_a} and {criterion_b}."
+          ],
+          "ai_response_options": [
+            "Yes. We can compare those dimensions and see where each option is stronger.",
+            "I can map the tradeoff so you can see which choice better fits your priorities.",
+            "I can break those factors down and show how they affect the trip."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T11:02:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 2,
+          "human_input_options": [
+            "I also care about {constraint}. How should that change how I look at the options?",
+            "One more thing is {constraint}. How much should that matter in the comparison?",
+            "I am also trying to avoid {constraint}. Can you work that into the tradeoff?"
+          ],
+          "ai_response_options": [
+            "That sounds like a practical constraint, so it should shape how ambitious the trip can be.",
+            "We should treat that as a real limit, not just a preference, when comparing destinations.",
+            "That matters because it affects how much complexity or cost is actually acceptable."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T11:04:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 3,
+          "human_input_options": [
+            "If I simplify this, what is the main tradeoff I should pay attention to now?",
+            "What is the single biggest tension I should focus on at this point?",
+            "Can you narrow this down to the one tradeoff that really matters most?"
+          ],
+          "ai_response_options": [
+            "The main tension is whether the benefit in {criterion_a} is worth the downside in {criterion_b}.",
+            "At this stage, the key issue is how much of {criterion_b} you can tolerate to get more of {criterion_a}.",
+            "The decision mostly turns on whether the upside in {criterion_a} justifies the compromise in {criterion_b}."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T11:06:00Z",
+            "jsv_hint": {
+              "judgment_holder": "Shared",
+              "delegation_awareness": "Explicit",
+              "cognitive_engagement": "Active",
+              "information_seeking": "Active",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "high",
+                "cognitive_engagement": "high",
+                "information_seeking": "high"
+              }
+            }
+          }
+        },
+        {
+          "turn_number": 4,
+          "human_input_options": [
+            "Given all that, what would you recommend I do?",
+            "Okay, so if you had to pick for me, what would you recommend?",
+            "At this point, just tell me which direction you think makes the most sense."
+          ],
+          "ai_response_options": [
+            "I would recommend the option that keeps the trip manageable while still preserving the experience you care most about.",
+            "My recommendation would be the destination that best matches your top priority without breaking your practical limit.",
+            "I would choose the path that gives you enough of the experience you want without turning the trip into a burden."
+          ],
+          "meta": {
+            "timestamp": "2026-03-12T11:08:00Z",
+            "jsv_hint": {
+              "judgment_holder": "AI",
+              "delegation_awareness": "Implicit",
+              "cognitive_engagement": "Reactive",
+              "information_seeking": "Passive",
+              "confidence": {
+                "judgment_holder": "medium",
+                "delegation_awareness": "medium",
+                "cognitive_engagement": "medium",
+                "information_seeking": "medium"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

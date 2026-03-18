@@ -177,6 +177,8 @@ Implemented and working:
 - M6 dataset generation, versioned manifests, richer `v2` scenario packs, and preview generation
 - provider-backed LLM utterance materialization for research dataset generation
 - provider-backed turn-by-turn dataset simulation for richer research conversations
+- dataset-generation SQLite recovery with accepted/failed item resume behavior
+- lightweight quality gates for LLM-backed dataset generation with `rejected` item tracking
 - M7 few-shot pack creation plus benchmark planning and execution
 - M8 service boundary, JSON transport, and local/CI validation unification
 
@@ -185,6 +187,7 @@ Operational additions beyond the original milestone text:
 - lightweight SQLite catalog for generated datasets and JDVP run state
 - failed-run inspection and rerun scripts for unreliable LLM execution
 - richer research dataset blueprints separated from the stable regression dataset
+- dataset-generation run inspection and failed-item inspection scripts
 
 ## Roadmap
 
@@ -245,13 +248,25 @@ Goal:
 
 Tasks:
 
-1. review `v2` preview samples and remove obviously synthetic or low-signal patterns
-2. widen scenario diversity without destabilizing the stable `v1` regression pack
-3. add more realistic multi-turn decision structures beyond the simple three-turn arc
+1. keep the `5-turn` generation workflow as the current research default and treat `7-turn` as an explicit follow-up experiment, not the baseline
+2. continue comparing `gpt-oss:20b`, `gemma3:27b`, and `gemma3:4b` on the same `5-turn` scenario pack before scaling to larger research corpora
+3. review `v2` preview samples and remove obviously synthetic or low-signal patterns
+4. widen scenario diversity without destabilizing the stable `v1` regression pack
 
 Exit condition:
 
 - richer datasets are useful for research loops and manual review, while `v1` remains a clean regression floor
+
+Current checkpoint:
+
+- `5-turn` research generation produced usable small-sample outputs on `gpt-oss:20b` and `gemma3:27b`
+- `5-turn` research generation now also completed `300-item` runs for `gpt-oss:20b`, `gemma3:27b`, and `gemma3:4b`
+- `7-turn` generation remains exploratory because the current prompts introduce too much repetition
+- the completed `300-item` generation experiments are:
+  - `remote-5turn-gptoss20b-300`
+  - `local-5turn-gemma27b-300`
+  - `remote-5turn-gemma4b-300`
+- the next restart should use the exact commands captured in `docs/OPERATIONS.md`
 
 ### Priority 5: Few-Shot To Low-Cost ML
 
@@ -290,15 +305,15 @@ Exit condition:
 
 Use this order for the next implementation passes:
 
-1. dataset generation and preview review
-2. dataset-scoped JDVP batch execution
+1. run a 100-item local `llm_turn_simulated` generation trial and inspect reject/failure breakdowns
+2. dataset generation and preview review
 3. model-by-model test runs on shared dataset slices
 4. ensemble summaries and model benchmarking
 5. few-shot-derived low-cost ML baseline exploration
 
 Current next task:
 
-- expand operational recovery around cataloged `dataset run` units, especially failed-slice inspection and replay
+- run a local 100-item `llm_turn_simulated` generation experiment and tune model/prompt/quality-gate settings from the resulting reject/failure profile
 
 ## Deferred Automation
 

@@ -28,6 +28,8 @@ class OpenAICompatibleProvider:
     model: str
     api_key: str
     timeout_seconds: float = 30.0
+    prefer_json_mode: bool = True
+    max_tokens: int | None = None
 
     def generate(self, *, system_prompt: str, user_prompt: str) -> str:
         payload = {
@@ -38,22 +40,13 @@ class OpenAICompatibleProvider:
             ],
             "temperature": 0,
         }
-        body = json.dumps(payload).encode("utf-8")
+        if self.max_tokens is not None:
+            payload["max_tokens"] = self.max_tokens
+        if self.prefer_json_mode:
+            payload["response_format"] = {"type": "json_object"}
+
         endpoint = self.base_url.rstrip("/") + "/chat/completions"
-        req = request.Request(
-            endpoint,
-            data=body,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {self.api_key}",
-            },
-            method="POST",
-        )
-        try:
-            with request.urlopen(req, timeout=self.timeout_seconds) as response:
-                raw = json.loads(response.read().decode("utf-8"))
-        except error.URLError as exc:
-            raise RuntimeError(f"provider request failed: {exc}") from exc
+        raw = self._request(endpoint=endpoint, payload=payload)
         choices = raw.get("choices")
         if not isinstance(choices, list) or not choices:
             raise RuntimeError("provider response missing choices")
@@ -62,6 +55,41 @@ class OpenAICompatibleProvider:
         if not isinstance(content, str) or not content.strip():
             raise RuntimeError("provider response missing message content")
         return content
+
+    def _request(self, *, endpoint: str, payload: dict[str, Any]) -> dict[str, Any]:
+        req = request.Request(
+            endpoint,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.api_key}",
+            },
+            method="POST",
+        )
+        try:
+            with request.urlopen(req, timeout=self.timeout_seconds) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except error.HTTPError as exc:
+            if payload.get("response_format") is not None and exc.code in {400, 404, 422}:
+                fallback_payload = dict(payload)
+                fallback_payload.pop("response_format", None)
+                req = request.Request(
+                    endpoint,
+                    data=json.dumps(fallback_payload).encode("utf-8"),
+                    headers={
+                        "Content-Type": "application/json",
+                        "Authorization": f"Bearer {self.api_key}",
+                    },
+                    method="POST",
+                )
+                try:
+                    with request.urlopen(req, timeout=self.timeout_seconds) as response:
+                        return json.loads(response.read().decode("utf-8"))
+                except error.URLError as fallback_exc:
+                    raise RuntimeError(f"provider request failed: {fallback_exc}") from fallback_exc
+            raise RuntimeError(f"provider request failed: {exc}") from exc
+        except error.URLError as exc:
+            raise RuntimeError(f"provider request failed: {exc}") from exc
 
 
 @dataclass
@@ -119,6 +147,7 @@ class LLMObserverTrack(TrackExtractor):
         self.model_id = model_id
         self.prompt_version = prompt_version
         self.system_prompt = load_prompt("llm_observer_system.txt")
+        self.max_normalization_attempts = 4
 
     def _build_user_prompt(
         self,
@@ -157,8 +186,52 @@ class LLMObserverTrack(TrackExtractor):
             context_turns=context_turns,
             context_module=context_module,
         )
-        raw_response = self.provider.generate(system_prompt=self.system_prompt, user_prompt=user_prompt)
-        normalized = normalize_llm_response(raw_response)
+        raw_response = ""
+        last_error: LLMNormalizationError | None = None
+        current_prompt = user_prompt
+        attempt_responses: list[str] = []
+        for attempt in range(self.max_normalization_attempts):
+            raw_response = self.provider.generate(system_prompt=self.system_prompt, user_prompt=current_prompt)
+            attempt_responses.append(raw_response)
+            try:
+                normalized = normalize_llm_response(raw_response)
+                break
+            except LLMNormalizationError as exc:
+                last_error = LLMNormalizationError(
+                    str(exc),
+                    raw_response=raw_response,
+                    attempt_responses=list(attempt_responses),
+                )
+                if attempt + 1 >= self.max_normalization_attempts:
+                    raise last_error
+                current_prompt = (
+                    f"{user_prompt}\n"
+                    "previous_response_was_invalid_json: true\n"
+                    "repair_instruction: Return one JSON object only. Do not use markdown fences. "
+                    "Do not add commentary before or after the JSON. "
+                    "The response must start with { and end with }. "
+                    "Always include all required fields and at least one evidence span.\n"
+                    "required_schema_template:\n"
+                    '{'
+                    '"judgment_holder":"Human|Shared|AI|Undefined",'
+                    '"delegation_awareness":"Explicit|Implicit|Absent",'
+                    '"cognitive_engagement":"Active|Reactive|Passive",'
+                    '"information_seeking":"Active|Passive|None",'
+                    '"confidence":{'
+                    '"judgment_holder":"high|medium|low",'
+                    '"delegation_awareness":"high|medium|low",'
+                    '"cognitive_engagement":"high|medium|low",'
+                    '"information_seeking":"high|medium|low"'
+                    '},'
+                    '"evidence_spans":[{"text":"...","category":"..."}],'
+                    '"observer_notes":"..."'
+                    '}\n'
+                    f"previous_response:\n{raw_response}\n"
+                )
+        else:
+            if last_error is not None:
+                raise last_error
+            raise RuntimeError("unreachable normalization state")
         return TrackOutput(
             track_id=self.track_id,
             model_id=self.model_id,
@@ -188,7 +261,18 @@ def create_env_backed_provider() -> tuple[LLMProvider, str]:
         api_key = os.getenv("JDVP_LLM_API_KEY")
         if not base_url or not api_key or not model:
             raise RuntimeError("JDVP_LLM_BASE_URL, JDVP_LLM_API_KEY, and JDVP_LLM_MODEL are required")
-        provider: LLMProvider = OpenAICompatibleProvider(base_url=base_url, model=model, api_key=api_key)
+        prefer_json_mode = os.getenv("JDVP_LLM_PREFER_JSON_MODE", "1") != "0"
+        timeout_seconds = float(os.getenv("JDVP_LLM_TIMEOUT_SECONDS", "30"))
+        max_tokens_value = os.getenv("JDVP_LLM_MAX_TOKENS")
+        max_tokens = int(max_tokens_value) if max_tokens_value else None
+        provider = OpenAICompatibleProvider(
+            base_url=base_url,
+            model=model,
+            api_key=api_key,
+            timeout_seconds=timeout_seconds,
+            prefer_json_mode=prefer_json_mode,
+            max_tokens=max_tokens,
+        )
         return provider, model
 
     if provider_kind == "static_response":

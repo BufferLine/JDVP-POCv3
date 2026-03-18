@@ -31,6 +31,7 @@ Current workspace status as of 2026-03-16:
 - run storage persists canonical outputs, per-turn extracts, manifests, and resumable checkpoints
 - benchmark and few-shot regression flows are implemented and used by the validation suite
 - dataset generation supports stable `v1` regression packs plus richer `v2` research packs with turn variants and mixed blueprints
+- LLM-backed dataset generation supports one-shot utterance materialization plus turn-simulated generation, with resumable item-level recovery and lightweight quality gates
 - preview generation is available for quick human review of richer datasets
 - a lightweight SQLite catalog tracks generated datasets plus JDVP run state for recovery and reruns
 - failed runs can be listed and retried by catalog state or scenario filter
@@ -40,7 +41,7 @@ Current focus:
 
 - keep `v1` stable as the regression baseline
 - use `v2` and preview flows to expand research coverage without destabilizing CI
-- improve operational recovery for unreliable LLM runs before adding heavier orchestration
+- run a local 100-item `llm_turn_simulated` dataset-generation trial and tune rejection patterns before scaling up
 
 ## Design Rule
 

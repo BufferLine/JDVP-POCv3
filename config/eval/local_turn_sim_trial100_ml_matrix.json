@@ -1,0 +1,18 @@
+{
+  "dataset_root": "data/generated-local-trials/local-turn-sim-trial100/v2",
+  "output_root": "data/runs/local-turn-sim-trial100-ml-matrix",
+  "resume": true,
+  "runs": [
+    {
+      "label": "heuristic",
+      "track_name": "heuristic_baseline"
+    },
+    {
+      "label": "cheap_ml",
+      "track_name": "cheap_ml_baseline",
+      "env": {
+        "JDVP_FEWSHOT_PACK_PATH": "data/baselines/fewshot_regression_general_v1/fewshot-pack.json"
+      }
+    }
+  ]
+}
