@@ -315,6 +315,36 @@ Current next task:
 
 - run a local 100-item `llm_turn_simulated` generation experiment and tune model/prompt/quality-gate settings from the resulting reject/failure profile
 
+## Bugs (Codex Deep Review, 2026-03-20)
+
+All items below were reproduced by Codex workers during an 8-agent parallel review.
+
+### Critical
+
+1. **dv_ordinal.py:67** — non-general context DV emits empty `extensions: {}` → schema rejects (missing required delta fields like `delta_risk_ownership`)
+2. **schema_validate.py:44** — no `format_checker` on Draft202012Validator → `timestamp="not-a-date"` passes JSV validation
+3. **trajectory.py:18 vs raw_interaction.schema.json:45** — 1-turn interaction produces 0 DVs → trajectory build raises ValueError, but raw schema allows `minItems: 1`
+4. **poc_service.py:152 + run_storage.py:49** — non-contiguous/duplicate `turn_number` accepted → context leaks current turn into history, duplicate overwrites per-turn files
+5. **cheap_ml_baseline.py:107** — empty fewshot pack → empty-string labels for all fields → downstream schema violation
+6. **ensemble_benchmark.py:92** — same `track_name` across runs → dict key collision → self-comparison → false 0% disagreement
+7. **ensemble_benchmark.py:106** — missing turns silently excluded from scoring → incomplete runs can pass threshold checks
+8. **run_dataset.py:30** — `ok: false` response still exits with code 0 → CI treats failures as success
+9. **generate_dataset.py:605** — partial-failure rerun changes RNG consumption order → slot/blueprint/variant selection differs from original
+10. **run_fewshot_regression_suite.py:57** — `--clean` runs `shutil.rmtree` with no path guard → mass deletion if given repo root
+
+### Medium
+
+11. **poc_service.py:357** — all `FileNotFoundError` mapped to `input_not_found` even when schema root is missing
+12. **json_api.py:23** — `bool("false")` evaluates to True (string boolean parsing)
+13. **errors.py:12** — `ServiceError.__str__()` returns empty string (`Exception.args` not initialized)
+14. **dataset_run_service.py:71** — same `output_root` + different split → same `dataset_run_id` → catalog/summary collision
+15. **fewshot_prompt.py:34** — 0 examples after filtering → silent zero-shot without warning or metadata flag
+16. **llm_observer.py:89** — HTTP 200 + non-JSON body → raw `JSONDecodeError` escapes track layer
+17. **eval_service.py:80** — `JSONDecodeError` (subclass of ValueError) → misclassified as `benchmark_threshold_failed`
+18. **generate_dataset.py:782** — `pending_count` ignores rejected items → misleading progress file
+19. **rerun_failed_runs.py:21** — retry ID ignores cumulative count → overwrites previous retry artifacts
+20. **test gaps** — JSON API malformed payloads, validation suite pytest/upstream paths, empty-pack edges all untested
+
 ## Technical Debt And Quality Backlog
 
 Discovered during full-project review on 2026-03-20.

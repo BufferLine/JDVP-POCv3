@@ -9,14 +9,9 @@ from pathlib import Path
 from typing import Any
 
 from src.pipeline.run_storage import read_json, write_json, write_jsonl
+from src.protocol_core.enums import CORE_FIELD_NAMES
 
-
-CORE_FIELDS = (
-    "judgment_holder",
-    "delegation_awareness",
-    "cognitive_engagement",
-    "information_seeking",
-)
+CORE_FIELDS = CORE_FIELD_NAMES
 
 
 def _load_run_manifest(run_dir: Path) -> dict[str, Any]:
@@ -89,14 +84,18 @@ def compare_runs(
     if len(interaction_ids) != 1:
         raise ValueError("all runs must share one interaction_id")
 
-    track_rows: dict[str, dict[int, dict[str, Any]]] = {}
+    run_rows: dict[str, dict[int, dict[str, Any]]] = {}
     track_names: list[str] = []
+    run_keys: list[str] = []
     for run_dir, manifest in zip(run_dirs, manifests):
         track_name = str(manifest["track_name"])
+        run_id = str(manifest["run_id"])
         track_names.append(track_name)
-        track_rows[track_name] = _index_by_turn(_load_extracts(run_dir, track_name))
+        run_key = f"{run_id}:{track_name}"
+        run_keys.append(run_key)
+        run_rows[run_key] = _index_by_turn(_load_extracts(run_dir, track_name))
 
-    turn_numbers = sorted(set().union(*(rows.keys() for rows in track_rows.values())))
+    turn_numbers = sorted(set().union(*(rows.keys() for rows in run_rows.values())))
     comparisons: list[dict[str, Any]] = []
     total_field_comparisons = 0
     total_field_disagreements = 0
@@ -106,10 +105,10 @@ def compare_runs(
     for turn_number in turn_numbers:
         present_rows = []
         missing_tracks = []
-        for track_name in track_names:
-            row = track_rows[track_name].get(turn_number)
+        for run_key in run_keys:
+            row = run_rows[run_key].get(turn_number)
             if row is None:
-                missing_tracks.append(track_name)
+                missing_tracks.append(run_key)
             else:
                 present_rows.append(row)
         if len(present_rows) < 2:

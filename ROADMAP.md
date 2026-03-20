@@ -33,10 +33,38 @@ Updated: 2026-03-20
 - [ ] P5: Few-shot to low-cost ML — training rows, learned observer benchmark
 - [ ] P6: Experiment management boundary — catalog scope decision
 
+## Backlog — Bugs (Codex review, 2026-03-20, all reproduced)
+
+### Critical
+
+- [x] `dv_ordinal.py:67`: non-general context DV emits empty `extensions: {}` → removed (delta extensions not yet implemented)
+- [x] `schema_validate.py:44`: no `format_checker` → FormatChecker added to all validators
+- [x] `trajectory.py:18` vs `raw_interaction.schema.json:45`: raw schema minItems changed to 2
+- [x] `poc_service.py:152` + `run_storage.py:49`: context_turns now uses processed_turns list instead of index slicing
+- [x] `cheap_ml_baseline.py:107`: empty pack raises ValueError + artifact load validates field completeness
+- [x] `ensemble_benchmark.py:92`: keyed by `run_id:track_name` instead of `track_name` alone
+- [ ] `ensemble_benchmark.py:106`: missing turns silently excluded → incomplete runs score perfectly
+- [x] `run_dataset.py:30`: exits with code 1 when ok=false
+- [x] `generate_dataset.py:605`: per-item deterministic RNG seeding replaces shared RNG
+- [x] `run_fewshot_regression_suite.py:57`: path guard prevents rmtree on project root or ancestors
+
+### Medium
+
+- [x] `poc_service.py:357`: distinguishes input_not_found vs file_not_found based on pipeline stage
+- [x] `json_api.py:23`: _parse_bool() correctly handles string "false"/"true"
+- [x] `errors.py:12`: __post_init__ calls super().__init__(self.message)
+- [ ] `dataset_run_service.py:71`: same output_root + different split → same dataset_run_id collision
+- [ ] `fewshot_prompt.py:34`: 0 examples after filtering → silent zero-shot without warning
+- [ ] `llm_observer.py:89`: HTTP 200 + non-JSON body → raw JSONDecodeError escapes
+- [x] `eval_service.py:80`: JSONDecodeError caught before ValueError → benchmark_input_invalid
+- [x] `generate_dataset.py:782`: pending_count now subtracts rejected_count
+- [ ] `rerun_failed_runs.py:21`: retry ID ignores cumulative count → overwrites previous retries
+- [ ] JSON API + validation suite: malformed payloads and pytest/upstream paths untested
+
 ## Backlog — Tech Debt (High)
 
 - [ ] `dataset_run_service`: catch all exceptions per item, not just ServiceError
-- [ ] `ensemble_benchmark`: derive CORE_FIELDS from `protocol_core.enums` instead of hardcoding
+- [x] `ensemble_benchmark`: derive CORE_FIELDS from `protocol_core.enums` instead of hardcoding
 - [ ] OPERATIONS.md: document gemma12b runs + 5 undocumented scripts
 
 ## Backlog — Tech Debt (Medium)

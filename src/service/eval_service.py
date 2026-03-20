@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+import json
+
 from src.eval.run_fewshot_benchmark import run_fewshot_benchmark_plan
 from src.pipeline.run_storage import read_json
 from src.service.contracts import ExternalFewshotBenchmarkResult, SERVICE_RESPONSE_SCHEMA_VERSION
@@ -77,6 +79,12 @@ def run_fewshot_benchmark(request: FewshotBenchmarkRequest) -> FewshotBenchmarkR
         ) from exc
     except ServiceError:
         raise
+    except json.JSONDecodeError as exc:
+        raise ServiceError(
+            code="benchmark_input_invalid",
+            message=f"malformed JSON in benchmark plan or results: {exc}",
+            details={"plan_path": str(request.plan_path), "cause": str(exc)},
+        ) from exc
     except ValueError as exc:
         raise ServiceError(
             code="benchmark_threshold_failed",

@@ -13,6 +13,19 @@ from src.service.poc_service import RunRequest, run_interaction_response
 from src.shared_utils import load_json as _load_json
 
 
+def _parse_bool(value: Any) -> bool:
+    """Parse boolean from JSON payload, rejecting truthy strings like 'false'."""
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        if value.lower() in ("true", "1", "yes"):
+            return True
+        if value.lower() in ("false", "0", "no", ""):
+            return False
+        raise ValueError(f"cannot parse boolean from string: {value!r}")
+    return bool(value)
+
+
 def _run_interaction_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
     request = RunRequest(
         input_path=Path(payload["input_path"]),
@@ -20,7 +33,7 @@ def _run_interaction_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
         output_root=Path(payload["output_root"]),
         protocol_schema_root=Path(payload["protocol_schema_root"]) if payload.get("protocol_schema_root") else None,
         track_name=str(payload.get("track_name", "fixture_hint")),
-        resume=bool(payload.get("resume", False)),
+        resume=_parse_bool(payload.get("resume", False)),
     )
     return run_interaction_response(request)
 
@@ -52,7 +65,7 @@ def _run_dataset_from_payload(payload: dict[str, Any]) -> dict[str, Any]:
         split=(str(payload["split"]) if payload.get("split") is not None else None),
         scenario_id=(str(payload["scenario_id"]) if payload.get("scenario_id") is not None else None),
         max_items=(int(payload["max_items"]) if payload.get("max_items") is not None else None),
-        resume=bool(payload.get("resume", False)),
+        resume=_parse_bool(payload.get("resume", False)),
     )
     return run_dataset_response(request)
 

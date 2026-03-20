@@ -123,6 +123,7 @@ def build_pipeline_artifacts(
     track = create_track(track_name)
     if isinstance(track, FixtureHintTrack):
         track.set_turns(raw_interaction["turns"])
+    processed_turns: list[dict[str, Any]] = []
     for turn in raw_interaction["turns"]:
         meta = turn.get("meta", {})
         turn_number = int(turn["turn_number"])
@@ -147,9 +148,10 @@ def build_pipeline_artifacts(
                 written_turns=written_turns,
                 status="running",
             )
+            processed_turns.append(turn)
             continue
 
-        context_turns = raw_interaction["turns"][:turn_number]
+        context_turns = list(processed_turns)
         track_output = track.extract(
             interaction_id=interaction_id,
             turn_number=turn_number,
@@ -190,6 +192,7 @@ def build_pipeline_artifacts(
             written_turns=written_turns,
             status="running",
         )
+        processed_turns.append(turn)
 
     dv_sequence = [record.to_dict() for record in build_dv_sequence(jsv_sequence)]
     trajectory = build_trajectory(interaction_id, dv_sequence).to_dict()
@@ -355,6 +358,7 @@ def run_interaction(request: RunRequest) -> RunResult:
         )
         return result
     except FileNotFoundError as exc:
+        _write_failure_artifact(exc)
         catalog.upsert_run(
             CatalogRunRecord(
                 run_id=request.run_id,
@@ -373,10 +377,12 @@ def run_interaction(request: RunRequest) -> RunResult:
                 error_message=str(exc),
             )
         )
+        missing_path = str(getattr(exc, "filename", None) or exc)
+        is_input = raw_interaction is None
         raise ServiceError(
-            code="input_not_found",
-            message=f"input file not found: {request.input_path}",
-            details={"input_path": str(request.input_path)},
+            code="input_not_found" if is_input else "file_not_found",
+            message=f"{'input' if is_input else 'required'} file not found: {missing_path}",
+            details={"missing_path": missing_path, "input_path": str(request.input_path)},
         ) from exc
     except ServiceError as exc:
         _write_failure_artifact(exc)

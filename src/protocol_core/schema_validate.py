@@ -6,7 +6,8 @@ import json
 from pathlib import Path
 from typing import Any
 
-from jsonschema.validators import Draft202012Validator
+from jsonschema import Draft202012Validator
+from jsonschema import FormatChecker
 from referencing import Registry, Resource
 
 
@@ -42,10 +43,10 @@ class CanonicalSchemaValidator:
         return schemas
 
     def validate_jsv(self, payload: dict[str, Any]) -> None:
-        Draft202012Validator(self._schemas["jsv"]).validate(payload)
+        Draft202012Validator(self._schemas["jsv"], format_checker=FormatChecker()).validate(payload)
 
     def validate_dv(self, payload: dict[str, Any]) -> None:
-        Draft202012Validator(self._schemas["dv"]).validate(payload)
+        Draft202012Validator(self._schemas["dv"], format_checker=FormatChecker()).validate(payload)
 
     def validate_trajectory(self, payload: dict[str, Any]) -> None:
         patched = json.loads(json.dumps(self._schemas["trajectory"]))
@@ -54,4 +55,4 @@ class CanonicalSchemaValidator:
             "https://jdvp.local/schemas/dv-schema.json",
             Resource.from_contents(self._schemas["dv"]),
         )
-        Draft202012Validator(patched, registry=registry).validate(payload)
+        Draft202012Validator(patched, registry=registry, format_checker=FormatChecker()).validate(payload)

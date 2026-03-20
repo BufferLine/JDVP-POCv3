@@ -665,12 +665,15 @@ def generate_dataset(
                 accepted_count += 1
                 continue
             attempt_count = int(existing_row["attempt_count"]) if existing_row is not None else 0
+            # Use a per-item deterministic RNG so that skipping accepted items
+            # during a rerun does not shift the random sequence for later items.
+            item_rng = random.Random(seed + hash((scenario["scenario_id"], sample_index)))
             try:
                 interaction, item_metadata = _build_interaction(
                     dataset_name=dataset_name,
                     scenario=scenario,
                     sample_index=sample_index,
-                    rng=rng,
+                    rng=item_rng,
                     utterance_generator=utterance_generator,
                 )
                 validator.validate(interaction)
@@ -779,7 +782,7 @@ def generate_dataset(
         },
         "items": _manifest_items(items=manifest_items_seed, split_map=split_map),
     }
-    pending_count = max(0, target_item_count - accepted_count - failed_count)
+    pending_count = max(0, target_item_count - accepted_count - failed_count - rejected_count)
     _write_generation_progress(
         progress_path=progress_path,
         dataset_id=dataset_id,

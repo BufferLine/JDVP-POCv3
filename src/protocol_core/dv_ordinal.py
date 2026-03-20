@@ -64,8 +64,10 @@ def build_dv(
         ),
         "context_module": context_module,
     }
-    if context_module != "general" and "extensions" in before and "extensions" in after:
-        payload["extensions"] = {}
+    # Non-general contexts require domain-specific extension deltas (e.g.
+    # delta_risk_ownership for financial).  Until extension ordinal maps are
+    # implemented, omitting the key is safer than emitting an empty dict that
+    # will fail schema validation.
     return DVRecord(payload=payload)
 
 

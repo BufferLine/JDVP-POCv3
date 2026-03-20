@@ -105,6 +105,8 @@ class CheapMLBaselineTrack(TrackExtractor):
             self.field_models = self._train_models(pack["examples"])
 
     def _train_models(self, examples: list[dict[str, Any]]) -> dict[str, _FieldModel]:
+        if not examples:
+            raise ValueError("cannot train cheap_ml_baseline from an empty fewshot pack")
         field_doc_counts: dict[str, dict[str, int]] = {field: defaultdict(int) for field in CORE_FIELD_NAMES}
         field_token_counts: dict[str, dict[str, Counter[str]]] = {
             field: defaultdict(Counter) for field in CORE_FIELD_NAMES
@@ -157,6 +159,9 @@ class CheapMLBaselineTrack(TrackExtractor):
             str(field_name): _FieldModel.from_dict(field_payload)
             for field_name, field_payload in payload["field_models"].items()
         }
+        missing_fields = set(CORE_FIELD_NAMES) - set(field_models.keys())
+        if missing_fields:
+            raise ValueError(f"cheap ML artifact missing field models: {sorted(missing_fields)}")
         fewshot_pack_path = payload.get("fewshot_pack_path")
         return cls(
             fewshot_pack_path=Path(fewshot_pack_path) if fewshot_pack_path else None,

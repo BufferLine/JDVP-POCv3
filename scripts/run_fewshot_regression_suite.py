@@ -57,6 +57,9 @@ def resolve_path(path_text: str) -> Path:
 def run_suite(*, config_path: Path, output_root: Path, clean: bool = False) -> Path:
     config = load_json(config_path)
     if clean and output_root.exists():
+        resolved = output_root.resolve()
+        if resolved == ROOT or ROOT.is_relative_to(resolved):
+            raise ValueError(f"refusing to --clean a parent of the project root: {resolved}")
         shutil.rmtree(output_root)
 
     dataset_cfg = config["dataset"]
