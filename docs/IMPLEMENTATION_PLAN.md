@@ -315,6 +315,61 @@ Current next task:
 
 - run a local 100-item `llm_turn_simulated` generation experiment and tune model/prompt/quality-gate settings from the resulting reject/failure profile
 
+## Technical Debt And Quality Backlog
+
+Discovered during full-project review on 2026-03-20.
+
+### High Priority
+
+1. **dataset_run_service: broaden per-item exception handling**
+   - `dataset_run_service.py` catches only `ServiceError` in the per-item loop; any other exception aborts the entire batch
+   - fix: catch `Exception` per item, record in failure rows, let the batch complete
+
+2. **eval: decouple CORE_FIELDS from hardcoded tuple**
+   - `ensemble_benchmark.py` hardcodes `CORE_FIELDS` instead of deriving from protocol schema or `enums.py`
+   - fix: import from `protocol_core.enums.CORE_FIELD_NAMES` or validate against loaded schema
+
+3. **docs: document undocumented experiments and scripts**
+   - OPERATIONS.md is missing: gemma12b-300, gemma12b-smoke1 dataset runs
+   - OPERATIONS.md is missing scripts: `list_generation_runs.py`, `list_failed_generation_items.py`, `rerun_failed_generation_items.py`, `validate_contracts.py`, `prepare_remote_turn_sim_trial100_matrix.py`
+
+### Medium Priority
+
+4. **service: add catalog upsert error handling**
+   - `poc_service.py` and `dataset_run_service.py` do not catch SQLite errors on `catalog.upsert_*()` calls
+   - fix: wrap in try/except with logging so runs are not silently untracked
+
+5. **eval: add file I/O error handling**
+   - `ensemble_benchmark.py` `_load_run_manifest()` and `_load_extracts()` have no try/except
+   - fix: catch `FileNotFoundError` / `JSONDecodeError` with descriptive context
+
+6. **README status date stale**
+   - last updated 2026-03-16; should reflect latest project state
+
+7. **test coverage gaps for protocol_core**
+   - no direct tests for `build_jsv()`, `build_jsv_from_hint()`, or `CanonicalSchemaValidator`
+   - currently covered indirectly through integration tests; direct unit tests would improve confidence
+
+### Low Priority
+
+8. **poc_service: narrow _git_revision() exception scope**
+   - broad `except Exception` silently returns `"workspace-local"` on any failure
+   - fix: catch `subprocess.CalledProcessError` and `FileNotFoundError`, log others
+
+9. **run_validation_suite: import check_assistant_docs_sync instead of subprocess**
+   - currently spawns a subprocess; could import directly like `validate_contracts_main()`
+
+10. **dataset_run_service: avoid absolute-path dataset_run_id**
+    - `_build_dataset_run_id()` uses `Path.resolve()` as ID; breaks if paths change
+    - consider UUID or content-hash alternative
+
+11. **dataset generate_dataset: narrow broad exception catch**
+    - line 732 catches all `Exception` during interaction generation; masks programming errors
+    - fix: catch specific exceptions (`ValueError`, `RuntimeError`)
+
+12. **eval: add logging infrastructure**
+    - eval modules use `print()` only; no structured logging for long-running benchmarks
+
 ## Deferred Automation
 
 Only start this phase after M1-M8 justify the extra complexity.
