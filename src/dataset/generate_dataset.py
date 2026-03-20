@@ -667,7 +667,7 @@ def generate_dataset(
             attempt_count = int(existing_row["attempt_count"]) if existing_row is not None else 0
             # Use a per-item deterministic RNG so that skipping accepted items
             # during a rerun does not shift the random sequence for later items.
-            item_rng = random.Random(seed + hash((scenario["scenario_id"], sample_index)))
+            item_rng = random.Random(f"{seed}:{scenario['scenario_id']}:{sample_index}")
             try:
                 interaction, item_metadata = _build_interaction(
                     dataset_name=dataset_name,
