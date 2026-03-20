@@ -101,6 +101,7 @@ def compare_runs(
     total_field_disagreements = 0
     field_comparisons = {field_name: 0 for field_name in CORE_FIELDS}
     field_disagreements = {field_name: 0 for field_name in CORE_FIELDS}
+    skipped_turns: list[dict[str, Any]] = []
 
     for turn_number in turn_numbers:
         present_rows = []
@@ -112,6 +113,7 @@ def compare_runs(
             else:
                 present_rows.append(row)
         if len(present_rows) < 2:
+            skipped_turns.append({"turn_number": turn_number, "missing": missing_tracks, "reason": "fewer_than_2_present"})
             continue
 
         disagreements = _disagreement_fields(present_rows)
@@ -134,11 +136,14 @@ def compare_runs(
             }
         )
 
-    summary = {
+    summary: dict[str, Any] = {
         "interaction_id": manifests[0]["interaction_id"],
         "run_ids": [manifest["run_id"] for manifest in manifests],
         "track_names": track_names,
         "turns_compared": len(comparisons),
+        "turns_total": len(turn_numbers),
+        "turns_skipped": len(skipped_turns),
+        "skipped_turn_details": skipped_turns,
         "field_disagreement_rate": (
             total_field_disagreements / total_field_comparisons if total_field_comparisons else 0.0
         ),

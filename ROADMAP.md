@@ -43,7 +43,7 @@ Updated: 2026-03-20
 - [x] `poc_service.py:152` + `run_storage.py:49`: context_turns now uses processed_turns list instead of index slicing
 - [x] `cheap_ml_baseline.py:107`: empty pack raises ValueError + artifact load validates field completeness
 - [x] `ensemble_benchmark.py:92`: keyed by `run_id:track_name` instead of `track_name` alone
-- [ ] `ensemble_benchmark.py:106`: missing turns silently excluded → incomplete runs score perfectly
+- [x] `ensemble_benchmark.py:106`: skipped turns now tracked in summary (turns_skipped, skipped_turn_details)
 - [x] `run_dataset.py:30`: exits with code 1 when ok=false
 - [x] `generate_dataset.py:605`: per-item deterministic RNG seeding replaces shared RNG
 - [x] `run_fewshot_regression_suite.py:57`: path guard prevents rmtree on project root or ancestors
@@ -53,12 +53,12 @@ Updated: 2026-03-20
 - [x] `poc_service.py:357`: distinguishes input_not_found vs file_not_found based on pipeline stage
 - [x] `json_api.py:23`: _parse_bool() correctly handles string "false"/"true"
 - [x] `errors.py:12`: __post_init__ calls super().__init__(self.message)
-- [ ] `dataset_run_service.py:71`: same output_root + different split → same dataset_run_id collision
-- [ ] `fewshot_prompt.py:34`: 0 examples after filtering → silent zero-shot without warning
-- [ ] `llm_observer.py:89`: HTTP 200 + non-JSON body → raw JSONDecodeError escapes
+- [x] `dataset_run_service.py:71`: dataset_run_id now includes track_name and split
+- [x] `fewshot_prompt.py:34`: logs warning and sets _zero_shot_fallback flag when 0 examples
+- [x] `llm_observer.py:89`: non-JSON body wrapped in RuntimeError with context
 - [x] `eval_service.py:80`: JSONDecodeError caught before ValueError → benchmark_input_invalid
 - [x] `generate_dataset.py:782`: pending_count now subtracts rejected_count
-- [ ] `rerun_failed_runs.py:21`: retry ID ignores cumulative count → overwrites previous retries
+- [x] `rerun_failed_runs.py:21`: retry ID now checks for existing retries and increments
 - [ ] JSON API + validation suite: malformed payloads and pytest/upstream paths untested
 
 ## Backlog — Tech Debt (High)

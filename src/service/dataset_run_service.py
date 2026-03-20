@@ -68,8 +68,11 @@ class DatasetRunResult:
         ).to_dict()
 
 
-def _build_dataset_run_id(output_root: Path) -> str:
-    return str(output_root.resolve(strict=False))
+def _build_dataset_run_id(output_root: Path, track_name: str = "", split: str | None = None) -> str:
+    parts = [str(output_root.resolve(strict=False)), track_name]
+    if split:
+        parts.append(split)
+    return ":".join(parts)
 
 
 def _dataset_run_status(*, item_count: int, completed_count: int, failed_count: int) -> str:
@@ -97,7 +100,7 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
             items = items[: request.max_items]
 
         batch_root = request.output_root
-        dataset_run_id = _build_dataset_run_id(batch_root)
+        dataset_run_id = _build_dataset_run_id(batch_root, request.track_name, request.split)
         summary_path = batch_root / "dataset_run_summary.json"
         catalog = CatalogStore()
         catalog.upsert_dataset_run(

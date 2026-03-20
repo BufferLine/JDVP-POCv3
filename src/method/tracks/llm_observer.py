@@ -88,7 +88,13 @@ class OpenAICompatibleProvider:
             req = self._build_request(endpoint, payload)
             try:
                 with request.urlopen(req, timeout=self.timeout_seconds) as response:
-                    return json.loads(response.read().decode("utf-8"))
+                    body = response.read().decode("utf-8")
+                    try:
+                        return json.loads(body)
+                    except json.JSONDecodeError as json_exc:
+                        raise RuntimeError(
+                            f"provider returned non-JSON response (HTTP {response.status}): {body[:200]}"
+                        ) from json_exc
             except error.HTTPError as exc:
                 # json_mode fallback: not retryable, try once without response_format
                 if payload.get("response_format") is not None and exc.code in {400, 404, 422}:

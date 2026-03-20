@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from pathlib import Path
 from typing import Any
 
 from src.method.fewshot.selector import load_fewshot_pack, select_examples
 from src.pipeline.run_storage import read_json
+
+logger = logging.getLogger(__name__)
 
 from .llm_observer import LLMObserverTrack, LLMProvider, create_env_backed_provider
 
@@ -38,6 +41,12 @@ class FewshotPromptTrack(LLMObserverTrack):
             context_module=context_module,
             max_examples=len(self.fewshot_pack["examples"]),
         )
+        if not selected_examples:
+            logger.warning(
+                "fewshot_prompt: 0 examples after filtering (interaction=%s, context=%s) — running as zero-shot",
+                target_interaction_id, context_module,
+            )
+            self._zero_shot_fallback = True
         rendered_examples: list[str] = []
         for example in selected_examples:
             rendered_examples.append(
