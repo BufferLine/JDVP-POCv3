@@ -301,19 +301,36 @@ Exit condition:
 
 - the project has a clear boundary between lightweight cataloging and more expensive orchestration work
 
-## Working Sequence
+## Working Sequence (revised 2026-03-24)
 
-Use this order for the next implementation passes:
+Revised based on 5-agent cross-analysis of trial100 results. Full analysis: `docs/ANALYSIS_REPORT_2026-03-24.md`.
 
-1. run a 100-item local `llm_turn_simulated` generation trial and inspect reject/failure breakdowns
-2. dataset generation and preview review
-3. model-by-model test runs on shared dataset slices
-4. ensemble summaries and model benchmarking
-5. few-shot-derived low-cost ML baseline exploration
+### Phase A: Extraction Quality Foundation
+
+1. **system prompt decision rubric** — add per-field semantic definitions and boundary case guidance to `llm_observer_system.txt`; re-run trial100 zero-shot to measure disagreement reduction
+2. **compare_runs() unit tests** — add same-track multi-model comparison tests, semantic correctness assertions, and 0%-disagreement sanity check
+3. **pipeline observability** — per-turn latency logging, batch progress output, model-aware timeout presets, disagreement sanity warnings
+
+### Phase B: Evaluation Rigor
+
+4. **jsv_hint silver-label metric** — add hint-vs-extraction accuracy function to measure how well each model recovers the generation intent
+5. **scenario diversity expansion** — add 7+ scenarios with reverse trajectory (AI→Shared→Human), steady-state (Human→Human→Human), and edge cases (Undefined/Absent)
+6. **confusion matrix + kappa statistics** — per-field value-to-value transition matrix, Cohen's kappa, bootstrap 95% CI
+
+### Phase C: Gold Standard
+
+7. **50-item human annotation pilot** — 2 annotators, IAA measurement, adjudication for gold set
+8. **prompt ablation experiments** — 3-5 system prompt variants (detailed rubric, minimal, with/without evidence_spans requirement)
+
+### Phase D: Infrastructure Hardening
+
+9. **ensemble improvements** — confidence-weighted voting, ordinal distance disagreement scoring
+10. **catalog integrity** — UNIQUE constraints, model_id in dataset_runs, atomic write_json
+11. **heuristic baseline upgrade** — ai_response analysis, regex pattern expansion
 
 Current next task:
 
-- expand model coverage for the trial100 matrix (qwen3.5:35b) and validate fewshot diversity
+- system prompt decision rubric (Phase A, item 1)
 
 Trial100 checkpoint (2026-03-22):
 
