@@ -206,14 +206,24 @@ class LLMObserverTrack(TrackExtractor):
         context_turns: list[dict[str, Any]],
         context_module: str,
     ) -> str:
-        context_excerpt = json.dumps(context_turns[-3:], ensure_ascii=False)
+        context_block = ""
+        recent = context_turns[-5:]
+        if recent:
+            lines: list[str] = []
+            for ct in recent:
+                t = ct.get("turn_number", "?")
+                h = ct.get("human_input", "")
+                a = ct.get("ai_response", "")
+                lines.append(f"[turn {t}] Human: {h[:300]}")
+                lines.append(f"[turn {t}] AI: {a[:300]}")
+            context_block = "conversation_history:\n" + "\n".join(lines) + "\n\n"
         return (
             f"interaction_id: {interaction_id}\n"
             f"context_module: {context_module}\n"
-            f"turn_number: {turn_number}\n"
-            f"human_input: {human_input}\n"
-            f"ai_response: {ai_response}\n"
-            f"recent_context: {context_excerpt}\n"
+            f"turn_number: {turn_number}\n\n"
+            f"{context_block}"
+            f"current_turn_human: {human_input}\n"
+            f"current_turn_ai: {ai_response}\n"
         )
 
     def extract(
