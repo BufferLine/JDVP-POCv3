@@ -72,10 +72,15 @@ def run_fewshot_benchmark(request: FewshotBenchmarkRequest) -> FewshotBenchmarkR
             max_field_disagreement_rate=float(summary["max_field_disagreement_rate"]),
         )
     except FileNotFoundError as exc:
+        missing_path = str(getattr(exc, "filename", None) or exc)
+        is_plan = not request.plan_path.exists()
         raise ServiceError(
-            code="benchmark_plan_not_found",
-            message=f"benchmark plan not found: {request.plan_path}",
-            details={"plan_path": str(request.plan_path)},
+            code="benchmark_plan_not_found" if is_plan else "benchmark_file_not_found",
+            message=(
+                f"benchmark plan not found: {request.plan_path}" if is_plan
+                else f"required file not found during benchmark execution: {missing_path}"
+            ),
+            details={"plan_path": str(request.plan_path), "missing_path": missing_path},
         ) from exc
     except ServiceError:
         raise

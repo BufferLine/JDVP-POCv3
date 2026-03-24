@@ -129,27 +129,33 @@ def build_pipeline_artifacts(
         turn_number = int(turn["turn_number"])
         if resume and storage.has_extract_for_turn(turn_number):
             stored = storage.load_extract_for_turn(turn_number)
-            jsv = build_jsv_from_hint(
-                interaction_id=interaction_id,
-                turn_number=turn_number,
-                timestamp=meta.get("timestamp") or turn.get("timestamp"),
-                context_module=context_module,
-                hint=stored.jsv_hint,
-            )
-            jsv_sequence.append(jsv.to_dict())
-            overlay_rows.append(stored.overlay_row)
-            extract_rows.append(stored.extract_record)
-            resumed_turns.append(turn_number)
-            storage.update_checkpoint(
-                interaction_id=interaction_id,
-                total_turns=len(raw_interaction["turns"]),
-                completed_turns=len(jsv_sequence),
-                resumed_turns=resumed_turns,
-                written_turns=written_turns,
-                status="running",
-            )
-            processed_turns.append(turn)
-            continue
+            current_human = str(turn.get("human_input", ""))
+            current_ai = str(turn.get("ai_response", ""))
+            stored_human = stored.extract_record.get("human_input", "")
+            stored_ai = stored.extract_record.get("ai_response", "")
+            input_changed = (current_human != stored_human or current_ai != stored_ai)
+            if not input_changed:
+                jsv = build_jsv_from_hint(
+                    interaction_id=interaction_id,
+                    turn_number=turn_number,
+                    timestamp=meta.get("timestamp") or turn.get("timestamp"),
+                    context_module=context_module,
+                    hint=stored.jsv_hint,
+                )
+                jsv_sequence.append(jsv.to_dict())
+                overlay_rows.append(stored.overlay_row)
+                extract_rows.append(stored.extract_record)
+                resumed_turns.append(turn_number)
+                storage.update_checkpoint(
+                    interaction_id=interaction_id,
+                    total_turns=len(raw_interaction["turns"]),
+                    completed_turns=len(jsv_sequence),
+                    resumed_turns=resumed_turns,
+                    written_turns=written_turns,
+                    status="running",
+                )
+                processed_turns.append(turn)
+                continue
 
         context_turns = list(processed_turns)
         track_output = track.extract(

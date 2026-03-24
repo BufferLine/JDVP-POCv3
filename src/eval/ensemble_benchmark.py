@@ -64,14 +64,18 @@ def _disagreement_fields(extract_rows: list[dict[str, Any]]) -> list[str]:
     return disagreements
 
 
-def _track_field_values(extract_rows: list[dict[str, Any]]) -> dict[str, dict[str, str]]:
-    return {
-        str(row["track_name"]): {
+def _track_field_values(
+    extract_rows: list[dict[str, Any]],
+    run_keys: list[str] | None = None,
+) -> dict[str, dict[str, str]]:
+    result: dict[str, dict[str, str]] = {}
+    for idx, row in enumerate(extract_rows):
+        key = run_keys[idx] if run_keys and idx < len(run_keys) else str(row["track_name"])
+        result[key] = {
             field_name: str(row["jsv_hint"][field_name])
             for field_name in CORE_FIELDS
         }
-        for row in extract_rows
-    }
+    return result
 
 
 def compare_runs(
@@ -92,6 +96,8 @@ def compare_runs(
         run_id = str(manifest["run_id"])
         track_names.append(track_name)
         run_key = f"{run_id}:{track_name}"
+        if run_key in run_rows:
+            run_key = f"{run_dir.resolve()}:{track_name}"
         run_keys.append(run_key)
         run_rows[run_key] = _index_by_turn(_load_extracts(run_dir, track_name))
 
@@ -116,6 +122,9 @@ def compare_runs(
             skipped_turns.append({"turn_number": turn_number, "missing": missing_tracks, "reason": "fewer_than_2_present"})
             continue
 
+        present_run_keys = [
+            rk for rk in run_keys if run_rows[rk].get(turn_number) is not None
+        ]
         disagreements = _disagreement_fields(present_rows)
         total_field_comparisons += len(CORE_FIELDS)
         total_field_disagreements += len(disagreements)
@@ -131,7 +140,7 @@ def compare_runs(
                 "missing_tracks": missing_tracks,
                 "disagreement_fields": disagreements,
                 "disagreement_score": len(disagreements) / len(CORE_FIELDS),
-                "track_field_values": _track_field_values(present_rows),
+                "track_field_values": _track_field_values(present_rows, present_run_keys),
                 "ensemble_jsv_hint": _ensemble_hint(present_rows),
             }
         )

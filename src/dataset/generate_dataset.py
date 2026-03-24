@@ -88,8 +88,18 @@ def _render_template(template: Any, slots: Mapping[str, str]) -> Any:
     return template
 
 
-def _build_generation_run_id(dataset_root: Path, generation_mode: str) -> str:
-    return f"{dataset_root.resolve(strict=False)}::{generation_mode}"
+def _build_generation_run_id(
+    dataset_root: Path,
+    generation_mode: str,
+    seed: int | None = None,
+    count_per_scenario: int | None = None,
+) -> str:
+    run_id = f"{dataset_root.resolve(strict=False)}::{generation_mode}"
+    if seed is not None:
+        run_id += f"::seed={seed}"
+    if count_per_scenario is not None:
+        run_id += f"::count={count_per_scenario}"
+    return run_id
 
 
 def _build_item_id(*, scenario_id: str, sample_index: int) -> str:
@@ -615,7 +625,9 @@ def generate_dataset(
 
     dataset_root = output_root / dataset_name / dataset_version
     dataset_id = f"{dataset_kind}/{dataset_name}/{dataset_version}"
-    generation_run_id = _build_generation_run_id(dataset_root, generation_mode)
+    generation_run_id = _build_generation_run_id(
+        dataset_root, generation_mode, seed=seed, count_per_scenario=count_per_scenario,
+    )
     progress_path = dataset_root / "generation_progress.json"
     catalog = CatalogStore()
     target_item_count = len(scenario_pack["scenarios"]) * count_per_scenario

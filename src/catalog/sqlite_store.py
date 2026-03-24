@@ -562,6 +562,7 @@ class CatalogStore:
         dataset_id: str | None = None,
         dataset_run_id: str | None = None,
         scenario_id: str | None = None,
+        track_name: str | None = None,
         limit: int | None = None,
     ) -> list[dict[str, Any]]:
         conn = self._conn_ready()
@@ -573,6 +574,7 @@ class CatalogStore:
             FROM jdvp_runs
             LEFT JOIN dataset_items
               ON dataset_items.interaction_id = jdvp_runs.interaction_id
+              AND (jdvp_runs.dataset_id IS NULL OR dataset_items.dataset_id = jdvp_runs.dataset_id)
         """
         conditions: list[str] = []
         parameters: list[Any] = []
@@ -588,6 +590,9 @@ class CatalogStore:
         if scenario_id is not None:
             conditions.append("dataset_items.scenario_id = ?")
             parameters.append(scenario_id)
+        if track_name is not None:
+            conditions.append("jdvp_runs.track_name = ?")
+            parameters.append(track_name)
         if conditions:
             query += " WHERE " + " AND ".join(conditions)
         query += " ORDER BY jdvp_runs.updated_at DESC, jdvp_runs.run_id"
@@ -631,7 +636,15 @@ class CatalogStore:
         rows = conn.execute(query, tuple(parameters)).fetchall()
         return [dict(row) for row in rows]
 
-    def summarize_runs_by_scenario(self, *, status: str | None = None) -> list[dict[str, Any]]:
+    def summarize_runs_by_scenario(
+        self,
+        *,
+        status: str | None = None,
+        dataset_id: str | None = None,
+        dataset_run_id: str | None = None,
+        scenario_id: str | None = None,
+        track_name: str | None = None,
+    ) -> list[dict[str, Any]]:
         conn = self._conn_ready()
         query = """
             SELECT
@@ -641,11 +654,27 @@ class CatalogStore:
             FROM jdvp_runs
             LEFT JOIN dataset_items
               ON dataset_items.interaction_id = jdvp_runs.interaction_id
+              AND (jdvp_runs.dataset_id IS NULL OR dataset_items.dataset_id = jdvp_runs.dataset_id)
         """
+        conditions: list[str] = []
         parameters: list[Any] = []
         if status is not None:
-            query += " WHERE jdvp_runs.status = ?"
+            conditions.append("jdvp_runs.status = ?")
             parameters.append(status)
+        if dataset_id is not None:
+            conditions.append("jdvp_runs.dataset_id = ?")
+            parameters.append(dataset_id)
+        if dataset_run_id is not None:
+            conditions.append("jdvp_runs.dataset_run_id = ?")
+            parameters.append(dataset_run_id)
+        if scenario_id is not None:
+            conditions.append("dataset_items.scenario_id = ?")
+            parameters.append(scenario_id)
+        if track_name is not None:
+            conditions.append("jdvp_runs.track_name = ?")
+            parameters.append(track_name)
+        if conditions:
+            query += " WHERE " + " AND ".join(conditions)
         query += """
             GROUP BY COALESCE(dataset_items.scenario_id, 'unknown'), jdvp_runs.status
             ORDER BY run_count DESC, scenario_id

@@ -114,7 +114,7 @@ class CatalogStoreTests(unittest.TestCase):
                     seed=11,
                 )
                 store = CatalogStore(db_path)
-                generation_run_id = f"{dataset_root.resolve(strict=False)}::template"
+                generation_run_id = f"{dataset_root.resolve(strict=False)}::template::seed=11::count=1"
                 generation_run = store.fetch_dataset_generation_run(generation_run_id)
                 self.assertIsNotNone(generation_run)
                 self.assertEqual(generation_run["status"], "completed")

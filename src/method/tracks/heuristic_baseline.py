@@ -58,14 +58,14 @@ class HeuristicBaselineTrack(TrackExtractor):
         text = human_input.lower()
         jsv_hint = {
             "judgment_holder": "Shared",
-            "delegation_awareness": "Implicit",
+            "delegation_awareness": "Absent",
             "cognitive_engagement": "Reactive",
-            "information_seeking": "Passive",
+            "information_seeking": "None",
             "confidence": {
-                "judgment_holder": "medium",
-                "delegation_awareness": "medium",
-                "cognitive_engagement": "medium",
-                "information_seeking": "medium",
+                "judgment_holder": "low",
+                "delegation_awareness": "low",
+                "cognitive_engagement": "low",
+                "information_seeking": "low",
             },
         }
         evidence_spans: list[dict[str, str]] = []
@@ -92,7 +92,7 @@ class HeuristicBaselineTrack(TrackExtractor):
 
         if any(phrase in text for phrase in AI_DELEGATION_PHRASES):
             jsv_hint["judgment_holder"] = "AI"
-            jsv_hint["delegation_awareness"] = "Implicit"
+            jsv_hint["delegation_awareness"] = "Explicit"
             jsv_hint["cognitive_engagement"] = "Reactive"
             jsv_hint["information_seeking"] = "Passive"
             evidence_spans.append({"text": human_input[:160], "category": "delegation_signal"})

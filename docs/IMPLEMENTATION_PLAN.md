@@ -313,7 +313,40 @@ Use this order for the next implementation passes:
 
 Current next task:
 
-- run a local 100-item `llm_turn_simulated` generation experiment and tune model/prompt/quality-gate settings from the resulting reject/failure profile
+- expand model coverage for the trial100 matrix (qwen3.5:35b) and validate fewshot diversity
+
+Trial100 checkpoint (2026-03-22):
+
+- dataset: `data/generated-local-trials/local-turn-sim-trial100/v2/` (102 items, gemma3:4b generated)
+- matrix runs completed:
+  - `heuristic_baseline`: 102/102 (0 failed)
+  - `fewshot_prompt` with `gemma3:12b`: 102/102 (0 failed)
+  - `fewshot_prompt` with `gpt-oss:20b`: 102/102 (0 failed, 1 recovered from timeout)
+- benchmark results (`data/runs/local-turn-sim-trial100-remote-matrix/benchmarks/`):
+  - gemma3:12b vs gpt-oss:20b: **0% disagreement** (102/102 perfect agreement)
+  - gemma3:12b vs heuristic: 61.5% average disagreement (judgment_holder 19%, delegation_awareness 79%, cognitive_engagement 71%, information_seeking 77%)
+  - gpt-oss:20b vs heuristic: 79.0% average disagreement
+  - high heuristic disagreement is expected after correcting defaults to Absent/None (protocol-aligned)
+- **INVALIDATED**: fewshot comparison results (0% disagreement) were caused by a run_key collision bug in `ensemble_benchmark.py` — same-track runs overwrote each other in the comparison dict, producing self-comparisons
+- bug fixed: `compare_runs()` now falls back to `run_dir.resolve()` when `run_id:track_name` keys collide
+
+Zero-shot trial100 checkpoint (2026-03-24):
+
+- matrix runs completed (zero-shot `llm_observer` track):
+  - `heuristic_baseline`: 102/102
+  - `gemma3:12b`: 101/102 (1 timeout)
+  - `gpt-oss:20b`: 101/102 (1 timeout)
+  - `qwen3.5:35b`: 66/102 (36 timeout — model too heavy for local inference at 300s)
+- corrected benchmark results (`data/runs/trial100-zeroshot-matrix/benchmarks/`):
+  - gemma3:12b vs gpt-oss:20b (zero-shot): **35.2% average disagreement** (judgment_holder 88%, information_seeking 37%, delegation_awareness 14%, cognitive_engagement 1.7%)
+  - zero-disagreement items: 0/100 — no interaction had perfect model agreement
+  - gemma3:12b vs heuristic: 61.8% average
+  - gpt-oss:20b vs heuristic: 80.8% average
+- key insights:
+  - judgment_holder is the most subjective field (88% model disagreement)
+  - cognitive_engagement is the most objective (1.7% disagreement)
+  - system prompt drives structure but not semantic agreement — models genuinely differ
+  - fewshot examples reduce model disagreement to ~19% (from 35%), acting as a normalizer
 
 ## Bugs (Codex Deep Review, 2026-03-20)
 
@@ -399,6 +432,34 @@ Discovered during full-project review on 2026-03-20.
 
 12. **eval: add logging infrastructure**
     - eval modules use `print()` only; no structured logging for long-running benchmarks
+
+## Bugs (Codex 5-Worker Integrity Review, 2026-03-20)
+
+All items below were reproduced by 5 Codex workers during a targeted integrity and business-logic review.
+
+### Critical / High
+
+1. **heuristic_baseline.py:59** — default assignments fabricate state (`Implicit`/`Passive`) when no evidence matches; protocol defines `Absent`/`None` for the no-evidence case
+2. **heuristic_baseline.py:93-95** — explicit delegation phrases ("decide for me") incorrectly mapped to `delegation_awareness=Implicit`; per protocol, human explicitly recognizing delegation is `Explicit`
+3. **poc_service.py:130** — `resume=True` reuses stored extracts without validating that the input (human_input/ai_response) still matches; changing input and rerunning with the same run_id produces input/extract inconsistency
+4. **dataset_run_service.py:71** — `dataset_run_id` omits `scenario_id` and `max_items`, causing different dataset slices to share the same ID and overwrite each other in the catalog
+5. **dataset_run_service.py:78** — empty dataset slice (0 items) recorded as `completed` instead of `no_items_matched`, indistinguishable from a valid run
+6. **generate_dataset.py:91** — generation recovery key omits `seed` and `count_per_scenario`, so regeneration with different parameters reuses stale accepted items
+
+### Medium
+
+7. **jsv_types.py:71** — `build_jsv()` silently omits `extensions` for non-general contexts when caller doesn't supply them; no early warning
+8. **fewshot_prompt.py:44-49** — zero-shot fallback condition not recorded in persisted artifacts; benchmark results misleadingly labeled as few-shot
+9. **llm_observer.py:100-108** — JSON-mode fallback path doesn't catch `json.JSONDecodeError` for non-JSON fallback responses and doesn't re-enter retry loop on transient errors
+10. **ensemble_benchmark.py:67-74** — `_track_field_values()` keys by `track_name` only, collapsing multiple runs of the same track; loses one side of comparison data
+11. **fewshot_benchmark.py:33** — benchmark plan emits items with `fewshot_example_count=0` without flagging zero-shot degradation
+12. **list_failed_runs.py:43** — `--track-name` filter not passed to `list_runs()` in normal (non-dataset-run) mode
+13. **list_failed_runs.py:40** — `--summary-by-scenario` ignores all other filter arguments
+14. **sqlite_store.py:574-575** — `list_runs()` JOIN on `dataset_items` uses only `interaction_id`, not `dataset_id`; produces duplicate rows when multiple datasets share the same interaction_id pattern
+
+### Low
+
+15. **eval_service.py:74** — all `FileNotFoundError` classified as `benchmark_plan_not_found` regardless of which file is actually missing
 
 ## Deferred Automation
 

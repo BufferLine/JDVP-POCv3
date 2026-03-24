@@ -30,17 +30,18 @@ def build_fewshot_benchmark_plan(
             context_module=item.context_module,
             max_examples=max_examples,
         )
-        rows.append(
-            {
-                "interaction_id": item.interaction_id,
-                "split": item.split,
-                "scenario_id": item.scenario_id,
-                "context_module": item.context_module,
-                "input_path": str(item.interaction_path(dataset_root)),
-                "fewshot_example_count": len(selected),
-                "fewshot_examples": selected,
-            }
-        )
+        row_entry: dict[str, Any] = {
+            "interaction_id": item.interaction_id,
+            "split": item.split,
+            "scenario_id": item.scenario_id,
+            "context_module": item.context_module,
+            "input_path": str(item.interaction_path(dataset_root)),
+            "fewshot_example_count": len(selected),
+            "fewshot_examples": selected,
+        }
+        if len(selected) == 0:
+            row_entry["zero_shot_fallback"] = True
+        rows.append(row_entry)
     payload = {
         "schema_version": "pocv3-fewshot-benchmark-plan-v1",
         "dataset_id": manifest.dataset_id,

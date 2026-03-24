@@ -103,7 +103,18 @@ class OpenAICompatibleProvider:
                     fallback_req = self._build_request(endpoint, fallback_payload)
                     try:
                         with request.urlopen(fallback_req, timeout=self.timeout_seconds) as response:
-                            return json.loads(response.read().decode("utf-8"))
+                            body = response.read().decode("utf-8")
+                            try:
+                                return json.loads(body)
+                            except json.JSONDecodeError as json_exc:
+                                raise RuntimeError(
+                                    f"provider returned non-JSON response in json_mode fallback: {body[:200]}"
+                                ) from json_exc
+                    except error.HTTPError as fallback_exc:
+                        if fallback_exc.code in _RETRYABLE_STATUS_CODES:
+                            last_exc = fallback_exc
+                            continue
+                        raise RuntimeError(f"provider request failed: {fallback_exc}") from fallback_exc
                     except error.URLError as fallback_exc:
                         raise RuntimeError(f"provider request failed: {fallback_exc}") from fallback_exc
 
