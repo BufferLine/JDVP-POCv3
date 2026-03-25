@@ -91,7 +91,7 @@ class ServiceJsonApiTests(unittest.TestCase):
                 clear=False,
             ):
                 with patch(
-                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    "src.method.tracks.llm_observer.BufferlineLlmAdapter.generate",
                     return_value=VALID_RESPONSE,
                 ):
                     response = handle_json_payload(
@@ -169,7 +169,7 @@ class ServiceJsonApiTests(unittest.TestCase):
                 clear=False,
             ):
                 with patch(
-                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    "src.method.tracks.llm_observer.BufferlineLlmAdapter.generate",
                     return_value=VALID_RESPONSE,
                 ):
                     response = handle_json_payload(

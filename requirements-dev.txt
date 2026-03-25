@@ -1,2 +1,3 @@
+bufferline-llm @ git+https://github.com/BufferLine/bufferline-llm.git@main
 jsonschema[format]>=4.23,<5
 pytest>=8,<9
