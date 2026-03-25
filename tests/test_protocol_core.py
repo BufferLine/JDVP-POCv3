@@ -6,6 +6,8 @@ import unittest
 from pathlib import Path
 
 from src.protocol_core.dv_ordinal import build_dv
+from src.protocol_core.jsv_types import build_jsv, build_jsv_from_hint
+from src.protocol_core.schema_validate import CanonicalSchemaValidator
 from src.protocol_core.schema_sync import (
     build_snapshot_manifest,
     compare_schema_roots,
@@ -83,6 +85,84 @@ class ProtocolCoreTests(unittest.TestCase):
         ).to_dict()
         self.assertEqual(trajectory["interaction_id"], "session-1")
         self.assertEqual(len(trajectory["vectors"]), 2)
+
+    def test_build_jsv_produces_valid_payload(self) -> None:
+        jsv = build_jsv(
+            interaction_id="test-1",
+            turn_number=0,
+            timestamp="2026-01-01T00:00:00Z",
+            judgment_holder="Human",
+            delegation_awareness="Explicit",
+            cognitive_engagement="Active",
+            information_seeking="Active",
+            context_module="general",
+        )
+        payload = jsv.to_dict()
+        self.assertEqual(payload["interaction_id"], "test-1")
+        self.assertEqual(payload["judgment_holder"], "Human")
+        self.assertNotIn("extensions", payload)
+
+    def test_build_jsv_from_hint_maps_fields(self) -> None:
+        hint = {
+            "judgment_holder": "AI",
+            "delegation_awareness": "Implicit",
+            "cognitive_engagement": "Reactive",
+            "information_seeking": "Passive",
+            "confidence": {"judgment_holder": "high", "delegation_awareness": "medium",
+                           "cognitive_engagement": "low", "information_seeking": "high"},
+        }
+        jsv = build_jsv_from_hint(
+            interaction_id="test-2",
+            turn_number=1,
+            timestamp="2026-01-01T00:00:01Z",
+            context_module="general",
+            hint=hint,
+        )
+        payload = jsv.to_dict()
+        self.assertEqual(payload["judgment_holder"], "AI")
+        self.assertEqual(payload["delegation_awareness"], "Implicit")
+        self.assertIn("confidence", payload)
+
+    def test_build_jsv_invalid_confidence_raises(self) -> None:
+        with self.assertRaises(ValueError):
+            build_jsv(
+                interaction_id="test-3",
+                turn_number=0,
+                timestamp="2026-01-01T00:00:00Z",
+                judgment_holder="Human",
+                delegation_awareness="Explicit",
+                cognitive_engagement="Active",
+                information_seeking="Active",
+                confidence={"judgment_holder": "INVALID"},
+            )
+
+    def test_canonical_schema_validator_accepts_valid_jsv(self) -> None:
+        validator = CanonicalSchemaValidator()
+        jsv = build_jsv(
+            interaction_id="test-v",
+            turn_number=0,
+            timestamp="2026-01-01T00:00:00Z",
+            judgment_holder="Human",
+            delegation_awareness="Explicit",
+            cognitive_engagement="Active",
+            information_seeking="Active",
+        )
+        validator.validate_jsv(jsv.to_dict())
+
+    def test_canonical_schema_validator_rejects_bad_timestamp(self) -> None:
+        validator = CanonicalSchemaValidator()
+        payload = {
+            "interaction_id": "test-bad-ts",
+            "turn_number": 0,
+            "timestamp": "not-a-date",
+            "judgment_holder": "Human",
+            "delegation_awareness": "Explicit",
+            "cognitive_engagement": "Active",
+            "information_seeking": "Active",
+            "context_module": "general",
+        }
+        with self.assertRaises(Exception):
+            validator.validate_jsv(payload)
 
     def test_schema_sync_detects_matching_roots(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

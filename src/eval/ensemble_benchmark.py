@@ -15,18 +15,29 @@ CORE_FIELDS = CORE_FIELD_NAMES
 
 
 def _load_run_manifest(run_dir: Path) -> dict[str, Any]:
-    return read_json(run_dir / "manifest.json")
+    manifest_path = run_dir / "manifest.json"
+    try:
+        return read_json(manifest_path)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"run manifest not found: {manifest_path}") from None
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"malformed JSON in run manifest {manifest_path}: {exc}") from exc
 
 
 def _load_extracts(run_dir: Path, track_name: str) -> list[dict[str, Any]]:
     path = run_dir / "extracts" / track_name / "extracts.jsonl"
-    rows: list[dict[str, Any]] = []
-    with path.open("r", encoding="utf-8") as handle:
-        for line in handle:
-            stripped = line.strip()
-            if stripped:
-                rows.append(json.loads(stripped))
-    return rows
+    try:
+        rows: list[dict[str, Any]] = []
+        with path.open("r", encoding="utf-8") as handle:
+            for line in handle:
+                stripped = line.strip()
+                if stripped:
+                    rows.append(json.loads(stripped))
+        return rows
+    except FileNotFoundError:
+        raise FileNotFoundError(f"extracts file not found: {path}") from None
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"malformed JSON in extracts {path}: {exc}") from exc
 
 
 def _index_by_turn(rows: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:

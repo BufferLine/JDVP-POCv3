@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from scripts.check_assistant_docs_sync import main as check_assistant_docs_sync_main
 from scripts.run_fewshot_regression_suite import run_suite
 from scripts.validate_contracts import main as validate_contracts_main
 from src.pipeline.run_poc import run_poc
@@ -39,17 +40,11 @@ def run_pytest() -> dict[str, Any]:
 
 
 def run_assistant_docs_sync_check() -> dict[str, Any]:
-    result = subprocess.run(
-        [sys.executable, "scripts/check_assistant_docs_sync.py"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    stdout_lines = [line for line in result.stdout.strip().splitlines() if line.strip()]
+    exit_code = check_assistant_docs_sync_main()
+    if exit_code != 0:
+        raise RuntimeError("AGENTS.md and CLAUDE.md are not synchronized")
     return {
-        "command": [sys.executable, "scripts/check_assistant_docs_sync.py"],
-        "summary": stdout_lines[-1] if stdout_lines else "",
+        "summary": "OK: AGENTS.md and CLAUDE.md are synchronized",
     }
 
 

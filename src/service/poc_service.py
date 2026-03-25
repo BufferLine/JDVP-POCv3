@@ -95,9 +95,20 @@ def _git_revision() -> str:
             capture_output=True,
             text=True,
         )
-    except Exception:
+    except (subprocess.CalledProcessError, FileNotFoundError, OSError):
         return "workspace-local"
     return result.stdout.strip()
+
+
+def _safe_catalog_upsert(catalog: CatalogStore, record: CatalogRunRecord) -> None:
+    try:
+        catalog.upsert_run(record)
+    except Exception:
+        import logging
+        logging.getLogger(__name__).warning(
+            "catalog upsert failed for run_id=%s, status=%s",
+            record.run_id, record.status, exc_info=True,
+        )
 
 
 def build_pipeline_artifacts(
@@ -320,7 +331,7 @@ def run_interaction(request: RunRequest) -> RunResult:
         write_json(run_dir / "errors" / "run_error.json", payload)
 
     try:
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=None,
@@ -349,7 +360,7 @@ def run_interaction(request: RunRequest) -> RunResult:
             track_name=request.track_name,
             resume=request.resume,
         )
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=result.interaction_id,
@@ -365,7 +376,7 @@ def run_interaction(request: RunRequest) -> RunResult:
         return result
     except FileNotFoundError as exc:
         _write_failure_artifact(exc)
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=(
@@ -392,7 +403,7 @@ def run_interaction(request: RunRequest) -> RunResult:
         ) from exc
     except ServiceError as exc:
         _write_failure_artifact(exc)
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=(
@@ -413,7 +424,7 @@ def run_interaction(request: RunRequest) -> RunResult:
         raise
     except Exception as exc:
         _write_failure_artifact(exc)
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=(
