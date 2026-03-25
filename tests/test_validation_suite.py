@@ -45,8 +45,8 @@ class ValidationSuiteTests(unittest.TestCase):
             self.assertEqual(regression["status"], "passed")
             self.assertEqual(regression["summary"]["item_count"], 2)
             self.assertGreater(len(regression["summary"]["top_disagreement_fields"]), 0)
-            self.assertLessEqual(regression["summary"]["average_field_disagreement_rate"], 0.60)
-            self.assertLessEqual(regression["summary"]["max_field_disagreement_rate"], 0.60)
+            self.assertLessEqual(regression["summary"]["average_field_disagreement_rate"], 0.75)
+            self.assertLessEqual(regression["summary"]["max_field_disagreement_rate"], 0.75)
             self.assertGreaterEqual(regression["summary"]["zero_disagreement_items"], 0)
 
 

@@ -57,9 +57,9 @@ class HeuristicBaselineTrack(TrackExtractor):
     ) -> TrackOutput:
         text = human_input.lower()
         jsv_hint = {
-            "judgment_holder": "Shared",
+            "judgment_holder": "Undefined",
             "delegation_awareness": "Absent",
-            "cognitive_engagement": "Reactive",
+            "cognitive_engagement": "Passive",
             "information_seeking": "None",
             "confidence": {
                 "judgment_holder": "low",
