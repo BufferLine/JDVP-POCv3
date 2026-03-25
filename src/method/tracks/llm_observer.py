@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import json
 import os
-import time
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Protocol
-from urllib import error, request
+
+from bufferline_llm import create_client, LlmConfig
+from bufferline_llm.providers.openai_compat import OpenAICompatClient
+from bufferline_llm.providers.static import StaticResponseClient
 
 from src.method.evidence.prompt_loader import load_prompt
 from src.method.normalization.llm_response import LLMNormalizationError, normalize_llm_response
@@ -21,129 +22,30 @@ class LLMProvider(Protocol):
         ...
 
 
-_RETRYABLE_STATUS_CODES: frozenset[int] = frozenset({429, 500, 502, 503, 504})
-_RETRYABLE_EXCEPTIONS: tuple[type[Exception], ...] = (ConnectionError, TimeoutError, OSError)
+class BufferlineLlmAdapter:
+    """Adapts a bufferline-llm client to the POCv3 LLMProvider protocol."""
 
-
-@dataclass
-class OpenAICompatibleProvider:
-    """Minimal OpenAI-compatible chat-completions client."""
-
-    base_url: str
-    model: str
-    api_key: str
-    timeout_seconds: float = 30.0
-    prefer_json_mode: bool = True
-    max_tokens: int | None = None
-    max_retries: int = 3
-    _retry_after: float | None = None
+    def __init__(self, client: OpenAICompatClient | StaticResponseClient | Any, model_id: str) -> None:
+        self._client = client
+        self.model_id = model_id
 
     def generate(self, *, system_prompt: str, user_prompt: str) -> str:
-        payload = {
-            "model": self.model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-            "temperature": 0,
-        }
-        if self.max_tokens is not None:
-            payload["max_tokens"] = self.max_tokens
-        if self.prefer_json_mode:
-            payload["response_format"] = {"type": "json_object"}
-
-        endpoint = self.base_url.rstrip("/") + "/chat/completions"
-        raw = self._request(endpoint=endpoint, payload=payload)
-        choices = raw.get("choices")
-        if not isinstance(choices, list) or not choices:
-            raise RuntimeError("provider response missing choices")
-        message = choices[0].get("message", {})
-        content = message.get("content")
-        if not isinstance(content, str) or not content.strip():
-            raise RuntimeError("provider response missing message content")
-        return content
-
-    def _build_request(self, endpoint: str, payload: dict[str, Any]) -> request.Request:
-        return request.Request(
-            endpoint,
-            data=json.dumps(payload).encode("utf-8"),
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {self.api_key}",
-            },
-            method="POST",
+        result = self._client.generate_structured(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
         )
-
-    def _request(self, *, endpoint: str, payload: dict[str, Any]) -> dict[str, Any]:
-        last_exc: Exception | None = None
-        for attempt in range(self.max_retries + 1):
-            if attempt > 0:
-                backoff = float(2 ** (attempt - 1))  # 1s, 2s, 4s, ...
-                # Honour Retry-After header when available (set by previous iteration)
-                if self._retry_after is not None:
-                    backoff = max(backoff, self._retry_after)
-                    self._retry_after = None
-                time.sleep(backoff)
-
-            req = self._build_request(endpoint, payload)
-            try:
-                with request.urlopen(req, timeout=self.timeout_seconds) as response:
-                    body = response.read().decode("utf-8")
-                    try:
-                        return json.loads(body)
-                    except json.JSONDecodeError as json_exc:
-                        raise RuntimeError(
-                            f"provider returned non-JSON response (HTTP {response.status}): {body[:200]}"
-                        ) from json_exc
-            except error.HTTPError as exc:
-                # json_mode fallback: not retryable, try once without response_format
-                if payload.get("response_format") is not None and exc.code in {400, 404, 422}:
-                    fallback_payload = dict(payload)
-                    fallback_payload.pop("response_format", None)
-                    fallback_req = self._build_request(endpoint, fallback_payload)
-                    try:
-                        with request.urlopen(fallback_req, timeout=self.timeout_seconds) as response:
-                            body = response.read().decode("utf-8")
-                            try:
-                                return json.loads(body)
-                            except json.JSONDecodeError as json_exc:
-                                raise RuntimeError(
-                                    f"provider returned non-JSON response in json_mode fallback: {body[:200]}"
-                                ) from json_exc
-                    except error.HTTPError as fallback_exc:
-                        if fallback_exc.code in _RETRYABLE_STATUS_CODES:
-                            last_exc = fallback_exc
-                            continue
-                        raise RuntimeError(f"provider request failed: {fallback_exc}") from fallback_exc
-                    except error.URLError as fallback_exc:
-                        raise RuntimeError(f"provider request failed: {fallback_exc}") from fallback_exc
-
-                if exc.code in _RETRYABLE_STATUS_CODES:
-                    if exc.code == 429 and exc.headers:
-                        retry_after_raw = exc.headers.get("Retry-After")
-                        if retry_after_raw is not None:
-                            try:
-                                self._retry_after = float(retry_after_raw)
-                            except ValueError:
-                                pass
-                    last_exc = exc
-                    continue
-
-                raise RuntimeError(f"provider request failed: {exc}") from exc
-            except _RETRYABLE_EXCEPTIONS as exc:
-                last_exc = exc
-                continue
-            except error.URLError as exc:
-                raise RuntimeError(f"provider request failed: {exc}") from exc
-
-        raise RuntimeError(f"provider request failed after {self.max_retries} retries: {last_exc}") from last_exc
+        if not result.ok or result.content is None:
+            raise RuntimeError(result.error_message or "LLM call failed")
+        return result.content
 
 
-@dataclass
 class StaticResponseProvider:
     """Deterministic provider for offline benchmark and regression runs."""
 
     response_text: str
+
+    def __init__(self, response_text: str) -> None:
+        self.response_text = response_text
 
     def generate(self, *, system_prompt: str, user_prompt: str) -> str:
         try:
@@ -318,19 +220,17 @@ def create_env_backed_provider() -> tuple[LLMProvider, str]:
         api_key = os.getenv("JDVP_LLM_API_KEY")
         if not base_url or not api_key or not model:
             raise RuntimeError("JDVP_LLM_BASE_URL, JDVP_LLM_API_KEY, and JDVP_LLM_MODEL are required")
-        prefer_json_mode = os.getenv("JDVP_LLM_PREFER_JSON_MODE", "1") != "0"
-        timeout_seconds = float(os.getenv("JDVP_LLM_TIMEOUT_SECONDS", "30"))
-        max_tokens_value = os.getenv("JDVP_LLM_MAX_TOKENS")
-        max_tokens = int(max_tokens_value) if max_tokens_value else None
-        provider = OpenAICompatibleProvider(
-            base_url=base_url,
+        config = LlmConfig(
+            provider="openai",
             model=model,
+            base_url=base_url,
             api_key=api_key,
-            timeout_seconds=timeout_seconds,
-            prefer_json_mode=prefer_json_mode,
-            max_tokens=max_tokens,
+            timeout_seconds=float(os.getenv("JDVP_LLM_TIMEOUT_SECONDS", "30")),
+            prefer_json_mode=os.getenv("JDVP_LLM_PREFER_JSON_MODE", "1") != "0",
+            max_tokens=int(os.getenv("JDVP_LLM_MAX_TOKENS")) if os.getenv("JDVP_LLM_MAX_TOKENS") else None,
         )
-        return provider, model
+        client = create_client(config)
+        return BufferlineLlmAdapter(client=client, model_id=model), model
 
     if provider_kind == "static_response":
         response_text = os.getenv("JDVP_LLM_STATIC_RESPONSE")

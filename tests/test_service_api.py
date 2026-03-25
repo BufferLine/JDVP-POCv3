@@ -165,7 +165,7 @@ class ServiceApiTests(unittest.TestCase):
                 clear=False,
             ):
                 with patch(
-                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    "src.method.tracks.llm_observer.BufferlineLlmAdapter.generate",
                     return_value=VALID_RESPONSE,
                 ):
                     result = run_fewshot_benchmark(
@@ -304,7 +304,7 @@ class ServiceApiTests(unittest.TestCase):
                 clear=False,
             ):
                 with patch(
-                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    "src.method.tracks.llm_observer.BufferlineLlmAdapter.generate",
                     return_value=VALID_RESPONSE,
                 ):
                     response = run_fewshot_benchmark_response(
@@ -362,7 +362,7 @@ class ServiceApiTests(unittest.TestCase):
                 clear=False,
             ):
                 with patch(
-                    "src.method.tracks.llm_observer.OpenAICompatibleProvider.generate",
+                    "src.method.tracks.llm_observer.BufferlineLlmAdapter.generate",
                     return_value=VALID_RESPONSE,
                 ):
                     response = run_fewshot_benchmark_response(

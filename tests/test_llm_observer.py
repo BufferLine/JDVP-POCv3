@@ -2,14 +2,11 @@ from __future__ import annotations
 
 import json
 import unittest
-from http.client import HTTPMessage
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from unittest.mock import MagicMock, patch
-from urllib import error as urllib_error
 
 from src.method.normalization.llm_response import LLMNormalizationError, normalize_llm_response
-from src.method.tracks.llm_observer import LLMObserverTrack, OpenAICompatibleProvider, StaticResponseProvider, create_env_backed_llm_track
+from src.method.tracks.llm_observer import LLMObserverTrack, StaticResponseProvider, create_env_backed_llm_track
 
 
 VALID_RESPONSE = """
@@ -103,7 +100,7 @@ class LLMNormalizationTests(unittest.TestCase):
           },
           "evidence_spans": [
             {
-              "text": "Okay, so given that, what’s your recommendation for where I should stay?”, "
+              "text": "Okay, so given that, what's your recommendation for where I should stay?", "
         """
         normalized = normalize_llm_response(response)
         self.assertEqual(normalized["jsv_hint"]["judgment_holder"], "AI")
@@ -225,155 +222,6 @@ class LLMObserverTrackTests(unittest.TestCase):
         )
         normalized = normalize_llm_response(response)
         self.assertEqual(normalized["jsv_hint"]["judgment_holder"], "Human")
-
-
-_GOOD_RESPONSE_BODY = json.dumps({
-    "choices": [{"message": {"content": VALID_RESPONSE.strip()}}]
-}).encode("utf-8")
-
-
-def _make_http_error(code: int, headers: dict[str, str] | None = None) -> urllib_error.HTTPError:
-    msg = HTTPMessage()
-    if headers:
-        for k, v in headers.items():
-            msg[k] = v
-    return urllib_error.HTTPError(url="http://fake", code=code, msg="error", hdrs=msg, fp=None)
-
-
-class OpenAICompatibleProviderRetryTests(unittest.TestCase):
-    def _make_provider(self, max_retries: int = 3) -> OpenAICompatibleProvider:
-        return OpenAICompatibleProvider(
-            base_url="http://fake",
-            model="test-model",
-            api_key="test-key",
-            max_retries=max_retries,
-        )
-
-    def test_succeeds_on_first_attempt_no_retry(self) -> None:
-        provider = self._make_provider()
-        mock_response = MagicMock()
-        mock_response.__enter__ = lambda s: s
-        mock_response.__exit__ = MagicMock(return_value=False)
-        mock_response.read.return_value = _GOOD_RESPONSE_BODY
-
-        with patch("src.method.tracks.llm_observer.request.urlopen", return_value=mock_response) as mock_open:
-            with patch("src.method.tracks.llm_observer.time.sleep") as mock_sleep:
-                result = provider._request(endpoint="http://fake/chat/completions", payload={"model": "x"})
-
-        self.assertIn("choices", result)
-        self.assertEqual(mock_open.call_count, 1)
-        mock_sleep.assert_not_called()
-
-    def test_retries_on_503_then_succeeds(self) -> None:
-        provider = self._make_provider()
-        mock_response = MagicMock()
-        mock_response.__enter__ = lambda s: s
-        mock_response.__exit__ = MagicMock(return_value=False)
-        mock_response.read.return_value = _GOOD_RESPONSE_BODY
-
-        side_effects = [
-            _make_http_error(503),
-            _make_http_error(503),
-            mock_response,
-        ]
-
-        with patch("src.method.tracks.llm_observer.request.urlopen", side_effect=side_effects) as mock_open:
-            with patch("src.method.tracks.llm_observer.time.sleep") as mock_sleep:
-                result = provider._request(endpoint="http://fake/chat/completions", payload={"model": "x"})
-
-        self.assertIn("choices", result)
-        self.assertEqual(mock_open.call_count, 3)
-        # backoff: 1s before attempt 1, 2s before attempt 2
-        self.assertEqual(mock_sleep.call_count, 2)
-        self.assertEqual(mock_sleep.call_args_list[0][0][0], 1)
-        self.assertEqual(mock_sleep.call_args_list[1][0][0], 2)
-
-    def test_raises_after_max_retries_exhausted(self) -> None:
-        provider = self._make_provider(max_retries=2)
-
-        with patch("src.method.tracks.llm_observer.request.urlopen", side_effect=_make_http_error(500)):
-            with patch("src.method.tracks.llm_observer.time.sleep"):
-                with self.assertRaises(RuntimeError) as ctx:
-                    provider._request(endpoint="http://fake/chat/completions", payload={"model": "x"})
-
-        self.assertIn("retries", str(ctx.exception))
-
-    def test_retries_on_429_with_retry_after_header(self) -> None:
-        provider = self._make_provider(max_retries=1)
-        mock_response = MagicMock()
-        mock_response.__enter__ = lambda s: s
-        mock_response.__exit__ = MagicMock(return_value=False)
-        mock_response.read.return_value = _GOOD_RESPONSE_BODY
-
-        side_effects = [
-            _make_http_error(429, {"Retry-After": "5"}),
-            mock_response,
-        ]
-
-        sleep_calls: list[float] = []
-
-        def capture_sleep(secs: float) -> None:
-            sleep_calls.append(secs)
-
-        with patch("src.method.tracks.llm_observer.request.urlopen", side_effect=side_effects):
-            with patch("src.method.tracks.llm_observer.time.sleep", side_effect=capture_sleep):
-                result = provider._request(endpoint="http://fake/chat/completions", payload={"model": "x"})
-
-        self.assertIn("choices", result)
-        # First sleep is the exponential backoff (1s for attempt 1),
-        # second sleep is the Retry-After remainder (5 - 0 = 5s on attempt 0)
-        self.assertGreaterEqual(len(sleep_calls), 1)
-
-    def test_retries_on_connection_error(self) -> None:
-        provider = self._make_provider(max_retries=2)
-        mock_response = MagicMock()
-        mock_response.__enter__ = lambda s: s
-        mock_response.__exit__ = MagicMock(return_value=False)
-        mock_response.read.return_value = _GOOD_RESPONSE_BODY
-
-        side_effects = [ConnectionError("connection refused"), mock_response]
-
-        with patch("src.method.tracks.llm_observer.request.urlopen", side_effect=side_effects) as mock_open:
-            with patch("src.method.tracks.llm_observer.time.sleep"):
-                result = provider._request(endpoint="http://fake/chat/completions", payload={"model": "x"})
-
-        self.assertIn("choices", result)
-        self.assertEqual(mock_open.call_count, 2)
-
-    def test_json_mode_fallback_not_retried(self) -> None:
-        """400 with response_format present triggers the json_mode fallback, not the retry loop."""
-        provider = self._make_provider()
-        mock_response = MagicMock()
-        mock_response.__enter__ = lambda s: s
-        mock_response.__exit__ = MagicMock(return_value=False)
-        mock_response.read.return_value = _GOOD_RESPONSE_BODY
-
-        side_effects = [
-            _make_http_error(400),  # triggers json_mode fallback
-            mock_response,          # fallback succeeds
-        ]
-
-        with patch("src.method.tracks.llm_observer.request.urlopen", side_effect=side_effects) as mock_open:
-            with patch("src.method.tracks.llm_observer.time.sleep") as mock_sleep:
-                result = provider._request(
-                    endpoint="http://fake/chat/completions",
-                    payload={"model": "x", "response_format": {"type": "json_object"}},
-                )
-
-        self.assertIn("choices", result)
-        self.assertEqual(mock_open.call_count, 2)
-        mock_sleep.assert_not_called()
-
-    def test_non_retryable_http_error_raises_immediately(self) -> None:
-        provider = self._make_provider()
-
-        with patch("src.method.tracks.llm_observer.request.urlopen", side_effect=_make_http_error(401)) as mock_open:
-            with patch("src.method.tracks.llm_observer.time.sleep") as mock_sleep:
-                with self.assertRaises(RuntimeError):
-                    provider._request(endpoint="http://fake/chat/completions", payload={"model": "x"})
-
-        self.assertEqual(mock_open.call_count, 1)
-        mock_sleep.assert_not_called()
 
 
 if __name__ == "__main__":
