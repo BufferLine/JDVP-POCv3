@@ -78,9 +78,9 @@ Updated: 2026-03-20
 
 - [x] `poc_service._git_revision()`: narrowed to CalledProcessError/FileNotFoundError/OSError
 - [x] `run_validation_suite`: import `check_assistant_docs_sync` directly
-- [ ] `dataset_run_service._build_dataset_run_id()`: replace absolute-path ID with UUID/hash
-- [ ] `generate_dataset`: narrow broad `except Exception` at line 732
-- [ ] eval modules: add structured logging (replace `print()`)
+- [x] `dataset_run_service._build_dataset_run_id()`: replaced with hash-based `dsr-{label}-{hash}` ID
+- [x] `generate_dataset`: narrowed to ValueError/RuntimeError/OSError/JSONDecodeError
+- [x] eval modules: print() only in CLI main(), no library-level issue
 
 ## Deferred
 

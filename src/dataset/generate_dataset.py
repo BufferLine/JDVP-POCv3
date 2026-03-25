@@ -744,7 +744,7 @@ def generate_dataset(
                         item_payload_json=json.dumps(item_payload, ensure_ascii=False),
                     )
                 )
-            except Exception as exc:
+            except (ValueError, RuntimeError, OSError, json.JSONDecodeError) as exc:
                 failed_count += 1
                 catalog.upsert_dataset_generation_item(
                     CatalogDatasetGenerationItemRecord(

@@ -75,6 +75,7 @@ def _build_dataset_run_id(
     scenario_id: str | None = None,
     max_items: int | None = None,
 ) -> str:
+    import hashlib
     parts = [str(output_root.resolve(strict=False)), track_name]
     if split:
         parts.append(split)
@@ -82,7 +83,12 @@ def _build_dataset_run_id(
         parts.append(f"scenario={scenario_id}")
     if max_items is not None:
         parts.append(f"max={max_items}")
-    return ":".join(parts)
+    key = ":".join(parts)
+    short_hash = hashlib.sha256(key.encode()).hexdigest()[:12]
+    label = f"{track_name or 'run'}"
+    if split:
+        label += f"-{split}"
+    return f"dsr-{label}-{short_hash}"
 
 
 def _dataset_run_status(*, item_count: int, completed_count: int, failed_count: int) -> str:
