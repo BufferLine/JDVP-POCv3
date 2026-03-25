@@ -65,7 +65,7 @@ Updated: 2026-03-20
 
 - [x] `dataset_run_service`: catch all exceptions per item (already catches Exception)
 - [x] `ensemble_benchmark`: derive CORE_FIELDS from `protocol_core.enums` instead of hardcoding
-- [ ] OPERATIONS.md: document gemma12b runs + 5 undocumented scripts
+- [x] OPERATIONS.md: gemma12b runs documented; 5 scripts were already present
 
 ## Backlog — Tech Debt (Medium)
 

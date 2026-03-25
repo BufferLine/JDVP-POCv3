@@ -165,6 +165,8 @@ Current completed datasets:
 - `data/generated-5turn-runs/remote-5turn-gptoss20b-300/v2`
 - `data/generated-5turn-runs/local-5turn-gemma27b-300/v2`
 - `data/generated-5turn-runs/remote-5turn-gemma4b-300/v2`
+- `data/generated-5turn-runs/remote-5turn-gemma12b-300/` (gemma3:12b, 300-item)
+- `data/generated-5turn-runs/remote-5turn-gemma12b-smoke1/` (gemma3:12b, smoke test)
 
 Manual review summary:
 
