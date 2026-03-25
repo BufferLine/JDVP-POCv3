@@ -63,21 +63,21 @@ Updated: 2026-03-20
 
 ## Backlog — Tech Debt (High)
 
-- [ ] `dataset_run_service`: catch all exceptions per item, not just ServiceError
+- [x] `dataset_run_service`: catch all exceptions per item (already catches Exception)
 - [x] `ensemble_benchmark`: derive CORE_FIELDS from `protocol_core.enums` instead of hardcoding
 - [ ] OPERATIONS.md: document gemma12b runs + 5 undocumented scripts
 
 ## Backlog — Tech Debt (Medium)
 
-- [ ] `poc_service` / `dataset_run_service`: catalog upsert error handling
-- [ ] `ensemble_benchmark`: file I/O error handling for `_load_run_manifest` / `_load_extracts`
-- [ ] README.md: update status date (stale since 2026-03-16)
-- [ ] protocol_core: direct unit tests for `build_jsv`, `build_jsv_from_hint`, `CanonicalSchemaValidator`
+- [x] `poc_service` / `dataset_run_service`: catalog upsert error handling (_safe_catalog_upsert)
+- [x] `ensemble_benchmark`: file I/O error handling for `_load_run_manifest` / `_load_extracts`
+- [x] README.md: update status date to 2026-03-25
+- [x] protocol_core: 5 direct unit tests for `build_jsv`, `build_jsv_from_hint`, `CanonicalSchemaValidator`
 
 ## Backlog — Tech Debt (Low)
 
-- [ ] `poc_service._git_revision()`: narrow exception scope
-- [ ] `run_validation_suite`: import `check_assistant_docs_sync` instead of subprocess
+- [x] `poc_service._git_revision()`: narrowed to CalledProcessError/FileNotFoundError/OSError
+- [x] `run_validation_suite`: import `check_assistant_docs_sync` directly
 - [ ] `dataset_run_service._build_dataset_run_id()`: replace absolute-path ID with UUID/hash
 - [ ] `generate_dataset`: narrow broad `except Exception` at line 732
 - [ ] eval modules: add structured logging (replace `print()`)
