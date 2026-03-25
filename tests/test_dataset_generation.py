@@ -408,7 +408,7 @@ class DatasetGenerationTests(unittest.TestCase):
 
                 generation_run_id = (
                     f"{(Path(tmp_dir) / 'synthetic-general-rejected' / 'v2').resolve(strict=False)}"
-                    "::llm_turn_simulated"
+                    "::llm_turn_simulated::seed=11::count=1"
                 )
                 failed_items = CatalogStore(db_path).list_failed_dataset_generation_items(
                     generation_run_id=generation_run_id

@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from pathlib import Path
 from typing import Any
 
 from src.method.fewshot.selector import load_fewshot_pack, select_examples
 from src.pipeline.run_storage import read_json
+
+logger = logging.getLogger(__name__)
 
 from .llm_observer import LLMObserverTrack, LLMProvider, create_env_backed_provider
 
@@ -30,6 +33,8 @@ class FewshotPromptTrack(LLMObserverTrack):
         self.fewshot_pack_path = fewshot_pack_path
         self.fewshot_pack = load_fewshot_pack(fewshot_pack_path)
         self.system_prompt = self.system_prompt + "\n\nUse the few-shot examples embedded in the user prompt."
+        self._zero_shot_fallback = False
+        self._zero_shot_context: dict[str, str] | None = None
 
     def _fewshot_examples_block(self, *, target_interaction_id: str, context_module: str) -> str:
         selected_examples = select_examples(
@@ -38,6 +43,16 @@ class FewshotPromptTrack(LLMObserverTrack):
             context_module=context_module,
             max_examples=len(self.fewshot_pack["examples"]),
         )
+        if not selected_examples:
+            logger.warning(
+                "fewshot_prompt: 0 examples after filtering (interaction=%s, context=%s) — running as zero-shot",
+                target_interaction_id, context_module,
+            )
+            self._zero_shot_fallback = True
+            self._zero_shot_context = {
+                "target_interaction_id": target_interaction_id,
+                "context_module": context_module,
+            }
         rendered_examples: list[str] = []
         for example in selected_examples:
             rendered_examples.append(
@@ -90,6 +105,41 @@ class FewshotPromptTrack(LLMObserverTrack):
             "target_turn:\n"
             f"{base_prompt}"
         )
+
+    def extract(
+        self,
+        interaction_id: str,
+        turn_number: int,
+        human_input: str,
+        ai_response: str,
+        context_turns: list[dict[str, Any]],
+        context_module: str,
+    ) -> TrackOutput:
+        self._zero_shot_fallback = False
+        self._zero_shot_context = None
+        output = super().extract(
+            interaction_id=interaction_id,
+            turn_number=turn_number,
+            human_input=human_input,
+            ai_response=ai_response,
+            context_turns=context_turns,
+            context_module=context_module,
+        )
+        if self._zero_shot_fallback:
+            raw = dict(output.raw)
+            raw["zero_shot_fallback"] = True
+            raw["zero_shot_context"] = self._zero_shot_context
+            return TrackOutput(
+                track_id=output.track_id,
+                model_id=output.model_id,
+                prompt_version=output.prompt_version,
+                jsv_hint=output.jsv_hint,
+                evidence_spans=output.evidence_spans,
+                observer_confidence=output.observer_confidence,
+                observer_notes=output.observer_notes,
+                raw=raw,
+            )
+        return output
 
 
 def create_env_backed_fewshot_track() -> FewshotPromptTrack:

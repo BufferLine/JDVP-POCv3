@@ -89,7 +89,10 @@ Current operational note:
 - `scripts/rerun_failed_runs.py --dataset-run-id <id>` replays the failed subset inside one cataloged dataset run
 - `scripts/list_generation_runs.py` lists dataset-generation runs and their partial/completed states
 - `scripts/list_failed_generation_items.py --generation-run-id <id>` shows which generated items failed and will be retried
+- `scripts/rerun_failed_generation_items.py --generation-run-id <id>` retries failed generation items for a given generation run
 - rerun the same `python3 -m src.dataset.generate_dataset ...` command to retry only failed generation items for that dataset root and generation mode
+- `scripts/validate_contracts.py` validates service contract DTOs against the vendored schema
+- `scripts/prepare_remote_turn_sim_trial100_matrix.py` prepares configuration for 100-item turn-simulated generation trials across remote model targets
 - the immediate next operational checkpoint is a local 100-item `llm_turn_simulated` run to tune model choice and rejection thresholds
 - `config/datasets/general_scenarios_v1.json` remains the stable regression pack
 - `config/datasets/general_scenarios_v2.json` is the richer research pack and should be reviewed through preview flows before it influences baseline policy
@@ -162,6 +165,8 @@ Current completed datasets:
 - `data/generated-5turn-runs/remote-5turn-gptoss20b-300/v2`
 - `data/generated-5turn-runs/local-5turn-gemma27b-300/v2`
 - `data/generated-5turn-runs/remote-5turn-gemma4b-300/v2`
+- `data/generated-5turn-runs/remote-5turn-gemma12b-300/` (gemma3:12b, 300-item)
+- `data/generated-5turn-runs/remote-5turn-gemma12b-smoke1/` (gemma3:12b, smoke test)
 
 Manual review summary:
 

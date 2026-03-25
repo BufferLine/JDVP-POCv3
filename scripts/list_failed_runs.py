@@ -38,13 +38,20 @@ def main() -> None:
             limit=args.limit,
         )
     elif args.summary_by_scenario:
-        rows = store.summarize_runs_by_scenario(status=args.status)
+        rows = store.summarize_runs_by_scenario(
+            status=args.status,
+            dataset_id=args.dataset_id,
+            dataset_run_id=args.dataset_run_id,
+            scenario_id=args.scenario_id,
+            track_name=args.track_name,
+        )
     else:
         rows = store.list_runs(
             status=args.status,
             dataset_id=args.dataset_id,
             dataset_run_id=args.dataset_run_id,
             scenario_id=args.scenario_id,
+            track_name=args.track_name,
             limit=args.limit,
         )
     print(json.dumps(rows, indent=2))

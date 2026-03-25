@@ -9,29 +9,35 @@ from pathlib import Path
 from typing import Any
 
 from src.pipeline.run_storage import read_json, write_json, write_jsonl
+from src.protocol_core.enums import CORE_FIELD_NAMES
 
-
-CORE_FIELDS = (
-    "judgment_holder",
-    "delegation_awareness",
-    "cognitive_engagement",
-    "information_seeking",
-)
+CORE_FIELDS = CORE_FIELD_NAMES
 
 
 def _load_run_manifest(run_dir: Path) -> dict[str, Any]:
-    return read_json(run_dir / "manifest.json")
+    manifest_path = run_dir / "manifest.json"
+    try:
+        return read_json(manifest_path)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"run manifest not found: {manifest_path}") from None
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"malformed JSON in run manifest {manifest_path}: {exc}") from exc
 
 
 def _load_extracts(run_dir: Path, track_name: str) -> list[dict[str, Any]]:
     path = run_dir / "extracts" / track_name / "extracts.jsonl"
-    rows: list[dict[str, Any]] = []
-    with path.open("r", encoding="utf-8") as handle:
-        for line in handle:
-            stripped = line.strip()
-            if stripped:
-                rows.append(json.loads(stripped))
-    return rows
+    try:
+        rows: list[dict[str, Any]] = []
+        with path.open("r", encoding="utf-8") as handle:
+            for line in handle:
+                stripped = line.strip()
+                if stripped:
+                    rows.append(json.loads(stripped))
+        return rows
+    except FileNotFoundError:
+        raise FileNotFoundError(f"extracts file not found: {path}") from None
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"malformed JSON in extracts {path}: {exc}") from exc
 
 
 def _index_by_turn(rows: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
@@ -69,14 +75,18 @@ def _disagreement_fields(extract_rows: list[dict[str, Any]]) -> list[str]:
     return disagreements
 
 
-def _track_field_values(extract_rows: list[dict[str, Any]]) -> dict[str, dict[str, str]]:
-    return {
-        str(row["track_name"]): {
+def _track_field_values(
+    extract_rows: list[dict[str, Any]],
+    run_keys: list[str] | None = None,
+) -> dict[str, dict[str, str]]:
+    result: dict[str, dict[str, str]] = {}
+    for idx, row in enumerate(extract_rows):
+        key = run_keys[idx] if run_keys and idx < len(run_keys) else str(row["track_name"])
+        result[key] = {
             field_name: str(row["jsv_hint"][field_name])
             for field_name in CORE_FIELDS
         }
-        for row in extract_rows
-    }
+    return result
 
 
 def compare_runs(
@@ -89,32 +99,43 @@ def compare_runs(
     if len(interaction_ids) != 1:
         raise ValueError("all runs must share one interaction_id")
 
-    track_rows: dict[str, dict[int, dict[str, Any]]] = {}
+    run_rows: dict[str, dict[int, dict[str, Any]]] = {}
     track_names: list[str] = []
+    run_keys: list[str] = []
     for run_dir, manifest in zip(run_dirs, manifests):
         track_name = str(manifest["track_name"])
+        run_id = str(manifest["run_id"])
         track_names.append(track_name)
-        track_rows[track_name] = _index_by_turn(_load_extracts(run_dir, track_name))
+        run_key = f"{run_id}:{track_name}"
+        if run_key in run_rows:
+            run_key = f"{run_dir.resolve()}:{track_name}"
+        run_keys.append(run_key)
+        run_rows[run_key] = _index_by_turn(_load_extracts(run_dir, track_name))
 
-    turn_numbers = sorted(set().union(*(rows.keys() for rows in track_rows.values())))
+    turn_numbers = sorted(set().union(*(rows.keys() for rows in run_rows.values())))
     comparisons: list[dict[str, Any]] = []
     total_field_comparisons = 0
     total_field_disagreements = 0
     field_comparisons = {field_name: 0 for field_name in CORE_FIELDS}
     field_disagreements = {field_name: 0 for field_name in CORE_FIELDS}
+    skipped_turns: list[dict[str, Any]] = []
 
     for turn_number in turn_numbers:
         present_rows = []
         missing_tracks = []
-        for track_name in track_names:
-            row = track_rows[track_name].get(turn_number)
+        for run_key in run_keys:
+            row = run_rows[run_key].get(turn_number)
             if row is None:
-                missing_tracks.append(track_name)
+                missing_tracks.append(run_key)
             else:
                 present_rows.append(row)
         if len(present_rows) < 2:
+            skipped_turns.append({"turn_number": turn_number, "missing": missing_tracks, "reason": "fewer_than_2_present"})
             continue
 
+        present_run_keys = [
+            rk for rk in run_keys if run_rows[rk].get(turn_number) is not None
+        ]
         disagreements = _disagreement_fields(present_rows)
         total_field_comparisons += len(CORE_FIELDS)
         total_field_disagreements += len(disagreements)
@@ -130,16 +151,19 @@ def compare_runs(
                 "missing_tracks": missing_tracks,
                 "disagreement_fields": disagreements,
                 "disagreement_score": len(disagreements) / len(CORE_FIELDS),
-                "track_field_values": _track_field_values(present_rows),
+                "track_field_values": _track_field_values(present_rows, present_run_keys),
                 "ensemble_jsv_hint": _ensemble_hint(present_rows),
             }
         )
 
-    summary = {
+    summary: dict[str, Any] = {
         "interaction_id": manifests[0]["interaction_id"],
         "run_ids": [manifest["run_id"] for manifest in manifests],
         "track_names": track_names,
         "turns_compared": len(comparisons),
+        "turns_total": len(turn_numbers),
+        "turns_skipped": len(skipped_turns),
+        "skipped_turn_details": skipped_turns,
         "field_disagreement_rate": (
             total_field_disagreements / total_field_comparisons if total_field_comparisons else 0.0
         ),

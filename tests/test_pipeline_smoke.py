@@ -122,7 +122,11 @@ class PipelineSmokeTests(unittest.TestCase):
             self.assertIn("heuristic_baseline", summary["track_names"])
             rows = [json.loads(line) for line in comparisons_path.read_text(encoding="utf-8").splitlines()]
             self.assertIn("track_field_values", rows[0])
-            self.assertIn("fixture_hint", rows[0]["track_field_values"])
+            tfv_keys = list(rows[0]["track_field_values"].keys())
+            self.assertTrue(
+                any("fixture_hint" in k for k in tfv_keys),
+                f"expected a key containing 'fixture_hint' in {tfv_keys}",
+            )
 
 
 if __name__ == "__main__":

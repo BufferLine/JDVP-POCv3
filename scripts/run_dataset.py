@@ -39,6 +39,8 @@ def main() -> None:
         )
     )
     print(json.dumps(response, indent=2))
+    if not response.get("ok", False):
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

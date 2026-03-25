@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 
 from src.protocol_core.enums import CONFIDENCE_LEVELS, CORE_FIELD_NAMES  # noqa: F401  (re-exported)
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -68,8 +71,15 @@ def build_jsv(
     normalized_confidence = _normalize_confidence(confidence)
     if normalized_confidence:
         payload["confidence"] = normalized_confidence
-    if context_module != "general" and extensions is not None:
-        payload["extensions"] = extensions
+    if context_module != "general":
+        if extensions is not None:
+            payload["extensions"] = extensions
+        else:
+            logger.warning(
+                "build_jsv: non-general context_module=%r but no extensions provided; "
+                "resulting JSV may fail schema validation",
+                context_module,
+            )
     return JSVRecord(payload=payload)
 
 

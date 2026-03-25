@@ -68,14 +68,35 @@ class DatasetRunResult:
         ).to_dict()
 
 
-def _build_dataset_run_id(output_root: Path) -> str:
-    return str(output_root.resolve(strict=False))
+def _build_dataset_run_id(
+    output_root: Path,
+    track_name: str = "",
+    split: str | None = None,
+    scenario_id: str | None = None,
+    max_items: int | None = None,
+) -> str:
+    import hashlib
+    parts = [str(output_root.resolve(strict=False)), track_name]
+    if split:
+        parts.append(split)
+    if scenario_id:
+        parts.append(f"scenario={scenario_id}")
+    if max_items is not None:
+        parts.append(f"max={max_items}")
+    key = ":".join(parts)
+    short_hash = hashlib.sha256(key.encode()).hexdigest()[:12]
+    label = f"{track_name or 'run'}"
+    if split:
+        label += f"-{split}"
+    return f"dsr-{label}-{short_hash}"
 
 
 def _dataset_run_status(*, item_count: int, completed_count: int, failed_count: int) -> str:
+    if item_count == 0:
+        return "no_items_matched"
     if failed_count == 0:
         return "completed"
-    if completed_count == 0 and item_count > 0:
+    if completed_count == 0:
         return "failed"
     return "partial"
 
@@ -97,7 +118,10 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
             items = items[: request.max_items]
 
         batch_root = request.output_root
-        dataset_run_id = _build_dataset_run_id(batch_root)
+        dataset_run_id = _build_dataset_run_id(
+            batch_root, request.track_name, request.split,
+            scenario_id=request.scenario_id, max_items=request.max_items,
+        )
         summary_path = batch_root / "dataset_run_summary.json"
         catalog = CatalogStore()
         catalog.upsert_dataset_run(
@@ -145,7 +169,7 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
                         "run_dir": str(result.run_dir),
                     }
                 )
-            except ServiceError as exc:
+            except Exception as exc:
                 failed_count += 1
                 rows.append(
                     {
@@ -154,8 +178,8 @@ def run_dataset(request: DatasetRunRequest) -> DatasetRunResult:
                         "split": item.split,
                         "status": "failed",
                         "run_id": run_id,
-                        "error_code": exc.code,
-                        "error_message": exc.message,
+                        "error_code": exc.code if isinstance(exc, ServiceError) else type(exc).__name__,
+                        "error_message": exc.message if isinstance(exc, ServiceError) else str(exc),
                     }
                 )
 

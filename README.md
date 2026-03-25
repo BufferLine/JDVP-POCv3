@@ -24,7 +24,7 @@ Initial scope is deliberately narrow:
 
 ## Current Status
 
-Current workspace status as of 2026-03-16:
+Current workspace status as of 2026-03-25:
 
 - protocol-core generation and schema validation are implemented and covered by tests
 - extraction tracks are available for `fixture_hint`, `heuristic_baseline`, `llm_observer`, and `fewshot_prompt`

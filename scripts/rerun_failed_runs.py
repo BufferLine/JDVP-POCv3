@@ -18,8 +18,17 @@ from src.service.errors import ServiceError
 from src.service.poc_service import RunRequest, run_interaction
 
 
-def _retry_run_id(original_run_id: str, attempt_index: int) -> str:
-    return f"{original_run_id}-retry-{attempt_index:02d}"
+def _retry_run_id(original_run_id: str, attempt_index: int, output_root: Path) -> str:
+    """Generate a retry run ID that does not collide with existing retries."""
+    # Strip any existing -retry-NN suffix to get the base ID
+    base_id = original_run_id
+    while base_id.endswith(tuple(f"-retry-{i:02d}" for i in range(100))):
+        base_id = base_id[: base_id.rfind("-retry-")]
+    # Find the next available retry index
+    idx = attempt_index
+    while (output_root / f"{base_id}-retry-{idx:02d}").exists():
+        idx += 1
+    return f"{base_id}-retry-{idx:02d}"
 
 
 def rerun_failed_runs(
@@ -43,13 +52,14 @@ def rerun_failed_runs(
     results: list[dict[str, Any]] = []
     for index, row in enumerate(selected_runs, start=1):
         original_run_id = str(row["run_id"])
-        rerun_id = original_run_id if reuse_run_id else _retry_run_id(original_run_id, index)
+        output_root = Path(str(Path(str(row["run_dir"])).parent))
+        rerun_id = original_run_id if reuse_run_id else _retry_run_id(original_run_id, index, output_root)
         try:
             result = run_interaction(
                 RunRequest(
                     input_path=Path(str(row["input_path"])),
                     run_id=rerun_id,
-                    output_root=Path(str(Path(str(row["run_dir"])).parent)),
+                    output_root=output_root,
                     track_name=str(row["track_name"]),
                     resume=resume,
                     dataset_id=(str(row["dataset_id"]) if row["dataset_id"] is not None else None),

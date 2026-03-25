@@ -95,9 +95,20 @@ def _git_revision() -> str:
             capture_output=True,
             text=True,
         )
-    except Exception:
+    except (subprocess.CalledProcessError, FileNotFoundError, OSError):
         return "workspace-local"
     return result.stdout.strip()
+
+
+def _safe_catalog_upsert(catalog: CatalogStore, record: CatalogRunRecord) -> None:
+    try:
+        catalog.upsert_run(record)
+    except Exception:
+        import logging
+        logging.getLogger(__name__).warning(
+            "catalog upsert failed for run_id=%s, status=%s",
+            record.run_id, record.status, exc_info=True,
+        )
 
 
 def build_pipeline_artifacts(
@@ -123,33 +134,41 @@ def build_pipeline_artifacts(
     track = create_track(track_name)
     if isinstance(track, FixtureHintTrack):
         track.set_turns(raw_interaction["turns"])
+    processed_turns: list[dict[str, Any]] = []
     for turn in raw_interaction["turns"]:
         meta = turn.get("meta", {})
         turn_number = int(turn["turn_number"])
         if resume and storage.has_extract_for_turn(turn_number):
             stored = storage.load_extract_for_turn(turn_number)
-            jsv = build_jsv_from_hint(
-                interaction_id=interaction_id,
-                turn_number=turn_number,
-                timestamp=meta.get("timestamp") or turn.get("timestamp"),
-                context_module=context_module,
-                hint=stored.jsv_hint,
-            )
-            jsv_sequence.append(jsv.to_dict())
-            overlay_rows.append(stored.overlay_row)
-            extract_rows.append(stored.extract_record)
-            resumed_turns.append(turn_number)
-            storage.update_checkpoint(
-                interaction_id=interaction_id,
-                total_turns=len(raw_interaction["turns"]),
-                completed_turns=len(jsv_sequence),
-                resumed_turns=resumed_turns,
-                written_turns=written_turns,
-                status="running",
-            )
-            continue
+            current_human = str(turn.get("human_input", ""))
+            current_ai = str(turn.get("ai_response", ""))
+            stored_human = stored.extract_record.get("human_input", "")
+            stored_ai = stored.extract_record.get("ai_response", "")
+            input_changed = (current_human != stored_human or current_ai != stored_ai)
+            if not input_changed:
+                jsv = build_jsv_from_hint(
+                    interaction_id=interaction_id,
+                    turn_number=turn_number,
+                    timestamp=meta.get("timestamp") or turn.get("timestamp"),
+                    context_module=context_module,
+                    hint=stored.jsv_hint,
+                )
+                jsv_sequence.append(jsv.to_dict())
+                overlay_rows.append(stored.overlay_row)
+                extract_rows.append(stored.extract_record)
+                resumed_turns.append(turn_number)
+                storage.update_checkpoint(
+                    interaction_id=interaction_id,
+                    total_turns=len(raw_interaction["turns"]),
+                    completed_turns=len(jsv_sequence),
+                    resumed_turns=resumed_turns,
+                    written_turns=written_turns,
+                    status="running",
+                )
+                processed_turns.append(turn)
+                continue
 
-        context_turns = raw_interaction["turns"][:turn_number]
+        context_turns = list(processed_turns)
         track_output = track.extract(
             interaction_id=interaction_id,
             turn_number=turn_number,
@@ -190,6 +209,7 @@ def build_pipeline_artifacts(
             written_turns=written_turns,
             status="running",
         )
+        processed_turns.append(turn)
 
     dv_sequence = [record.to_dict() for record in build_dv_sequence(jsv_sequence)]
     trajectory = build_trajectory(interaction_id, dv_sequence).to_dict()
@@ -311,7 +331,7 @@ def run_interaction(request: RunRequest) -> RunResult:
         write_json(run_dir / "errors" / "run_error.json", payload)
 
     try:
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=None,
@@ -340,7 +360,7 @@ def run_interaction(request: RunRequest) -> RunResult:
             track_name=request.track_name,
             resume=request.resume,
         )
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=result.interaction_id,
@@ -355,7 +375,8 @@ def run_interaction(request: RunRequest) -> RunResult:
         )
         return result
     except FileNotFoundError as exc:
-        catalog.upsert_run(
+        _write_failure_artifact(exc)
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=(
@@ -373,14 +394,16 @@ def run_interaction(request: RunRequest) -> RunResult:
                 error_message=str(exc),
             )
         )
+        missing_path = str(getattr(exc, "filename", None) or exc)
+        is_input = raw_interaction is None
         raise ServiceError(
-            code="input_not_found",
-            message=f"input file not found: {request.input_path}",
-            details={"input_path": str(request.input_path)},
+            code="input_not_found" if is_input else "file_not_found",
+            message=f"{'input' if is_input else 'required'} file not found: {missing_path}",
+            details={"missing_path": missing_path, "input_path": str(request.input_path)},
         ) from exc
     except ServiceError as exc:
         _write_failure_artifact(exc)
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=(
@@ -401,7 +424,7 @@ def run_interaction(request: RunRequest) -> RunResult:
         raise
     except Exception as exc:
         _write_failure_artifact(exc)
-        catalog.upsert_run(
+        _safe_catalog_upsert(catalog,
             CatalogRunRecord(
                 run_id=request.run_id,
                 interaction_id=(

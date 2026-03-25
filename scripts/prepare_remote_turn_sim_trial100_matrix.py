@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Prepare a remote Ollama matrix config for the trial100 dataset."""
+"""Prepare a remote Ollama matrix config for the trial100 dataset.
+
+LLM runs use the llm_observer track (zero-shot) for unbiased model comparison.
+Few-shot is reserved for evaluation baselines only.
+"""
 
 from __future__ import annotations
 
@@ -22,7 +26,6 @@ from src.service.dataset_run_service import DatasetRunRequest, run_dataset
 
 DEFAULT_DATASET_ROOT = Path("data/generated-local-trials/local-turn-sim-trial100/v2")
 DEFAULT_OUTPUT_ROOT = Path("data/runs/local-turn-sim-trial100-remote-matrix")
-DEFAULT_FEWSHOT_PACK = Path("data/baselines/fewshot_regression_general_v1/fewshot-pack.json")
 
 
 @contextmanager
@@ -45,8 +48,8 @@ def build_config(
     api_key: str,
     dataset_root: Path,
     output_root: Path,
-    fewshot_pack_path: Path,
     include_heuristic: bool,
+    models: list[str] | None = None,
 ) -> dict[str, Any]:
     runs: list[dict[str, Any]] = []
     if include_heuristic:
@@ -56,31 +59,24 @@ def build_config(
                 "track_name": "heuristic_baseline",
             }
         )
+    if models is None:
+        models = ["gemma3:12b", "gpt-oss:20b"]
     common_env = {
         "JDVP_LLM_BASE_URL": base_url,
         "JDVP_LLM_API_KEY": api_key,
-        "JDVP_FEWSHOT_PACK_PATH": str(fewshot_pack_path),
     }
-    runs.extend(
-        [
+    for model in models:
+        label = model.replace(":", "_").replace("/", "_")
+        runs.append(
             {
-                "label": "fewshot_gemma3_12b_remote",
-                "track_name": "fewshot_prompt",
+                "label": label,
+                "track_name": "llm_observer",
                 "env": {
                     **common_env,
-                    "JDVP_LLM_MODEL": "gemma3:12b",
+                    "JDVP_LLM_MODEL": model,
                 },
-            },
-            {
-                "label": "fewshot_gpt_oss_20b_remote",
-                "track_name": "fewshot_prompt",
-                "env": {
-                    **common_env,
-                    "JDVP_LLM_MODEL": "gpt-oss:20b",
-                },
-            },
-        ]
-    )
+            }
+        )
     return {
         "dataset_root": str(dataset_root),
         "output_root": str(output_root),
@@ -134,12 +130,13 @@ def run_prepared_config(config: dict[str, Any]) -> Path:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Prepare a remote Ollama few-shot matrix for trial100")
+    parser = argparse.ArgumentParser(description="Prepare a remote Ollama zero-shot matrix for trial100")
     parser.add_argument("--base-url", required=True)
     parser.add_argument("--api-key", default="dummy")
     parser.add_argument("--dataset-root", type=Path, default=DEFAULT_DATASET_ROOT)
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
-    parser.add_argument("--fewshot-pack-path", type=Path, default=DEFAULT_FEWSHOT_PACK)
+    parser.add_argument("--model", action="append", dest="models", default=None,
+                        help="Model to include (repeatable). Defaults to gemma3:12b and gpt-oss:20b")
     parser.add_argument("--skip-heuristic", action="store_true")
     parser.add_argument("--execute", action="store_true")
     args = parser.parse_args()
@@ -149,8 +146,8 @@ def main() -> None:
         api_key=args.api_key,
         dataset_root=args.dataset_root,
         output_root=args.output_root,
-        fewshot_pack_path=args.fewshot_pack_path,
         include_heuristic=not args.skip_heuristic,
+        models=args.models,
     )
     config_path = args.output_root / "remote_matrix_config.json"
     write_json(config_path, config)

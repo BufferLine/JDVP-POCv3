@@ -88,8 +88,18 @@ def _render_template(template: Any, slots: Mapping[str, str]) -> Any:
     return template
 
 
-def _build_generation_run_id(dataset_root: Path, generation_mode: str) -> str:
-    return f"{dataset_root.resolve(strict=False)}::{generation_mode}"
+def _build_generation_run_id(
+    dataset_root: Path,
+    generation_mode: str,
+    seed: int | None = None,
+    count_per_scenario: int | None = None,
+) -> str:
+    run_id = f"{dataset_root.resolve(strict=False)}::{generation_mode}"
+    if seed is not None:
+        run_id += f"::seed={seed}"
+    if count_per_scenario is not None:
+        run_id += f"::count={count_per_scenario}"
+    return run_id
 
 
 def _build_item_id(*, scenario_id: str, sample_index: int) -> str:
@@ -615,7 +625,9 @@ def generate_dataset(
 
     dataset_root = output_root / dataset_name / dataset_version
     dataset_id = f"{dataset_kind}/{dataset_name}/{dataset_version}"
-    generation_run_id = _build_generation_run_id(dataset_root, generation_mode)
+    generation_run_id = _build_generation_run_id(
+        dataset_root, generation_mode, seed=seed, count_per_scenario=count_per_scenario,
+    )
     progress_path = dataset_root / "generation_progress.json"
     catalog = CatalogStore()
     target_item_count = len(scenario_pack["scenarios"]) * count_per_scenario
@@ -665,12 +677,15 @@ def generate_dataset(
                 accepted_count += 1
                 continue
             attempt_count = int(existing_row["attempt_count"]) if existing_row is not None else 0
+            # Use a per-item deterministic RNG so that skipping accepted items
+            # during a rerun does not shift the random sequence for later items.
+            item_rng = random.Random(f"{seed}:{scenario['scenario_id']}:{sample_index}")
             try:
                 interaction, item_metadata = _build_interaction(
                     dataset_name=dataset_name,
                     scenario=scenario,
                     sample_index=sample_index,
-                    rng=rng,
+                    rng=item_rng,
                     utterance_generator=utterance_generator,
                 )
                 validator.validate(interaction)
@@ -729,7 +744,7 @@ def generate_dataset(
                         item_payload_json=json.dumps(item_payload, ensure_ascii=False),
                     )
                 )
-            except Exception as exc:
+            except (ValueError, RuntimeError, OSError, json.JSONDecodeError) as exc:
                 failed_count += 1
                 catalog.upsert_dataset_generation_item(
                     CatalogDatasetGenerationItemRecord(
@@ -779,7 +794,7 @@ def generate_dataset(
         },
         "items": _manifest_items(items=manifest_items_seed, split_map=split_map),
     }
-    pending_count = max(0, target_item_count - accepted_count - failed_count)
+    pending_count = max(0, target_item_count - accepted_count - failed_count - rejected_count)
     _write_generation_progress(
         progress_path=progress_path,
         dataset_id=dataset_id,

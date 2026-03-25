@@ -301,19 +301,182 @@ Exit condition:
 
 - the project has a clear boundary between lightweight cataloging and more expensive orchestration work
 
-## Working Sequence
+## Working Sequence (revised 2026-03-24)
 
-Use this order for the next implementation passes:
+Revised based on 5-agent cross-analysis of trial100 results. Full analysis: `docs/ANALYSIS_REPORT_2026-03-24.md`.
 
-1. run a 100-item local `llm_turn_simulated` generation trial and inspect reject/failure breakdowns
-2. dataset generation and preview review
-3. model-by-model test runs on shared dataset slices
-4. ensemble summaries and model benchmarking
-5. few-shot-derived low-cost ML baseline exploration
+### Phase A: Extraction Quality Foundation
+
+1. **system prompt decision rubric** — add per-field semantic definitions and boundary case guidance to `llm_observer_system.txt`; re-run trial100 zero-shot to measure disagreement reduction
+2. **compare_runs() unit tests** — add same-track multi-model comparison tests, semantic correctness assertions, and 0%-disagreement sanity check
+3. **pipeline observability** — per-turn latency logging, batch progress output, model-aware timeout presets, disagreement sanity warnings
+
+### Phase B: Evaluation Rigor
+
+4. **jsv_hint silver-label metric** — add hint-vs-extraction accuracy function to measure how well each model recovers the generation intent
+5. **scenario diversity expansion** — add 7+ scenarios with reverse trajectory (AI→Shared→Human), steady-state (Human→Human→Human), and edge cases (Undefined/Absent)
+6. **confusion matrix + kappa statistics** — per-field value-to-value transition matrix, Cohen's kappa, bootstrap 95% CI
+
+### Phase C: Gold Standard
+
+7. **50-item human annotation pilot** — 2 annotators, IAA measurement, adjudication for gold set
+8. **prompt ablation experiments** — 3-5 system prompt variants (detailed rubric, minimal, with/without evidence_spans requirement)
+
+### Phase D: Infrastructure Hardening
+
+9. **ensemble improvements** — confidence-weighted voting, ordinal distance disagreement scoring
+10. **catalog integrity** — UNIQUE constraints, model_id in dataset_runs, atomic write_json
+11. **heuristic baseline upgrade** — ai_response analysis, regex pattern expansion
 
 Current next task:
 
-- run a local 100-item `llm_turn_simulated` generation experiment and tune model/prompt/quality-gate settings from the resulting reject/failure profile
+- system prompt decision rubric (Phase A, item 1)
+
+Trial100 checkpoint (2026-03-22):
+
+- dataset: `data/generated-local-trials/local-turn-sim-trial100/v2/` (102 items, gemma3:4b generated)
+- matrix runs completed:
+  - `heuristic_baseline`: 102/102 (0 failed)
+  - `fewshot_prompt` with `gemma3:12b`: 102/102 (0 failed)
+  - `fewshot_prompt` with `gpt-oss:20b`: 102/102 (0 failed, 1 recovered from timeout)
+- benchmark results (`data/runs/local-turn-sim-trial100-remote-matrix/benchmarks/`):
+  - gemma3:12b vs gpt-oss:20b: **0% disagreement** (102/102 perfect agreement)
+  - gemma3:12b vs heuristic: 61.5% average disagreement (judgment_holder 19%, delegation_awareness 79%, cognitive_engagement 71%, information_seeking 77%)
+  - gpt-oss:20b vs heuristic: 79.0% average disagreement
+  - high heuristic disagreement is expected after correcting defaults to Absent/None (protocol-aligned)
+- **INVALIDATED**: fewshot comparison results (0% disagreement) were caused by a run_key collision bug in `ensemble_benchmark.py` — same-track runs overwrote each other in the comparison dict, producing self-comparisons
+- bug fixed: `compare_runs()` now falls back to `run_dir.resolve()` when `run_id:track_name` keys collide
+
+Zero-shot trial100 checkpoint (2026-03-24):
+
+- matrix runs completed (zero-shot `llm_observer` track):
+  - `heuristic_baseline`: 102/102
+  - `gemma3:12b`: 101/102 (1 timeout)
+  - `gpt-oss:20b`: 101/102 (1 timeout)
+  - `qwen3.5:35b`: 66/102 (36 timeout — model too heavy for local inference at 300s)
+- corrected benchmark results (`data/runs/trial100-zeroshot-matrix/benchmarks/`):
+  - gemma3:12b vs gpt-oss:20b (zero-shot): **35.2% average disagreement** (judgment_holder 88%, information_seeking 37%, delegation_awareness 14%, cognitive_engagement 1.7%)
+  - zero-disagreement items: 0/100 — no interaction had perfect model agreement
+  - gemma3:12b vs heuristic: 61.8% average
+  - gpt-oss:20b vs heuristic: 80.8% average
+- key insights:
+  - judgment_holder is the most subjective field (88% model disagreement)
+  - cognitive_engagement is the most objective (1.7% disagreement)
+  - system prompt drives structure but not semantic agreement — models genuinely differ
+  - fewshot examples reduce model disagreement to ~19% (from 35%), acting as a normalizer
+
+## Bugs (Codex Deep Review, 2026-03-20)
+
+All items below were reproduced by Codex workers during an 8-agent parallel review.
+
+### Critical
+
+1. **dv_ordinal.py:67** — non-general context DV emits empty `extensions: {}` → schema rejects (missing required delta fields like `delta_risk_ownership`)
+2. **schema_validate.py:44** — no `format_checker` on Draft202012Validator → `timestamp="not-a-date"` passes JSV validation
+3. **trajectory.py:18 vs raw_interaction.schema.json:45** — 1-turn interaction produces 0 DVs → trajectory build raises ValueError, but raw schema allows `minItems: 1`
+4. **poc_service.py:152 + run_storage.py:49** — non-contiguous/duplicate `turn_number` accepted → context leaks current turn into history, duplicate overwrites per-turn files
+5. **cheap_ml_baseline.py:107** — empty fewshot pack → empty-string labels for all fields → downstream schema violation
+6. **ensemble_benchmark.py:92** — same `track_name` across runs → dict key collision → self-comparison → false 0% disagreement
+7. **ensemble_benchmark.py:106** — missing turns silently excluded from scoring → incomplete runs can pass threshold checks
+8. **run_dataset.py:30** — `ok: false` response still exits with code 0 → CI treats failures as success
+9. **generate_dataset.py:605** — partial-failure rerun changes RNG consumption order → slot/blueprint/variant selection differs from original
+10. **run_fewshot_regression_suite.py:57** — `--clean` runs `shutil.rmtree` with no path guard → mass deletion if given repo root
+
+### Medium
+
+11. **poc_service.py:357** — all `FileNotFoundError` mapped to `input_not_found` even when schema root is missing
+12. **json_api.py:23** — `bool("false")` evaluates to True (string boolean parsing)
+13. **errors.py:12** — `ServiceError.__str__()` returns empty string (`Exception.args` not initialized)
+14. **dataset_run_service.py:71** — same `output_root` + different split → same `dataset_run_id` → catalog/summary collision
+15. **fewshot_prompt.py:34** — 0 examples after filtering → silent zero-shot without warning or metadata flag
+16. **llm_observer.py:89** — HTTP 200 + non-JSON body → raw `JSONDecodeError` escapes track layer
+17. **eval_service.py:80** — `JSONDecodeError` (subclass of ValueError) → misclassified as `benchmark_threshold_failed`
+18. **generate_dataset.py:782** — `pending_count` ignores rejected items → misleading progress file
+19. **rerun_failed_runs.py:21** — retry ID ignores cumulative count → overwrites previous retry artifacts
+20. **test gaps** — JSON API malformed payloads, validation suite pytest/upstream paths, empty-pack edges all untested
+
+## Technical Debt And Quality Backlog
+
+Discovered during full-project review on 2026-03-20.
+
+### High Priority
+
+1. **dataset_run_service: broaden per-item exception handling**
+   - `dataset_run_service.py` catches only `ServiceError` in the per-item loop; any other exception aborts the entire batch
+   - fix: catch `Exception` per item, record in failure rows, let the batch complete
+
+2. **eval: decouple CORE_FIELDS from hardcoded tuple**
+   - `ensemble_benchmark.py` hardcodes `CORE_FIELDS` instead of deriving from protocol schema or `enums.py`
+   - fix: import from `protocol_core.enums.CORE_FIELD_NAMES` or validate against loaded schema
+
+3. **docs: document undocumented experiments and scripts**
+   - OPERATIONS.md is missing: gemma12b-300, gemma12b-smoke1 dataset runs
+   - OPERATIONS.md is missing scripts: `list_generation_runs.py`, `list_failed_generation_items.py`, `rerun_failed_generation_items.py`, `validate_contracts.py`, `prepare_remote_turn_sim_trial100_matrix.py`
+
+### Medium Priority
+
+4. **service: add catalog upsert error handling**
+   - `poc_service.py` and `dataset_run_service.py` do not catch SQLite errors on `catalog.upsert_*()` calls
+   - fix: wrap in try/except with logging so runs are not silently untracked
+
+5. **eval: add file I/O error handling**
+   - `ensemble_benchmark.py` `_load_run_manifest()` and `_load_extracts()` have no try/except
+   - fix: catch `FileNotFoundError` / `JSONDecodeError` with descriptive context
+
+6. **README status date stale**
+   - last updated 2026-03-16; should reflect latest project state
+
+7. **test coverage gaps for protocol_core**
+   - no direct tests for `build_jsv()`, `build_jsv_from_hint()`, or `CanonicalSchemaValidator`
+   - currently covered indirectly through integration tests; direct unit tests would improve confidence
+
+### Low Priority
+
+8. **poc_service: narrow _git_revision() exception scope**
+   - broad `except Exception` silently returns `"workspace-local"` on any failure
+   - fix: catch `subprocess.CalledProcessError` and `FileNotFoundError`, log others
+
+9. **run_validation_suite: import check_assistant_docs_sync instead of subprocess**
+   - currently spawns a subprocess; could import directly like `validate_contracts_main()`
+
+10. **dataset_run_service: avoid absolute-path dataset_run_id**
+    - `_build_dataset_run_id()` uses `Path.resolve()` as ID; breaks if paths change
+    - consider UUID or content-hash alternative
+
+11. **dataset generate_dataset: narrow broad exception catch**
+    - line 732 catches all `Exception` during interaction generation; masks programming errors
+    - fix: catch specific exceptions (`ValueError`, `RuntimeError`)
+
+12. **eval: add logging infrastructure**
+    - eval modules use `print()` only; no structured logging for long-running benchmarks
+
+## Bugs (Codex 5-Worker Integrity Review, 2026-03-20)
+
+All items below were reproduced by 5 Codex workers during a targeted integrity and business-logic review.
+
+### Critical / High
+
+1. **heuristic_baseline.py:59** — default assignments fabricate state (`Implicit`/`Passive`) when no evidence matches; protocol defines `Absent`/`None` for the no-evidence case
+2. **heuristic_baseline.py:93-95** — explicit delegation phrases ("decide for me") incorrectly mapped to `delegation_awareness=Implicit`; per protocol, human explicitly recognizing delegation is `Explicit`
+3. **poc_service.py:130** — `resume=True` reuses stored extracts without validating that the input (human_input/ai_response) still matches; changing input and rerunning with the same run_id produces input/extract inconsistency
+4. **dataset_run_service.py:71** — `dataset_run_id` omits `scenario_id` and `max_items`, causing different dataset slices to share the same ID and overwrite each other in the catalog
+5. **dataset_run_service.py:78** — empty dataset slice (0 items) recorded as `completed` instead of `no_items_matched`, indistinguishable from a valid run
+6. **generate_dataset.py:91** — generation recovery key omits `seed` and `count_per_scenario`, so regeneration with different parameters reuses stale accepted items
+
+### Medium
+
+7. **jsv_types.py:71** — `build_jsv()` silently omits `extensions` for non-general contexts when caller doesn't supply them; no early warning
+8. **fewshot_prompt.py:44-49** — zero-shot fallback condition not recorded in persisted artifacts; benchmark results misleadingly labeled as few-shot
+9. **llm_observer.py:100-108** — JSON-mode fallback path doesn't catch `json.JSONDecodeError` for non-JSON fallback responses and doesn't re-enter retry loop on transient errors
+10. **ensemble_benchmark.py:67-74** — `_track_field_values()` keys by `track_name` only, collapsing multiple runs of the same track; loses one side of comparison data
+11. **fewshot_benchmark.py:33** — benchmark plan emits items with `fewshot_example_count=0` without flagging zero-shot degradation
+12. **list_failed_runs.py:43** — `--track-name` filter not passed to `list_runs()` in normal (non-dataset-run) mode
+13. **list_failed_runs.py:40** — `--summary-by-scenario` ignores all other filter arguments
+14. **sqlite_store.py:574-575** — `list_runs()` JOIN on `dataset_items` uses only `interaction_id`, not `dataset_id`; produces duplicate rows when multiple datasets share the same interaction_id pattern
+
+### Low
+
+15. **eval_service.py:74** — all `FileNotFoundError` classified as `benchmark_plan_not_found` regardless of which file is actually missing
 
 ## Deferred Automation
 
