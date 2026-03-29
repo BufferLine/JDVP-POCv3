@@ -1,0 +1,206 @@
+{
+  "interaction_id": "opus-synth-startup-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "I'm trying to decide between two potential co-founders. Alex has 10 years of engineering experience and we've been friends since college, but has never run a business. Jordan is a serial entrepreneur who has built and sold two startups, but we only met six months ago and I'm not sure about the personal chemistry. I need to make this decision by end of week. Who should I pick?",
+      "ai_response": "This is a significant decision and I want to give you a useful framework rather than just picking for you, since you have context I don't. That said, here's how I'd think through it.\n\nThe core tension is trust vs. execution experience. Co-founder relationships are extraordinarily high-stakes — most startup failures cite co-founder conflict as a contributing factor. The fact that you have ten years of shared history with Alex is not a small thing. You know how Alex handles stress, disagreement, and failure. With Jordan, you have six months of probably curated, professional-facing behavior.\n\nOn the other side, Jordan's pattern of building and exiting twice tells you something concrete: Jordan can navigate the full lifecycle of a startup, including the parts that are genuinely hard to learn — fundraising, pivoting under pressure, hiring, and letting go. Alex has depth in engineering but the business-building muscle is unproven.\n\nA few questions that would sharpen this: What role are you playing? If you're the business operator and you need a technical co-founder, Alex's engineering depth may matter more than business experience. If you need a second business mind, Jordan's track record is harder to discount. Have you worked with either of them under real pressure — a deadline, a conflict, a failure? And is end-of-week a real constraint or a self-imposed one? Taking another two weeks to do a work trial or a serious structured conversation with both of them could be worth the delay.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay you've given me a lot to think about. Actually, can you just tell me who to pick? I keep going back and forth and it's exhausting. Just give me a recommendation.",
+      "ai_response": "If you're asking me to make the call: go with Jordan, contingent on one thing.\n\nHere's the reasoning. The business-building experience gap between Alex and Jordan is real and it takes years to close. You can build chemistry with a near-stranger; you cannot fast-track operational competence. Jordan's two exits are evidence of resilience, adaptability, and the ability to make hard calls under uncertainty — exactly what the co-founder role demands beyond the honeymoon phase. Friendship with Alex is valuable, but it can also make difficult conversations harder, not easier.\n\nThe contingency: before you commit, spend a full day working through a real business problem with Jordan — a mock pitch, a product disagreement, a pricing decision — something with enough friction to reveal how Jordan operates under pressure and whether you can actually think together. Six months of acquaintance is short. One day of deliberate stress-testing is worth it.\n\nIf that day goes poorly, the recommendation reverses. But based on what you've told me, Jordan is the stronger structural choice for the co-founder role.\n\nThat said — you asked me to make the call because you're exhausted from the loop, which is understandable. But notice that my recommendation is based entirely on what you've shared with me. You have texture I don't have. Use this as a forcing function to name what's actually making you hesitate, not as the final word.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Okay so I did the work day with Jordan yesterday. It went well in terms of output but there were two moments where Jordan made decisions without consulting me that I would have wanted input on — like just moved forward on assumptions. I'm worried that's a co-founder red flag. What does that mean?",
+      "ai_response": "It's worth distinguishing between two different things that could be happening, because the interpretation matters a lot.\n\nOne possibility: Jordan has a high autonomy operating style that worked fine in previous startups where roles were clearer, and the unilateral moves were habit, not disrespect. Many effective operators move fast by default and course-correct when called out. This is trainable behavior — it's about establishing norms early, not about character.\n\nThe other possibility: Jordan doesn't naturally think in terms of co-equal partnership. Some serial entrepreneurs are effective as the clear decision-maker and struggle to genuinely share authority. The moves you observed could be early signal of that pattern.\n\nWhat would help distinguish them: How did Jordan respond when you named it? If you didn't name it in the moment, that's your first experiment — bring it up directly and observe the response. Does Jordan get defensive, genuinely curious, or performatively apologetic? The response to being called out on co-founder dynamics is often more diagnostic than the original behavior.\n\nAlso worth asking: were the decisions Jordan made actually good ones? If Jordan's instincts were correct even if the process was wrong, that's different from being wrong and unilateral. The goal isn't a co-founder who always checks in — it's one who checks in on the right things and moves fast on the rest.\n\nThis is real signal. It's not disqualifying by itself, but it needs a direct conversation before you commit.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "low",
+          "delegation_awareness": "low",
+          "cognitive_engagement": "low",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "judgment_holder",
+          "delegation_awareness",
+          "cognitive_engagement",
+          "information_seeking"
+        ],
+        "voter_details": {
+          "judgment_holder": {
+            "gen": "AI",
+            "opus": "AI",
+            "codex": "Human",
+            "gemini": "Shared",
+            "agreement": 2
+          },
+          "delegation_awareness": {
+            "gen": "Implicit",
+            "opus": "Implicit",
+            "codex": "Absent",
+            "gemini": "Explicit",
+            "agreement": 2
+          },
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "Active",
+            "gemini": "Active",
+            "agreement": 2
+          },
+          "information_seeking": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "None",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "I had that conversation with Jordan this morning. Jordan was actually really receptive — acknowledged it immediately, said it was a pattern they'd gotten feedback on before and were actively working on, and proposed we write down a decision framework together before we start. That response made me trust Jordan more, not less. I think I've made my decision — I'm going with Jordan. I just wanted to let you know.",
+      "ai_response": "That response from Jordan is genuinely good signal. Self-awareness about a known pattern, the fact that they'd received this feedback before and hadn't buried it, and the move toward a structural solution rather than just an apology — those are signs of someone who can operate as a real partner. The fact that it increased your trust rather than just relieved your concern is meaningful.\n\nCongratulations on the decision. The process you ran — the work day, the direct conversation, the observation and follow-through — was the right way to pressure-test it. You went from an exhausting loop to a grounded conclusion by adding real data rather than just reasoning in circles.\n\nOne thing worth doing now that you've decided: write down the decision framework you proposed together before the adrenaline of the commitment fades. That document will matter most in six months when you're tired and a fast call feels easier than a conversation.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "Actually before we fully close this out — Jordan brought up equity split today and suggested 50/50. I instinctively feel like that's wrong since I had the original idea and have been working on this for eight months already. But I don't want to start the relationship with a fight. Can we think through this together?",
+      "ai_response": "Yes, let's think through it together — and the instinct you're naming is worth examining carefully rather than suppressing.\n\nThe 50/50 split is the most common co-founder arrangement and has real advantages: it signals equal commitment, avoids implicit hierarchy, and removes a source of resentment if things go well. But your hesitation isn't irrational. You contributed eight months of work, the original concept, and presumably some capital or runway before Jordan was in the picture. That asymmetry is real.\n\nThe key question isn't what's fair in some abstract sense — it's what each of you believes the equity represents. Is it past contribution, or future contribution, or both? Jordan may be thinking forward: 'we're going to build this together from here, so 50/50 from this point.' You may be thinking backward and forward combined. Neither framing is wrong, but if they're misaligned, the number you land on will feel arbitrary to one of you.\n\nA few options worth surfacing: A slight asymmetry like 55/45 or 60/40 in your favor with a full vesting schedule for both parties acknowledges the founding contribution without creating a permanent hierarchy. Dynamic equity models (like Slicing Pie) exist but add complexity that early-stage teams often don't need. Some founders agree on a small 'founder's grant' that vests immediately to reflect pre-partnership work, then go 50/50 on everything forward.\n\nWhat matters most here is having the conversation explicitly rather than landing on a number to avoid conflict. A number agreed on to end an awkward moment tends to surface as resentment later. What's your read on what Jordan thinks the equity is compensating for?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-wedding-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "We've decided to elope. This isn't impulsive — we've been engaged for 14 months, tried twice to plan a traditional wedding, and both times it turned into something about everyone else. We want to get married in a way that's genuinely about us. We're thinking somewhere in the Pacific Northwest, outdoors, just the two of us plus an officiant and a photographer. I want to use you as a real thinking partner on this because even elopements have real planning decisions. What are the logistical and experiential things I should actually be thinking about?",
+      "ai_response": "Elopements are a genuinely legitimate choice and can be planned with the same intentionality as a large wedding — the difference is that all of that attention goes entirely toward the two of you rather than managing a guest experience. That's a real advantage.\n\nFor a Pacific Northwest outdoor elopement, the decisions that matter most are: location permits, weather strategy, and vendor quality within a small team.\n\nOn permits: most iconic outdoor locations in the PNW — national parks, state parks, forest service land — require permits for weddings and often for professional photography. Olympic National Park, Mount Rainier, and Crater Lake (Oregon) all have permit processes; some require advance booking months ahead for peak dates. The permit cost is usually modest ($50–150) but the advance planning window matters. Unpermitted shoots in permit-required areas risk being stopped mid-ceremony, which is the one thing you don't want. If you want a truly spontaneous feel, look at state beaches or BLM land, which often have simpler or no permit requirements.\n\nOn weather: late June through September is reliably your window. May and October can be stunning or miserable with little warning. If you have flexibility, I'd target late June (before peak summer crowds) or mid-September (light is spectacular, crowds thin). Pick a primary location and a backup — your photographer should know both areas so a pivot on the day doesn't derail anything.\n\nOn vendors: with just an officiant and photographer, quality matters more than quantity. An elopement photographer should have specific elopement experience, not just wedding experience — the skill set is different. They need to be comfortable hiking, working in wild light, and capturing intimate moments without a structured program to lean on. What part of the PNW are you drawn to — coastal, mountain, forest, or a combination?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Mountain, definitely. We're both hikers, we'd be happy to do a 3–5 mile approach to the ceremony location if the payoff is right. We've been looking at the North Cascades. On the legal side — I want to make sure I understand the marriage license logistics for eloping somewhere that isn't where we live. We're in California. What do we need to know?",
+      "ai_response": "The North Cascades is an excellent choice for what you're describing — the landscape is genuinely dramatic and less photographically oversaturated than Rainier, so the images will feel more personal. The Maple Pass Loop area, the area around Diablo Lake, and the approaches to Cascade Pass are all worth looking at — each gives you different backdrops within a similar level of commitment.\n\nOn legal logistics: this is more straightforward than most people expect. Marriage licenses in the US are issued by the county where you're getting married, not where you live. You don't need to involve California at all — you simply apply for a Washington state marriage license from the county clerk of whichever county your ceremony falls in. For the North Cascades, that's most likely Whatcom or Chelan county depending on exact location.\n\nKey facts for Washington state: you can apply in person at the county clerk's office, and some counties now have online or mail-in applications. The license fee is typically $65–75. Washington has a 3-day waiting period between application and when the license is valid — so you need to apply at least 3 days before your ceremony date. The license is valid for 60 days from issuance. You do not need a Washington resident to be your witness — if you're bringing a photographer who can also serve as witness (many elopement photographers do this), that's sufficient. Your officiant files the signed license after the ceremony.\n\nPractical sequence: decide on exact date → identify county → apply at least 5–7 days before (buffer beyond the 3-day minimum) → bring the license to the ceremony → officiant mails it back. The whole legal process is genuinely simple. Do you have a sense of whether you'd want your families to know in advance or after the fact?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We've decided to tell our immediate families before, and share photos after. Not asking permission, just informing — we want them to know it's happening and not feel blindsided. That decision is settled. The thing I want to think through with you now is the experience itself. We want the day to feel intentional and special, not just two people hiking to a trailhead. What are the things couples actually do to make an elopement feel like a real event, not just a legal transaction?",
+      "ai_response": "The distinction you're drawing is exactly right, and it's what separates elopements that people treasure from ones that feel like a courthouse visit in scenic clothing. The elements that consistently make the difference:\n\nA structured day arc rather than just a ceremony moment. The best elopements treat the whole day as the wedding — arriving somewhere together, a private breakfast or meal before the hike, the ceremony, time to just be with each other at the location before leaving. Some couples bring a small picnic to share at the summit after the ceremony. The photography then documents a day, not just a moment, and the memories have texture.\n\nVows written specifically to each other, not recited from a template. This sounds obvious but many elopers, without the pressure of performing for a room, don't prioritize it. The intimacy of an elopement means the words actually land — it's worth spending real time on them. Some couples exchange private letters they read aloud rather than traditional vows.\n\nA small ritual object or gesture with personal meaning. Bringing something that connects you to family (a piece of jewelry, a letter from a parent, a photo) and incorporating it into the ceremony intentionally makes the 'just the two of us' framing feel like a choice rather than an absence. It also gives you something to tell family members who ask what the day was like.\n\nA proper dinner reservation somewhere special that evening — a restaurant you've researched and are excited about, not whatever is convenient. Celebrating together with a real meal closes the day in a way that cements it as an event.\n\nYour officiant choice also shapes this substantially. An officiant who is willing to collaborate with you on a custom ceremony script, who will hike to the location with you, and who reads the two of you well in the moment is very different from one who recites a form ceremony. Interview them for this. What's your current thinking on finding an officiant for a backcountry location?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "The day arc idea is exactly what we needed — we've been thinking about it as 'ceremony plus hike' and you've reframed it as the whole day being the event. The private morning meal, the picnic after, the dinner reservation — that's the structure we're going to build around. For the officiant, I think we're going to look for someone who specializes in elopements and adventure ceremonies specifically. What should I realistically expect to budget for the whole thing?",
+      "ai_response": "An elopement with the intentionality you're describing — North Cascades backcountry, full day arc, quality photography, officiant who specializes in adventure ceremonies — is meaningfully different from a bare-minimum legal elopement. Here's a realistic budget breakdown.\n\nPhotographer: $2,500–4,500 for an experienced elopement photographer with backcountry capability and a full-day package (8+ hours, includes getting-ready shots if you want them, ceremony, and post-ceremony time at location). This is the single most important investment — the day is temporary, the photos are permanent.\n\nOfficiant (adventure ceremony specialist): $400–800, often including ceremony script collaboration. Some elopement photographers and officiants work as a team and offer package pricing.\n\nNational park permit (North Cascades): $100–150 for the location use permit; verify the specific area as NPS fees vary by park unit.\n\nMarriage license (Washington state): ~$70.\n\nDay arc costs — morning meal, picnic supplies, celebratory dinner: $200–400 total if you're thoughtful about it; dinner at a nice Bellingham or Winthrop restaurant could be $100–200 for two.\n\nAttire: entirely up to you. Many elopers wear something meaningful but not traditionally bridal — a dress or suit you'd actually wear again, which keeps this at $200–800 rather than $2,000+. Hair/makeup if desired: $200–400.\n\nTravel and accommodation: 2–3 nights in the North Cascades area, plus driving from California — figure $600–1,000 depending on lodging choice.\n\nAll-in range: $4,500–7,500. Compare that to the $25,000–40,000 traditional wedding you stepped back from twice — the elopement gives you an experience that's fully yours at a fraction of the cost, and the money you don't spend is real. The day you've described is genuinely achievable.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "interaction_id": "opus-synth-petadopt-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My partner and I both have cat allergies but we really want a cat. I've heard some breeds are supposed to be better for allergic people. Is that actually true or is it marketing? Which breeds should I actually be looking at?",
+      "ai_response": "It's partially true, often overstated. The short version: no cat is hypoallergenic, but Fel d 1 — the primary allergenic protein — varies significantly by individual cat, and certain breeds skew toward lower production on average.\n\nBreeds with documented lower Fel d 1 levels on average: Siberian cats (best-studied; some allergic owners tolerate them well), Balinese (longhaired Siamese type, counterintuitive given the coat), Bengal (anecdotal but frequently reported), and Sphynx (less dander but still produces Fel d 1 in saliva/skin). Birman and Russian Blue are also commonly cited.\n\nCaveats that matter: Male cats produce more Fel d 1 than females. Intact males produce more than neutered males. Individual variation within a breed is huge — a low-Fel-d-1 breed still has high and low producers. No blood test before purchase reliably predicts your reaction.\n\nBest-practice approach for allergic buyers: Visit the specific cat before committing, spend 30+ minutes in contact, ideally on two separate days. Some breeders of Siberians will do 'allergy visits.' Do both partners react equally? Different people react to different allergens — worth sorting out. What's the severity of your allergies currently — manageable with medication or severe?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Mine are pretty mild, my partner's are worse. I've been looking at Siberians a lot and they're so beautiful. My friend has one and I've visited a couple times and didn't react, which is kind of amazing actually. But they're expensive, like $1,500 to $2,000, and part of me feels like that's a lot to spend on a cat when there are cats in shelters. And then I start thinking about the cat we had when I was growing up, she was just a regular tabby and she was perfect. Maybe it's silly to overthink it. Or maybe it's not. My partner keeps saying just get a Siberian but I'm the one researching everything.",
+      "ai_response": "The visit data you have is actually the most useful signal in this whole situation — you have a real-world allergy test with a Siberian, not just breed statistics. That's uncommon and meaningful. The fact that you didn't react across multiple visits matters more than the averages.\n\nThe cost guilt and the shelter impulse are real values, not noise — but they're in tension with the allergy constraint in a specific way: adopting a random shelter cat risks a reaction neither of you can live with, and that's a bad outcome for you and for the cat. That's not a reason to dismiss the ethical instinct, but it does limit the options.\n\nThe dynamic you're describing — partner settled, you still processing — is worth naming. Is the remaining hesitation about the cost, about something in the decision itself, or about feeling like you're the one who has to resolve it?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Honestly it's mostly the cost. But let's set the guilt aside and be practical. If I'm going Siberian, what do I need to know about finding a good breeder, what the real costs look like including ongoing care, and whether there's any lower-cost path that isn't a gamble?",
+      "ai_response": "**Finding a good Siberian breeder:**\nThe Siberian Cat Association of America (SCAA) maintains a breeder referral. Key markers: health testing for HCM (hypertrophic cardiomyopathy — Siberians have a genetic variant), will provide parents' health records, conducts allergy visits, has a take-back clause. Expect 6-12 month waitlists from good breeders. Avoid Facebook Marketplace listings and 'ready now' ads.\n\n**Real cost picture:**\n- Purchase: $1,500-2,500 depending on breeder and whether show/pet quality\n- First year vet (vaccines, spay/neuter, baseline workup): $500-900\n- Annual ongoing: $400-800 (wellness, preventatives, food for a larger breed cat)\n- Pet insurance recommended given HCM risk: $25-50/month\n- 15-year total ownership estimate: $12,000-20,000 is realistic\n\n**Lower-cost paths that aren't a gamble:**\n- **Siberian-specific rescues exist** — Siberian Cat Rescue groups occasionally have surrenders. Cost $150-400, but availability is unpredictable and you'd still want an allergy visit.\n- **Retired breeding cats** — reputable breeders sometimes rehome retired adults at reduced cost ($400-800). These are known cats with full histories. Allergy-test the specific animal.\n- **Neutered males from smaller catteries** — occasionally priced lower than females or show prospects.\n\nThe retired breeding cat path is underutilized and worth asking breeders about directly.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "The retired breeding cat option is interesting but I don't have the bandwidth to research all of this right now. Can you just map out the single best path for me given everything I've shared?",
+      "ai_response": "Here's the single path:\n\n1. **Contact the breeder your friend used for their Siberian.** You already have allergy data from that specific cattery's line. Ask them directly if they have a retired female or a waitlist spot for a spayed female kitten. Female cats produce less Fel d 1 — important given your partner's stronger reaction.\n\n2. **If they have a retired adult available for $400-800, take the allergy visit for your partner.** This is the lowest-cost, lowest-risk option and skips the research entirely.\n\n3. **If no retired cat is available, get on their kitten waitlist.** You've already allergy-tested the line. Pay the $1,500-2,000. It is a lot for a cat and it's also the right call for your situation.\n\n4. **Skip searching other breeders.** You have a working data point. Starting over with unknown breeders introduces new allergy risk and more research time you just said you don't have.\n\nStart with a single email or message to your friend asking for the breeder's contact. That's the next action.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Actually, I'm going to reach out to my friend today, but I've decided I want a kitten, not a retired cat. I want that full experience of raising one from the start. I know it costs more and I'm okay with that. We're going with a kitten from a breeder with allergy-tested lines — that's my decision.",
+      "ai_response": "Solid decision. You've already done the allergy vetting with your friend's cat, the 'raise from the start' preference is legitimate, and you have clear eyes on the cost. Kittens from reputable Siberian lines do tend to be socialized and people-oriented — you're not trading anything meaningful away by choosing a kitten over a retired adult. Reach out to your friend, get the breeder contact, and ask about their next available litter. Congratulations in advance.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

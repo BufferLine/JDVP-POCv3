@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-housing-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My youngest just left for college and my husband and I are rattling around in a 4-bedroom house in the suburbs of Minneapolis. We bought it in 2009 for $285k and it's worth maybe $510k now. We're both 57. The mortgage is paid off. We've been going back and forth for two years about whether to sell and downsize — maybe a smaller house, maybe a condo in Uptown, maybe even renting for a while to see what we actually want. We don't need the money per se, but sitting on half a million in equity feels strange too. I'm a planner so I want to think through this carefully before we do anything.",
+      "ai_response": "Two years of going back and forth usually means the sticking point isn't information — it's that the options feel genuinely uncertain and neither of you has a strong pull toward one outcome. Before thinking about which option is financially best, it's worth naming what you actually want your life to look like in the next ten years. Is the hesitation more about leaving the house, uncertainty about where you'd land, or something else?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I keep getting stuck on the rent-for-a-while option. My husband thinks it's throwing money away but I think it might be smart given that we're not sure what we want. Can you just decide this one for us — is renting for a year or two a reasonable move after we sell, or is it financially dumb?",
+      "ai_response": "It's not financially dumb — for your situation it's actually defensible, and here's the clean reasoning: you're mortgage-free, 57, with a significant equity event about to happen. Renting for 12-24 months lets you park that $510k in short-term treasuries or a HYSA (currently yielding 4-5%), giving you roughly $20-25k in passive income while you figure out what you actually want. That's not 'throwing money away' — it's paying for optionality, which has real value when you're making a once-in-a-decade decision at a life transition point.\n\nThe 'throwing money away' framing only holds if you have a clear, confident vision of where you want to land. You've said you don't. Renting for a defined window — call it 18 months — is a reasonable hedge. So: not dumb, conditionally smart. The condition is that you set a decision deadline so it doesn't drag into indefinite drift.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay, I actually really like that framing and it's shifting my thinking. But I want to push back on one thing — my husband's point isn't purely financial, it's that he doesn't want to move twice. He hates moving. And honestly at our age I get that. So the 'rent to figure it out' option has a real non-financial cost that your answer didn't fully account for. I think we need to be more decisive than your answer implied.",
+      "ai_response": "That's a fair and important correction — the one-move constraint changes the calculus significantly. If moving twice is genuinely off the table, then the rent-to-explore option collapses, and the decision becomes: which specific place do you want to land, and can you get confident enough about that to commit? What do you actually know about what you want — walkability, maintenance-free, proximity to things — versus what you'd be giving up?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Given the one-move constraint, help me decide between a smaller single-family home in the suburbs versus a condo in Uptown. What should we actually choose?",
+      "ai_response": "With a hard one-move constraint and both of you at 57, I'd recommend the Uptown condo, and here's the direct case: single-family homes in the suburbs optimize for a life stage you're leaving, not the one you're entering. At 57, walkability, maintenance-free living, and proximity to restaurants, culture, and transit become progressively more valuable — not less. Uptown gives you that. The suburb option keeps you in a yard, snow removal, and driving-for-everything structure that tends to age poorly.\n\nThe concrete risks with condo: HOA fees (budget $400-700/month in Uptown), potential special assessments, and less privacy. These are real. But the suburban alternative has its own hidden costs — ongoing maintenance on a property you bought for a family that no longer lives there.\n\nIf you're moving once, move toward where you want to be at 65-70, not where you were comfortable at 45. That points to Uptown.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "You know what, I think you're right about the direction of travel. We should be buying for who we're becoming, not who we were. I'm going to talk to my husband tonight and I think I'm going to make the case for Uptown seriously. We'll probably list the house this spring. I still want to visit three or four specific buildings before we commit to anything, but directionally I feel settled in a way I haven't for two years. That's useful. Thank you.",
+      "ai_response": "Visiting three or four specific buildings is the right move — the difference between a well-run HOA and a poorly-run one is substantial and not visible from Zillow. The directional clarity you're describing after two years of going back and forth is worth trusting. Good luck with the conversation tonight and the spring timeline.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

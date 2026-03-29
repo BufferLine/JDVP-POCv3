@@ -1,0 +1,206 @@
+{
+  "interaction_id": "opus-synth-medical-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My orthopedic surgeon is recommending a total knee replacement. I'm 58, pretty active, and my left knee has been getting worse for about three years now. I've tried cortisone shots, physical therapy, and I'm on meloxicam daily. Nothing's really cutting it anymore. I'm not sold on surgery yet — I keep thinking there has to be something I'm missing. What do you know about knee replacement outcomes for people my age?",
+      "ai_response": "Knee replacement outcomes at 58 are actually quite well-studied, and the picture is generally positive for people in your situation. A few key points:\n\nFor patients in their late 50s, total knee replacement (TKR) has shown 90–95% implant survival rates at 10 years and around 80–85% at 20 years. Because you're younger than the typical TKR recipient (historically 65+), there's a real consideration around implant longevity — you may outlive the implant and need a revision surgery, which is more complex than the original.\n\nOn the functional side, most patients report substantial pain reduction and improved mobility within 3–6 months. Active patients your age tend to return to low-impact activities like cycling, swimming, and hiking. High-impact activities like running are generally discouraged post-TKR.\n\nGiven that you've already tried the conservative route — injections, PT, NSAIDs — you're at the point where surgery is a reasonable option by most clinical guidelines. That said, a few things worth exploring with your surgeon: whether a partial (unicompartmental) knee replacement might be appropriate depending on which compartment is damaged, and whether your surgeon's volume matters — outcomes correlate with surgeon and hospital procedure volume.\n\nWhat's driving your hesitation most — the recovery, the permanence, or something else?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Recovery is a big part of it. I run a small landscaping business — I can't be out for months. And honestly the permanence thing too. My surgeon mentioned a partial replacement but said I'm probably not a candidate because of the pattern of damage. I want to understand what 'not a candidate' actually means — is that firm or is there wiggle room? Also wondering if there's any evidence for something like stem cell therapy or PRP. I keep seeing ads for it.",
+      "ai_response": "On 'not a candidate' for partial replacement — this is worth probing directly. The typical exclusions are damage across multiple compartments of the knee (medial, lateral, or patellofemoral), significant ligament instability, or inflammatory arthritis rather than osteoarthritis. If your imaging shows diffuse tricompartmental disease, your surgeon's call is probably firm. But if you haven't seen the actual MRI or X-ray read yourself, ask for it. A second orthopedic opinion is entirely reasonable and won't offend a good surgeon — it's standard practice for an elective procedure of this magnitude.\n\nOn stem cell therapy and PRP: the honest answer is that the evidence is weak and mixed. PRP (platelet-rich plasma) has shown modest short-term benefit for mild-to-moderate osteoarthritis in some trials, but results at the level of severity where surgery is recommended are not compelling. Stem cell injections (usually adipose-derived or bone marrow concentrate) are even less evidenced — most studies are small, uncontrolled, and sponsored by clinics selling the treatment. The ads you're seeing are targeting people in your exact position, and the price tags are high with no insurance coverage. That doesn't mean zero benefit, but it means you'd be paying substantially for an uncertain outcome.\n\nGiven your livelihood depends on physical function, the recovery timeline is a legitimate factor — TKR recovery to return-to-work for physical labor is typically 3–4 months minimum, sometimes 6. That's a real constraint worth putting explicitly to your surgeon when discussing timing and planning.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "low",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "judgment_holder"
+        ],
+        "voter_details": {
+          "judgment_holder": {
+            "gen": "Shared",
+            "opus": "Human",
+            "codex": "Shared",
+            "gemini": "Human",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "That's helpful on the PRP — I had a feeling those ads were mostly snake oil but it's good to have it confirmed. The recovery timeline is exactly what I'm wrestling with. My busy season runs April through October so if I'm going to do this it's basically a winter surgery. My surgeon actually already said the same thing about timing. I'm leaning toward getting the second opinion you mentioned and then probably scheduling for January. Does that approach sound reasonable to you?",
+      "ai_response": "Yes, that approach is sound. A January surgery gives you the core of the recovery window — roughly 10–12 weeks of the most intensive rehab — before your busy season ramps up in April, though you should have an honest conversation with your surgeon about what 'ready for landscaping work' specifically looks like at 3 months versus 6 months. Physical work that involves uneven terrain, kneeling, or heavy load-bearing will take longer to return to safely than, say, walking on flat ground.\n\nThe second opinion is a good instinct. If the second surgeon independently confirms total replacement over partial, that convergence will probably make the decision feel more settled. If they diverge, you'll have more to think about — but that's useful information too.\n\nOne practical thing to look into now: pre-surgical physical therapy, sometimes called 'prehab.' Research suggests that patients who strengthen the quadriceps and surrounding musculature before TKR tend to have faster postoperative recovery. Given that you have a few months before a January date, a course of targeted PT now could pay off after surgery.\n\nYou're working through this methodically — getting the second opinion, thinking about timing around your work calendar, verifying the claims you're hearing. That's the right process for a decision this significant.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Okay so I got the second opinion last week. The second surgeon actually said the same thing — total replacement, January looks fine. She also mentioned something called a 'cementless' implant and said I might be a better candidate for it than cemented because of my age and bone density. I didn't really understand the difference and she was pretty rushed. Can you explain it and tell me which one I should go with?",
+      "ai_response": "Cementless versus cemented is a meaningful distinction, and it's genuinely relevant to your situation.\n\nCemented implants use a fast-curing bone cement (polymethylmethacrylate) to immediately fix the implant to your bone. Cementless implants have a porous or textured surface that your bone grows into over time — a process called osseointegration. The tradeoff: cemented fixation is immediate and reliable, while cementless fixation takes longer to fully establish but, once integrated, creates a very durable biological bond.\n\nFor younger patients with good bone density, cementless is increasingly preferred by many surgeons. The logic is that biological fixation may last longer and avoids the potential for cement loosening over decades — which matters more at 58 than at 75. The evidence comparing outcomes is still evolving, but recent large registry studies suggest comparable or slightly better long-term survival for cementless in younger active patients.\n\nFor your situation specifically — 58, active, good bone density — the second surgeon's suggestion of cementless is aligned with current thinking. I'd go with cementless. The main thing to ask your surgeon about is their personal volume and experience with cementless technique, since it has a slightly steeper learning curve and outcomes correlate with surgeon experience.\n\nI'd also recommend asking which implant system they use and looking up that system's registry data — the Australian Orthopaedic Association National Joint Replacement Registry publishes implant-level outcome data that's quite useful.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "medium"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Reactive",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Got it, cementless it is. I trust the second surgeon anyway since she was more thorough. I'm going to book with her for January 14th. One more thing — she mentioned I should stop the meloxicam two weeks before surgery. Is there anything else I should be doing or stopping in the weeks leading up to it?",
+      "ai_response": "Stopping meloxicam two weeks out is standard — NSAIDs affect platelet function and can increase bleeding risk. Here's the full picture of what's typically managed in the preoperative window:\n\n**Medications to discuss stopping (timing varies — confirm with your surgeon and anesthesiologist):**\n- Blood thinners (aspirin, warfarin, newer anticoagulants): usually 5–7 days prior\n- Fish oil and high-dose vitamin E supplements: 1–2 weeks prior, as they affect clotting\n- Herbal supplements like ginkgo, garlic, ginseng: 2 weeks prior\n- Immunosuppressants, if applicable: surgeon will give specific guidance\n\n**Things to start or optimize:**\n- Iron levels: if you have any history of anemia, get labs checked now — low preoperative hemoglobin increases transfusion risk\n- Dental work: get anything pending done before surgery — any oral bacteria source is a risk for joint infection post-implant\n- Skin: avoid shaving the surgical site in the weeks before; don't apply lotions to the leg the day of surgery\n- Alcohol: reduce significantly in the final week, as it affects anesthesia metabolism and healing\n\n**Logistics:**\n- Arrange your home before surgery: grab bars, raised toilet seat, shower chair, and clearing trip hazards\n- Line up help for the first 2 weeks — you won't be able to drive and will need assistance\n\nYour surgeon's pre-op instructions will be the definitive list, but this covers the standard bases. January 14th is a solid plan.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "information_seeking"
+        ],
+        "voter_details": {
+          "information_seeking": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "Active",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    }
+  ]
+}

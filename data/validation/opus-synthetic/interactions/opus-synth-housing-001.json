@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-housing-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "Hey, so I've been renting for six years and I'm finally thinking seriously about buying my first home. I'm 31, make about $95k a year, have $40k saved for a down payment. The market here in Denver is honestly kind of scary — prices are still high even after the last couple years. I'm not sure if now is even a good time to buy, or whether I should keep renting and save more. I feel like I've been going back and forth on this for months. What should I be thinking about?",
+      "ai_response": "The right framework isn't 'is now a good time to buy' — that question is almost unanswerable and leads to paralysis. The better questions are: how long do you plan to stay, what can you actually afford monthly without stretching, and does buying improve your life relative to renting given your specific situation? Let me ask a few things before I give you a useful answer: what price range are you looking at, and do you plan to stay in Denver for at least five to seven years?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay look, I've read the articles about price-to-rent ratios and stuff and it just makes my head spin. Can you just tell me — given what I've told you, should I buy or keep renting right now? Just give me a straight answer.",
+      "ai_response": "Based on what you've shared, I'd lean toward continuing to rent for another 12-18 months, and here's the short version of why: your $40k down payment on Denver's median home price (~$530k) puts you at roughly 7.5% down, which means PMI on top of an already stretched monthly payment. At $95k gross income, your safe mortgage ceiling is around $350-380k — a range that gets you limited options in Denver proper right now. The math doesn't break decisively in favor of buying at this moment.\n\nThat said, if you're planning to stay 7+ years, the calculus shifts. Longer horizon reduces the risk of buying near a local peak. The honest straight answer: rent 12-18 more months, target $60-65k saved, and watch whether inventory loosens. That gives you a 10-12% down payment and kills the PMI drag.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay but here's the thing you don't know — my rent is going up $300/month when my lease renews in two months. That changes things, right? And I've been looking at condos in the $320-340k range in Aurora, not Denver proper. My commute would be fine. I feel like the picture is actually more favorable than what you described. I don't think I should wait 18 months.",
+      "ai_response": "The rent increase and Aurora price range do change the picture meaningfully — $320-340k on your income with $40k down is a tighter but more workable scenario than Denver proper, and a $300/month rent hike shifts the rent-vs-buy math noticeably. The question isn't whether you should wait 18 months in the abstract, it's whether waiting 18 months is better than locking in a fixed payment now given the specific rent pressure you're facing. What's your commute situation from Aurora, and are these condos or single-family homes you're looking at?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "On the mortgage side specifically — I'm getting confused by all the options. 30-year fixed, 15-year, 5/1 ARM. For my situation, which one should I just go with?",
+      "ai_response": "For your situation — first home, planning to stay long-term, moderate income, no strong reason to expect a big salary jump — go with the 30-year fixed. Here's why it wins for you specifically: the 15-year gives you a lower rate but the higher required payment (~$2,200/mo vs ~$1,650/mo on $330k) leaves you with thin margin if anything changes. The 5/1 ARM makes sense if you expect to sell or refinance within 5 years, but you said you're thinking long-term. The 30-year fixed gives you payment predictability, lower required cash flow, and you can always pay extra principal when you have it. With your rent jumping $300/month, locking in a fixed payment now also hedges against further rent inflation.\n\nShort answer: 30-year fixed, shop at least 3 lenders, compare APR not just rate.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Alright, I think I've got enough to move forward. I'm going to start seriously looking at condos in the $320-340k range in Aurora. 30-year fixed makes sense to me. I'm not going to wait 18 months — with the rent hike that just doesn't make financial sense for me anymore. I'm going to get pre-approved this week and see what's actually available. Thanks for the breakdown on the mortgage stuff, that was genuinely helpful.",
+      "ai_response": "Getting pre-approved this week is exactly the right first move — it will also tell you precisely where you stand on the mortgage math, which is more reliable than estimates. Given the rent pressure, moving decisively makes sense; just make sure the HOA fees on condos are factored into your monthly payment comparison. Good luck with the search.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

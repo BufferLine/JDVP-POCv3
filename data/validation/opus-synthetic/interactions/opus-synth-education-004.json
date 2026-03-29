@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-education-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My 8-year-old was just diagnosed with ADHD and dyslexia. The school is offering us a 504 plan or an IEP — I have no idea what either of those is or which one to ask for. I'm in over my head. Please just tell me which one to get.",
+      "ai_response": "Get the IEP. Here's why: a 504 plan provides accommodations — things like extra time on tests, preferential seating, and reduced distraction settings. An IEP (Individualized Education Program) provides all of that plus specialized instruction, mandated service hours, measurable goals, and legally enforceable progress reviews. For a child with both ADHD and dyslexia, specialized reading instruction (often Orton-Gillingham or similar structured literacy) is typically what makes the most meaningful difference — and that is only available through an IEP, not a 504. The IEP is harder to get because it requires the school to provide more, which is exactly why you should ask for it. Request the full evaluation in writing and ask for the IEP eligibility meeting within the 60-day window your state requires.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay, that helps. But the school psychologist told us he might not 'qualify' for an IEP because his grades are still okay — apparently there's something about needing to show academic impact. That doesn't make sense to me. He's working twice as hard as everyone else just to keep up. Does that count?",
+      "ai_response": "Your instinct is right, and the psychologist's framing reflects a common but outdated interpretation. The 'discrepancy model' — requiring a gap between IQ and achievement scores — was the old standard and is no longer the only qualifying pathway under IDEA. Under current federal guidance, a child can qualify for an IEP if the disability adversely affects educational performance, which includes effort, fatigue, and the sustainability of coping strategies — not just grades. A child working twice as hard to produce average output is experiencing adverse impact; the grades are masking it. You can request that the evaluation explicitly document processing speed, working memory, and reading fluency scores, not just GPA. If the school still declines IEP eligibility, you have the right to request an Independent Educational Evaluation (IEE) at district expense. Do you want to know how to document the 'working twice as hard' piece in writing?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Yes, and I also want to push back on something: you said 'get the IEP' as if it's obviously better, but his teacher told us that IEP kids get pulled out of class a lot and he already hates feeling different from his classmates. That's a real concern for him socially and emotionally. I don't think you can just say IEP is better without accounting for that.",
+      "ai_response": "That's a fair and important correction. IEP pull-out frequency is not fixed — it's negotiated as part of the IEP document, and you have the right to specify that services should be delivered in the least restrictive environment (LRE), which is a legal requirement under IDEA. Many districts offer push-in models where a specialist works alongside the classroom teacher rather than pulling students out, or schedule services during non-core times like lunch or recess prep. Your son's social and emotional experience of his own schooling is a legitimate input into how services are structured — not just whether he receives them. The IEP framing should be: 'We want specialized reading instruction, but we want the team to propose a service delivery model that minimizes stigma and disruption to his classroom belonging.' That's a different ask than just 'give us an IEP.' Does the school know that's a priority for you?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "They don't. I'm going into that IEP meeting next Thursday and I'm going to put that on the table explicitly. I've also reached out to a parent advocacy group in our district who can attend with us. I feel like I understand what I'm fighting for now — specialized instruction, but delivered in a way that protects his sense of belonging. That's my position.",
+      "ai_response": "That is a clear, defensible, and child-centered position — and having an advocate present significantly changes the meeting dynamic in your favor. Bring documentation of his diagnostic reports, any teacher observation notes, and if you have it, anything that shows the gap between his effort and his output. State the LRE preference explicitly at the start of the meeting, not as an afterthought. You've moved from 'what do I ask for' to 'here is what I'm asking for and why' — that's the right posture for this process. Good luck Thursday.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "interaction_id": "opus-synth-petadopt-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm getting my first dog and I live in a one-bedroom apartment in the city. What breeds would actually work well for that situation? I want something I can take on walks but won't destroy the place when I'm at work.",
+      "ai_response": "For a city apartment, you want a breed that's calm indoors, not excessively vocal, and manageable on a leash. Top options worth researching: French Bulldogs (low energy indoors, minimal exercise needs, but prone to breathing issues), Cavalier King Charles Spaniels (adaptable, quiet, affectionate), Basset Hounds (surprisingly low-key inside despite the size), Shih Tzus (bred for indoor living, minimal exercise demand), and Greyhounds (counterintuitive, but they're couch dogs who need short bursts, not constant activity). Breeds to avoid: Huskies, Border Collies, Jack Russell Terriers — high drive, destructive when under-stimulated. Key questions to narrow it down: How many hours are you away daily? Do you have outdoor space nearby? Any size preference or allergy concerns?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I don't know, I've been reading so much and I'm just... I had a dog growing up, a golden retriever, and he was just perfect you know? But everyone says apartments and goldens don't mix. My neighbor has this tiny dog that yaps all day and I can't do that. I think I want something medium? Or maybe small is fine. I just don't want to make the wrong choice because this dog is going to be with me for 10-15 years and what if I pick wrong and the dog is miserable. My cousin had a border collie that chewed through a couch. I keep going back and forth.",
+      "ai_response": "That's a real tension — the dog of your childhood sets a high bar, and apartment limitations feel like a constraint you're mourning, not just a practical filter. A few things worth holding onto from what you said: you ruled out yappy and you ruled out high-destruction, and you have a clear emotional template (golden's temperament — gentle, social, biddable). That's actually meaningful signal. Medium-small dogs that carry golden-like temperament traits: Cavalier King Charles Spaniels again, Cocker Spaniels, and mixed-breed goldens from rescue sometimes come in smaller frames. The 10-15 year weight is real but works both ways — it's also 15 years of a good match if you pick thoughtfully, which you clearly are doing. When you're ready to narrow, we can filter against your actual daily schedule.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Reactive",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay, I think I'm overcomplicating this. Let's actually narrow it down. I'm gone about 7-8 hours on weekdays, I have a dog walker lined up for midday, I live near a decent park. I'm leaning toward Cavalier or Cocker Spaniel. Can we compare those two directly on the stuff that matters for my situation?",
+      "ai_response": "Good framing — here's a direct comparison on your specific constraints:\n\n**Separation tolerance (7-8 hrs with midday break):** Cavaliers are more prone to separation anxiety; they attach intensely and some struggle even with breaks. Cockers are more independent — not aloof, but steadier when alone. Edge: Cocker.\n\n**Apartment noise:** Cavaliers are generally quieter. Cockers can alert-bark, especially if under-stimulated. Edge: Cavalier.\n\n**Energy match for park walks:** Both need daily exercise. Cockers have more stamina and enjoy longer outings; Cavaliers tire faster and prefer moderate walks. If you want a real walking companion: Cocker. If you want a dog that's satisfied with 30-minute loops: Cavalier.\n\n**Health costs over 15 years:** Cavaliers have serious hereditary cardiac and neurological issues (MVD, syringomyelia) — vet costs can be significant. Cockers have ear infections and eye issues but generally lower catastrophic risk. Edge: Cocker on long-term health spend.\n\n**Temperament similarity to Golden:** Cavalier is closer — same softness and people-orientation. Cocker is more spirited.\n\nGiven your schedule and golden-template, I'd say Cocker if you want durability and real walks; Cavalier if the golden's gentleness is the non-negotiable.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "This is helpful but I'm still going back and forth in my head. Just tell me which one to get for my situation. You have all the details now.",
+      "ai_response": "Get the Cocker Spaniel.\n\nYour situation tips it: 7-8 hour days even with a midday break favor a dog with better alone-tolerance, and Cavaliers' separation anxiety risk is the single biggest mismatch with your schedule. The park access and your interest in real walks align with a Cocker's energy level. The health risk profile is more predictable. And the temperament — spirited but affectionate — tracks close enough to what you described valuing in your childhood golden.\n\nIf you go rescue route, look for adult Cockers (2-4 years) so temperament is already established and you skip the destructive puppy phase. If you go breeder, prioritize health-tested lines — ask specifically for cardiac and eye clearances.\n\nThat's my recommendation given everything you've told me.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Actually — I think I've known this whole time. I want a Cavalier. I know the health stuff is a risk and I know the separation anxiety is real, but the gentleness is the thing I actually can't compromise on. I'll work around the rest. I'm going to start looking at rescues for adult Cavaliers this week.",
+      "ai_response": "That tracks — you kept returning to the golden's gentleness as the baseline, and the Cavalier is the closer match there. The health risks are manageable with good breeder selection or a rescue with known history, and an adult rescue Cavalier (3-5 years) will have already shown you whether separation anxiety is actually an issue for that individual dog. Cavalier-specific rescues like Cavalier Rescue USA often have detailed behavioral notes per dog. Good call.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

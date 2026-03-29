@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-insurance-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I got into a fender-bender two months ago — my fault, minor damage to the other car, no injuries. My rates went up about $400 a year. Now I'm getting renewal quotes from other carriers and they're all over the place, like from $900 to $1,800 for the same coverage. I'm trying to figure out whether I should stay with my current carrier, switch, or if there's something smarter I should be doing here. I have a clean record otherwise, 2019 Honda Civic, own my home. What should I be thinking about?",
+      "ai_response": "That $900 spread in quotes for the same coverage is normal — auto insurance pricing varies significantly by carrier because each uses its own proprietary risk model and weights factors differently. An at-fault accident affects different carriers' models differently, and some specialize in rewarding clean-record drivers while others are more forgiving of first offenses.\n\nA few things worth thinking through:\n\n**The at-fault surcharge timeline.** Most carriers surcharge at-fault accidents for 3 years, though some go to 5. This means your rate will stay elevated for a period regardless of carrier. Switching now locks in a new surcharge clock with the new carrier — it doesn't reset your history, but some carriers price the surcharge lower than others.\n\n**Bundling discount.** You mentioned owning your home. If your home and auto aren't with the same carrier, you're almost certainly leaving money on the table. Home + auto bundling typically reduces each policy 5–15%. This is often the single biggest lever.\n\n**Coverage audit.** The quotes being compared need to be apples-to-apples. Check that liability limits, comprehensive/collision deductibles, and uninsured motorist coverage match across quotes. A $900 quote might look good but have lower limits that expose you to real financial risk.\n\n**Your Civic's value.** A 2019 Civic is worth roughly $16,000–19,000 depending on mileage. If you're carrying collision with a $500 deductible, that's appropriate. Some people over-insure older vehicles or under-insure newer ones — worth a quick check.\n\nWhat carrier are you currently with, and are your home and auto bundled?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I'm with State Farm right now, home and auto are bundled. My current bundled renewal is $2,100 for both — $1,350 auto, $750 home. The quotes I've been getting are just for auto because I've been shopping them separately, which maybe is dumb in hindsight. The options I have in front of me are: stay with State Farm at $1,350, GEICO standalone auto at $980, Progressive standalone auto at $1,100, and USAA if I qualify — my dad was in the army but I'm not sure if I count. I feel like there's too many variables and I just want someone to tell me what makes sense.",
+      "ai_response": "Let me work through this for you.\n\n**USAA eligibility first.** As the child of a veteran, you do qualify for USAA. This is worth checking immediately — USAA consistently ranks at or near the top for customer satisfaction and claims handling, and their rates are often competitive. Go to usaa.com and verify eligibility before anything else. Get a bundled quote from them.\n\n**The bundling problem with your current numbers.** You're shopping auto standalone, which means you're comparing $1,350 (bundled) against $980 and $1,100 (standalone). The real comparison needs to account for what happens to your State Farm home policy if you pull auto out. State Farm will likely re-rate your home policy upward when you remove the bundle — often $100–200/year. So GEICO standalone at $980 might effectively cost $980 + ~$150 home increase = $1,130 net against the $1,350 bundled auto. The gap narrows significantly.\n\n**My recommendation:** Get two more quotes — a bundled home+auto from GEICO and a bundled home+auto from USAA (if eligible). Then compare the total annual cost of each bundle against your current $2,100 State Farm bundle.\n\nIf USAA comes in under $1,900 total for both, switch everything to USAA. If GEICO bundled comes in under $1,900, switch there. If the difference is under $200/year, stay with State Farm — the claims service relationship you already have, and the hassle of switching home insurance mid-policy, isn't worth saving $15/month.\n\nProgressive is generally competitive for drivers with recent incidents, but I'd prioritize the USAA check given your eligibility.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I checked USAA — I do qualify. Their bundled quote came back at $1,720 total, which is $380 cheaper than State Farm. GEICO bundled was $1,890. So USAA is clearly the best number. But I've never used USAA and I'm a little nervous about switching home insurance — my mortgage servicer has to be notified, there's paperwork, etc. Is the $380 worth the hassle, and is USAA actually good for home claims?",
+      "ai_response": "The $380 is worth it, and yes, USAA is legitimately good for home claims — not just for price.\n\nUSAA consistently earns the highest customer satisfaction scores in both J.D. Power's home insurance and auto insurance surveys, year after year. Their claims reputation is strong specifically for homeowners. The main critique you'll see is that they have limited local agent presence, which matters if you prefer face-to-face service — but for most standard transactions, their online and phone service is considered best-in-class.\n\nOn the mortgage notification process: it's less burdensome than it sounds. Here's what actually happens:\n- USAA will handle sending the new declarations page to your mortgage servicer directly, or you do it via a single online form\n- Your servicer updates the escrow account to reflect the new premium (if you're escrowing insurance, which most mortgages do)\n- State Farm cancels the old policy and issues a prorated refund if you've prepaid\n\nThe total time investment is probably 30–60 minutes spread over a few days. For $380/year, that's a very high return on your time. Over the 3 years your surcharge is active, that's over $1,100 in savings.\n\nOne thing to verify before binding: confirm USAA's coverage terms match on replacement cost vs. actual cash value for the home, and check their deductible structure for wind/hail if that's relevant in your area. Those details occasionally explain rate differences between carriers.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I checked the coverage terms and USAA's home policy is replacement cost, same deductible structure as State Farm. I'm going to switch. Before I do, I want to make sure I'm setting my auto coverage limits correctly since I own a home now. Currently I have 100/300/100. Is that the right level or should I adjust?",
+      "ai_response": "100/300/100 is a solid liability structure, especially given that you own a home. Here's what those numbers mean and whether they're right for your situation.\n\n100/300/100 means: $100,000 per person bodily injury / $300,000 per accident bodily injury / $100,000 property damage. This is meaningfully above the state minimums most people carry and appropriate for a homeowner with assets to protect.\n\nThe rule of thumb is that your liability limits should roughly cover your net worth, because if you're at fault in an accident with serious injuries, the injured party can sue beyond your policy limits and come after personal assets — including home equity. At 100/300, you're well-positioned for most scenarios.\n\nTwo additions worth considering:\n\n**Umbrella policy.** Now that you're switching carriers and have USAA for home and auto, ask about their umbrella policy. A $1M personal umbrella typically runs $150–200/year and extends your liability coverage above your auto and home limits. For homeowners, this is a high-value product. USAA's umbrella pricing is generally competitive.\n\n**Uninsured/underinsured motorist (UM/UIM).** Make sure this matches your bodily injury limits at 100/300. Many people inadvertently carry state minimums here while carrying high liability limits — a mismatch that leaves them underprotected when hit by an uninsured driver.\n\nYour 100/300/100 liability is correct. I'd keep it there and add the umbrella conversation to your USAA enrollment call.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

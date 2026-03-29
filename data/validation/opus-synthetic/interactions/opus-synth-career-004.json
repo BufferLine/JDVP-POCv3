@@ -1,0 +1,158 @@
+{
+  "interaction_id": "opus-synth-career-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm 38 years old, senior product manager at a healthcare tech company, 13 years of work experience total. I've been seriously considering going back for a full-time MBA at a top-10 program. The appeal is a career pivot into strategy consulting or private equity, but I'm not sure if an MBA is actually the right vehicle for those goals at my age and experience level. Can we work through this together?",
+      "ai_response": "This is worth thinking through carefully because the MBA calculus changes significantly at your profile — 13 years of experience and 38 years old puts you in a category where the degree's ROI and function are genuinely different from a 27-year-old with 4 years of experience. Let's be precise about the goals. Strategy consulting and private equity are both prestige-tracked industries, but the MBA's role differs between them. For top-tier strategy consulting — McKinsey, BCG, Bain — an MBA from a top-10 program is still a functional credential that unlocks post-MBA associate hiring, and healthcare tech product experience is relevant domain expertise. The question is whether you want to enter at associate level, which is what the MBA pathway delivers, and whether that role's scope, compensation, and seniority aligns with where you are now. For private equity, the path is more complicated. Most PE firms hire MBAs into associate roles, but healthcare-focused PE (which would be your natural lane) also actively recruits senior operators with domain expertise. Your PM background in healthcare tech is potentially more valuable there than an MBA credential alone. What's drawing you to consulting and PE specifically — is it the work itself, the compensation trajectory, the prestige, or something about the career optionality they provide?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Honestly, it's a mix — I want the analytical frameworks consulting provides, I'm drawn to the variety of work, and the PE angle is more about the financial upside over a decade. I also feel like I've hit a ceiling in product and want a credential that signals a broader capability set. I'm currently earning $165k. My spouse earns $120k. We have one child, a mortgage, and about $180k in savings. I got into Booth and Tuck. Tuition plus living for two years would run about $220k all-in. Can we think through whether the math works?",
+      "ai_response": "The math is worth running carefully because the numbers here are tighter than people typically acknowledge. The total investment is not just the $220k direct cost — it's $220k plus two years of foregone income. At $165k, that's roughly $330k in foregone salary over two years (accounting for the fact that you'd likely earn more in year two had you stayed). Your all-in investment is therefore closer to $550k. The payback analysis: post-MBA consulting associates at MBB earn $175–200k total comp in year one, stepping up to $200–240k by year three. If you assume you'd have grown to $200k in your current trajectory over the same period, the incremental compensation gain from the MBA is modest in the first three years and potentially negative when you account for the investment. The math shifts favorably in two scenarios: if you successfully enter PE within 2–3 years of the MBA, where carried interest can meaningfully change the 10-year financial picture; or if the credential unlocks senior strategy roles at $250k+ that were genuinely inaccessible without it. The honest question is which of those scenarios is actually available to you. One data point that matters: Booth and Tuck both have strong healthcare verticals and active PE recruiting. At your experience level, would you be competitive for PE associate recruiting out of those programs, or would firms place you in senior associate or VP-level operator roles without the MBA anyway?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I genuinely don't know how competitive I'd be for PE recruiting out of Booth or Tuck — that's part of what makes this hard. I've been deliberating for almost a year and I feel like I'm going in circles. I need someone to just synthesize this and tell me what to do. What's your recommendation?",
+      "ai_response": "My recommendation is to go, with Booth as the stronger choice of the two, and to enter with consulting as the primary target rather than PE as the primary bet. Here is the synthesis. The financial math is tighter than the MBA brochure suggests, but your household situation makes it executable — combined savings of $180k plus your spouse's $120k income means the family doesn't face financial distress during the program. The $550k all-in cost is real, but you have the income base to recover it within 5–7 years in a consulting or senior strategy role. The ceiling feeling you're experiencing in product is a legitimate signal. Thirteen years is enough to have learned what product management offers, and the frameworks and cross-industry exposure you're describing aren't well-served by staying on the current path. The MBA is a genuine unlock for that, not just a credential. On PE: I'd treat it as optionality rather than the plan. Healthcare-focused PE funds do hire from Booth and Tuck's MBA programs, and your domain expertise in healthcare tech is a real differentiator in those processes. But PE recruiting is highly competitive and offer rates are low even at top programs. If you enter with consulting as the floor and PE as the upside, you have a rational structure. Booth over Tuck for this goal primarily because of Chicago's stronger PE alumni network and recruiting infrastructure, and its proximity to Chicago-based healthcare PE firms. Start in September, focus the first semester on locking in consulting recruiting relationships, and run PE recruiting in parallel without making it the only outcome you're optimizing for.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement",
+          "information_seeking"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Reactive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Passive",
+            "agreement": 2
+          },
+          "information_seeking": {
+            "gen": "Passive",
+            "opus": "None",
+            "codex": "Passive",
+            "gemini": "None",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "That's the clearest framing I've gotten on this. If I go to Booth with consulting as the primary target, what should I do in the first semester to maximize my chances at MBB?",
+      "ai_response": "MBB recruiting at Booth is structured and has known leverage points. Here is what to prioritize in the first semester. Before school starts, in the summer: cold-email three to five Booth alumni currently at MBB using LinkedIn and the Booth alumni directory. The goal is not to ask for jobs — it's to build relationships before everyone else is competing for them in October. Ask for 20-minute calls about their experience and what they wish they'd known. One or two of those relationships will matter when your resume hits a recruiter's desk. First six weeks of school: attend every consulting club event and sign up for case prep immediately. MBB first-round interviews happen in January at Booth, which means your case practice window is roughly 14 weeks from orientation. Most people underestimate how structured and competitive the internal Booth consulting club process is — there are formal case prep partner matching systems and interview prep workshops that are worth prioritizing over almost everything else in your schedule. Your differentiation strategy: lean explicitly into healthcare. Your 13 years in healthcare tech is a genuine asset that most of your MBA classmates won't have. In every coffee chat and cover letter, frame your background as giving you a specific lens on healthcare systems and digital health that a generalist candidate lacks. MBB healthcare practices actively recruit for this. On academics: grades matter somewhat for consulting recruiting — a strong first-semester GPA signals coachability, and some firms do filter on it. Do not sacrifice case prep for grades, but don't ignore the signal either. Aim for top quartile without obsessing.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,717 @@
+{
+  "validation_date": "2026-03-30",
+  "validator": "automated-post-cleanup",
+  "note": "Revalidation after: (1) filling 25 missing gold_labels via 4-way majority vote, (2) fixing 43 null tie fields via generator tiebreak",
+  "total_files": 100,
+  "pass": 100,
+  "fail": 0,
+  "total_turns": 440,
+  "gold_label_coverage": {
+    "unanimous_4_4": 237,
+    "majority_3_4": 168,
+    "contested": 35
+  },
+  "tiebreak_method": "generator-preferred",
+  "results": [
+    {
+      "file": "opus-synth-career-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-career-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-career-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-career-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-career-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-conflict-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-conflict-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-conflict-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-conflict-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-conflict-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-education-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-education-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-education-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-education-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-education-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-emergency-001.json",
+      "verdict": "pass",
+      "turns": 3,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-emergency-002.json",
+      "verdict": "pass",
+      "turns": 3,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-emergency-003.json",
+      "verdict": "pass",
+      "turns": 3,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-emergency-004.json",
+      "verdict": "pass",
+      "turns": 3,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-emergency-005.json",
+      "verdict": "pass",
+      "turns": 3,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-health-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-health-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-health-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-health-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-health-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-hiring-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-hiring-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-hiring-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-hiring-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-hiring-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-housing-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-housing-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-housing-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-housing-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-housing-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-insurance-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-insurance-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-insurance-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-insurance-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-insurance-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-investment-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-investment-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-investment-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-investment-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-investment-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-legal-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-legal-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-legal-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-legal-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-legal-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-medical-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 3,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-medical-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-medical-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-medical-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-medical-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-petadopt-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-petadopt-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-petadopt-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-petadopt-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-petadopt-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-product-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-product-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-product-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-product-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-product-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-relocation-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-relocation-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-relocation-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-relocation-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-relocation-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-research-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-research-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-research-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-research-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-research-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-retirement-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-retirement-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-retirement-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-retirement-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-retirement-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-startup-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-startup-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-startup-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-startup-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-startup-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-techstack-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 1,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-techstack-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-techstack-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-techstack-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-techstack-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-travel-001.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-travel-002.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-travel-003.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-travel-004.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-travel-005.json",
+      "verdict": "pass",
+      "turns": 5,
+      "contested_turns": 2,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-wedding-001.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-wedding-002.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-wedding-003.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-wedding-004.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    },
+    {
+      "file": "opus-synth-wedding-005.json",
+      "verdict": "pass",
+      "turns": 4,
+      "contested_turns": 0,
+      "issues": []
+    }
+  ]
+}

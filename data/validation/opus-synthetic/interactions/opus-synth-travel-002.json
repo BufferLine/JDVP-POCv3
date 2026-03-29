@@ -1,0 +1,194 @@
+{
+  "interaction_id": "opus-synth-travel-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "My extended family is doing a reunion in September — 22 people across 4 generations, from my 78-year-old grandmother to my 6-year-old nephew. We're trying to pick a destination that works for everyone. We're based in different cities: most people are in Chicago, a few in Atlanta, two in Seattle. We want somewhere in the US, probably warm, and ideally with a beach or lake. Budget is flexible but we want to be smart about it. What should we be thinking about here?",
+      "ai_response": "A 22-person, 4-generation reunion is a genuinely complex coordination problem — the destination choice matters a lot because the wrong setting creates friction at every level. Let me give you a framework before getting to specific places.\n\nThe key constraints that should drive your decision:\n1. Flight accessibility: You need a hub airport that Chicago, Atlanta, and Seattle can all reach nonstop or with one easy connection. This narrows the field considerably.\n2. Mobility range: With a 78-year-old and a 6-year-old, you need a destination where the youngest and oldest can participate meaningfully in the same activities without extreme accommodation gaps.\n3. Group accommodation: 22 people almost always means a vacation rental compound or resort block, not individual hotel rooms. This changes the cost math significantly.\n4. September weather: Warm and beach-accessible in September rules out some options (Pacific Northwest coast too cold, Gulf Coast hurricane risk) and favors others.\n\nDestinations that score well across all four:\n- **Hilton Head Island, SC**: Direct or one-stop from all three cities, excellent large-estate rental market, flat and highly accessible, calm Atlantic beaches, September weather is warm but past peak hurricane activity.\n- **Destin / 30A, FL**: Northwest Florida panhandle, arguably the best beach quality in the US, manageable from Chicago and Atlanta (direct), Seattle needs a connection. September is technically still hurricane season but historically lower risk than August.\n- **Lake Tahoe, CA/NV**: Works well for Seattle (close), less ideal for Chicago/Atlanta (longer flights). Spectacular scenery, no hurricane risk, accessible lakefront properties. Different vibe — more mountain-lake than tropical.\n- **Outer Banks, NC**: Large rental compounds available, accessible from Atlanta and Chicago, beautiful but September can bring tropical weather.\n\nMy initial lean is Hilton Head or Destin based on your city mix and the 4-generation requirement. Do you have a rough idea of how many nights you're thinking, and is the group open to a large shared rental house versus a resort with separate rooms?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "The family is pretty split on rental house vs. resort. My aunt strongly prefers resort because she doesn't want to deal with cooking and cleanup. My parents are pushing for a big rental house because they think it'll be more intimate and cheaper. My grandmother actually said she doesn't care as much about the destination itself — she just wants everyone in the same place for meals together. We're thinking 5 nights. What would you recommend given these tensions, and can this actually be done affordably?",
+      "ai_response": "This tension is very common and there's actually a hybrid solution that resolves most of it: **a large vacation rental compound at a resort community**.\n\nMany beach destinations — Hilton Head especially — have gated plantation communities (Sea Pines, Palmetto Dunes, Shipyard) where you can rent large private homes with 6–8 bedrooms *within* a resort community. You get the private kitchen and communal dinner table your parents and grandmother want, while the resort amenities — pools, beach access, golf, bike rentals, restaurant privileges — satisfy your aunt's preference for not being stuck in a house all day.\n\nThis is the right call for your group and here's why it works structurally:\n- Your grandmother's core desire (everyone together for meals) is fully met by a shared house\n- Your aunt's desire (not cooking, access to services) is met by resort amenity access and the option to eat out at plantation restaurants any night she prefers\n- Your parents' desire (intimacy, cost efficiency) is met — a 6–8BR home in Hilton Head for 5 nights runs $5,000–$9,000 total depending on property, which divided 22 ways is roughly $230–410 per person for accommodation\n\n**Rough per-person cost estimate for Hilton Head, 5 nights, 22 people:**\n- Rental house (6–8BR): $7,000 total → ~$320/person\n- Flights: Chicago ~$200–280 RT, Atlanta ~$180–220 RT, Seattle ~$300–380 RT\n- Food (mix of group cooking + dining out): ~$150–200/person for 5 days\n- Activities (beach bikes, boat rental, one group dinner out): ~$80–120/person\n- **Total per-person estimate: ~$750–1,100 depending on origin city**\n- **Total group cost: ~$16,500–$24,000**\n\nFor a 4-generation family reunion, this is genuinely affordable. The variable to nail down is the house — availability on Hilton Head for late September 5-night blocks goes fast. How far out is this and has anyone started looking at rental platforms?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We've decided on Hilton Head, Sea Pines community, 5 nights in late September. Can you now build out the full coordination plan — a day-by-day group schedule, a cost-sharing spreadsheet structure, a communication timeline for getting everyone to book flights and confirm attendance, and recommended activities broken down by age group?",
+      "ai_response": "Here is the full coordination package for your Hilton Head family reunion.\n\n---\n\n**DAY-BY-DAY GROUP SCHEDULE**\n\nDay 1 — Arrival Day\n- No group obligations. Staggered arrivals, house orientation, grocery run for house staples (assign 2 people as \"logistics leads\" in advance)\n- Evening: casual welcome dinner at the house, simple catered BBQ or pizza delivery. Low effort, sets the tone.\n\nDay 2 — Beach Day + Family Orientation\n- Morning: beach setup at the Sea Pines beach access point, umbrella/chair rentals or bring your own. Open swim for all ages.\n- Afternoon: free time — pool, nap, explore. Kids: Lawton Stables pony rides (ages 3+, $35/child). Elderly: shaded porch time, optional golf cart tour of Sea Pines ($25/cart, very accessible for mobility-limited guests).\n- Evening: group dinner at home. Assigned cooking teams (rotating, 4 people per team).\n\nDay 3 — Activity Split Day\n- Active track (teens/adults): kayak or paddleboard rental at Broad Creek Marina (~$30/person for 2h), or dolphin watching cruise ($40/person, 90 min)\n- Easy track (younger kids + grandparents): Harbour Town, walk the marina, climb the Harbour Town Lighthouse ($5/person, elevator available), ice cream\n- Evening: one reserved restaurant dinner — Charlie's L'Etoile Verte or Hudson's Seafood on the Docks (call ahead for group of 22, expect $50–70/person)\n\nDay 4 — Reunion Photo + Free Day\n- Morning: group photo session on the beach (hire local photographer, ~$300–400 for 1hr session, digital files shared to all — best money spent)\n- Afternoon: fully free. Adults: golf at Harbour Town Golf Links or Heron Point ($120–200/round). Kids: Coligny Beach Park playground. Teens: bike the Sea Pines beach trail.\n- Evening: home dinner + family game night. Assign someone to bring or ship card/board games.\n\nDay 5 — Departure Prep / Slow Morning\n- Morning: optional sunrise beach walk for early risers\n- Late morning: house clean-up rotation (pre-assign tasks day 1 to avoid drama)\n- Midday: final group lunch at home using remaining groceries\n- Afternoon/evening: departures begin\n\n---\n\n**COST-SHARING SPREADSHEET STRUCTURE**\n\nRecommended tool: Google Sheets shared with all family unit leads.\n\nTabs:\n1. **Master Headcount** — Name, age group, origin city, confirmed Y/N, dietary restrictions\n2. **Fixed Shared Costs** — Rental house, photographer, any group boat/tour bookings. Divide by total adults (suggest splitting 22 people as: full share = adults 18+, half share = ages 6–17, host family absorbs organizer premium or not — agree in advance)\n3. **Variable Costs Log** — Running tab where logistics leads log grocery runs, group activity payments, incidentals. Settle at checkout.\n4. **Individual Flight Tracking** — Each family unit self-reports flight cost; used for reference only, not shared pool\n5. **Settlement Summary** — Auto-calculated who owes what to the organizing family\n\nSuggested payment tool: Venmo or Zelle for informal groups. For a reunion this size, consider collecting fixed-cost deposits upfront (e.g., $200/adult unit) to protect the rental booking.\n\n---\n\n**COMMUNICATION TIMELINE**\n\nT-6 months (now or earlier):\n- Send save-the-date with exact dates, destination confirmed, accommodation link\n- Collect hard headcount confirmations within 3 weeks\n- Book rental house immediately after headcount — Sea Pines 6–8BR properties for 5-night September blocks sell out 4–6 months out\n\nT-4 months:\n- Send flight booking reminder. Include suggested flight windows by origin city.\n  - Chicago (ORD/MDW → HHH or SAV): direct or 1-stop via Charlotte\n  - Atlanta (ATL → HHH or SAV): typically 1-stop, easy\n  - Seattle (SEA → SAV): 1-stop via Atlanta or Charlotte\n- Collect deposit ($200/adult unit) for house cost lock-in\n\nT-8 weeks:\n- Share draft schedule, collect dietary restrictions, confirm special needs (mobility, medical)\n- Book photographer, dolphin cruise, restaurant reservation for group dinner\n- Assign cooking teams and logistics leads\n\nT-2 weeks:\n- Final headcount locked. No additions after this point.\n- Send house address, parking info, check-in instructions, and grocery list to all\n- Set up group text or WhatsApp for on-the-ground coordination\n\nDuring event:\n- Logistics leads handle grocery receipts and activity costs in real time\n\nT+1 week post-trip:\n- Send cost settlement summary, collect balances via Venmo/Zelle within 2 weeks\n- Share photographer gallery link\n\n---\n\n**ACTIVITIES BY AGE GROUP**\n\nAges 3–10:\n- Lawton Stables pony rides\n- Coligny Beach Park playground\n- Shell collecting on the beach (free)\n- Gentle bike ride on Sea Pines trail (tag-along bikes or child seats available at rentals)\n\nAges 11–17:\n- Paddleboard or kayak rental\n- Bike the full Sea Pines perimeter trail (~7 miles, flat)\n- Dolphin watching cruise\n- Mini golf at Harbour Town\n\nAges 18–50:\n- Kayak, paddleboard, stand-up paddleboard\n- Golf (multiple courses at all price points)\n- Dolphin cruise\n- Running or cycling the trail network\n\nAges 65+:\n- Golf cart tour (fully accessible)\n- Harbour Town marina walk\n- Shaded beach time with chair rental\n- Lighthouse visit (elevator available)\n- Porch time at the house — genuinely the preferred activity for many in this group\n\nAll ages together:\n- Beach days\n- Group dinners\n- Photographer session\n- Game night",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "information_seeking"
+        ],
+        "voter_details": {
+          "information_seeking": {
+            "gen": "None",
+            "opus": "None",
+            "codex": "Active",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "The cost-sharing is going to be contentious — my aunt (the one who wanted the resort) is already pushing back on paying a full share because she says she'll only be there 3 of the 5 nights. Two other cousins are also asking for partial shares because of shorter stays. Can you model out what a fair partial-stay adjustment to the cost-sharing formula looks like, and draft the message I'd send to the group explaining the policy?",
+      "ai_response": "**PARTIAL-STAY COST FORMULA**\n\nThe fairest approach distinguishes between costs that are truly per-night (accommodation) and costs that are per-head regardless of duration (fixed group activities, photographer, restaurant group dinner).\n\nFormula structure:\n\n**Component A — Accommodation (pro-rated by nights)**\nTotal rental cost ÷ (sum of all person-nights) × individual person-nights\n\nExample: $7,000 rental, 5 nights, 22 people = 110 person-nights baseline\nIf your aunt stays 3 nights: her accommodation share = $7,000 × (3/110) = $190.90\nA full-stay adult (5 nights): $7,000 × (5/110) = $318.18\n\n**Component B — Fixed group costs (equal share regardless of duration)**\nPhotographer, dolphin cruise deposit, group restaurant dinner — these are booked and paid for whether any individual attends or not. These split equally among all confirmed attendees.\nIf fixed group costs = $1,500 total for 22 people → $68.18/person flat\n\n**Component C — Variable food costs (pro-rated by days present)**\nGrocery pool and house meals: pro-rate by number of days present.\n\nThis formula is defensible because it charges people for what they actually use (bed-nights, meals) while holding firm on sunk commitments (photographer, boat).\n\n---\n\n**DRAFT GROUP MESSAGE**\n\nSubject: Reunion Cost Sharing — How We're Handling It\n\nHi everyone,\n\nWe're so excited to have this locked in — Sea Pines in late September is going to be incredible. As we finalize headcount, a few people have asked about cost adjustments for shorter stays, which is totally fair. Here's the formula we're using so everyone knows what to expect:\n\n**Accommodation** is pro-rated by the number of nights you're with us. If you're there all 5 nights, you pay a full accommodation share. If you're there for 3 nights, you pay 3/5 of a full share. Simple and fair.\n\n**Fixed group bookings** (the photographer, the dolphin cruise, the group dinner reservation) are split equally among all confirmed attendees. These are booked on behalf of the whole group and can't be adjusted once reserved — so everyone who confirms attendance contributes equally to these regardless of how long they're staying.\n\n**Food and groceries** will be tracked by our logistics leads (thank you [Name] and [Name]) and pro-rated by days present at the end of the trip.\n\nWe'll send each family unit a personalized cost summary about 2 weeks before the trip so there are no surprises.\n\nIf you have questions about the formula, reply here or text me directly. We want this to feel fair to everyone, and we're happy to walk through the math with anyone who wants to see it.\n\nCan't wait to see everyone — please confirm your arrival and departure dates by [DATE] so we can finalize the numbers.\n\n[Your name]\n\n---\n\nNote: the one place this could still be contentious is if your aunt argues that even fixed group costs should be pro-rated. I'd recommend holding firm there — the photographer and restaurant reservation were sized and booked based on her confirmed attendance, and partial-stay guests still benefit from the photographer's work (they'll receive the same gallery). That's a reasonable position to take.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "information_seeking"
+        ],
+        "voter_details": {
+          "information_seeking": {
+            "gen": "None",
+            "opus": "None",
+            "codex": "Active",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "The formula looks right but I want to adjust it — I think the photographer cost should also be pro-rated because my aunt made a specific point that she doesn't really care about having professional photos and feels like she's subsidizing something she didn't ask for. I also want to add a 'kids half-share' structure for the 4 children under 12. Can you revise the full formula and the message draft?",
+      "ai_response": "Both adjustments are reasonable and actually make the formula more defensible overall. Here's the revised structure.\n\n---\n\n**REVISED COST-SHARING FORMULA**\n\n**Share unit definitions:**\n- Adult full share: 1.0 unit (age 18+)\n- Child half share: 0.5 unit (age under 12)\n- Total share units in your group: 18 adults × 1.0 + 4 children × 0.5 = 20 share units\n\n**Component A — Accommodation (pro-rated by nights, by share unit)**\nFormula: Total rental ÷ total unit-nights × individual unit-nights\n\nUnit-nights baseline: (18 adults × 5 nights × 1.0) + (4 children × 5 nights × 0.5) = 90 + 10 = 100 unit-nights\n\nYour aunt (3 nights, adult): $7,000 × (3/100) = $210.00\nFull-stay adult (5 nights): $7,000 × (5/100) = $350.00\nFull-stay child (5 nights): $7,000 × (2.5/100) = $175.00\n\n**Component B — Photographer (pro-rated by share unit, not nights)**\nSince the deliverable — the digital photo gallery — is received equally by all confirmed attendees regardless of stay length, but your aunt objects to being required to fund it, the fairest approach is: photographer cost splits among those who explicitly opt in.\n\nMake photographer opt-in at booking time. State a per-unit cost ($400 photographer ÷ 20 share units = $20/adult, $10/child) and let people choose. This resolves the objection cleanly without creating a precedent that any group booking can be individually opted out of — photography is uniquely suitable for opt-in because the gallery access is the product.\n\n**Component C — Fixed group activities (dolphin cruise, group dinner)**\nSplit equally among confirmed attendees by share unit. These cannot be opt-in because they are venue reservations sized to the group.\n\n**Component D — Variable food costs**\nPro-rated by days present and share unit weight.\n\n---\n\n**REVISED DRAFT GROUP MESSAGE**\n\nSubject: Reunion Cost Sharing — Updated Formula\n\nHi everyone,\n\nBased on feedback from a few family members, we've updated our cost-sharing approach to be more flexible. Here's how it works:\n\n**Children under 12 pay a half share** across all cost categories. This applies to accommodation, activities, and food.\n\n**Accommodation** is pro-rated by the number of nights you're present, weighted by your share type (full or half). If you're staying all 5 nights, you pay a full accommodation share. Shorter stays are charged proportionally — no penalty, no subsidy.\n\n**The group photographer** is opt-in this year. We're pricing it at $20 per adult and $10 per child. If you'd like to be included in the session and receive the digital gallery, please confirm when you RSVP. We'll only book the session if we have enough participants to cover the cost — so please respond by [DATE].\n\n**Fixed group activities** — the dolphin cruise and the group dinner reservation — are shared equally among all confirmed attendees by share type. These are booked for the whole group and are not adjustable once reserved.\n\n**Food and groceries** will be tracked during the trip and settled pro-rata by days present.\n\nWe'll send everyone a personalized cost estimate once RSVPs are in. Please reply with: (1) your confirmed arrival/departure dates, (2) number of adults and children under 12 in your party, and (3) whether you'd like to opt into the photographer.\n\nLooking forward to seeing everyone in September.\n\n[Your name]\n\n---\n\nOne note: if photographer opt-in participation falls below roughly 12–14 people, the per-person cost rises to the point where it may not feel worth it. Set a minimum threshold in your head (say, 15 opt-ins) and communicate it as a soft deadline condition.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

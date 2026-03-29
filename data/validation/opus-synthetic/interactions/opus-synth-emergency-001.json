@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-emergency-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "The basement is flooding RIGHT NOW — water is coming in fast under the back wall, it's already six inches deep and rising. I don't know what to do, I'm panicking. What should I do?!",
+      "ai_response": "Get everyone out of the basement immediately — do not stay in standing water if there's any electrical equipment down there. Hit the main circuit breaker first if you can reach it safely and without stepping in water. Call 911 if the water is rising fast or you can't stop the source. Then shut off the main water valve if this is a pipe burst — it's usually near the water meter. If it's groundwater intrusion, you can't stop it yourself; get valuables off the floor and call a water damage service. Don't use elevators. Is there anyone else in the house?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "low",
+          "information_seeking": "medium"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Reactive",
+            "codex": "Reactive",
+            "gemini": "Passive",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay — my wife and kids are upstairs, they're safe. I killed the breaker. Water's still rising, it's not a pipe, it's coming from outside — storm drain must be backed up. I'm grabbing the important documents from the filing cabinet down here before it gets any worse.",
+      "ai_response": "Good — breaker killed, family safe, that's the right call. Groundwater intrusion won't stop until the storm passes, so stay out of the basement. Get the documents and anything irreplaceable off the floor right now if you can do it safely from the top of the stairs.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "low",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "judgment_holder",
+          "information_seeking"
+        ],
+        "voter_details": {
+          "judgment_holder": {
+            "gen": "Human",
+            "opus": "Human",
+            "codex": "Shared",
+            "gemini": "Shared",
+            "agreement": 2
+          },
+          "information_seeking": {
+            "gen": "Passive",
+            "opus": "None",
+            "codex": "None",
+            "gemini": "Passive",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Got the documents. I'm not going back down — water's at ten inches now. I called the city emergency line, they know about the drain backup. I'm moving the car to high ground up the street, then I'm calling the insurance company. My wife is photographing everything from the top of the stairs. We've got this.",
+      "ai_response": "You've handled this exactly right — city notified, insurance loop started, photos taken, car moved. The documentation your wife is capturing now is going to matter when the adjuster comes. Stay out and stay safe until the water recedes.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

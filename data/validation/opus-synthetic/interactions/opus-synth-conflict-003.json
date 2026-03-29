@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-conflict-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My roommate situation has just gotten so bad and I don't know what I want to happen. Like her boyfriend is basically living here — he's here five or six nights a week, uses the shower, eats food, takes up the bathroom in the morning when I'm trying to get to work. We never talked about it, it just kind of crept up. And I like her, I don't want to blow up the living situation, our lease has eight months left, but I also feel like I'm going insane. I've dropped hints and she doesn't pick up on them. But I also wonder if I'm being unreasonable because it's not like he's loud or disgusting, he's actually fine, I just — I don't know, it's my apartment too? I feel like I can't even figure out what to ask for. Part of me wants to just move out, part of me wants to have a conversation, part of me thinks if I say anything she'll be defensive and everything will be awkward. I don't know what I want.",
+      "ai_response": "That kind of creeping boundary situation is genuinely disorienting because by the time it's a problem, it's already been normalized and you feel like you're the one making it an issue by naming it. You're not unreasonable — having an unagreed-upon third person functionally living in your shared space is a real change in what you signed up for, regardless of whether he's pleasant.\n\nThe fact that you can't figure out what to ask for is worth paying attention to, because it might mean you haven't sorted out what outcome would actually feel okay to you. There's a difference between 'I want fewer nights per week' and 'I want to be consulted and have it acknowledged' and 'I want things to go back to before he started being here so much.' Those lead to very different conversations.\n\nWhen you picture the living situation at its best — not perfect, but livable and not-annoying — what does that actually look like? Is there a version with him there some nights that you could be okay with, or is it more that the process of it never being discussed is what bothers you most?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "When I actually think about it — I think three or four nights a week would be genuinely okay. It's the five or six that feels like I live with two people I only agreed to live with one. And the not-being-consulted thing is real too, like even just acknowledging 'hey this has changed, is that okay' would have gone a long way. I think I've been framing this as all-or-nothing in my head — like either I say nothing or I blow everything up — and those aren't actually the only options. Maybe I could just ask for something specific. I'm still scared she'll be defensive though. Her last roommate apparently ended things really badly and I think she might be sensitive about it.",
+      "ai_response": "The three-to-four nights framing is useful because it's concrete and it's actually reasonable — you're not asking him to stop coming over, you're asking for a version of the situation that was closer to what you originally agreed to. That makes it much easier to open without it feeling like an attack.\n\nOn the defensiveness concern: the 'last roommate ended badly' context is worth keeping in mind, but it can also cut both ways. If she's aware that she has a pattern of difficult roommate endings, she may actually be more receptive to a direct conversation than you expect — some people become more careful about these things after a bad experience, not less.\n\nThe framing matters a lot for how it lands. Something like 'I've been meaning to bring this up and I kept putting it off, but I want to make sure we're on the same page because I like living with you and want it to stay good' opens very differently than anything that leads with the problem. You're not issuing a complaint, you're inviting a conversation. The ask itself — something like 'I think I need a few nights a week where it's just the two of us in the apartment' — is modest enough that defensiveness is a harder stance to maintain against it.\n\nIs there a moment in the next week where the timing would feel natural — like a normal evening where you're both around?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Thursday she usually makes dinner and we eat together when he's not there — that's actually a perfect window. I'm going to do it Thursday. I've figured out what I actually want to say: I want to tell her I like living with her, that I'm not trying to make things hard, but that I need the apartment to feel like mine some nights too, and I'd like to agree on something more predictable going forward. I'm not going to mention a specific number of nights unless she asks or unless it comes up naturally — I think leading with 'four nights maximum' sounds like a negotiation opener and that's not the vibe I want. I just want to have a real conversation.",
+      "ai_response": "That's a well-calibrated approach. Leading with what you want the relationship to feel like rather than opening with a limit is more likely to get you to a genuine agreement than starting with a number. If she's receptive, the specifics will come out naturally and you can land somewhere together. If she's not receptive, you can always get more concrete in the same conversation.\n\nOne thing to keep in your back pocket: if she asks 'what would help' or 'what would that look like,' have an answer ready so the conversation doesn't stall. Sounds like you already know what that answer is.\n\nThursday dinner is a good moment. Good luck — the fact that you've thought it through this carefully usually shows in how the conversation feels to the other person.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Thursday went well. She was actually really apologetic — said she hadn't realized it had gotten to that frequency and that she should have checked in. We agreed he'll be there Tuesday, Thursday, and one weekend night, and she'll give me a heads up if anything changes. I feel better. I wanted to come back and say thanks but also because I want to think through one more thing — there's no written agreement and I'm wondering if I should follow up with a text just memorializing what we agreed, or if that would feel weirdly formal and potentially undo the good will from the conversation.",
+      "ai_response": "A text can work but the framing matters. Something low-key — 'Hey, glad we talked last night, just wanted to note the plan so I don't forget: Tue/Thu/one weekend night, heads-up if that changes' — comes across as practical rather than legalistic. It's short, friendly in tone, and you're framing it as for your own benefit ('so I don't forget'), not as holding her to something.\n\nIf you want to be even more casual about it, you can reference it naturally the first time the plan plays out: 'Thanks for the heads up about Thursday, this feels so much better.' That reinforces the agreement without the formality of a separate note. Either approach works — the conversation itself is the real anchor here.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

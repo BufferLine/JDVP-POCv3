@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-health-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I've decided I want to go vegetarian. I've been thinking about it for a while — part ethical, part health curiosity. I'm not going vegan, I'll still eat dairy and eggs. I'm a 34-year-old woman, I work out four or five days a week, mostly strength training. I've heard vegetarian diets can be really healthy but also that it's easy to do badly and end up nutrient deficient. I want to do this right from the start. Can we think through what I actually need to pay attention to?",
+      "ai_response": "A lacto-ovo vegetarian diet done well is genuinely one of the more evidence-supported dietary patterns — the concerns about nutrient deficiency are real but manageable, and they're specific enough that you can address them proactively rather than hoping for the best.\n\nFor someone with your profile — female, strength training regularly — the nutrients that most commonly become problematic in vegetarian diets are worth naming explicitly. Iron is the most important one for you: plant-based iron (non-heme iron) is less bioavailable than heme iron from meat. Women who strength train and are premenopausal have higher iron demands. Pairing iron-rich plant foods with vitamin C significantly improves absorption, and avoiding coffee or tea immediately after iron-rich meals matters more than most people realize. Protein is the second: not because vegetarians can't get enough, but because it requires intention when you're doing consistent resistance training. Your protein needs are probably around 1.4-1.7g per kilogram of body weight. Zinc, omega-3s, and B12 round out the common gaps — B12 in particular is worth monitoring via bloodwork annually since it's almost exclusively from animal sources and eggs/dairy often don't provide enough.\n\nBefore I go further: what does your current protein intake look like, and do you have any foods from the vegetarian protein sources that you already enjoy — legumes, eggs, tofu, tempeh, dairy?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I already eat eggs and Greek yogurt pretty regularly, I like lentils and chickpeas, I've had tofu occasionally but never really cooked with it much. I'm not sure exactly how much protein I'm getting now. I think the B12 monitoring is smart and I'll set a reminder to get bloodwork done in six months. My main decision is I'm going to go fully vegetarian starting next week — no gradual phase out, just switch. I feel ready and I think gradual would just drag it out unnecessarily.",
+      "ai_response": "Your existing food preferences are a strong starting point — eggs, Greek yogurt, lentils, and chickpeas cover a lot of the protein and iron ground without requiring major new habits. Going all-in from the start works well for people who find gradual change harder to sustain, and the bloodwork reminder at six months is the right safety net. Tofu is worth spending a week or two learning — it takes on flavor well and the protein density is useful.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Three weeks in and going well overall. I've been eating a lot of eggs, Greek yogurt, lentils, and I've started cooking with tofu which is actually easier than I expected. One thing I'm unsure about is the iron situation specifically — I'm eating spinach and lentils which I know are iron-rich plant foods, but I can't tell if I'm getting enough. My energy has been fine but I'm wondering if I should just take a supplement preemptively or wait for bloodwork. What would you think about in my situation?",
+      "ai_response": "The question of whether to supplement iron preemptively versus waiting for bloodwork is genuinely a judgment call, and here's how I'd think through it for your situation.\n\nThe argument for waiting: iron is one of the few minerals where over-supplementation has real downsides — excess iron causes GI issues and in higher doses can be harmful. If your energy is stable and you're eating spinach and lentils with attention to absorption pairing (vitamin C source at the same meal, not drinking coffee right after), your diet may be adequate. The bloodwork you've scheduled in six months is the right safety net.\n\nThe argument for a modest supplement: premenopausal women who strength train regularly are statistically the highest-risk group for iron deficiency in vegetarian diets, and deficiency can develop over months before energy symptoms appear clearly. A low-dose iron supplement (around 18mg, the standard RDA level rather than therapeutic doses of 45-65mg) taken on alternate days actually has better absorption than daily dosing per recent research.\n\nMy honest framing: if you can move the bloodwork earlier — to around 8-10 weeks post-transition rather than 6 months — that gives you data to make the supplement decision based on your actual ferritin levels rather than guessing. If moving bloodwork earlier isn't feasible, a low-dose supplement (18mg alternate days) with food is a reasonable conservative hedge. What's your access to bloodwork like — would earlier be doable?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I can move the bloodwork up — I'll schedule it for around 8-10 weeks out like you suggested. That makes more sense than guessing. I'm going to hold off on the iron supplement until I have those results since my energy is genuinely fine right now. I'll keep being deliberate about pairing iron foods with vitamin C. I feel like I have a solid grip on what to watch for now. Thanks for the alternate-day dosing info — I didn't know that.",
+      "ai_response": "Moving the bloodwork up is the right call — eight to ten weeks gives you a meaningful snapshot of how your iron levels are responding to the transition, which is exactly when you want that data. The alternate-day dosing research is relatively recent and not widely known, so worth keeping in mind if the bloodwork does suggest a supplement is warranted. Sounds like the transition is going well overall.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

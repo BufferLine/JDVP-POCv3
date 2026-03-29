@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-insurance-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I just turned 26 and got kicked off my parents' health insurance. I have to pick a plan on my own for the first time and I'm completely lost. My employer offers three tiers — a low-deductible PPO, a mid-tier PPO, and a high-deductible plan with an HSA. I'm generally healthy, no prescriptions, maybe see a doctor once a year. I have no idea what any of these terms mean or which way to even start thinking about this. Can you explain the basics to me?",
+      "ai_response": "Sure — these three terms do most of the work, so let's start there.\n\n**Deductible** is how much you pay out-of-pocket before insurance starts covering costs. A $500 deductible means you pay the first $500 of medical bills each year yourself. After that, insurance kicks in.\n\n**Premium** is what you pay every month regardless of whether you use healthcare at all. Higher premiums usually mean lower deductibles and vice versa.\n\n**HSA (Health Savings Account)** is only available with high-deductible plans. It lets you set aside pre-tax money to pay medical expenses. Unused funds roll over year to year and can even be invested — it's one of the only triple-tax-advantaged accounts that exists.\n\nFor your situation — healthy, 26, no prescriptions, low utilization — the high-deductible plan with HSA is often the financially optimal choice. Here's the logic: you're paying lower monthly premiums, and in a year where you only see a doctor once, your total out-of-pocket (premium + one visit) is usually less than the low-deductible plan's higher premiums alone. The HSA lets you save the premium difference tax-free for the unlikely expensive year.\n\nThe risk: if you have an unexpected major event — accident, surgery, illness — you're on the hook for the full deductible before coverage kicks in. That's why the HSA buffer matters.\n\nDo you want me to walk through the actual numbers side by side once you have the plan details in front of you?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay I pulled up the actual plan documents and there are like 12 columns and footnotes everywhere and I honestly cannot parse this. I'm going to paste the key numbers. Low-deductible PPO: $280/month premium, $500 deductible, $3,000 out-of-pocket max, 20% coinsurance after deductible. Mid PPO: $190/month, $1,500 deductible, $5,000 OOP max, 20% coinsurance. HDHP with HSA: $95/month, $1,800 deductible, $6,000 OOP max, 20% coinsurance. Employer contributes $600/year to the HSA if I pick that plan. I just need you to tell me which one to pick.",
+      "ai_response": "Given those numbers, the HDHP with HSA is the right choice for you. Here's why.\n\n**Annual premium comparison:**\n- Low-deductible PPO: $280 × 12 = $3,360/year\n- Mid PPO: $190 × 12 = $2,280/year\n- HDHP: $95 × 12 = $1,140/year\n\n**Scenario: healthy year (one routine visit, ~$200 cost)**\n- Low PPO total: $3,360 + $200 = $3,560\n- Mid PPO total: $2,280 + $200 = $2,480\n- HDHP total: $1,140 + $200 = $1,340 (minus $600 employer HSA = $740 net)\n\n**Scenario: moderate year ($3,000 in medical costs)**\n- Low PPO: $3,360 premiums + $500 deductible + $500 coinsurance = $4,360\n- Mid PPO: $2,280 + $1,500 + $300 = $4,080\n- HDHP: $1,140 + $1,800 + $240 = $3,180 (minus $600 employer HSA = $2,580)\n\n**Scenario: catastrophic year (hit OOP max)**\n- Low PPO: $3,360 + $3,000 = $6,360\n- Mid PPO: $2,280 + $5,000 = $7,280\n- HDHP: $1,140 + $6,000 = $7,140 (minus $600 = $6,540)\n\nThe HDHP wins in the healthy and moderate scenarios, and in a catastrophic year it's roughly comparable to the low PPO — neither outcome is dramatically worse. Add in the HSA tax advantage and the employer contribution, and the HDHP is clearly your best option given your age, health status, and these specific numbers.\n\nOne action item: open the HSA account through whatever custodian your employer uses, and set a contribution of at least $100–150/month. That builds a buffer so the high deductible doesn't sting if something happens.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "That math is really helpful, thank you. I'm going to go with the HDHP. One thing I'm second-guessing: I do have a therapist I see about once a month for maintenance sessions — no crisis stuff, just regular check-ins. I didn't mention that. Does that change the math enough that I should reconsider? I looked it up and my therapist is in-network for all three plans.",
+      "ai_response": "It shifts the math a bit but probably not enough to change the conclusion. Let's update the moderate-year scenario with 12 therapy sessions at a typical in-network rate of around $100–150 per session after deductible negotiation — call it $1,500 additional annual cost.\n\nWith the HDHP, those 12 sessions count toward your deductible first. Once you've hit $1,800, the 20% coinsurance applies. So for a year with therapy plus regular care:\n- Estimated annual medical spend: ~$1,500–1,800 for therapy + incidentals\n- You'd likely hit or approach your $1,800 deductible just from therapy\n- Total HDHP cost: ~$1,140 premiums + ~$1,800 out-of-pocket = $2,940, minus $600 employer = $2,340\n\nCompare to mid PPO: $2,280 premiums + $1,500 deductible + ~$60 coinsurance = $3,840.\n\nThe HDHP still wins by roughly $1,500 in a typical therapy-inclusive year. The key question to verify is whether your therapist bills at the negotiated in-network rate, which your insurer's online portal can confirm before you enroll.\n\nI'd stick with the HDHP recommendation, but you're right to flag this — ongoing therapy changes the utilization profile from 'almost never use insurance' to 'predictably moderate use,' which is exactly the scenario where double-checking pays off.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Okay that makes sense and I'm convinced. Going with the HDHP. I also want to set up the HSA right — what contribution amount should I target and is there anything I should know about using HSA funds for therapy specifically?",
+      "ai_response": "Good. On contribution amount: the 2026 HSA contribution limit for individual coverage is $4,300 (IRS sets this annually). Your employer is putting in $600, so your personal max would be $3,700. For your situation, a reasonable target is $150–200/month ($1,800–2,400/year), which covers your expected deductible and gives you a cushion without over-committing cash flow.\n\nLonger-term thinking: once you accumulate enough to cover your OOP max ($6,000), many HSA custodians let you invest the balance above a threshold in index funds. At your age, invested HSA funds you don't spend on healthcare compound for decades and can be withdrawn for any purpose after 65 with no penalty — at that point it functions like a traditional IRA.\n\nOn using HSA funds for therapy: yes, mental health therapy with a licensed provider is a qualified medical expense. You can pay your therapist directly from your HSA debit card or reimburse yourself later if you pay out-of-pocket and keep the receipts. One strategic approach: pay therapy bills out of pocket now, keep all receipts, and let the HSA balance grow invested. You can reimburse yourself years later with no time limit — effectively turning therapy receipts into a tax-free withdrawal whenever you need the cash. This is a known advanced HSA strategy worth considering once your balance grows.\n\nMake sure the HSA custodian your employer uses allows investing — most do above a $1,000 cash floor. If they use a low-quality custodian with poor fund options, you can also do a once-yearly rollover to a better custodian like Fidelity.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

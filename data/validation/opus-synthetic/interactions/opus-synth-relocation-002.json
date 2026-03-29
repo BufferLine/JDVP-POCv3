@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-relocation-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "My mom had a stroke six months ago. She's recovering but it's clear she needs to be close to family now. My wife and I are in Seattle; Mom is in Knoxville, TN. We've already decided we're moving — the question is whether we move to Knoxville itself or somewhere between us and her. Pull me housing cost comparisons for Knoxville metro vs. Chattanooga vs. Asheville, NC. 3BR, decent school district, within 30 min of a decent hospital.",
+      "ai_response": "Here are current figures across those three metros for a 3BR in a solid school district with reasonable hospital proximity:\n\n**Knoxville, TN (e.g., Farragut, West Knoxville):** Median sale price $380,000–$450,000; rental equivalent $2,000–$2,400/month. The University of Tennessee Medical Center and Covenant Health system provide strong hospital access. Farragut is the standout school district — Knox County's top-rated suburban zone. No state income tax (Tennessee abolished it on wages). Very strong value-to-quality ratio.\n\n**Chattanooga, TN (e.g., Signal Mountain, Hixson):** Median sale price $360,000–$430,000; rental $1,850–$2,200/month. Erlanger Health System and CHI Memorial are both strong regional hospitals. Hamilton County has competitive schools; Signal Mountain has a reputation above district average. Also no state income tax. Roughly 1.5–2 hours from Knoxville by car — close enough for frequent visits, far enough to have your own geography.\n\n**Asheville, NC (e.g., Arden, Weaverville):** Median sale price $430,000–$530,000; rental $2,200–$2,600/month. Mission Health (now HCA) is the main regional hospital — quality has been a point of community concern since the HCA acquisition; for serious neurology/stroke recovery, MAHEC and Mission are the closest but not equivalent to a large academic center. Buncombe County Schools are adequate but not as strong as Farragut/Knox. North Carolina has a flat 4.5% state income tax. Also experienced significant flood damage from Hurricane Helene in 2024; some western NC infrastructure is still recovering.\n\n**Summary:** If proximity to your mother and cost efficiency are the primary variables, Knoxville is the strongest fit. Chattanooga gives you a degree of independence while staying drivable. Asheville's cost and current infrastructure situation make it the weakest option given your constraints.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Knoxville is winning on paper. But I'm a software engineer and my wife is a UX designer — we're both fully remote. My concern is the professional isolation. What does Knoxville look like for remote tech workers — coworking options, local tech community, any risk of feeling totally cut off from the industry?",
+      "ai_response": "Honest assessment — Knoxville is functional but modest for tech community infrastructure:\n\n**Coworking:** Several solid options exist — Knoxville Entrepreneur Center (KEC) is the anchor, well-regarded and active. OmniSpace, The Mill, and a few boutique options fill out the market. Not Seattle density, but you won't be working from a kitchen table if you don't want to.\n\n**Local tech community:** The Knoxville tech scene is real but small. UT's computer science and engineering programs feed local startups and some remote-working talent. There's a Startup Knoxville ecosystem, periodic meetups, and the KEC runs programming. The honest characterization: you'll know most of the active participants within a year, which is either intimate or stifling depending on your personality.\n\n**Industry isolation risk:** This is the real question. For remote engineers and designers at your level, the professional risk is not infrastructure — it's that career advancement, referral networks, and serendipitous collaboration happen in places where your industry concentrates. Knoxville does not have that. If your current roles are stable and you're not actively seeking to change employers or build a new professional network, isolation risk is low. If either of you might want to shift roles, negotiate up, or build side projects with collaborators, you'll need to maintain that network deliberately — conferences, async communities, annual visits to tech hubs. It won't happen passively in Knoxville.\n\n**Mitigations that actually work:** Regular travel budget (1–2 conferences or hub trips per year), active engagement in distributed professional communities (Slack groups, Discord, GitHub), and intentional relationship maintenance with former Seattle colleagues. Remote workers in smaller cities who do this report minimal career penalty. Those who don't, drift.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Can we just think through the tradeoffs together for a minute? Because I feel like I keep trying to optimize this as a pure cost/career problem and I keep forgetting that the whole point is that my mother almost died and we want to be there. How do I hold that alongside the practical stuff without letting either one steamroll the other?",
+      "ai_response": "That's a real tension and worth naming directly rather than routing around it.\n\nWhat seems to be happening is that you're doing what most people do when facing emotionally large decisions: converting them into analytical problems because that's tractable. The cost comparisons, the career risk assessments — those are genuine inputs, but they're also a way of feeling like you're in control of something that fundamentally arose from loss of control. Your mother had a stroke. That's not a spreadsheet problem.\n\nThe way to hold both without letting either steamroll: separate the questions that actually compete from the ones that don't.\n\nThe ones that don't compete: Being near your mother and having a livable situation are not in conflict in Knoxville. The cost works, the hospitals are solid, remote work is viable. You're not choosing between family and career survival — you're choosing between family and career comfort. That's a meaningfully easier trade.\n\nThe one that actually competes: Professional isolation is a real long-term risk, but it's also a manageable one if you're intentional, and it's not irreversible. Moving back to a major metro in 3–5 years if circumstances change is not failure — it's life responding to life.\n\nThe framing that might help: What would you need to see in 18 months to know the move was right? Define that now — not as metrics, but as lived conditions. 'We've had dinner at Mom's twelve times.' 'I was there when she had her follow-up appointment.' Those are the reasons. The practical stuff supports them or it doesn't, but it doesn't replace them.\n\nYou haven't mentioned regretting the decision to move. You've mentioned uncertainty about where. That's a different problem — and a more solvable one.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "We're going to Knoxville. Farragut specifically — wife found a neighborhood she likes near Concord Road. Last thing I need: is there a meaningful quality difference between UT Medical Center and Covenant Health for ongoing stroke neurology follow-up? My mom's neurologist is at UT right now and I want to make sure that's actually the right place for her to stay.",
+      "ai_response": "Yes, there's a meaningful difference and UT Medical Center is the right choice to stay with.\n\n**UT Medical Center:** It is the region's only Level 1 Trauma Center and an academic medical center affiliated with the University of Tennessee Graduate School of Medicine. For stroke neurology specifically, it has a Comprehensive Stroke Center certification — the highest designation from The Joint Commission, which requires 24/7 neurovascular imaging, endovascular capabilities, and a dedicated stroke team. Academic centers also carry the benefit of neurology residents and fellows who follow cases closely, and access to clinical trials if her recovery trajectory warrants it.\n\n**Covenant Health:** A strong regional health system with multiple campuses (Parkwest, Fort Sanders, etc.). They hold Primary Stroke Center certification, which is the step below Comprehensive. Solid for acute stabilization and standard follow-up care, but not equivalent for complex or ongoing neurological cases requiring subspecialty depth.\n\n**Practical note:** Farragut/Concord Road to UT Medical Center is roughly 20–25 minutes via I-40 — a manageable drive for appointments. Your mother's neurologist being at UT already is a real continuity advantage; don't disrupt that relationship without a compelling reason.\n\nStay with UT Medical Center. The Farragut choice works logistically for that.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

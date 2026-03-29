@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-health-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My doctor told me at my last checkup that my cortisol is elevated and she thinks chronic stress is a real health issue for me. Blood pressure is borderline, I've gained about 15 pounds over the last two years without major diet changes, and I'm sleeping poorly. She recommended I think about a stress management program but didn't prescribe a specific one. I've seen everything from meditation apps to CBT to yoga to MBSR. I feel overwhelmed by the options honestly. I want to actually do something rather than just know I should. Can we figure out what actually makes sense for me?",
+      "ai_response": "The cluster of symptoms you're describing — elevated cortisol, borderline blood pressure, unexplained weight gain concentrated over two years, and poor sleep — is clinically coherent as a chronic stress response picture. Your doctor is pointing at something real, and it's good that you want to act on it rather than just acknowledge it.\n\nThe research landscape on stress interventions is large but the evidence hierarchy is clearer than it might seem. MBSR (Mindfulness-Based Stress Reduction) has the most rigorous evidence base for exactly your symptom profile — the cortisol reduction, blood pressure effects, and sleep improvement have all been measured in RCTs. CBT for stress is also well-supported but tends to be more cognitive-reframe oriented and works better when identifiable thought patterns are driving the stress. Yoga and exercise have solid evidence for cortisol and mood. Apps vary enormously in quality.\n\nBefore I can say anything meaningful about which direction fits you: can you tell me a bit about what your stress actually looks like day to day? Is it more ruminative (worry, intrusive thoughts), more situational (work demands, relationship friction), or more physical and diffuse (general tension, can't switch off)? And practically — do you have 20-30 minutes a day you could realistically dedicate to a structured practice, or is time the constraint?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "It's mostly the can't-switch-off type. I'm a project manager, work is demanding, and even when I'm home I'm mentally still in problem-solving mode. I check email too late at night, I lie in bed thinking about tomorrow's work. Time is genuinely limited — I don't realistically have 45-minute blocks most days but I probably could do 15-20 minutes. I've tried meditation apps twice and quit both times, I think because they felt too passive. I'm leaning toward something more active — maybe yoga or some kind of structured exercise addition. I think I'll sign up for a yoga class and see how it goes.",
+      "ai_response": "Yoga is a reasonable starting point for the physiological side — it addresses the accumulated tension and gives your nervous system a structured off-ramp. The late-night email and lying-awake pattern you're describing is worth paying specific attention to alongside it, because those are the inputs that keep the system activated. Try the class and see how it lands; the format accountability you mentioned tends to make a real difference in consistency.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I've been doing yoga twice a week for about six weeks. I actually like it — the class format helps me show up. But my sleep still isn't great and I'm still checking email too late. My doctor mentioned at a follow-up that my blood pressure hasn't improved yet. She suggested I look into MBSR as a complement. I'm skeptical about adding another thing — I don't have unlimited time. But I'm also aware that maybe I haven't actually solved the switching-off problem. How do I think about whether to add something or adjust what I'm doing?",
+      "ai_response": "The honest read of your situation: yoga twice a week is genuinely valuable and worth keeping, but the pattern you're describing — still checking email late, still lying awake in problem-solving mode — suggests the can't-switch-off mechanism hasn't been targeted yet. Yoga addresses the physiological stress response well but doesn't necessarily train the cognitive disengagement that your specific pattern requires. That gap is exactly what the evidence for MBSR is strongest on, particularly for ruminative and work-spillover stress types.\n\nThat said, your time concern is legitimate and MBSR in its full 8-week format requires 45-minute daily practice, which you said isn't realistic. There's a meaningful middle path here: the specific MBSR element with the strongest evidence for work-spillover stress is the body scan and transition practices — not the full program. These can be done in 10-15 minutes and specifically target the physiological shift from work-mode to off-mode. What they have in common with what you rejected in the apps is that they are passive, which is your stated objection.\n\nAlternatively: a behavioral boundary intervention — hard cutoffs on email (phone in another room after 9pm, specific wind-down ritual) — addresses the same problem from the input side rather than the response side. This is simpler and for some people with work-spillover patterns is more effective than mindfulness practice precisely because it removes the stimulus rather than training resilience to it. Some people need both. \n\nGiven that you tried meditation apps and found them too passive: which of these feels more aligned with how you actually function — training your brain to disengage from work stimuli, or removing the stimuli structurally? That would help me think through what to suggest adding, if anything.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "The structural boundary approach makes more sense to me than trying to train my brain to ignore the stimuli — I'm a systems thinker and removing the input sounds more reliable than building willpower around it. I'm going to put the phone in the other room at 9pm starting tonight, build a 15-minute wind-down routine before bed, and keep the yoga. I'll try the MBSR body scan separately but not as a commitment — just see if it helps. I feel like I've been treating this as a motivation problem when it's really a system design problem. That reframe is useful.",
+      "ai_response": "The systems-thinking reframe is accurate and it's a durable one — structural constraints are more reliable than willpower-based approaches precisely because they remove the decision. Phone in another room at 9pm is a high-leverage change given what you've described; the wind-down routine builds the signal that work is done. Keep the yoga, and see how the sleep responds over the next few weeks.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

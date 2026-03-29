@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-product-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "We're doing an accessibility overhaul of our design system. We've never done this systematically — where do we start and what should we prioritize first?",
+      "ai_response": "Start with an audit before you build anything. You need a baseline of what exists before you can prioritize what to fix. A practical first audit covers three things: color contrast across your full token set (automated, fast), keyboard navigation and focus management across your component library (semi-automated with axe-core or similar), and semantic HTML and ARIA usage in your most-used components (manual review). The reason to audit first is that accessibility problems cluster — you'll typically find that 80% of your issues trace back to 3–5 root causes like missing focus styles, insufficient text contrast, or unlabeled interactive elements, and fixing the root causes in your design system cascades fixes across all components rather than patching them one by one. In terms of prioritization after the audit: fix what affects the most users most severely first. WCAG 2.1 AA is the standard baseline — contrast and keyboard operability are the highest-leverage starting points because they affect the widest range of disability types. Do you have any sense of whether your current components are built with semantic HTML as a foundation, or are there a lot of div-based interactive patterns?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "We have a mix — some semantic HTML but a lot of custom components built on divs with onClick handlers. We ran axe-core last week and got 240 violations. The team is overwhelmed. How do we triage 240 violations without burning out?",
+      "ai_response": "240 violations sounds overwhelming but they're almost certainly highly repetitive. The first step is to deduplicate by root cause rather than treating each violation as an independent issue. Export the axe-core results and group by rule ID — you'll likely find that the top 5–8 rule IDs account for 150+ violations. Common clusters in div-heavy systems: missing button role or keyboard handler on clickable divs, missing aria-label on icon-only controls, color contrast failures on the same token used everywhere, missing form label associations, and focus not managed on modal open/close. Fix the pattern once in the component, get 30 violations resolved in a single PR. For team bandwidth: structure the work as a sprint series rather than a big-bang push. Sprint 1 focuses only on the highest-count rule violation — fix it at the source component, write a test to prevent regression, move on. Sprint 2 takes the next highest. This approach gives the team visible, completable chunks and a declining violation count that builds momentum. Also critical: add axe-core to your CI pipeline now so the violation count only goes down, not back up. Is your component library documented anywhere — Storybook or similar — that could serve as a systematic audit surface?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Yes, we have Storybook. Our top violation by count is 'Elements must have sufficient color contrast' — 87 instances. Our brand palette has some low-contrast combinations we've been using for secondary text. How do we fix the contrast without redesigning the brand?",
+      "ai_response": "You don't need to redesign the brand — you need to tighten the semantic token layer that maps brand colors to text roles. The core fix is straightforward: identify which brand color combinations are failing contrast, find the nearest in-brand value that passes 4.5:1 for normal text or 3:1 for large text, and update the semantic token rather than the primitive. For secondary text specifically, the common pattern is that a light gray like #999999 is used on white backgrounds, which fails AA (3.1:1). Nudging to #767676 passes AA at exactly 4.5:1 and is barely perceptible as a change to most viewers. For brand colors used on colored backgrounds, the fix is more context-specific — you may need to either darken the text token or lighten the background token for that specific surface. The brand palette itself doesn't change; only the semantic mappings change. One important note: audit your secondary text use cases carefully — some of those 87 instances may be in contexts like placeholder text, disabled states, or decorative elements where WCAG contrast requirements are reduced or exempt. Placeholder text is exempt, disabled controls are exempt, and purely decorative text is exempt. Identifying which of your 87 violations are actually required to fix will likely reduce the real workload significantly. Do you have access to your brand guidelines — specifically whether there are documented approved color pairings?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "We have brand guidelines but the brand team is hard to reach and moves slowly. There are two colors we're unsure about: our teal (#00B4D8) used as text on white, and our coral (#FF6B6B) used as text on white. I don't have time to research this — can you just tell us pass or fail on both and what to do?",
+      "ai_response": "#00B4D8 on white fails WCAG AA for normal text at approximately 2.8:1 — do not use it as body text. For large text (18pt+) it also fails AA at 3:1. Replace the semantic text token for this context with #0077A3, which passes AA for normal text at 4.6:1 while remaining clearly recognizable as your teal family. #FF6B6B on white also fails AA for normal text at approximately 3.0:1. For large text it barely passes at 3:1. Replace with #C0392B or #D44000 depending on whether you want to stay in a coral-red range — both pass AA at 4.5:1+ on white and read as intentionally related to your coral. Neither of your current values should be used as normal body or UI text on white backgrounds. Both can continue to be used for non-text decorative elements, illustrations, or backgrounds where text contrast is handled separately. Update the semantic text tokens, not the primitive brand swatches, and flag to the brand team as a documentation update rather than a brand change request.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "Got it — we'll update those tokens. Now let's talk about focus management. Our modal dialogs don't trap focus and screen reader users are getting lost. What's the correct implementation pattern?",
+      "ai_response": "Focus trapping in modals requires three things working together: focus moves into the modal on open, focus is constrained within the modal while it's open, and focus returns to the trigger element on close. On open, move focus to either the modal's first focusable element or the modal container itself with a tabIndex of -1 if there's no natural first element — avoid moving focus to a close button as the first action because screen reader users then have to navigate forward through the entire modal content to find what they came for. For constraining focus, you intercept Tab and Shift+Tab keydown events: when focus is on the last focusable element and Tab is pressed, loop to the first; when focus is on the first and Shift+Tab is pressed, loop to the last. You can get focusable elements with a querySelector for button, a[href], input, select, textarea, [tabindex]:not([tabindex='-1']) filtered to visible and not disabled. On close, store a reference to the trigger element before opening and call .focus() on it in the close handler — this is the most commonly missed step. For ARIA: the modal container needs role='dialog', aria-modal='true', and aria-labelledby pointing to the modal title. aria-modal='true' signals to screen readers that content outside the modal is inert. Do you want me to walk through how to handle nested modals or the interaction between focus traps and browser native focus behaviors?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

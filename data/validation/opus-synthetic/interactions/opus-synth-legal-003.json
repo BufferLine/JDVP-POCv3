@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-legal-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My business partner and I need to dissolve our LLC. We started a small catering business three years ago — equal 50/50 split. The business has about $40,000 in a joint account, $15,000 in outstanding receivables, some shared equipment, and two upcoming event contracts worth roughly $12,000 combined. We've both agreed it's time to wind down but we're arguing about the order of operations and how to value the equipment. I want to be deliberate about this and not leave money on the table.",
+      "ai_response": "A deliberate wind-down of an equal-split LLC is manageable if you sequence it correctly. The order of operations under most state LLC statutes (and your operating agreement if you have one) is: complete or assign existing contracts first, then collect receivables, then liquidate assets, then pay debts, then distribute remaining cash to members. The two upcoming event contracts are the most time-sensitive piece — you need to decide immediately whether you will fulfill them jointly, assign them to one partner, or negotiate early release with the clients, because client claims become a liability that complicates everything else. On equipment valuation, the two standard approaches are agreed resale value (what you could actually sell it for today, not replacement cost) or a buyout where one partner purchases the other's share at an agreed price. If you can't agree on value, a single appraisal from a restaurant equipment dealer costs $200 to $400 and gives you a neutral number both partners can reference. What is your operating agreement's dissolution clause language?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Our operating agreement is pretty basic — it just says we dissolve by mutual consent and split assets equally. I didn't realize how many moving pieces there are. Honestly this is stressing me out a lot. What's the smartest way to handle this — what would you do?",
+      "ai_response": "With a mutual-consent dissolution clause and equal splits, you are in a relatively clean position legally. The smartest path is to handle the two event contracts first because they are the only time-locked item — everything else can wait a few weeks. I would contact both clients within the next few days to discuss fulfillment options, then convene one formal meeting with your partner to agree in writing on four things: who fulfills or assigns each contract, a target date to close the bank account, an agreed method for equipment valuation, and a schedule for collecting the receivables. Putting that agreement in a one-page dissolution memo signed by both partners protects you both and makes the sequence unambiguous. A business attorney can draft that memo for around $300 to $500 and it is worth it given the $40,000-plus in assets involved. That structured approach prevents the most common dissolution problem, which is one partner acting unilaterally once the conversation gets difficult.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay just tell me what to do and I'll do it. Should I get the attorney or talk to my partner first?",
+      "ai_response": "Talk to your partner first, this week, with a specific agenda. The attorney is most useful once you and your partner have reached rough agreement on the four items I mentioned — that way the attorney is drafting a clear memo rather than mediating an unresolved dispute, which costs significantly more. In your partner conversation, propose the following sequence out loud and see where disagreement surfaces: fulfill both upcoming contracts together, collect all outstanding receivables jointly, get one equipment appraisal and split proceeds or offer each other first right of buyout, then close the account with equal distribution of remaining cash. If you reach alignment on all four, bring that outline to an attorney to formalize. If you hit a sticking point — usually equipment valuation or receivables collection timing — that is where attorney involvement earlier pays off.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We talked and my partner wants to just split the $40,000 now and deal with the rest later. Is that okay or is that a bad idea?",
+      "ai_response": "That is a bad idea and you should not agree to it. Distributing the cash before completing the contracts and collecting receivables leaves you personally exposed to several risks. If one of the upcoming events generates a client complaint or claim after you have already split the cash, both partners remain personally liable but the funds are gone. The $15,000 in outstanding receivables may also be harder to collect once the business is functionally dissolved — clients sometimes deprioritize invoices from a company that appears defunct. More practically, if you distribute now and a business debt surfaces later, you may be required to return distributions to satisfy creditors under LLC dissolution rules. The correct order is: complete contracts, collect receivables, pay any remaining business debts, then distribute. If your partner is concerned about access to cash, a partial distribution of a smaller amount — say $20,000 held in reserve for obligations, $20,000 split now — is a more defensible compromise, but ideally have an attorney bless that structure first.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Fine, I'll just go with whatever compromise you think is fair. Can you just lay out a final plan I can bring to my partner?",
+      "ai_response": "Here is a dissolution plan you can bring as a written proposal:\n\nPhase 1 (weeks 1-2): Fulfill both upcoming event contracts jointly. All revenue from those contracts flows into the joint business account. Neither partner withdraws funds during this phase.\n\nPhase 2 (weeks 2-4): Pursue all $15,000 in outstanding receivables jointly. Both partners send follow-up communications to outstanding clients under the business name. Any collections go into the joint account.\n\nPhase 3 (week 4-5): Commission a single equipment appraisal from a licensed restaurant or catering equipment dealer. Each partner has right of first refusal to purchase the other's share at the appraised value. Any equipment not bought out by either partner is sold and proceeds deposited.\n\nPhase 4 (week 5-6): Pay any remaining outstanding business debts or obligations from the account balance.\n\nPhase 5 (week 6): Distribute all remaining funds equally and close the business bank account. File dissolution paperwork with the state.\n\nDocument each phase in a signed memo before execution. Have a business attorney review the full plan before you present it to your partner — the review should take under an hour.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

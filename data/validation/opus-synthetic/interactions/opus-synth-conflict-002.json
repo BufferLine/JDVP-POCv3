@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-conflict-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My dad passed away three months ago and now everything with my sister is a complete disaster. He didn't leave a will — or if he did, nobody can find it — and there's the house, which is paid off, and some savings accounts and some of his tools and equipment from his business. My sister wants to sell the house immediately and split everything and I just — I don't know. I'm still grieving and I feel like I can't think straight. Part of me thinks she's being cold and rushing this and part of me wonders if she's right that dragging it out is worse. I also feel like she and I have very different memories of who did more for Dad the last few years and I'm not sure if I'm angry at her or just sad. I haven't talked to an attorney yet. My sister already sent me a spreadsheet. I got a spreadsheet three months after my dad died. I don't know what to do with any of this.",
+      "ai_response": "I'm sorry about your father. Navigating an estate without a will while you're still in the middle of grief, with a sibling who's moving at a different pace emotionally — that's a genuinely hard combination, and the confusion you're describing makes sense.\n\nA few things are worth separating here, because they're actually distinct problems that are getting tangled together right now.\n\nThere's the legal and financial question — what actually happens to the estate when there's no will, and what your options and obligations are. That's the part that has right answers and a process.\n\nThen there's the emotional and relational question — what you actually want from your relationship with your sister, and what's underneath the disagreement about pace and fairness. That's the part that doesn't have a timeline.\n\nAnd then there's the grief itself, which is running underneath both of those and affecting how you're reading everything.\n\nBefore anything else: have you and your sister had any conversation that wasn't about logistics? Does she know you're not in the same place she is emotionally right now, or is the spreadsheet the main thing you've exchanged since he died?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "We've barely talked at all except about the estate stuff. There was one call where she said she needs the money from the house to pay off her own mortgage and I got angry and said something I regret, and since then it's mostly been texts. I don't think she knows how I'm feeling. I don't know — hearing you separate those three things actually helps. I think I've been treating the argument about the house as if it's the argument about who loved Dad more, and those aren't the same thing. Her needing the money is a real thing even if the timing feels wrong to me. I still don't want to rush the house but I think I need to understand what my options actually are before I can have any real conversation with her.",
+      "ai_response": "That realization — that the house dispute and the question of who was more present for your father are separate — is an important one, and it's worth holding onto when things get heated with your sister. Her financial need doesn't cancel out your grief, and your grief doesn't cancel out her financial situation. Both things can be true.\n\nOn the legal side: when someone dies without a will in most U.S. states, the estate goes through intestate succession. For a surviving adult child, that typically means the estate is divided equally among the children — so you and your sister would each have a legal claim to half of everything, including the house. To do anything with the house (sell, transfer, refinance), both of you would need to agree, which means she can't force a sale without your consent, and you can't block it indefinitely without consequence either.\n\nThis is where talking to a probate attorney becomes important — not to be adversarial, but to understand your actual position. A lot of people avoid it because it feels like escalating, but knowing the legal baseline actually tends to lower the temperature in these conversations because you're dealing with facts rather than assumptions and fears.\n\nOne practical question: is either of you currently living in the house, or is it empty?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "It's empty. I've been going there on weekends sometimes but nobody's living there. I looked up intestate succession last night after our conversation and you're right that we each have equal claim — and honestly it made me feel less panicked knowing I can't just be steamrolled. I've decided I'm going to call a probate attorney this week, not to fight her but just to understand where I stand. And I think I also need to actually call my sister — a real call, not texts — and tell her that I'm not trying to block the sale forever, I just need more time to be ready, and that I know her financial situation is real. I was so in my head about the spreadsheet that I think I made her into a villain when she's probably also just grieving badly and handling it the way she handles things.",
+      "ai_response": "Both of those moves — the attorney call and the real conversation with your sister — are the right sequence, and doing them in that order makes sense. Understanding your legal position before you talk to her means you can have a conversation from a place of clarity rather than anxiety.\n\nWhen you talk to her, the framing you described — 'I'm not trying to block this, I need more time, and I hear that your need is real' — is probably the most useful thing you can say. It gets you out of the positional argument about the house and into a conversation about what you each actually need. You might also find that once she knows you're not an obstacle, she's more flexible on timing than the spreadsheet suggests.\n\nOne thing worth raising on that call if it goes well: whether there's a timeline that works for both of you. Not 'when do you need to sell' versus 'when will you be ready,' but something like — is there a date six or eight months out that gives you time to process while also giving her some certainty about when this resolves? Concrete timelines are often easier to agree on than open-ended waiting.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I called the attorney — appointment is Friday. And I talked to my sister last night. It was hard but it was good. She cried. I cried. She didn't realize I was still in the thick of grieving and I didn't realize how much financial stress she's under. We agreed we're both going to talk to the attorney separately first and then together if we need to. We also talked about going through Dad's things at the house together next month — not to sell yet, just to go through them. I feel like the house thing is going to work out. I don't need advice on next steps anymore, I think I know what I need to do. I just wanted to close the loop — I don't think I would have called her if I hadn't gotten some clarity on what I was actually upset about.",
+      "ai_response": "That's a meaningful outcome — and the fact that it came from you getting clear on what you were actually upset about, rather than from someone else solving it for you, means it's likely to hold. The instinct to go to the house together next month and just be present with your father's things before any decisions get made is a good one. Those are different conversations than estate logistics.\n\nI hope the attorney appointment on Friday is useful. Take care of yourself in the meantime.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

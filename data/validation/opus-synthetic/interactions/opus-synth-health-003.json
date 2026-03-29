@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-health-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I had a total knee replacement six weeks ago. Recovery has been going okay — I'm off the walker, I can walk around the house without a cane most of the time. Physical therapy twice a week. But I'm really struggling with knowing what I should be eating to support healing. My PT focuses on the exercises obviously but hasn't said much about nutrition. I'm 58, overweight by about 30 pounds, and I've been eating whatever sounds good because I figured I'm recovering and shouldn't stress about diet. Should I be doing something different nutritionally? Can you help me think through this?",
+      "ai_response": "Six weeks out from total knee replacement is actually a meaningful window for nutrition — you're still in active tissue remodeling, which is protein- and micronutrient-dependent. The good news is the nutritional priorities for surgical recovery are well established; the less good news is most PT teams don't cover it because it's outside their scope.\n\nA few things are particularly relevant to your situation. First, protein intake: collagen synthesis and muscle rebuilding after joint surgery both demand adequate protein. Most people eat well below what's optimal for recovery, especially if appetite is lower. A rough target during surgical recovery is 1.2-1.5g of protein per kilogram of body weight per day. Second, anti-inflammatory foods matter — omega-3 fatty acids (fatty fish, walnuts, flaxseed), colorful vegetables, and minimizing ultra-processed food and refined sugar support the inflammatory regulation your joint tissue needs. Third, the 30-pound overweight factor is worth addressing not as a crash diet but as a gentle caloric awareness, because every pound of excess weight puts roughly 3-4x that force on the knee during walking.\n\nBefore I go further: what does your typical daily eating look like right now? And has your surgeon or care team mentioned any specific nutritional guidance or restrictions?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "No specific restrictions from the surgeon. My eating has been pretty random — I've been eating a lot of comfort food, more processed stuff than usual, not a ton of vegetables. I hear what you're saying about protein. I think I'm going to focus on getting more protein in and cleaning up the processed food. I'll add more fish and chicken, cut back on the chips and crackers, and try to get more vegetables in. I feel like that's the right direction and I don't want to overthink it during recovery.",
+      "ai_response": "That direction is right and it doesn't have to be complicated — protein up, processed food down, more vegetables. The comfort food pull is real during recovery, so keeping easy high-protein options on hand (hard-boiled eggs, Greek yogurt, rotisserie chicken) reduces the friction of making the better choice. You don't need to overhaul everything at once.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "It's been about two more weeks — I'm at 8 weeks post-op now. The protein focus has actually been going pretty well, I've been doing eggs and Greek yogurt in the morning, chicken or fish at dinner. My question now is about the weight. My surgeon mentioned at my follow-up that losing even 10-15 pounds would help the knee long-term. I want to start thinking about that but I'm worried about cutting calories while still recovering. Is it safe to actively try to lose weight right now, or should I wait?",
+      "ai_response": "Eight weeks out is a reasonable point to start being more intentional about this, with some calibration. The tension you've identified is real: aggressive caloric restriction during surgical recovery can impair tissue healing and slow muscle rebuilding, both of which you need. But the 10-15 pound goal your surgeon mentioned is also genuinely important for long-term joint health — so the question is how to pursue it without undermining recovery.\n\nThe answer most surgeons and sports dietitians would support at 8 weeks: modest, controlled deficit rather than aggressive restriction. A 300-400 calorie daily deficit produces roughly 0.6-0.8 pounds per week — slow enough that your protein intake can stay adequate and your body isn't under stress, but meaningful over a few months. Given that you've already shifted to higher-protein, lower-processed foods, you may find that eating volume hasn't dropped but caloric density has, which is a natural mild deficit.\n\nSpecifically: keep protein high (this is the protective factor against muscle loss during a deficit), continue the anti-inflammatory foods, reduce caloric-dense snacks and refined carbs, and don't try to lose more than 1 pound per week during the recovery period. You're not in a rush — 10-15 pounds over 3-4 months is a completely appropriate pace. Does that feel like a workable approach given how your appetite and energy have been?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Yes that feels right. I don't want to be aggressive about it — slow and sustainable makes sense especially since I'm still healing. I'm going to keep the protein high, keep the processed snacks minimal, and just be a bit more conscious about portions without tracking everything obsessively. If I lose 10 pounds by the time I'm cleared for full activity, I'll be happy. I have a clearer sense now of what I should be doing and why. This was helpful.",
+      "ai_response": "That's a solid and sustainable approach — slow deficit, adequate protein, and no obsessive tracking. The fact that your surgeon flagged the weight at your follow-up is a good sign that he's thinking about your long-term joint health, and what you've described aligns well with that goal. Good progress over the last two weeks.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

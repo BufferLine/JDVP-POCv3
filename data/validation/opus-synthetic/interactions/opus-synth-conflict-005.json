@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-conflict-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My friend group is kind of falling apart and I don't know what to do or even what I want to do. We've been close since college, there's six of us, and there was a situation at a birthday weekend in February where two people in the group — Priya and James — had some kind of blowup that nobody really witnessed directly but that everyone is now taking sides about. I wasn't there for the actual thing. I heard three different versions of what happened and they don't fully agree. Now there are basically two camps and people are sending me messages trying to get me to say whose side I'm on and I hate all of it. Priya is one of my closest friends. James I've known forever but we're not as close. I don't know if I should pick a side, stay neutral, push back on the whole framing, try to mediate, or just step back from the group. All of those feel wrong in different ways. I'm also kind of angry that this was dumped on me.",
+      "ai_response": "That anger makes complete sense — you weren't there, you have three conflicting accounts, and people are asking you to take a position on something you don't have reliable information about. That's a genuinely unfair position to be put in.\n\nThe thing that jumps out is that 'whose side are you on' is a frame that was handed to you, and you're not actually obligated to accept it. You can engage with this situation without adopting the binary that other people are using.\n\nBefore thinking through what to do: you mentioned you're closer to Priya — do you have a sense of whether the people pressuring you most are from her camp or James's, or is it mixed? And when you say three versions don't fully agree, are they contradictory in ways that matter — like one person is clearly the aggressor in some accounts and not others — or are they more like different framings of the same underlying events? That distinction affects how much epistemic ground you actually have to stand on here.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "It's mixed — I've heard from people on both sides and one person who claims to be neutral but is clearly on James's side. The versions — I think they're more framing than contradiction, like nobody's saying something flatly different happened, it's more about whose behavior was worse and why. Which makes it even harder because it means I can't just say 'well clearly version A is wrong.' I'm closest to Priya so I probably have some bias there. I think what I'm actually most upset about isn't the Priya-James thing itself, it's the fact that other people are trying to manage me into a position, and I resent the group dynamics right now more than I'm actually upset about whatever happened that weekend. That realization is new — I just said that and I think it's true.",
+      "ai_response": "That realization is important and it does clarify the situation considerably. If your primary frustration is with the group dynamics and the pressure being applied to you — not with Priya and James's conflict itself — then your decision about how to respond doesn't have to be about adjudicating their dispute at all. It can be about what kind of role you want to play in this group going forward.\n\nThere's a version of this where you decline the whole frame without abandoning anyone. Something like telling the people who are pressuring you: 'I wasn't there, I don't have a clear enough picture to take a position on what happened, and I'm not going to — but that doesn't change my relationship with either of them.' That's not neutrality as an evasion; it's refusing a framing that was imposed on you without your consent.\n\nThe harder question is your friendship with Priya specifically. Being close to her doesn't require you to become her advocate in a group conflict — but if she needs your support as a friend independent of the group dynamics, that's a separate conversation you might want to have with her directly. Have the two of you talked about this at all, or has it mostly been mediated through the group noise?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "We've talked but not really about what I actually think — it's been more me listening to her version. I think I need to have a real conversation with her where I'm honest that I can't be her advocate in the group conflict even though I care about her and I'm on her side as a friend. Those are different things and I've been treating them as the same. I'm also going to reply to the people pressuring me and just say clearly that I wasn't there and I'm not taking a public position and I'd prefer we stop doing this to each other. I'm not going to try to mediate the whole group situation — that's not my job and I don't have enough trust in both sides to do it well. I feel a lot clearer about this now.",
+      "ai_response": "That distinction you drew — being on her side as a friend versus being her advocate in the group conflict — is exactly the right one, and it's something you can say to her directly. Most people can receive that if it comes with genuine care behind it.\n\nThe reply to the group-pressure people is probably most effective if it's said once, clearly, and not relitigated. You don't have to justify your position or explain your reasoning in detail — just name what you're doing and don't engage further if people push. Declining to participate in the dynamic is different from pretending it isn't happening.\n\nNot trying to mediate is also the right call if you don't have the trust of both sides. Mediation without trust usually just gives one side a new way to recruit you.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I talked to Priya. It went better than I expected — she said she appreciated that I wasn't just telling her what she wanted to hear, and I think she actually respects me more for it. I sent a version of the message I described to the two main people who'd been pressuring me. One responded well, one went quiet and I think is annoyed, but I can live with that. The group as a whole is still uncomfortable but at least I'm not in the middle of it anymore. I've decided I'm going to pull back from the group chat for a while and invest more in the individual friendships I actually value — Priya, and one other person who's been handling this whole thing with a lot of grace. I don't need advice anymore. I just — I think I needed to process this out loud before I could see what I actually thought.",
+      "ai_response": "That's a coherent resolution — and the distinction you ended up with, investing in individual friendships you trust rather than trying to manage the group dynamic, is more durable than anything that required you to pick a side or play a role you didn't choose. The person who went quiet will likely come around or won't — either way you responded honestly and that tends to hold up over time.\n\nSometimes the most useful thing is exactly what you described: thinking out loud until the actual thought becomes visible.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

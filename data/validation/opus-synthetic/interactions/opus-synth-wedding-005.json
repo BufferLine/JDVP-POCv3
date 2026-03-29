@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-wedding-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "My husband and I are celebrating our 25th anniversary this year and I want to do something genuinely meaningful — not just a dinner out. We got married in a small ceremony with 40 people, and I've been thinking about doing a vow renewal with a real event. About 80 guests (our world has grown), summer, somewhere in the Hudson Valley area where we live. $20k budget. I've been using you as a real planning partner throughout this process and I want to continue that — I don't just want a list of ideas, I want to work through the actual decisions. First question: vow renewal vs. anniversary party — is there a real difference worth thinking through?",
+      "ai_response": "There's a real and meaningful difference, and it's worth being intentional about which one you actually want.\n\nA vow renewal is ceremony-forward. It replicates the structure of a wedding: you stand up together, there are witnesses, there's a formal exchange of words, there's an officiant or someone in that role. The emotional center is the moment of renewal itself. Guests attend as witnesses to that moment, and the party afterward is secondary. For 25 years, this format can be genuinely moving — the vows you write for year 25 are categorically different from what you said at 25 or 30. They're specific, earned, and emotionally resonant in a way an original wedding ceremony can't be.\n\nAn anniversary party is celebration-forward. There's no ceremony or it's brief and informal — a toast, a video montage, a reading from a friend. The evening is about celebrating with the people who've been part of your lives over 25 years. It's less structured, often warmer and more relaxed, and puts guests at the center of participating rather than witnessing.\n\nFor 80 guests in the Hudson Valley with a meaningful budget, either works well. The question I'd start with: is the thing you most want to do a formal act of recommitment to each other, or is it a gathering of your community to mark this milestone together? Those are different emotional desires and the format should serve whichever one is true. Some couples compromise with a brief (5–10 minute) informal vow exchange early in the evening, which lets the party remain the primary event while honoring the ceremonial impulse.\n\nWhat does your husband want? Is he drawn more toward the formal ceremony aspect or the party aspect?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "He's more party-forward, I'm more ceremony-forward. We've talked about it and landed on the brief informal vow exchange early in the evening — that felt like the honest middle. What I want to spend more time on is the venue question. Hudson Valley in summer means we have real options — vineyards, farm venues, river-view spaces. We got married on a farm originally and there's nostalgia there, but I don't want to just recreate our wedding. I want this to feel like who we are now, 25 years later. How do I think about venue in that frame?",
+      "ai_response": "The framing you're working with — who you are now vs. who you were — is exactly the right lens, and it's more useful than just 'find a nice venue.' It means the venue should reflect something true about your lives at year 25, not just be aesthetically appropriate for a summer event.\n\nSome questions that help clarify this: What have the last 25 years been oriented around? If you've built a life around food and hospitality, a vineyard with a working winery and a wine-paired dinner is genuinely expressive. If you've built a life around the outdoors or land, a farm or orchard setting still resonates — but the difference from your original wedding is that now you're choosing it as an adult who knows yourself, not because it was available and beautiful. If your lives have moved toward something more refined or urban, a river-view estate or historic inn might better represent the evolution.\n\nFor the Hudson Valley specifically, the category breakdown: vineyard venues (Brotherhood, Millbrook, Benmarl area wineries) offer the benefit of in-house wine service and a natural pairing with a dinner format — they tend toward the more polished end. Farm and orchard venues (there are several in the Catskill foothills and mid-Hudson area) have warmth and informality built in, which suits an anniversary party well. River-view estates and manor properties (along the eastern shore especially) feel more formal and elegant if that's where you are now.\n\nFor 80 guests with a $20k total budget, venue rental needs to stay in the $3,500–6,000 range to leave room for catering, which will be your largest line item. That's realistic in the Hudson Valley on a Saturday evening — you're not renting a Catamount or Basilica, but there are genuinely beautiful farm and vineyard properties in that range. What neighborhoods or sub-areas of the Hudson Valley are accessible for your guests?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Most guests are within 2 hours of Kingston, so the mid-Hudson and Catskill foothills area works well. I'm leaning toward a vineyard — the wine aspect fits us, we've become more into wine over the years, and it signals something real about where we are now vs. the farm at 28. One thing I want to think through carefully: the guest experience. 80 people is bigger than our original wedding, and I want the evening to feel intimate despite the size. What are the design and program elements that create intimacy at that scale?",
+      "ai_response": "Intimacy at 80 isn't about reducing scale — it's about designing for human-scale moments within the larger gathering. The things that work:\n\nTable configuration matters more than most people realize. Long communal tables (farm tables seating 12–16) create conversation across a larger group and give the evening a convivial, shared-meal feeling rather than the siloed round-table format where people only talk to whoever is immediately adjacent. For an anniversary celebration, a format that encourages mixing and cross-table conversation reinforces the 'community that's grown up with us' feeling you're going for.\n\nProgrammed moments of focus rather than a continuous background party. The brief vow exchange you've planned is one of these. Others that work well for anniversaries: a curated photo display or slideshow that gives guests access to your 25 years (it also functions as its own entertainment and conversation generator), a moment early in the evening where close friends or family share short unrehearsed reflections (2–3 people, 1–2 minutes each), and an intentional last dance that you announce to the room. Each of these gathers the group's attention briefly and then releases it — the evening has shape without feeling like a program.\n\nSeating strategy: if you mix old friends, newer friends, family, and colleagues deliberately at each table rather than grouping by category, guests have conversations they wouldn't have had otherwise and leave feeling like the evening expanded their world slightly. This takes more planning effort but creates a distinctly different experience.\n\nThe vow exchange placement: early evening, before dinner, works well because guests haven't had too much wine yet and you have their genuine attention. Keep it under 10 minutes. The contrast between that focused moment and the looser party that follows gives the evening emotional arc.\n\nFor the vineyard setting specifically: outdoor cocktail hour with the vineyard as backdrop, then transition inside or under a tent for dinner and dancing. The cocktail hour is often where people feel most intimate — smaller groups naturally form and the setting does the work. Are you thinking a seated dinner or a more informal cocktail-style reception?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Seated dinner — we both love a real meal together. The long communal tables idea is exactly right, I'm going to build around that. The programmed focus moments are useful framing. I feel like the picture is clear: vineyard venue in the Millbrook or mid-Hudson area, long communal tables, outdoor cocktail hour then dinner and dancing, brief vow exchange before dinner, a few short toasts, intentional last dance. I want to do a final budget sanity check with you before I start reaching out to venues. How does $20k actually stack up against what we're planning?",
+      "ai_response": "The plan you've built is well-matched to the $20k budget — let me walk through it honestly so you know where the pressure points are.\n\nVenue rental (vineyard, mid-Hudson, Saturday summer): $4,000–6,000. Vineyards in the Millbrook area are in high demand in summer but for an anniversary event rather than a wedding you may find more flexibility, both on price and on Saturday availability. Worth asking directly whether they offer non-wedding event pricing.\n\nCatering (seated dinner, 80 guests, passed appetizers + dinner + dessert, staffed): $7,500–10,000 depending on menu level. At $95–125/head for this format and quality level in the Hudson Valley, this is your largest single cost. A vineyard with an in-house catering program or a preferred caterer relationship simplifies coordination and can reduce cost compared to bringing a caterer in independently.\n\nBar (wine service, beer, non-alcoholic — spirits optional): if the vineyard provides wine from their own production, this can be bundled into the venue cost at better pricing than a separate bar package. Budget $800–1,500 for supplemental bar costs.\n\nPhotography: $2,000–3,500 for a 6-hour anniversary event photographer. This is one area where you have more flexibility than a wedding — many wedding photographers take anniversary work at lower rates, and 6 hours is sufficient for a celebration of this format.\n\nDJ or music: $1,200–2,000. A playlist-based DJ works well for an anniversary party that isn't built around a dance-floor-all-night format.\n\nFlorals (communal table arrangements, cocktail hour): $1,200–2,000 for long table styling in summer with seasonal flowers.\n\nPrinting, invitations, minor miscellaneous: $400–600.\n\nRough total: $17,100–25,600. The wide range reflects the real variance in catering and venue. Staying toward the lower end requires: catering at $95/head rather than $125, venue at $4,500 rather than $6,000, and modest florals. That's achievable with the right vendors. I'd budget $20k with a personal comfort threshold of $22k maximum, and use that extra $2k framing to negotiate confidently rather than desperately. You're in a good position.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "interaction_id": "opus-synth-emergency-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My 7-year-old just ate something at a birthday party and her throat is getting tight, she's covered in hives, she says it's hard to breathe. She's never had a reaction like this before. I don't have an EpiPen. What do I do?!",
+      "ai_response": "Call 911 right now — don't wait. This is anaphylaxis. While you're on the phone with them: keep her sitting upright or slightly reclined, whichever makes breathing easier — do not lay her flat. If she loses consciousness and stops breathing, be ready to follow 911's CPR instructions. If there is any epinephrine available — from another parent, a school nurse, anyone — use it. Benadryl alone will not stop anaphylaxis fast enough; it is not a substitute for epinephrine. Do not give her anything to eat or drink. Stay with her and keep talking to her. Call 911 now — I mean right now, before you read another word.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "low",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "low",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "judgment_holder",
+          "cognitive_engagement",
+          "information_seeking"
+        ],
+        "voter_details": {
+          "judgment_holder": {
+            "gen": "AI",
+            "opus": "Undefined",
+            "codex": "AI",
+            "gemini": "Human",
+            "agreement": 2
+          },
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Reactive",
+            "codex": "Reactive",
+            "gemini": "Active",
+            "agreement": 2
+          },
+          "information_seeking": {
+            "gen": "None",
+            "opus": "None",
+            "codex": "Active",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "911 is called, they're on their way — 6 minutes out. One of the other parents has an EpiPen for her own kid, same age. The 911 operator told me to use it if her breathing gets worse. She's still conscious, still breathing but it's labored. I'm watching her every second.",
+      "ai_response": "You're doing everything right — stay with her, watch her breathing, and use that EpiPen the moment the operator says to or if she worsens before they tell you. Six minutes is close. Keep her calm and still, and don't let anyone feed her anything.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "low"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Her breathing got harder — I used the EpiPen on her outer thigh like the operator said. She's responding, hives are fading a little. Ambulance just pulled up. I'm riding with her. I already called my husband and he's meeting us at the ER. I grabbed her backpack with her medical info card. We're moving.",
+      "ai_response": "EpiPen was the right call at exactly the right time. Tell the paramedics the time you administered it and which thigh — they need that for dosing decisions in the ER. Go. She's in good hands.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

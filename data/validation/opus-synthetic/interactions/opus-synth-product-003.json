@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-product-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "We're redesigning our onboarding flow. Currently it's 11 steps with a lot of upfront data collection before users can use the app. Drop-off is high. Where should we even start rethinking this?",
+      "ai_response": "The right starting point is understanding where in the 11 steps the drop-off actually happens. If you have funnel analytics, that data will tell you whether users are leaving at the first screen, midway through data collection, or at a specific step like permissions or payment. Without that data you're optimizing blind. The general principle for onboarding is to defer everything that doesn't immediately unlock value — the question to ask about each of your 11 steps is: does the user need this before they can experience the core value, or can we collect it later once they're engaged? Most apps overcollect upfront because it feels efficient from a product perspective, but it front-loads friction before trust is established. What does your current flow collect — account credentials, preferences, profile data, permissions, payment? Knowing the shape of those 11 steps will let us identify what can be deferred versus what's genuinely necessary.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Here's the current flow: email, password, name, profile photo, select interests (multi-select), connect contacts, enable notifications, set location, payment method, invite friends, then a tutorial. Analytics show biggest drop-off at interests and connect contacts. What can we cut or move?",
+      "ai_response": "The drop-off pattern makes sense — interests and contacts are high-friction asks before the user has seen any value. Here's how I'd restructure it. The minimum viable onboarding to first value should be: email, password, and name — that's it. Everything else can move. Profile photo can be prompted contextually after first login with a profile completeness nudge. Interests should be either inferred from early in-app behavior or presented as an optional personalization step post-first-session — forcing a multi-select before the user understands what the app does is exactly backwards. Connect contacts should be a contextual ask triggered when a social feature is first used, not a gate. Notifications should be requested at the moment a user takes an action that would benefit from them (first relevant event, first message) — cold-requesting permissions during onboarding consistently tanks acceptance rates. Location, payment, and invite friends all have clear natural trigger points in the product and none belong in onboarding unless your core value is location-gated or payment-gated. The tutorial is worth keeping but should be progressive disclosure inside the app, not a dedicated onboarding step. This gets you to a 3-step onboarding with everything else deferred contextually. Does your product have a specific action that constitutes 'experiencing core value' for a new user?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Core value is discovering and joining interest-based communities. The PM team is worried that if we don't collect interests upfront, the empty state will be bad and users won't see relevant content. How do we handle that tension?",
+      "ai_response": "That's the right tension to name, and the PM concern is legitimate — a content app with no personalization signal showing a blank feed is a real problem. The solution is a curated default experience rather than a personalized one. For a new user with no interest data, surface your highest-engagement communities, trending content, or editorially curated picks — content that's broadly interesting rather than personalized. This gives users something to react to immediately, and their early interactions (views, joins, reactions) generate behavioral signals within the first 2–3 minutes that are often more accurate than self-reported interest selection anyway. A secondary option is to compress interests to a single fast step — not a multi-select form, but a visual card-tap screen showing 6–8 broad categories (Sports, Tech, Music, etc.) that takes 15 seconds and stays fun. Research shows single-axis fast selection like that has dramatically lower abandonment than a multi-select with 20+ options. The key shift is framing it as 'help us show you something good' rather than 'tell us about yourself.' Would your PM team be open to an A/B test — current interests flow versus the curated default approach — to resolve the tension with data?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "The A/B test idea is good. But the design team is now split on whether the visual card-tap for interests should come before or after account creation. We've gone back and forth three times and I'm exhausted by the debate. Can you just tell us where to put it and we'll go with your answer?",
+      "ai_response": "Put the interest card-tap after account creation. Account creation first is the right sequence for three reasons. First, you need a persistent identity to store the interest selection — running the card-tap pre-auth means you're either storing anonymous state that can get lost on app restart or force-associating it later during auth, both of which create engineering complexity without user benefit. Second, starting with account creation establishes commitment: once a user has created an account, completion rates for subsequent onboarding steps increase significantly because they've already invested effort. Third, users trust a personalization ask more once they've consented to an account relationship — asking preferences before identity feels like surveillance, after identity it feels like service. Sequence: email + password + name, then account created confirmation, then the visual interest card-tap as 'one more thing before you dive in.' The card-tap feels like a reward after the work of account creation, not another gate before it.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "That's the call then — interests after account creation. Now I want to think about the empty state design for the home feed before interests are confirmed. What should we show?",
+      "ai_response": "The first-session empty state before interest confirmation should do three things: reduce anxiety that the app is broken, provide immediately consumable content, and invite a low-effort first action. Concretely, I'd show a curated set of 4–6 featured communities with a short description and a member count — real communities your team selects as high-quality entry points. Each card should have a single clear action, 'Explore' or 'Join', not a generic browse prompt. Above the cards, a single line of context like 'We picked some popular communities to get you started' sets the right expectation without overpromising personalization. Avoid any empty state pattern that looks like a blank screen with an illustration and a 'Set up your feed' button — this pattern performs poorly because it makes users feel like they have homework. The goal is to get the user to join or interact with one community before they've consciously decided whether they like the app. Once they take that first action, your behavioral signal engine takes over and the feed stops being empty. Should the featured communities be static editorial picks, or do you have the infrastructure to make them dynamic based on trending or location?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

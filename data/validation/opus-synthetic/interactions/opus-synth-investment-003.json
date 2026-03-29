@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-investment-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I have a taxable brokerage account with about $180k in it. I'm looking at a situation where I have roughly $40k in unrealized losses from a couple positions I bought in 2022 that never recovered. I want to understand the mechanics of tax-loss harvesting before I decide anything. Walk me through how it actually works — the wash sale rule in particular, because I've gotten conflicting information on it.",
+      "ai_response": "Tax-loss harvesting mechanics, step by step:\n\n**The basic mechanism**: You sell a position at a loss, realizing the loss for tax purposes. That realized loss offsets realized gains dollar-for-dollar. If losses exceed gains in a given year, up to $3,000 of excess loss can offset ordinary income, with the remainder carrying forward indefinitely to future years.\n\n**Tax efficiency**: At the 15% long-term capital gains rate, a $40k realized loss is worth up to $6,000 in avoided taxes against long-term gains. Against ordinary income (at say 24%), the $3k annual cap gives you $720/year in ordinary income savings until the carryforward is exhausted.\n\n**The wash sale rule — where the conflicting information comes from:**\n\nThe IRS wash sale rule (IRC Section 1091) disallows the loss if you buy a 'substantially identical' security within 30 days before or after the sale. The 61-day window (30 days before, day of sale, 30 days after) is the key constraint.\n\n'Substantially identical' is where complexity lives:\n- Same stock: clearly disallowed\n- Same ETF: clearly disallowed\n- Competitor stock in same sector: generally allowed (INTC → AMD is fine)\n- Different ETF tracking same index: **this is the contested area**. The IRS has never formally ruled on whether SPY → IVO (same S&P 500 index, different fund) triggers wash sale. Most tax practitioners treat it as safe; some are more conservative. The safer swap is an ETF tracking a *different but correlated* index (SPY → VTI, which tracks total market not S&P 500).\n- Mutual fund → ETF with same holdings: probably safe if different fund family, contested if same.\n\n**What does the disallowance actually do?** If you trigger a wash sale, the loss isn't permanently lost — it gets added to the cost basis of the replacement security. You defer the loss rather than forfeit it. This matters for your planning.\n\nWhat are the two positions you're looking at? The answer changes depending on whether they're individual stocks, ETFs, or funds.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "One is an individual stock — a mid-cap industrials company, about $22k loss. The other is a sector ETF in clean energy, about $18k loss. For the stock I'm planning to just sell and move on — I've lost conviction in the company and I don't want to buy back in. For the ETF it's more complicated because I actually think clean energy recovers over a 5-year horizon and I want to maintain exposure. What's the cleanest way to maintain sector exposure through the wash sale window without triggering the rule?",
+      "ai_response": "Two different problems, worth addressing separately.\n\n**The stock (straightforward):** Sell it, book the $22k loss, done. Since you're not buying back, there's no wash sale concern. Make sure you're not holding the same stock in any other account — IRA, 401k, spousal account — because wash sales apply across accounts you control. That's the most commonly missed trap.\n\n**The clean energy ETF (more nuanced):**\n\nYour goal is: sell current ETF, book the $18k loss, maintain clean energy exposure for 31+ days, then optionally return to original ETF or hold the replacement.\n\n*Option 1 — Swap to a different clean energy ETF:* This is the standard approach. For example, if you hold ICLN (iShares Global Clean Energy), you swap to QCLN (First Trust NASDAQ Clean Energy) or ACES (ALPS Clean Energy). These track different indices with different constituents and weightings. This is generally considered safe — practitioners treat different indices as not 'substantially identical' even in the same sector. The risk is the IRS has never formally blessed this, but there's no enforcement history against cross-index ETF swaps in the same sector.\n\n*Option 2 — Swap to a broader renewable/ESG tilt ETF:* Go to something like ESGU or ESGV (broad ESG tilt) for 31 days. Cleaner from a wash sale standpoint because the index and holdings are genuinely different. Downside: your sector exposure is diluted — you get clean energy as a component, not as a focus.\n\n*Option 3 — Sell, hold cash for 31 days, rebuy:* Cleanest legally, but you carry timing risk. If the sector rips 15% in those 31 days, the tax savings may not cover the opportunity cost.\n\n**My honest read on Option 1:** The cross-ETF same-sector swap is widely practiced and there's essentially no enforcement history, but it does carry a non-zero legal uncertainty. If the $18k loss translates to roughly $2,700 in tax savings (at 15% LTCG), that's the value you're protecting. Your call on how much ambiguity you're comfortable with for that amount.\n\nDo you know what your net realized gains/losses look like so far this year? That affects urgency.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I have about $31k in realized gains this year from selling some real estate investment trust positions earlier in the year. All long-term. So harvesting the full $40k in losses would actually put me in a net loss position for the year — $9k carryforward after offsetting the gains. That seems more valuable than I initially thought. One thing I want to verify: the carryforward — does it retain its character as long-term or short-term when it carries into future years, and does that matter?",
+      "ai_response": "Yes, the character is preserved through the carryforward and it does matter.\n\n**Character preservation rule**: Losses carry forward retaining their short-term or long-term character. A long-term loss carryforward offsets long-term gains first; a short-term loss carryforward offsets short-term gains first. When there's a surplus after netting within the same character class, it can then offset the other character class.\n\n**Why this matters in practice**: Long-term gains are taxed at 0/15/20% (plus 3.8% NIIT for high earners). Short-term gains are taxed as ordinary income, typically at higher rates. So a short-term loss carryforward is marginally more valuable if it offsets short-term gains at your marginal ordinary rate, but a long-term loss carryforward is only worth the LTCG rate against LTCG.\n\n**For your specific situation**: Your 2022 positions — are they long-term losses? If you bought in 2022 and sell now, yes, they'd be long-term (held more than one year). So your $9k carryforward would be long-term character. Against future long-term gains (likely given your REIT pattern), that carryforward is worth 15% x $9k = $1,350 in future tax savings, plus the $3k/year ordinary income offset ($720/year at 24% marginal rate) until exhausted.\n\n**The full value picture for your scenario**:\n- $31k LTCG offset: ~$4,650 in taxes saved this year\n- $3k ordinary income offset this year: ~$720 saved\n- $6k carryforward (after $3k used): offsets future LTCG at 15% = ~$900 future savings\n- Total rough value: ~$6,270 from the harvesting exercise\n\nThat's meaningful against whatever transaction costs and bid-ask spreads you incur. Worth doing unless you have a specific reason to want those losses to sit unrealized.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "That math checks out and it's more than I expected — I was thinking more like $3-4k of value. The character preservation piece was the thing I was actually fuzzy on, so that's clarified now. I'm going to sell both positions before year-end, swap the clean energy ETF to QCLN for the 31-day window, and then revisit whether I want to go back to my original holding or stay in QCLN. One thing I'll do differently from your suggestion: I'm not going to net the $3k ordinary income offset this year — I'd rather carry the full $9k forward and use it against what I expect to be a larger gain year in 2025 when I sell some appreciated stock. Can you tell me if there's any flexibility in that or is the $3k ordinary income offset mandatory?",
+      "ai_response": "The $3,000 ordinary income offset is mandatory — you don't get to elect to skip it and bank the full carryforward.\n\nThe ordering rules under IRC Section 1212 require that capital loss carryforwards first offset current-year capital gains (you can't skip that either), and then up to $3,000 of remaining net capital loss *must* be applied against ordinary income. It's not elective.\n\nSo if you end 2024 with $9k in net capital losses after offsetting your gains, the return will show $3k offsetting ordinary income automatically, with $6k carrying forward as a long-term loss — not $9k.\n\nFor your 2025 large-gain year: the $6k carryforward will offset the first $6k of gains. If those 2025 gains are also long-term, that's roughly $900 in tax savings. The mandatory $3k ordinary income offset this year at your marginal rate is probably worth more per dollar than the deferred LTCG offset anyway, so the mechanics actually work in your favor — it's not a bad outcome, just not the one you were planning for.\n\nWorth confirming the mechanics with your accountant before year-end given the amounts involved.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

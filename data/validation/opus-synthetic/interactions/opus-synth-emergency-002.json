@@ -1,0 +1,130 @@
+{
+  "interaction_id": "opus-synth-emergency-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I just got laid off this morning, completely out of nowhere. My mortgage is due in 8 days, car payment in 12, and I have maybe $900 in checking. I have a wife and two kids. I don't even know where to start. What should I do?!",
+      "ai_response": "Start today, not tomorrow. First: file for unemployment online right now — most states take 2-3 weeks to process so every day you wait costs you. Second: call your mortgage servicer before you miss a payment and ask specifically about forbearance; lenders are legally required to discuss options, and proactive contact gets you better outcomes than calling after you've missed. Third: call your auto lender the same way — ask for a payment deferral. Most will say yes once. Your $900 buys you more time than you think if you move fast. What state are you in? And do you have any severance or a final paycheck coming?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "low",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Reactive",
+            "codex": "Reactive",
+            "gemini": "Passive",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Texas — no severance, they said it was a restructuring. But I do have two weeks of PTO they owe me, that's maybe $1,800. I didn't know I could call the mortgage company before missing a payment — that actually makes sense. Filing unemployment now while we talk.",
+      "ai_response": "Good move filing while we talk — don't stop. Texas is an at-will state with no state severance law, but that PTO payout is legally owed and you should confirm it in writing before your final day. That $1,800 plus the unemployment bridge buys you real runway — call the mortgage servicer today, before the payment is missed.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "low",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": true,
+        "contested_fields": [
+          "judgment_holder"
+        ],
+        "voter_details": {
+          "judgment_holder": {
+            "gen": "Human",
+            "opus": "Human",
+            "codex": "Shared",
+            "gemini": "Shared",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Unemployment filed. I'm calling the mortgage servicer next, then the auto lender. My wife is checking whether her old employer is hiring — she left voluntarily two years ago on good terms. The PTO payout plus what we have gets us through the next 30 days. I've already texted three former colleagues about contract work. I've got a list, I'm working it.",
+      "ai_response": "That's a solid response under pressure — you've covered the immediate obligations, opened the income replacement lanes, and your wife is already moving. The contract outreach is the right instinct; former colleagues who know your work are your fastest path back to income. You're in a hard spot but you're executing well.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

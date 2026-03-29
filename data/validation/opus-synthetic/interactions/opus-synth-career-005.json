@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-career-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I've been freelancing as a UX designer for six years — good income, flexible schedule, interesting projects. But I've been approached by a Series B startup offering me a Head of Design role. It's a significant step up in seniority and scope, but I'd be giving up my independence and taking on a fixed salary. I'm genuinely torn. Can we work through this together?",
+      "ai_response": "This is a real tradeoff and worth thinking through carefully, because the freelance-to-corporate shift involves more than just income and title — it's a change in how you experience agency, risk, and professional identity. Let's start by getting clear on what you'd actually be gaining and giving up. On the gain side: Head of Design at a Series B startup is genuine seniority — you'd have organizational authority to shape design culture, hire a team, and influence product direction at a level that's hard to achieve as a freelance individual contributor regardless of your billing rate. Series B also means the company has cleared the earliest survival hurdles; there's real product-market signal present. On the giving-up side: six years of freelancing means you've built a client network, a workflow, and an income floor that represents real optionality. The question is whether that optionality is something you're actively using — are you turning down work, choosing projects, and enjoying the variety — or whether it's started to feel like precarity and isolation? A few things I'd want to understand: What's the comp package they're offering, including equity? And what's your current annual freelance revenue and effective hourly rate?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "My freelance revenue last year was $148k with about 30 billable hours a week average. They're offering $155k base salary plus 0.6% equity on a 4-year vest at Series B valuation. The company is in the climate tech space — hardware-software hybrid product. I find the mission compelling. The head of design role would involve building a team from scratch, which I've never done before. That excites and scares me equally. What do you think about the financial picture and the equity specifically?",
+      "ai_response": "The financial picture is more nuanced than the base salary comparison suggests. You're currently earning $148k for roughly 30 billable hours a week — that's an effective rate of about $95/hour. A Head of Design role at a Series B startup typically runs 50–60 hours per week in practice, especially in the team-building phase. Adjusting for that, your effective hourly rate drops to roughly $50–62/hour on the $155k base — meaningfully below what you're earning now per unit of time, even before accounting for benefits, which can add $15–25k in value if you're currently paying for your own health insurance and retirement. The equity is where the financial case either works or doesn't. At 0.6% on a 4-year vest, the value depends entirely on what happens to the company. Series B climate tech hardware-software hybrids have wide outcome distributions — hardware companies have higher capital requirements and longer paths to liquidity than pure software, which is a real risk factor. If the company exits at $150M (a modest but real outcome), your 0.6% is worth $900k pre-tax before any dilution from future rounds. If they raise a Series C and D before exit, expect 20–40% dilution, bringing your effective stake to roughly 0.36–0.48%, or $540–720k at the same exit. That's meaningful upside, but it's not life-changing unless the exit is north of $300–400M. The mission and scope question may matter more than the financial math here. What's driving the excitement about the team-building component specifically?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I think the team-building excitement comes from wanting to have lasting impact — not just deliver work, but build something. The freelance model has started to feel isolating and I crave more continuity. I've been going back and forth on this for weeks. I trust your analysis at this point — just tell me what you think I should do.",
+      "ai_response": "Take the role. Here is my reasoning. The isolation signal is the most important thing you've said. Six years into freelancing, if the independence has started to feel like isolation rather than freedom, that's a structural shift in how you're experiencing the work — not a bad month. That kind of shift tends to compound over time, not resolve on its own. The scope of the role is the right kind of stretch. Head of Design at a Series B is a genuine leap in organizational authority and impact, and the team-building component directly addresses the continuity and legacy you're describing. The fact that it scares you alongside the excitement is evidence it's a real challenge, not a lateral move dressed up with a title. The financial picture is a real tradeoff but not a disqualifying one. The base salary is a modest step up in nominal terms, but the hourly reality means you're trading income efficiency for equity upside and organizational impact. That's a legitimate value exchange if you have adequate savings to absorb the transition costs and don't need to optimize every variable for cash. The equity at 0.6% in climate tech hardware is speculative but not trivial — you'd regret not having it if the company succeeds. The one thing I'd do before signing: negotiate the equity. 0.6% for a Head of Design building from scratch at Series B is on the low end; 0.75–1.0% is defensible for this role. You have leverage as an external candidate who hasn't accepted yet. Ask once, clearly, with a specific number.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I hadn't thought to negotiate the equity — that's a good point. How do I actually make that ask without damaging the offer or seeming difficult?",
+      "ai_response": "The key is framing the ask as professional rather than adversarial, and being specific rather than vague. Here is exactly how to do it. Open by affirming: express genuine enthusiasm for the role and the company before raising the equity conversation. Something like — 'I'm really excited about this opportunity and the direction you're building toward. I want to make this work.' Then make the ask direct and grounded: 'The one area I'd like to discuss is the equity. For a Head of Design role at Series B coming in to build the design function from scratch, I've done some benchmarking and I think 0.8–1.0% is closer to market for this scope and stage. Is there flexibility there?' A few mechanics that matter: give a range with a floor above your actual floor — asking for 0.8–1.0% when you'd accept 0.75% gives them room to land somewhere you're happy with. Do this over a call, not email — tone is harder to read in writing and it's easier to have a real conversation. Be prepared for them to say the equity pool is constrained; if they can't move on percentage, ask about accelerated vesting on a portion of the grant, or a one-year cliff reduction. If they say the offer is firm: that's useful information, not a disaster. You decide whether the role is worth taking at 0.6%, and based on everything you've described, I think it still is. The ask itself will not damage the offer — companies expect negotiation at the Head-level. Accepting without asking is the only outcome that costs you something.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

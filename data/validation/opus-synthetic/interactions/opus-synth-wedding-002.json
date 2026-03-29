@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-wedding-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "We're doing our wedding in my parents' backyard in Vermont. It's a big property — about 2 acres of usable flat space — and we want to use it because it's meaningful, not because we think it's cheaper (we know it might not be). About 90 guests, late August, ceremony and reception both on-site. I've been treating you as a planning partner throughout this process and I want to keep doing that. The thing I'm most uncertain about right now is the infrastructure question: tent vs. no tent, power, bathrooms. Can we think through what we actually need?",
+      "ai_response": "Backyard weddings on family land are absolutely worth the logistics effort — the meaning is real and the flexibility you get over the space is something venues can't give you. Let me help you think through infrastructure honestly.\n\nTent: for 90 guests in Vermont in late August, I'd consider a tent near-mandatory rather than optional. August weather in Vermont can be beautiful or it can be 40 degrees and raining by 6pm — you won't know until the week of. A 40x80 frame tent for 90 guests seated runs roughly $2,500–4,000 to rent depending on the rental company and whether you need sidewalls, flooring, and lighting included. If the ceremony is separate from reception and you want both covered, you're looking at two structures or one large enough to subdivide. My recommendation: budget for the tent from the start and treat good weather as a bonus, not a plan.\n\nPower: this is the one most couples underestimate. DJ/band, catering warmers, lighting, bar refrigeration, and a photostation can collectively draw 30–50 amps. Your parents' house panel may not handle that plus the house running normally. Options are: hire an electrician to assess the panel and run a temporary service drop (often $400–800), or rent a generator ($300–600/day for a quiet 20kW unit). I'd lean toward generator rental — it's independent of the house and gives you no-worry capacity.\n\nBathrooms: at 90 guests for 4+ hours, you need supplemental restrooms. Luxury restroom trailers (2-stall, climate-controlled, real fixtures) run $600–900/day and are genuinely nice enough that guests don't feel the difference. Standard porta-potties are cheaper at $150–250 each but take 3–4 to serve 90 people. What's your instinct on which direction to go there?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Luxury restroom trailer — no question. We're not doing porta-potties at a wedding. Good point on the generator, my dad was going to try to run off the house and I think you're right that it's a risk. I want to add another piece to this: catering. We're leaning toward a food truck plus a dessert bar rather than a traditional caterer. My reasoning is flexibility and a more casual vibe, but I want to pressure-test that with you because I've heard food trucks can be complicated for large weddings.",
+      "ai_response": "Your instinct to pressure-test it is right — food trucks can work beautifully for weddings but the failure modes are specific and worth understanding before you commit.\n\nThe core complication: most food trucks are designed for sequential service (one person orders, truck makes it, next person orders). For 90 guests at a wedding, you need either a truck that can do buffet-style simultaneous service, or two trucks running in parallel, or a truck with a catering package that means food is largely prepped and held for service rather than made to order. Ask any truck you're considering: 'What is your maximum plated covers per hour?' If the answer is under 50, they'll bottleneck. A hungry wedding crowd waiting 40 minutes to eat is a real morale problem.\n\nThe things that actually work well: build-your-own concepts (tacos, grain bowls, BBQ) where the line moves fast because the assembly is quick. Wood-fired pizza trucks are popular for exactly this reason — they can crank volume. Avoid anything with complex individual prep (hand-smashed burgers cooked to order, for example) unless the truck specifically has wedding event experience.\n\nOn permits: Vermont requires food service permits for events, and your town may require a special event permit for gatherings over a certain size on residential property. Your parents should check with the town clerk — this is worth doing early because some towns have noise ordinances or occupancy limits that affect your timeline.\n\nThe food truck plus dessert bar combination is actually a great aesthetic fit for a backyard Vermont wedding. The key question is finding a truck that treats it as a catering engagement, not a pop-up. Do you have any trucks in mind already, or are you starting from scratch on vendor search?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We have two trucks we're considering, both have done weddings before, which is reassuring. The permit piece is something I hadn't fully thought through — I'm going to flag that for my parents to check this week. The other thing I want to think through with you is parking and guest flow. The property is on a rural road, no real parking infrastructure, and I'm worried about 90 people trying to figure out where to go. What's the right way to handle this?",
+      "ai_response": "Parking is one of those backyard wedding logistics problems that looks minor until the day-of and then becomes a significant stressor. Here's how to handle it properly.\n\nFirst, figure out your actual parking capacity. At roughly 1.5 guests per car (some carpooling, some solo), you're looking at 55–65 vehicles. A standard parking row on grass takes about 200 square feet per car — so you need roughly 12,000–13,000 sq ft of usable flat land for cars alone. That's a meaningful footprint. If the property doesn't have that cleared, a shuttle system becomes necessary, not optional.\n\nShuttle option: identify a parking area within 1–2 miles (a church lot, a business that's closed on Saturdays, a neighbor's field) and run a continuous shuttle loop. A 15-passenger van or minibus costs roughly $400–700 for the day with a driver. This also solves the drinking-and-driving problem for guests, which is a real secondary benefit.\n\nOn guest flow: the most reliable tool is extremely clear communication in advance. A wedding website page dedicated to logistics — with a map, GPS coordinates (not just the address, which rural roads often misdirect), parking instructions, and shuttle schedule — does most of the heavy lifting. Guests who know what to expect arrive less stressed. Post signs on the road itself the day-of: rural addresses confuse even people who've been there before.\n\nDay-of staffing: designate one person (a family friend, not a wedding party member who's busy) as the parking/arrival coordinator for the first 90 minutes. Their only job is flagging cars where to go. This one role prevents a lot of chaos.\n\nIs the property accessible by a single road, or are there multiple approach routes? That affects where you put signage.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Single road, which simplifies signage at least. I think we're going to do the shuttle — there's a church lot about a mile away that I'm fairly confident the pastor will let us use. The arrival coordinator idea is exactly the kind of thing I wouldn't have thought to plan for. I feel like we've got the infrastructure picture pretty clear now: tent, generator, luxury restroom trailer, shuttle with a coordinator, and food trucks that we'll vet for catering capacity. What's the biggest thing I should be thinking about that we haven't covered yet?",
+      "ai_response": "You've built a solid infrastructure plan — the pieces you've named cover the main risk categories well. The one area I'd flag as most commonly underplanned for backyard weddings is end-of-night logistics and cleanup.\n\nSpecifically: who is managing vendor departure coordination? Tent rental companies typically want to strike the tent the next morning, which means someone needs to be sober, present, and available the day after. Catering cleanup (the food truck will handle their equipment, but the trash, tables, and general breakdown) needs to be assigned — either a cleanup crew you hire, or a very clear family volunteer plan. Rental companies for tables, chairs, and linens will have a pickup window; if no one is there, you pay extra. These aren't glamorous, but a missed pickup or an overwhelmed family member the morning after is a real end note to an otherwise great event.\n\nThe other practical thing: a detailed day-of timeline document shared with every vendor 2 weeks before the wedding. Truck arrival time, tent setup completion, generator startup, restroom trailer placement, shuttle first run — each vendor needs to know when others are arriving so they're not blocking each other on a rural driveway. You're the coordinator of record for all of these moving parts since there's no venue staff to do it. A single shared document prevents most of the day-of confusion.\n\nYou're in genuinely good shape for the planning stage you're in. The backyard context is logistically complex but entirely manageable with the level of attention you're bringing to it.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

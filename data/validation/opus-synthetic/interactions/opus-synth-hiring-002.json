@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-hiring-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm hiring my first employee at my 8-month-old startup. I have two candidates: Priya is a generalist with 4 years experience, has done sales, ops, and some product work. Marcus is a pure engineer, 6 years, very strong technically but said in the interview he prefers focused work and doesn't love ambiguity. I don't know who to hire. What do you think?",
+      "ai_response": "For a first employee at an 8-month startup, I'd recommend Priya.\n\nHere's the reasoning: Your first hire doesn't just fill a function — they define the operating model and culture for everyone who comes after. At this stage you need someone who can absorb ambiguity, context-switch without friction, and cover gaps that haven't been defined yet. Priya's cross-functional background is directly predictive of that capacity.\n\nMarcus flagging a preference for focused work and discomfort with ambiguity is important self-knowledge, and it's honest — but it's also a mismatch signal for what your first year will actually demand. Strong technical depth won't compensate if the role requires judgment across undefined problems daily.\n\nOne caveat: if your startup is fundamentally a technical product and the next 6 months require solving a specific hard engineering problem, Marcus's depth could be the right investment. But generically, for a first employee, breadth-and-adaptability beats depth-and-focus.\n\nWho are you leaning toward, and what does your next 90 days most require?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "That makes sense. What should the role even be called and what should I pay? I haven't defined any of this.",
+      "ai_response": "Given Priya's profile and your stage, I'd recommend the following:\n\n**Role title:** Head of Operations (or Chief of Staff if you want to signal broader scope). Avoid \"Generalist\" — it communicates low ceiling and will hurt future recruiting. \"Head of Ops\" is honest, defensible, and attractive to the right person.\n\n**Scope definition:** Frame the role around three initial pillars — (1) internal operations and process, (2) founder leverage (anything that takes work off your plate), (3) one defined growth function, either sales support or product coordination, based on your biggest bottleneck. Keep it loose enough to evolve.\n\n**Compensation:** For a first employee at an early-stage startup:\n- Base: $90,000–$115,000 depending on your runway and local market\n- Equity: 0.5%–1.0% with 4-year vesting and 1-year cliff. First employees carry meaningful execution risk — equity should reflect that\n- Be transparent about runway: candidates evaluating early-stage offers deserve to know the risk horizon\n\n**Practical note:** Don't over-engineer the job description. One page, three priorities, honest about the chaos. Over-specified JDs at your stage signal founder anxiety and filter out the adaptable people you want.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Actually, I keep outsourcing my thinking here and I shouldn't. The honest answer is I'm a solo founder and I'm lonely and exhausted. I think I'm conflating what I need emotionally with what the business needs. Maybe Marcus is actually right because my real problem is a technical one — I can't ship fast enough.",
+      "ai_response": "That's a genuinely important distinction to make, and it takes self-awareness to name it.\n\nThe loneliness and exhaustion are real operational signals, not just emotional noise — a founder in sustained depletion makes worse decisions, and that's a business problem. But you're right that the emotional hunger for a generalist collaborator and the technical bottleneck are different problems that need different hires.\n\nIf shipping velocity is the actual constraint — if features are delayed, if technical debt is accumulating, if you're personally holding production — then Marcus's depth may be exactly what unlocks the next phase, and his preference for focused work might be an asset, not a liability, in that context.\n\nThe question worth sitting with: if you hired Marcus and shipped twice as fast over the next six months, would that solve the depletion? Or would you still be underwater on everything else — sales, ops, communication — and just have a faster product nobody's heard of?\n\nYou don't have to answer me. But that's probably the actual fork in the decision.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I've thought about it. The business problem is technical — I need Marcus. The emotional problem I need to solve differently, not by hiring a companion. I'm going to rewrite the role as a senior engineer, pay him fairly at $130k with 0.75% equity, and I'll deal with the founder isolation through a peer group, not through the org chart. What I want from you now is a draft offer summary, not a recommendation.",
+      "ai_response": "Here is a draft offer summary for Marcus:\n\n---\n\n**Offer Summary — Senior Engineer**\n\n**Role:** Senior Engineer, founding team\n**Reporting to:** Founder / CEO\n**Start date:** [Target date]\n\n**Compensation:**\n- Base salary: $130,000/year\n- Equity: 0.75% of fully diluted shares, standard 4-year vesting with 1-year cliff\n- [Benefits / PTO policy if applicable]\n\n**Role scope:**\nYou will be the first engineering hire and will work directly with the founder to accelerate product development. Initial focus is [primary technical problem — e.g., shipping core feature set, stabilizing infrastructure, reducing release cycle time]. We're looking for someone who does their best work with clear technical ownership and room to go deep.\n\n**What we're building and why now:**\n[2–3 sentences on your product and current stage — make this concrete and honest about where you are.]\n\n**Next steps:**\nWe'd like to send a formal offer letter by [date]. Please let us know if you have questions before then.\n\n---\n\nFill in the bracketed sections. Keep the scope section honest about the technical depth — Marcus told you he wants focused work, so name it explicitly. That's a retention signal, not just a recruiting one.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

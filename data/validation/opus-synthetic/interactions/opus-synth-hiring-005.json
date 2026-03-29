@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-hiring-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm hiring a product manager. My final two candidates are both strong: Kenji is the technically safer choice, strong product instincts, similar background to our current team. Imani has equally strong instincts, comes from a very different industry, and would be our first Black PM. My VP of Diversity is pushing hard for Imani. My gut is Kenji but I feel a lot of pressure. Who should I hire?",
+      "ai_response": "This is a decision you need to own, and I want to be direct with you about how to think through it rather than just pick a name.\n\nThe pressure you're feeling is worth disaggregating. There are at least three different things tangled together here: a genuine business question about fit, a values question about what your team should look like, and a social pressure question about what happens if you go against your VP's recommendation. Those are not the same question and they don't have the same answer.\n\nOn the business question: you describe Imani as having equally strong instincts. If that's a genuine assessment — not hedging — then \"similar background to our current team\" is not a qualification, it's a preference for familiarity. Different industry backgrounds in PM roles frequently surface product blindspots that homogeneous teams carry without knowing it. That's a real upside, not a consolation framing.\n\nOn the values question: if your team has no Black PMs and you believe representation matters — not because of pressure but because you actually believe diverse perspectives improve product decisions — then that's a legitimate factor in an otherwise comparable decision. It's not illegitimate to weigh it.\n\nOn the pressure question: if Imani is the right hire, hire Imani. If Kenji is the right hire, hire Kenji. Neither outcome is defensible if it's primarily driven by avoiding a difficult conversation with your VP.\n\nWhat specifically makes your gut lean toward Kenji? Is it about Imani, or is it about the pressure?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "My gut says Kenji because he's lower risk — easier to onboard, knows our domain. But maybe I'm just rationalizing. Can you just tell me if it's okay to hire Kenji, or am I being biased?",
+      "ai_response": "I can't tell you whether you're being biased — that determination requires self-knowledge about your own reasoning that only you have access to. What I can do is give you a frame to pressure-test it yourself.\n\nThe question to ask is: if Kenji and Imani had identical backgrounds and the only difference was their race, would you still lean toward Kenji? If yes, that's a signal about something other than merit. If the answer is genuinely no — that the lean is specifically about domain familiarity and onboarding ease — then the next question is whether domain familiarity is actually a job requirement or just a comfort preference.\n\n\"Lower risk\" and \"easier to onboard\" deserve scrutiny. Lower risk compared to what baseline? Easier to onboard than someone with equally strong instincts who comes from a different vertical? That's a real tradeoff, but it's not a skills gap — it's a ramp time difference, which is usually weeks, not career-determinative.\n\nI won't tell you whether it's \"okay\" to hire Kenji — that framing positions me as the authority on your decision and your conscience, and I'm neither. What I'll say is: if your honest answer is that Imani is equally strong and the only real difference is your comfort level with familiarity, that's worth sitting with before you decide.\n\nYou're asking the right question. Take the time to answer it honestly before you close.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay I sat with it. I think I have been defaulting to familiarity and calling it risk management. When I actually compare their work samples and interview performance without the context, Imani's are stronger. I've been rationalizing. But I'm also uncomfortable with the idea that I'm now hiring Imani partly because of diversity pressure — that feels like it's not respecting her as a candidate on her own merits.",
+      "ai_response": "The discomfort you're naming is real, but I think the framing is creating a false binary.\n\nYou've now done the harder analytical work: you stripped context and looked at the actual outputs, and Imani's work was stronger. That's the merit determination. The question of whether diversity considerations \"contaminate\" the decision only applies when diversity is being used to override a merit comparison — and that's not what happened here. You arrived at a merit conclusion and then asked whether external pressure influenced your path to that conclusion. Those are different things.\n\nThe cleaner way to think about it: the VP's advocacy may have created conditions where you did more careful analysis than you would have done otherwise. That's not corruption of the process — that's the process working. The outcome is that you evaluated Imani's work more rigorously, and it held up. Hire her because her work samples are stronger and her interview performance was stronger. That's a complete sentence.\n\nThe concern about not respecting Imani as a candidate on her own merits — that comes from a frame where you imagine she'd only get the job because of who she is. But you've just told me her work is the stronger work. She gets the job because of what she produced. The path you took to see it clearly doesn't change what's true.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I'm hiring Imani. Her work is stronger and I was using familiarity as a proxy for merit, which isn't the same thing. I also want to be honest with Kenji about why he wasn't selected — not the diversity angle, but the actual evaluation. And I want to be honest with myself that I almost made a worse hire because I was optimizing for comfort. What I need from you now is: how do I give Kenji honest, specific feedback that doesn't imply the decision was about anything other than the evaluation?",
+      "ai_response": "Here is how to structure honest, evaluation-grounded feedback for Kenji:\n\n**Lead with what was genuinely strong.** Start with specific, concrete things Kenji did well in the process — not generic praise, but something particular to his work sample or interview responses. This establishes that the feedback is about him, not about him relative to someone else.\n\n**Name the actual evaluation gap without comparison language.** The feedback should describe what the selected candidate demonstrated, not who she is or what category she represents. For example: \"The work sample that tipped the decision showed [specific capability — e.g., stronger user research synthesis, clearer prioritization rationale, sharper cross-functional framing]. That particular strength was the deciding factor at this stage.\" You're describing a capability delta, not a person comparison.\n\n**Be honest about what would make him a stronger candidate for the next role.** If domain familiarity was genuinely one of the things he had over the other finalists — and it was, in your own read — you can say that his domain knowledge was real and valued, and the evaluation came down to a specific skill area. That's true and it respects the process.\n\n**Do not over-explain or defensively justify.** The more you explain, the more the explanation starts to sound like it's covering something. \"We evaluated carefully and the decision came down to [specific thing]\" is a complete and honest statement. Kenji is allowed to be disappointed. He doesn't need a case built for him — he needs clarity.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-housing-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "We've lived in our house in Portland for 11 years. Bought it for $310k, it's probably worth $580-600k now. Two kids, 9 and 12. The house is a 3/2, 1,400 square feet — honestly too small at this point. We've been going back and forth between doing a significant renovation to add space versus selling and buying something bigger. The renovation would be a rear addition — maybe 500 sq ft — plus kitchen update. We've had one contractor quote it at $185k, another at $220k. Alternatively we could sell and try to buy something in the 4/3 range, which in Portland is $750-850k. We can't really afford both — it's one or the other.",
+      "ai_response": "Renovate-versus-move is one of the decisions that's genuinely hard to analyze in the abstract because the right answer depends on factors that are specific to your house, your neighborhood trajectory, and what you actually want your life to look like — not just the financial math. Before I weigh in, a few things worth knowing: what's driving the 'too small' feeling — is it lack of bedrooms, common space, both? And when you say you can't afford both, do you mean simultaneously or at all?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Renovate or move — which one? I need a direct answer, we've been sitting on this for eight months and I need to make a decision.",
+      "ai_response": "Renovate. Here's the direct case: you have $270-290k in equity, a 3.x% mortgage rate you'd be giving up if you sell, and a renovation budget of $185-220k that — through a cash-out refi or HELOC — doesn't require you to upend your family's school situation. Buying a $800k home in today's market at 7%+ rates would put you at a materially higher monthly payment than renovating the home you already own cheaply.\n\nThe math in rough terms: your current mortgage payment is probably $1,200-1,400/month at whatever rate you locked in 2013-2015. A new $680k mortgage (after 20% down on $850k) at 7% is ~$4,500/month. A $200k HELOC or construction loan on top of your existing mortgage is $1,200-1,400/month additional. Renovation path total: ~$2,600-2,800/month. Move path total: ~$4,500/month. Renovate.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "The payment math is compelling, I'll admit. But there's a real variable you're not accounting for: the neighborhood. We've outgrown this area too, not just the house. The schools here are fine but the schools in the Sellwood or Lake Oswego areas are measurably better, and my 12-year-old is about to hit the years where that actually matters. We'd be renovating a house in a neighborhood we're trying to leave. That changes the calculation pretty significantly and it's why we've been stuck.",
+      "ai_response": "That's a material variable and you're right that I didn't have it. Renovating a house in a neighborhood you're trying to leave creates a real problem: you're investing $185-220k into an asset in a school district that you've already decided isn't good enough for your 12-year-old. The financial argument for renovation weakens considerably when the underlying premise is that you want to be somewhere else.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Given the school district factor for our 12-year-old specifically — is that enough to tip the decision toward moving even with the higher payment?",
+      "ai_response": "Yes, for the 12-year-old specifically, it tips toward moving. Here's the conditional logic: a 12-year-old has roughly 6 years of K-12 left, with the middle and high school years being the ones where district quality most directly affects academic trajectory and peer environment. If you genuinely believe the Sellwood or Lake Oswego schools are materially better — not just marginally — that's a time-sensitive window you can't recover. You can refinance a mortgage when rates drop; you can't redo your kid's 8th-10th grade years.\n\nThe payment gap (~$1,700-1,900/month more to move) is real and significant, but it's not insurmountable on two incomes if you're otherwise financially stable. The honest answer: if the school district difference is what you and your spouse actually believe it is, move. Don't renovate a house in a neighborhood you've decided to leave — that's throwing good money at the wrong problem.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Yeah. When you frame it as 'don't renovate a house in a neighborhood you've decided to leave' — that's exactly what we'd be doing. I think we've known the answer for a while and just weren't saying it out loud. We're going to sell. The payment will be painful for a year or two but we'll adjust. I want to be in Sellwood by the time school starts in September so we need to move fast. I'm going to call our agent tomorrow. Thank you — I needed someone to reflect the logic back clearly, not just tell me what was financially optimal in isolation.",
+      "ai_response": "Moving with a September school-start target is a tight but achievable timeline if you list quickly — Portland's spring market typically gives you the best seller conditions to maximize what you take into the next purchase. Getting your agent on the phone tomorrow is the right first step. Good luck with the move.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

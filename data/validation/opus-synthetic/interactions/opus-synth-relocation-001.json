@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-relocation-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "I got a job offer in Austin, TX — senior engineer role, 40% salary bump. I'm currently in Cleveland. I've already decided I'm taking the job. What I need from you is hard data: median rent for a 2BR in Austin right now, state income tax comparison, and average commute times in the tech corridor near Domain/North Austin. Don't sell me on anything, just give me the numbers.",
+      "ai_response": "Here are the figures as of early 2026:\n\n**Rent (2BR, Austin):** Median asking rent sits around $1,850–$2,100/month depending on proximity to the Domain. The Domain itself and surrounding Parmer Lane corridor run $2,000–$2,400 for newer builds. Cleveland 2BR median is approximately $950–$1,100 for comparable units, so expect roughly a $900–$1,100/month housing cost increase.\n\n**State income tax:** Texas has no state income tax. Ohio levies a flat 3.99% marginal rate above $26,050 (plus a municipal tax of 2–2.5% in Cleveland proper). On a salary that's 40% higher than your current, eliminating Ohio's combined ~6–6.5% effective state+local burden meaningfully offsets the rent delta — rough estimate: $8,000–$14,000/year in tax savings depending on your current base.\n\n**Commute (Domain/North Austin tech corridor):** Average commute to employers along MoPac/183/Parmer from Cedar Park, Round Rock, or Pflugerville runs 25–45 minutes off-peak, 45–75 minutes during peak (7–9 AM, 5–7 PM). If you live within 5 miles of the Domain, expect 15–25 minutes peak. Austin does not have a robust rail option to the north corridor; car dependency is near-total for that area.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Good. My partner is pushing back on Austin — she's worried about heat, water issues, and the political climate. I'm not asking you to referee that argument. But pull me the actual data on Austin grid reliability post-2021, summer heat index stats, and whether the water situation is structurally fixed or just patched. She deserves accurate information, not my filtered version of it.",
+      "ai_response": "Straightforward breakdown on all three:\n\n**ERCOT grid reliability post-2021:** The Texas legislature passed SB 3 and SB 2 in 2021 mandating weatherization of generation assets. As of 2025, ERCOT has added roughly 40 GW of new generation capacity (heavily solar + battery storage) since Winter Storm Uri. Stress tests show improved margins but the grid remains islanded from national interconnects — meaning extreme simultaneous demand still carries risk. There have been no repeat large-scale outages, but ERCOT issued conservation requests in summers 2022 and 2023. The honest assessment: structurally more robust than 2021, not equivalent to PJM or MISO redundancy.\n\n**Summer heat:** Austin averages 100+ degree days roughly 50–70 days per year, with heat index regularly reaching 105–112°F in July–August due to humidity from Gulf moisture. This has trended upward; the 2023 summer was the hottest on record for the city. For context, Cleveland averages 0–5 days above 90°F annually.\n\n**Water situation:** Austin Water faced a crisis in January 2023 (treatment plant failures during a freeze, not drought) that left 1,400+ customers without water for days. The underlying issue was aging infrastructure. Austin has since approved a $250M+ capital improvement program. The structural drought risk is separate: the Highland Lakes system (primary supply) has seen below-average inflows in recent years. The Edwards Aquifer recharge remains stressed. The improvements are real but the long-term water scarcity question is not fully resolved — it tracks regional precipitation trends that are not under municipal control.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Okay, we've been going back and forth and we want to think through this together for a minute. What are the three strongest arguments for taking Austin and the three strongest arguments for staying in Cleveland or finding a third option? Weight them against the financial upside. We're not asking you to decide — we just want a structured way to hold all of this at once.",
+      "ai_response": "Here's a structured frame. I'll be direct about the weights rather than hedging everything.\n\n**Three strongest arguments for Austin:**\n1. **Financial trajectory.** The 40% salary bump plus zero state income tax represents a total compensation improvement of roughly 45–50% after taxes. Even accounting for higher rent ($12,000–$15,000/year more), the net gain is likely $25,000–$40,000/year depending on current base. Compounded over 5 years, this is the most durable argument — it funds other options.\n2. **Career market density.** Austin's tech employer concentration has grown significantly. If this role doesn't work out, lateral options within the same metro are plentiful. Cleveland's senior engineering market is thinner; a departure from your current employer there may require relocation anyway.\n3. **Lifestyle optionality.** Texas has no state income tax, lower cost of goods outside rent, and Austin's cultural infrastructure has matured. If you're in an earlier career stage, the city's network effects compound over time.\n\n**Three strongest arguments against Austin / for alternatives:**\n1. **Climate and infrastructure risk are not priced into quality of life projections.** The heat is structural, not temporary, and trending worse. Grid and water risks are improved but not resolved. These affect daily life and long-term habitability assessments for families in ways that financial models underweight.\n2. **Your partner's resistance is a real variable.** Moves made against a partner's genuine concerns have a documented failure rate — either the move reverses within 2 years or relational strain accumulates. That outcome erases the financial gain.\n3. **A third option may exist.** If the employer is flexible on location or remote, or if there are equivalent roles in metros that score better on both climate and cost (Raleigh, Denver, Pittsburgh near family, etc.), the binary framing of Austin vs. Cleveland may be unnecessarily constraining.\n\n**Net weight:** The financial case for Austin is strong enough that it wins if both partners are willing. It is weak if the move is a source of ongoing conflict. The third-option question is worth one honest conversation with the employer before closing.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "We talked it through. We're taking the Austin job. My partner is on board — she wants to try Round Rock specifically for the school district and slightly lower rents. I just need you to confirm: is Round Rock ISD actually as good as its reputation, and what's the commute from Round Rock to the Domain area on a typical Tuesday morning?",
+      "ai_response": "Both confirmed:\n\n**Round Rock ISD:** The reputation is accurate and well-documented. RRISD consistently rates among the top 10% of Texas districts by TEA accountability — Exemplary or Met Standard ratings across most campuses. It's a large district (~50,000 students) with well-funded athletics, AP and dual-enrollment programs, and above-average teacher retention for Texas. The reputation is not inflated marketing; it reflects consistent measurable performance. Good call if schools are a factor.\n\n**Commute, Round Rock to Domain (Tuesday morning, 8 AM departure):** Typically 30–40 minutes via I-35 or TX-130/MoPac depending on your specific address and destination within the Domain. TX-130 (a toll road) is the more reliable route — it runs parallel to I-35 and avoids the worst of the downtown merge congestion. Budget 35 minutes as your planning number; 50 minutes as your buffer. That commute is manageable and meaningfully better than living further south.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

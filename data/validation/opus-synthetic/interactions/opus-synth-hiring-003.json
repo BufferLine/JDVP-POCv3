@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-hiring-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I need an executive assistant. Two finalists: Dana has 7 years supporting C-suite, impeccable references, very formal communication style. River has 3 years experience but is exceptionally proactive — they sent a pre-interview memo reorganizing my publicly visible calendar conflicts. I'm not sure how to weigh these. Just tell me who to hire.",
+      "ai_response": "Hire River.\n\nHere's why the calculus tips that way: The executive assistant role at its highest leverage is about anticipatory judgment — acting before being asked, resolving problems before they reach you. River demonstrated that unsolicited, under no obligation, at the evaluation stage. That's the hardest quality to train and the easiest to verify when you see it.\n\nDana's 7 years and strong references represent execution reliability, which matters. But formal communication style in an EA can also mean operating from process rather than judgment — helpful in structured environments, less so if you need someone who moves fast and reads context.\n\nThe deciding question is: what does your workflow actually demand? If you need someone to manage high-stakes external relationships where formality and precision are load-bearing (board communications, investor relations), Dana's profile is safer. If you need someone to protect your time, preempt friction, and operate with initiative, River is the higher-upside hire.\n\nBased on what you've described, River.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay. What should I pay River? And should the role have a title beyond Executive Assistant — some of my peers call it Chief of Staff.",
+      "ai_response": "**On compensation:**\n\nFor River's profile — 3 years, demonstrated proactivity, supporting a C-suite principal — the market range in most major US metros is $75,000–$95,000. Given the initiative signal and the fact that you're actively choosing this person over a more experienced candidate, I'd open at $85,000. It respects the signal without overreaching on 3 years of tenure.\n\nIf River negotiates, $90,000–$95,000 is defensible and still well within market. Don't let a $5,000 delta lose the hire.\n\n**On title:**\n\nChief of Staff and Executive Assistant describe materially different scopes. EA is principally operational: calendar, travel, communications, logistics. CoS adds strategic leverage: project ownership, cross-functional coordination, standing in meetings as a principal proxy.\n\nIf River's pre-interview memo is predictive of how they'll operate, they may outgrow a pure EA role quickly. The question is whether you want to offer the CoS framing now as a signal of ceiling, or start with EA and promote based on demonstrated scope expansion.\n\nMy recommendation: title as Executive Assistant with an explicit 90-day review where expansion to CoS responsibilities is on the table. That sets expectations honestly without over-promising.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I'm pausing here because I realize I haven't been honest with myself about something. My last EA left because I was disorganized and didn't give them clear enough direction. I've been asking you to pick a candidate like that solves the problem, but the problem might be me. How do I think about this?",
+      "ai_response": "The fact that you're naming this is useful — it changes what the hire decision actually needs to carry.\n\nIf the last EA left partly due to unclear direction from you, then hiring the most proactive candidate doesn't fully solve it. River's initiative is real, but initiative operates on inputs — if the inputs are unclear or inconsistent, even the most proactive EA will eventually hit a ceiling of frustration or misaligned action.\n\nA few things worth separating:\n\nFirst, the structural question: before this hire goes out, it's worth defining two or three non-negotiable things you want the EA to own completely, with outcome accountability. Not tasks — outcomes. That clarity protects both of you.\n\nSecond, the interpersonal question: some EAs are effective despite unclear direction because they're strong enough to create structure around their principal. River's memo suggests that capacity. But it's worth being direct with River in the final conversation: \"My last EA left in part because I wasn't organized enough to give clear direction. Here's what I'm doing differently, and here's where I'll need you to push back on me.\" That conversation will tell you more than any interview question.\n\nThird: this isn't a reason not to hire. It's a reason to hire with honesty about the working relationship you're bringing them into.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I'm going to hire River at $88k, title as Executive Assistant with an explicit CoS pathway at 6 months if scope warrants it. But I'm also going to have the honest conversation you described before we close — about my own patterns and what I need from them. I know this hire now. What I want from you is a list of three specific commitments I should make to River in that conversation to set this up for success.",
+      "ai_response": "Here are three specific commitments worth making to River in that conversation:\n\n**1. Weekly direction-setting — a standing 20-minute sync every Monday where you give River your top three priorities for the week and flag any known ambiguities.** This converts your organizational variability from a silent problem into a managed one. It also gives River a predictable input channel instead of having to guess.\n\n**2. A defined decision boundary — you will explicitly tell River what they are authorized to decide and act on without coming back to you.** Calendar blocking, routine correspondence, vendor communications, travel logistics. Write this down and share it in the first week. Empowerment without boundary is how EAs get burned by over-reaching or under-acting. You remove that ambiguity.\n\n**3. A monthly feedback exchange — not just you evaluating River, but River evaluating you as a principal.** Specifically: \"Is there anything about how I'm working with you that's making your job harder?\" This is the commitment that breaks the pattern from your last EA. It creates a legitimate channel for River to tell you when the direction is unclear before it becomes a retention problem.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

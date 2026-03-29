@@ -1,0 +1,150 @@
+{
+  "interaction_id": "opus-synth-career-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm a software engineer with 8 years of experience and I've been seriously thinking about leaving tech to become a high school math teacher. I love the idea of shaping young minds but I'm worried about the pay cut and whether I'd regret leaving a field I've built my career in. Can we think through this together?",
+      "ai_response": "This is a meaningful decision and I'm glad to think it through with you. Let's start by mapping the real tradeoffs. On the financial side, the pay cut is real but often less dramatic than people assume — a senior software engineer in most US markets earns $130–200k+, while a high school math teacher earns $45–75k depending on district and state, with significant pension benefits that partially offset the gap over a career. The regret question is trickier. Research on career transitions suggests regret is more strongly predicted by *how* someone transitions than *whether* they do — people who leave with a clear pull toward something tend to report less regret than those running away from burnout. A few things I'd want to understand better: What's drawing you to teaching specifically — is it the subject matter, the relationship with students, the structure of a school year? And have you had any sustained exposure to the classroom reality, like tutoring or volunteer teaching?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "You're right that I should distinguish the pull versus the push. Honestly, it's both — I'm burned out by the constant context-switching in my current role, but I also genuinely light up when I explain math concepts to colleagues. I did tutor undergrads for two years during my CS degree. The pension point is interesting, I hadn't fully modeled that. What do you think matters most in deciding whether this is the right move?",
+      "ai_response": "Given what you've shared, I'd weight three factors most heavily. First, your tutoring experience is meaningful signal — two years is enough to distinguish 'I enjoy the idea of teaching' from 'I can actually sustain it when students are struggling or disengaged.' The fact that you lit up explaining math to colleagues rather than finding it draining is corroborating evidence. Second, the burnout from context-switching deserves its own analysis before you use it as a reason to leave. Teaching has its own intense cognitive demands — 30 students with 30 different needs simultaneously, administrative overhead, grading cycles. If the core issue is a structural mismatch with your current role rather than a fundamental dislike of the tech domain, a different engineering role might address it without the salary impact. Third, I'd treat the financial gap as a concrete planning problem rather than an abstract fear. Running a real number: if you have $150k in savings and your cost of living drops or stays flat, the transition is financially executable. If you're carrying $800k in mortgage debt, it's a different conversation. What's your actual financial runway look like, and do you have dependents whose stability depends on your income?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I have about $200k saved, no dependents, and my cost of living is manageable. My partner earns enough to cover basics if needed. I've pretty much gone back and forth on this for two years and I'm exhausted from the deliberation. Can you just weigh everything and tell me which direction makes more sense?",
+      "ai_response": "Given everything you've described, the balance of evidence points toward making the transition. Here is my reasoning: Your financial position is genuinely low-risk — $200k in savings plus a partner's income as a backstop means a failed transition doesn't become a financial crisis; you can re-enter tech within 1–2 years if teaching doesn't fit. Your evidence base for the pull is stronger than average for someone considering this: two years of tutoring experience, a documented pattern of energized response to teaching moments, and 8 years in tech giving you high confidence about what you're leaving. The burnout is real but not the only driver — you'd want to be cautious if exhaustion were the only thing pushing you, but it isn't. The structural constraint most people hit — inadequate savings, dependents, no financial partner — doesn't apply to you. The main counterargument I'd take seriously: classroom teaching at scale is meaningfully different from one-on-one tutoring or explaining to receptive colleagues. It would be worth doing a student-teacher shadowing program or a formal transition program like NYC Teaching Fellows before fully committing, rather than quitting cold into a credential program. The direction I'd recommend is starting the certification pathway this fall while you finish out your current role, rather than waiting another cycle.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "medium"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Reactive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Passive",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "That makes sense. What's the best certification path I should pursue?",
+      "ai_response": "For a career-changer with a STEM degree, the most practical routes are: (1) Post-baccalaureate teacher certification programs — most universities offer these as evening or weekend cohorts designed for working professionals, typically 12–18 months, after which you student-teach and sit for the Praxis II in math; (2) Alternative certification programs like NYC Teaching Fellows, TNTP, or your state's equivalent, which place you in a classroom almost immediately while you complete coursework simultaneously — these are faster but more intense; (3) Residency programs at university-district partnerships, which are slower (2 years) but provide a salary stipend and structured mentorship. Given your profile — financially stable, no urgency to leave immediately, and benefit from validation before full commitment — I'd recommend option 1 or a hybrid: enroll in a post-bacc program this fall, request a leave of absence or reduced hours from your engineering role if possible, and complete student teaching before fully separating. Look specifically at programs in your state that offer math 6–12 certification since that's where your tutoring background maps most directly. The Praxis Core is waivable in most states if your undergrad GPA was above 3.0, which likely applies to you given your CS background. Start by checking your state's Department of Education website for approved alternative routes — the terminology varies by state but the structure is consistent.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

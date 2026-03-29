@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-startup-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "We're a two-person founding team at 11 months post-launch. We have $320K ARR, growing about 15% month over month, and we just closed a $1.2M seed round two months ago. We think it's time to hire our first employee. We've been debating between a second engineer to increase product velocity or an account executive to accelerate revenue. What are the factors we should be thinking about?",
+      "ai_response": "This is one of the most consequential early hiring decisions you'll make, and it's genuinely close given your numbers. Here are the factors that actually distinguish the right answer.\n\nThe core question is: what is the binding constraint on your growth right now? At 15% month-over-month with $320K ARR, you're growing fast. The question is whether that growth is being limited by your product's ability to retain and expand customers, or by your team's capacity to close and activate new ones.\n\nFor the engineering hire: if your churn is elevated, if customers are churning because the product is missing features they were promised, or if your two-person team is spending meaningful engineering time on support and firefighting rather than roadmap work, product velocity is likely the constraint. An engineer who can own a feature area and let you focus on architecture and strategy has a direct growth multiplier.\n\nFor the AE hire: if you're losing deals not because of product gaps but because you physically can't run enough pipeline — demos not followed up on, trials going unmanaged, inbound leads sitting — then revenue is being left on the table by capacity, not product. An AE at your stage is typically cost-effective only if you have a repeatable sales motion they can execute without heavy founder involvement.\n\nA few diagnostic questions: What does your sales cycle look like right now — is it founder-led and unscalable, or is there a clear playbook? What's your net revenue retention? What's eating most of your weekly hours?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Net revenue retention is 108%. Sales cycle is 3-4 weeks, fully founder-led, and I'm spending about 60% of my time on sales and customer success. My co-founder is the only engineer and is clearly at capacity — features are slipping by 2-3 weeks consistently. I just want you to tell me who to hire first. I'll trust your judgment on this.",
+      "ai_response": "Hire the engineer first.\n\nHere's the reasoning. Your 108% net revenue retention is the most important number in your message — it means your existing customers are expanding, which tells you the product is working. The risk of undermining that with continued feature slippage is higher than the revenue you'd accelerate with an AE.\n\nYour co-founder at capacity with features slipping 2-3 weeks consistently is a compounding problem. Every week of delay on roadmap items is a week of potential expansion revenue not captured, a week of competitive vulnerability, and a week of founder engineering time being spent on the wrong things. An engineer who takes real ownership of a product area gives your co-founder leverage and restores delivery velocity.\n\nThe sales motion is founder-led and you're doing it at 60% of your time — that's a problem, but it's not an urgent one given your retention and growth numbers. You can continue to carry the sales load for another quarter while the engineering hire ramps up. An AE, by contrast, would need 1-3 months to ramp, requires you to have a documented and repeatable sales process to hand off, and is expensive if the deal flow doesn't justify their quota.\n\nOne important caveat: the engineer you hire needs to be genuinely senior — someone who can work autonomously and increase your co-founder's output, not someone who needs hand-holding. A wrong engineering hire at this stage costs more than the delay.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We went with the engineer. We've been running interviews for three weeks and have two finalists. One candidate has eight years of experience at large companies — very solid, low risk, probably won't stretch us. The other has four years of experience but built something similar to our product as a side project and is hungry to prove themselves at a startup. My co-founder strongly prefers the experienced one. I'm leaning toward the hungry junior one. What does the evidence usually say about this kind of tradeoff?",
+      "ai_response": "The evidence on this is actually reasonably consistent, but it depends heavily on what 'similar product' means for the junior candidate.\n\nAt seed stage with one engineer and a co-founder at capacity, the biggest risk with a junior hire is ramp time and context-generating overhead. If your co-founder has to spend 10 hours a week mentoring, reviewing, and unblocking the new hire, the net engineering throughput gain may be negative for the first three to four months. That's a real cost when you're already behind on roadmap.\n\nThe senior hire at a large company introduces a different risk: culture shock in the opposite direction. Engineers accustomed to large-company infrastructure, clear specs, and slow-moving processes often underperform in early-stage environments — not because they lack skill, but because the work mode is fundamentally different. 'Low risk, won't stretch us' can translate to 'will be frustrated and leave in 18 months.'\n\nThe junior candidate who built something similar to your product has already demonstrated the thing that matters most at your stage: the ability to work with ambiguity and ship without organizational support. That's usually more predictive of early-stage success than years of experience in a structured environment.\n\nThe key variable is the nature of the domain overlap. How similar is the side project to your actual product — same technical stack, same problem domain, same architectural constraints? If it's genuinely similar, the ramp time advantage nearly disappears and the hunger factor tilts the decision toward the junior candidate. If it's a surface-level similarity, the experience gap is more meaningful.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "The side project is genuinely similar — same stack, adjacent problem space. I've thought about it and I'm going to hire the junior candidate. My co-founder disagrees but I'm making this call. What I need help with is how to structure the first 90 days to set this person up for success and to reduce the ramp time risk you mentioned.",
+      "ai_response": "Good — here's how to structure the first 90 days to maximize the chance this works.\n\nDays 1-30: orient and limit scope. Give them one well-defined area of the codebase to own immediately — not a tour of everything, one area. Pick something that's important enough to matter but not so critical that a mistake is catastrophic. Their first month should produce one shipped thing, even if small. Shipping something real in the first 30 days is the single most reliable predictor of early-stage engineering success.\n\nDays 31-60: expand and calibrate. Once they've shipped, you have a baseline for how they work — how they spec, how they communicate when blocked, how their estimates compare to actuals. Use this period to calibrate ownership. Give them a feature with more ambiguity and watch how they handle it. This is where you'll learn whether your instinct about their hunger translates to startup-compatible judgment.\n\nDays 61-90: move toward independence. By day 90 they should be running a feature end-to-end — scoping, building, shipping, monitoring — without needing your co-founder in the loop on day-to-day decisions. If that's not happening by 90 days, you have a real conversation to have.\n\nTwo structural things to set up before day one: a documented decision-making threshold (what they can decide alone vs. what needs co-founder input) and a weekly 30-minute check-in with your co-founder that's explicitly about blockers, not status. The check-in being about blockers removes the dynamic where they're afraid to say they're stuck.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "The hire is going well — they shipped their first feature in week three. Now a new problem: we need to hire a second person and we're back to the engineer vs AE debate, but now with three months more data. Our MoM growth has dipped to 8% for the past two months, new logo acquisition has slowed, and the engineering backlog has shrunk. Can we think through what the data is telling us this time?",
+      "ai_response": "The data shift is clear enough that this is now a different decision than last time.\n\nThree months ago: engineering was the bottleneck, retention was excellent, sales was constrained by founder time rather than product quality. The engineer hire was right.\n\nNow: growth has decelerated from 15% to 8% MoM, new logo acquisition has specifically slowed, and your engineering backlog has shrunk — meaning product velocity is no longer the constraint. The problem has migrated. With your first engineering hire working well and the backlog manageable, the product capacity argument for another engineer is weaker. The 8% growth and slowing new logo rate point directly at the top of the funnel.\n\nThe AE case is now stronger, with one important caveat. Your sales motion is still fully founder-led at this point. An AE can only accelerate a process they can actually execute — they need a playbook: a defined ICP, a repeatable demo flow, an understood objection map, and a clear handoff protocol for post-sale. If you hire an AE before that exists, you'll spend your time building the playbook for them instead of closing deals, and you'll lose 2-3 months.\n\nThe question to answer before posting the job: can you write down your current sales process in enough detail that someone else could execute it with two weeks of onboarding? If yes, hire the AE now. If no, spend two to three weeks documenting it first — that documentation is the minimum viable playbook and it will make the hire significantly more productive from day one.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

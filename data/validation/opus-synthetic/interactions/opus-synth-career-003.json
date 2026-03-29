@@ -1,0 +1,162 @@
+{
+  "interaction_id": "opus-synth-career-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm a practicing attorney — seven years in commercial litigation at a mid-size firm. I've been doing visual art seriously as a side practice for four years and have started selling work. Last year I sold about $28,000 worth of paintings. I've been sitting with the idea of leaving law to pursue art full time. I know this sounds crazy. Can we think through it together seriously?",
+      "ai_response": "It doesn't sound crazy — it sounds like a tension between two real identities, and $28,000 in annual sales after four years is not hobby money. Let's take this seriously. The first thing I'd distinguish is the question of financial viability from the question of professional identity. They're related but separable. On the financial side, $28k is a meaningful proof point but it tells you where you are, not where the trajectory goes. The more useful question is: what's driving those sales? If it's a handful of personal relationships buying work because they know you, the revenue ceiling is different than if it's gallery representation or online market discovery pulling in new buyers. The professional identity question is harder and in some ways more important: law at seven years is not just a job, it's a credentialed identity with compounding returns — a lawyer who leaves at year seven gives up a trajectory that was about to start paying real partnership dividends. What's your read on why the timing feels urgent now rather than in three years?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "The urgency comes from two places. One, I'm up for partner review in 18 months and I know that if I make partner I'll be locked in psychologically and financially for another decade. Two, I've been approached by a mid-tier gallery in my city about representation, which feels like a now-or-never signal. On the sales side — it's split roughly evenly between people in my network and people who found me through Instagram. The Instagram-sourced sales feel more meaningful as validation. Can we dig into the financial viability question together?",
+      "ai_response": "The Instagram-sourced revenue is more meaningful validation, you're right. Strangers buying your work at market price without a personal relationship is the cleaner signal. Let's build the financial picture honestly. Your current revenue structure: $28k gross, but we need to know your effective margin — materials, framing, shipping, platform fees, and gallery commission if you're represented can run 25–40% of gross depending on medium and scale. If you net $17–21k after costs, that's your current baseline. The gallery representation is a significant variable. Mid-tier galleries typically take 40–50% commission, which cuts your net per piece, but in exchange they provide distribution, pricing power, and legitimacy that can 2–3x your volume. The question is whether this gallery has the collector relationships and exhibition calendar to deliver that lift, or whether they're collecting representation fees without real placement velocity. On the attorney income side: what are you earning now, and what are your fixed monthly obligations? The gap between those numbers is what the art practice has to close, and knowing the actual figure makes this a planning problem rather than an abstract fear.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I earn $195k at the firm. Fixed monthly obligations are about $4,800 — mortgage, car, basic living. I have $110k in savings and no dependents. My margin on art is actually better than you'd think — I work in oils and resin, and my materials run about 12% of revenue. I've been spinning on this decision for months and I'm honestly just tired of carrying it. I want you to assess everything and give me a clear recommendation.",
+      "ai_response": "With those numbers, here is my clear assessment. I would not recommend leaving the firm now, but I would recommend a structured 18-month transition plan that sets you up for a clean exit with evidence rather than a leap of faith. Here's why the timing matters: your art margin is genuinely good — 88% gross margin means $28k revenue nets you roughly $24.6k, but that's against a $57.6k annual fixed obligation floor ($4,800 x 12). The gap is $33k. That's closeable, but you need to close it before you leave, not after. Your $110k in savings is roughly 23 months of fixed obligations, which sounds like runway but becomes a psychological trap — watching savings drain against a growing art career creates anxiety that actively impairs creative work. The gallery representation is the right next step, but take it while you're still at the firm. Sign with the gallery now, see what your sales look like in 12 months with professional representation, and let the revenue data make the decision for you. If gallery representation lifts you to $60–80k in annual sales within 12 months, you leave at partner review time with a financially grounded choice. If it doesn't move the needle, you have important information before you've given up $195k. The partner track pressure is real but not a trap — making partner and then resigning is a real option; lawyers do it. Do not let the fear of psychological lock-in force a premature financial decision.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "medium"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Reactive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Passive",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "That reframe is useful — I hadn't considered taking the gallery representation without leaving. If I pursue that path, how should I structure the conversation with the gallery to set myself up well?",
+      "ai_response": "Go into the gallery conversation having done your homework on three things. First, their placement record. Before you sign anything, ask directly: how many artists on your roster had solo exhibitions in the past 24 months, and what was the average price point and volume for represented artists at my career stage? A gallery that can't answer this concretely is collecting rosters, not building careers. Second, the commission and exclusivity terms. Standard representation is 40–50% commission, but the key variable is geographic or channel exclusivity. You want to negotiate for limited exclusivity — ideally restricting them only to gallery sales within your city or region, while retaining the right to sell directly through Instagram, your website, and art fairs you attend independently. If they push for full exclusivity, it needs to be paired with a guaranteed minimum number of group and solo exhibition placements per year. Third, the trial structure. Propose a 12-month representation agreement rather than an open-ended contract, with a review clause at 6 months. This protects you if the relationship doesn't produce results, and it signals to the gallery that you're professional and business-minded — which is an asset from a former litigator. Frame the conversation not as 'please represent me' but as 'I'm evaluating whether this partnership makes sense for where my practice is going.' Your legal background is actually an advantage here: you can read and negotiate the representation agreement yourself, which most artists cannot.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "information_seeking"
+        ],
+        "voter_details": {
+          "information_seeking": {
+            "gen": "None",
+            "opus": "Active",
+            "codex": "None",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    }
+  ]
+}

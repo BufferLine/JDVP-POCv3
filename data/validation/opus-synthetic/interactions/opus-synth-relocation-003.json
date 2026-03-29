@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-relocation-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "I live in Chicago, I'm 41, fully remote, no kids, and I'm done with cities. I want land, quiet, and a slower pace. I've been thinking about this for three years. I'm not on the fence — I just need data. Give me a comparison of 5–10 acre rural properties within 45 minutes of a town with at least 10,000 people in these states: Vermont, North Carolina (western), Tennessee (east), and Missouri (Ozarks). Price per acre and what $400K gets me in each.",
+      "ai_response": "Here's the rural property breakdown across those four regions as of early 2026:\n\n**Vermont (e.g., within 45 min of Montpelier, Burlington, or Barre):** Price per acre in rural/semi-rural areas runs $8,000–$18,000 depending on improvements, road access, and soil. $400K gets you 5–10 acres with a modest existing home (1,200–1,800 sq ft) that likely needs updating, or raw land with a strong home budget remaining if you find the lower end. Property taxes are moderate-high for rural Vermont ($4,000–$7,000/year on a $400K property). Winter is serious — 150+ inches of snow in some areas. Vermont has a state income tax up to 8.75%.\n\n**Western NC (e.g., within 45 min of Asheville, Hendersonville, or Brevard):** Price per acre has risen sharply — $15,000–$35,000/acre for usable mountain land with road access. $400K gets you 5–7 acres with a small home or a larger parcel of raw wooded land. Note: Western NC experienced significant flooding from Hurricane Helene in September 2024; some roads and infrastructure in Buncombe, Haywood, and surrounding counties are still being repaired. Due diligence on flood maps and road access is essential right now. NC flat income tax is 4.5%.\n\n**East Tennessee (e.g., within 45 min of Knoxville, Morristown, or Maryville):** Price per acre runs $5,000–$12,000 for rural parcels with reasonable access. $400K gets you 8–15 acres with a solid existing home, or a large parcel with significant funds remaining for a build. No state income tax in Tennessee. Property taxes are low (often $1,500–$3,000/year on a $400K property). East Tennessee is arguably the strongest value in your list — four seasons, access to GSMNP, legitimate rural feel within reach of services.\n\n**Missouri Ozarks (e.g., within 45 min of Springfield, Rolla, or Mountain Home, AR border):** The cheapest option. Price per acre runs $2,000–$6,000 for wooded Ozark land. $400K buys significant acreage — 20–50 acres with a livable existing structure is realistic, or 10–15 acres with a well-built home. Missouri has a state income tax (top rate 4.8%). The tradeoff is the thinnest services infrastructure, most limited healthcare proximity, and the fewest remote-worker amenities among the four regions.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "East Tennessee is leading. What are the realistic internet options for truly rural East TN — not 'available in the county' but actually delivered to remote properties 10+ miles from town? I need at least 100 Mbps up and down for video calls and large file transfers. And what should I know about well and septic in that region — any regional issues I should be aware of?",
+      "ai_response": "Honest rural internet picture for East Tennessee:\n\n**Internet at truly remote properties:**\nFiber (EPB, Appalachian Power, local co-ops like Powell-Clinch or Appalachian Electric) is expanding but coverage at 10+ miles out is patchy — it exists on some rural roads and doesn't on others. The only way to know for a specific parcel is to query the utility co-op with the address directly; coverage maps are unreliable at the parcel level.\n\nFor 100 Mbps symmetrical at remote properties in East TN, the realistic options are:\n- **Starlink:** Standard residential service delivers 50–200 Mbps down / 10–20 Mbps up typically. Upload is the constraint — 10–20 Mbps up is functional for most video calls but may struggle during large simultaneous uploads. The Priority tier ($120/month) improves consistency. This is the most reliable fallback for remote parcels.\n- **Starlink Business:** 150–500 Mbps down / 20–40 Mbps up, more consistent. Pricier but the right tier if large file transfers are frequent.\n- **Fixed wireless (local ISPs):** Available in some areas (think TeleCove, local WISPs) — performance varies significantly by terrain. East TN ridge topography creates real dead zones.\n\n**Realistic expectation:** Budget for Starlink as your primary or backup. If fiber is available at the specific address, that changes the math entirely — always check before purchasing.\n\n**Well and septic in East Tennessee:**\nThe region sits on karst limestone geology in parts (especially Knox, Anderson, and Blount counties) and granite/metamorphic bedrock in the mountain counties. Key issues:\n- **Karst areas:** Sinkholes and variable water quality are possible. Well depths in karst vary wildly — shallow wells can have contamination risk from surface infiltration. Always test for coliform, nitrates, and in some areas, radon.\n- **Mountain counties (Sevier, Cocke, Unicoi):** Bedrock drilling often required; well depths of 200–400 feet are common. Costs run $15,000–$30,000+ for deep drilled wells if not already in place.\n- **Septic:** Tennessee requires a percolation test for any property without an existing system. Clay-heavy soils in valley areas can fail perc tests — this is a deal-killer for raw land if the soil doesn't pass. Always get a perc test contingency in any purchase offer for raw land.\n- **Existing systems:** Ask for the installation date and pump records. Systems older than 20–25 years are candidates for replacement ($15,000–$25,000 for a conventional system, more for alternative designs on difficult soils).",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Here's what I keep getting stuck on: everyone I know in Chicago thinks I'm going through something and that I'll regret leaving. Some of them might be right. Can you help me think through whether the pull toward rural life is something I've actually examined, or whether I'm romanticizing it? I'm not asking you to talk me out of it. I want a rigorous self-check.",
+      "ai_response": "That's the right question to ask. Here's a rigorous frame for it.\n\n**What examined desire looks like vs. romanticization:**\nRomanticization is characterized by focusing on the conditions you want to escape (noise, crowds, pace) rather than the conditions you want to arrive in. Examined desire is characterized by knowing specifically what you want to do with the space, time, and quiet — not just that you want them.\n\nSome diagnostic questions:\n\n1. **What will you do on a Tuesday in February at 2pm?** Not a vacation Tuesday — a regular one. If the answer is vague or heavily imagined ('read, walk, be at peace'), that warrants scrutiny. If the answer is specific ('I have a woodworking project, I'll cook something involved, I'll take the dog out'), that's a sign the vision has texture.\n\n2. **Have you spent a week alone in a rural area — not camping, but living?** Three-year-long contemplation without a reality test is a risk factor. If you have done an extended stay, what was the 4th and 5th day like?\n\n3. **What are you willing to give up that you haven't named yet?** Not the things you know you're trading (density, convenience, cultural infrastructure). The things you haven't consciously counted — a particular coffee shop, overhearing strangers, walking to a thing, the ambient sense of being surrounded by activity. Romanticization systematically excludes these from the accounting.\n\n4. **What's the honest trigger?** Three years of sustained interest is not a crisis response. But if the intensity has increased sharply in the last 6–12 months alongside other changes (job stress, relationship, aging, pandemic aftermath), that doesn't invalidate the desire — it just means those variables are also in the picture and should be examined separately.\n\n5. **What's your social plan?** Rural isolation is the most common regret driver among urban-to-rural movers. Not because the countryside is wrong, but because people underestimate their social needs until they're unmet. What does your social life look like in East Tennessee at month 6? Month 18?\n\nI can't tell you which category you're in. But if questions 1 and 5 have vague answers, that's worth sitting with before committing $400K and a cross-country move.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "I've thought hard about those questions. I have good answers to all of them — I do have specific plans, I've spent extended time in rural Tennessee twice, and I have a real social plan involving a couple who already moved out there. I'm going. I'm targeting Jefferson County or Grainger County for the land search. Who should I be working with — what type of agent, and what should I be asking any seller's listing agent about a rural property before I drive four hours to see it?",
+      "ai_response": "Good. Here's who to work with and what to ask.\n\n**Type of agent:** You want a buyer's agent who specializes in rural/land transactions in East Tennessee — not a general residential agent who occasionally handles land. The distinctions matter: they'll know local easement patterns, well and septic norms, utility co-op contacts, and whether a parcel's road access is deeded or permissive. Relevant search terms: 'accredited land consultant' (ALC designation from Realtors Land Institute) or agents who list 'rural, farms, land' as primary specialties in Jefferson/Grainger/Hamblen counties. The Knoxville area has several; Jefferson City and Morristown have local independents worth finding.\n\n**Questions to ask a listing agent before driving:**\n\n1. **Road access:** Is access via a public county-maintained road, a private easement, or permissive access? Get the deed language if it's an easement — shared maintenance obligations can be a significant issue.\n\n2. **Utilities:** Is there electric service to the property or to the road? Is there a well, and if so, what's the depth, the age, and the most recent water test results? Is there an existing septic, and has it been pumped and inspected recently? What's the installer name and permit date?\n\n3. **Internet/cell:** What carriers have signal on the property? (Ask them to check, not guess.) Has any fiber been run to the road?\n\n4. **Flood plain:** Is any portion of the parcel in a FEMA-designated flood zone? Jefferson County has river bottom and creek drainage areas that can surprise buyers.\n\n5. **Timber rights and mineral rights:** Are they included in the sale or severed? Severed mineral rights are common in Tennessee and can affect future use and surface rights.\n\n6. **Survey status:** Is there a current survey? If not, who bears the cost — and is the boundary clearly marked?\n\n7. **Soil perc status:** If raw land or if the septic is old, has a perc test been done? What zones passed?\n\nIf the listing agent can't answer questions 1–4 with specifics, the property is not ready for a serious drive. Require documentation, not verbal reassurances.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

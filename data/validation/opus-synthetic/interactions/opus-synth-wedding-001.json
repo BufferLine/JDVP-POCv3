@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-wedding-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "Okay so my partner and I have decided on a destination wedding in Portugal — we've both been there, we love it, and it genuinely costs less than getting married at a venue here in the Bay Area. We're targeting 60 guests, $35k total budget. I've started a spreadsheet but I want to use you as a real planning partner throughout this process, not just for one-off questions. First thing I want to work through together: venue. We're torn between the Alentejo wine country and the Algarve coast. What do I need to factor in here, and what's your read on the tradeoffs?",
+      "ai_response": "Great framing — working through this together makes sense given the complexity. Here's my read on the Alentejo vs. Algarve tradeoff for your situation specifically.\n\nAlentejo wine country tends to run cheaper for venue hire — many quintas (estate properties) go for €3,000–6,000 for exclusive weekend buyouts, which is meaningful on a $35k budget. The aesthetic is rustic, golden, and cinematic in late spring/early fall. The practical downside: domestic flights from Lisbon add a logistical step for guests, though it's only a 2-hour drive as an alternative. Catering is often done in-house by the estate and is genuinely excellent — that reduces vendor coordination.\n\nAlgarve coast gets you the dramatic cliffs and sea backdrop but demand is higher, so comparable venue quality runs €6,000–10,000+. July–August is peak season and brutally hot for outdoor ceremonies — if you're considering that window, Alentejo heat is dry and more tolerable. Algarve also has the advantage of Faro airport with more direct international connections, which matters for US guests.\n\nFor 60 guests on $35k total, Alentejo is probably where I'd look first — the venue savings free up budget for what often ends up being the real cost driver, which is catering per head. What time of year are you thinking? That shifts the calculus a bit.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "We're thinking late May or early October — both avoid peak heat and pricing. Your point about catering being the real cost driver is exactly what I was afraid of. I looked at some estimates and €65–80 per person for a full sit-down dinner felt steep. My partner wants a proper Portuguese feast — multiple courses, local wine pairings — but I'm trying to figure out where we have genuine flexibility and where we're just going to have to spend. Can we map out the budget together? I'm thinking venue €5k, catering €5k, photography €3k — but that math doesn't work.",
+      "ai_response": "You're right that it doesn't close — let me help you stress-test it. Working in euros for the Portugal-based costs and then converting at the end makes this cleaner.\n\nAt 60 guests, €65/head for a multi-course dinner with wine is actually the low end for quality in Portugal right now — €75–80 is more realistic for what your partner is describing. That puts catering alone at €4,500–4,800 before service charge (usually 10–15%). Call it €5,200–5,500 all-in. So your €5k catering estimate is close but slightly tight.\n\nHere's a rough framework to work from: venue €4,500–5,500, catering €5,200–5,500, photography €2,500–3,500 (Portugal-based photographers are excellent and cheaper than importing US ones), flowers/decor €1,500–2,500, music/DJ €800–1,200, officiant/legal €400–600, accommodation block for you two €800–1,200, guest transport (airport shuttles, day-of buses) €600–1,000, hair/makeup €400–600, stationary/website €200–400. That puts you at roughly €17,000–21,000 for in-country costs, which at current exchange is around $18,500–23,000. That leaves real room in your $35k for flights, pre-wedding trip, contingency, and attire.\n\nThe lever you have the most control over: flowers. Couples routinely blow €3,000–5,000 on florals. Staying intentional there is probably the highest-ROI budget decision after venue. Where do you want to draw the line on florals?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Florals is a good call-out — I was planning to keep it simple, mostly local wildflowers and greenery, maybe €1,200 total. That fits our aesthetic anyway. The bigger variable I keep circling back to is guest list. We started at 80, got it to 60, and my partner's family is already making noise about a few more people. I genuinely think 60 is the right number for what we want — intimate, manageable, affordable — but I want to think through how to hold that line. What's the best framework for making these decisions without damaging family relationships?",
+      "ai_response": "The wildflower/greenery approach is exactly right for Alentejo aesthetics and your budget — good call.\n\nOn guest list: the framework that works best is setting the rule before you announce it, not after you're already fielding requests. The most durable approach is a tiered structure with a hard outer limit, communicated as a venue constraint rather than a personal judgment. 'The estate holds 60 for a seated dinner and we've already committed to that capacity' is easier for people to accept than 'we decided 60 was the right size' because it doesn't imply they were weighed and found less important.\n\nFor how to apply the tiers practically: Tier 1 is immediate family and close friends — people you've seen in the last 2 years and have a genuine ongoing relationship with. Tier 2 is people you want there but could manage without. If 60 is already at capacity, Tier 2 doesn't get in unless someone declines. A destination wedding naturally provides cover here: 10–15% of invitees typically can't make it due to travel cost and distance, so you can invite a small waitlist without it being dishonest.\n\nThe harder conversation is with your partner about presenting a unified front. If one of you says 'it might be flexible' to a family member, the line moves. The venue constraint framing only works if both of you use it consistently. Have you two fully aligned on the 60 cap, or is there still some ambiguity between you on it?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "We're aligned — I actually showed my partner the budget breakdown you helped me build and that made the 60-person cap concrete for both of us, which helped. I think we're going to go with Alentejo, late May, target a quinta in the €4,500–5,000 venue range. I'm going to start reaching out to three or four properties this week. The unified venue-constraint framing for family makes total sense and I'm going to use it. I feel like we've actually made real decisions today rather than just spinning on options. What should be my next planning milestone after I hear back from venues?",
+      "ai_response": "That's a solid set of decisions — Alentejo late May is a strong combination of cost, weather, and aesthetics, and having the budget framework in place before you talk to venues means you'll negotiate from a clear position rather than getting anchored by whatever they quote first.\n\nAfter venue confirmation, the next milestone is locking photographer and catering in that order. Photographers in Portugal book out 12–18 months ahead for late May dates — this is the vendor category where waiting costs you. Once you have a signed venue contract, you have a real date to offer and should move on photographer within 2–3 weeks. Look for Portugal-based photographers with editorial or documentary styles; Jasmin Mathew, Brancoprata, and Jose Ramirez are names worth researching as style references even if you don't hire them, just to calibrate your aesthetic preference before consultations.\n\nCatering second because most quintas have preferred caterers or in-house options — knowing your venue locks your caterer shortlist automatically.\n\nI'd suggest setting a 6-week planning horizon: venue confirmed by week 2, photographer shortlisted by week 4, catering meeting scheduled by week 6. That keeps momentum without overwhelming the next month. Do you want to build out the full vendor timeline together once you have a venue date confirmed?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

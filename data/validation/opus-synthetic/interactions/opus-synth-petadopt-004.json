@@ -1,0 +1,182 @@
+{
+  "interaction_id": "opus-synth-petadopt-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I've always been fascinated by exotic pets and I'm seriously considering getting either a hedgehog or a sugar glider. I have the space, I'm willing to do the work, and I understand they're not like cats or dogs. What are the real feasibility concerns I need to think through before committing?",
+      "ai_response": "Both are genuinely demanding in ways most people underestimate. Here's the honest breakdown:\n\n**Hedgehogs:**\n- Nocturnal — active 10pm-4am. If you sleep normally, you will rarely see them awake.\n- Solitary. No social enrichment needed from you, which sounds easy but means they don't bond the way most people want.\n- Hibernation risk: if ambient temps drop below 65F, they attempt hibernation and can die. Requires stable heated environment.\n- Legal: banned in several US states (GA, HI, CA, some others) and some municipalities. Check your state.\n- Veterinary access: requires exotic vet. Not all vets see hedgehogs. Find one in advance.\n- Lifespan: 4-6 years. Wobbly Hedgehog Syndrome (a progressive neurological disease) affects many; no treatment.\n\n**Sugar Gliders:**\n- Highly social — solitary sugar gliders are often depressed and self-mutilate. You need two minimum, or extraordinary time investment.\n- Nocturnal and loud (barking, crabbing sounds).\n- Diet is complex: modified Bourbon's Modified Leadbeater (BML) or similar — requires prep, not just pellets. Incorrect diet causes metabolic bone disease.\n- Lifespan: 10-15 years. Long commitment.\n- Also require exotic vets. Also have legal restrictions in some states (HI, CA).\n- Bond deeply but require months of daily handling to reach that point.\n\nKey feasibility question before either: Do you have an established exotic vet? And what's your actual daily schedule — are you home evenings?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay some of that is kind of a lot. I didn't know sugar gliders needed to be in pairs — that changes things. But they're also just so incredible, the gliding, they way they bond with people. My roommate in college had one and it used to sleep in his pocket. I feel like the hedgehog is more realistic but also less... interesting? I don't know. I thought I'd researched this but clearly I hadn't done enough. I guess the diet thing for sugar gliders is doable if you're committed. Maybe I should just get a hedgehog and see. But also maybe I'd regret not trying the harder thing. I don't know what I'm actually asking.",
+      "ai_response": "You're not asking a question right now, you're recalibrating — which makes sense, the pair requirement for sugar gliders is a significant new variable. The pocket-sleeping image is a real thing and it's compelling, but it comes after months of trust-building and requires having a second glider so they're not psychologically suffering when you're away. Your roommate's experience is real; the path to it is longer than it looks.\n\nThe 'hedgehog is more realistic but less interesting' framing is worth sitting with. Sometimes realistic and right are the same thing. Sometimes they're not. The question underneath might be: are you drawn to the challenge itself, or to the relationship outcome the sugar glider represents? Those point to different answers.\n\nThere's no rush here — take a day or two to let the pair-requirement land before deciding. When you're ready to think it through with a clearer head, I'm here.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay I've thought about it. I'm leaning toward sugar gliders but I want to be honest with myself about whether I'm actually set up for it. Can we go through the real daily and weekly time requirements, and what the minimum viable setup looks like cost-wise? I want to see if it's genuinely feasible for my life.",
+      "ai_response": "**Daily time commitment (sugar gliders):**\n- Diet prep: 15-20 min/day if using BML fresh mix, or 5 min if using pre-made frozen portions thawed nightly\n- Cage cleaning (spot): 5-10 min/day\n- Active bonding time: minimum 1-2 hours/evening. They're nocturnal — this means 9pm-midnight is prime. If you're not consistently home evenings or go to bed early, this is the real constraint.\n- With a bonded pair, they entertain each other — your bonding time is enrichment, not survival necessity. Solo glider: that 1-2 hours becomes mandatory or the animal deteriorates.\n\n**Weekly:**\n- Deep cage clean: 30-45 min\n- Diet batch prep (if doing weekly prep): 1 hour\n\n**Minimum viable setup cost:**\n- Cage (minimum 24x24x48 for a pair): $150-300. Taller is better — they climb.\n- Two gliders from reputable breeder: $400-600 total (avoid chain pet stores — health and socialization issues)\n- Initial vet exam (exotic vet, pair): $100-200\n- Startup supplies (pouches, toys, food ingredients): $100-150\n- **First year total estimate: $900-1,400**\n- Ongoing annual: $300-500 (food, vet, supplies)\n\n**Honest feasibility check:** Are you reliably home in evenings? Do you have an exotic vet within reasonable distance? Is your living situation stable for 10-15 years (or do you have a plan for the animals if it changes)?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I work from home so evenings aren't the issue. The 10-15 year commitment is what I actually need your assessment on — given everything I've told you, do you think I should do this or not?",
+      "ai_response": "Yes, I think you should do it — with one condition.\n\nYou work from home, so the evening availability constraint is resolved. You clearly did real research before this conversation and are doing more now, which is the right behavior. You have the financial picture. The 10-15 year commitment is long but your engagement level suggests you're not treating this casually.\n\nThe condition: find your exotic vet before you acquire the gliders, not after. Call around, confirm they see sugar gliders, establish what an emergency visit costs. In a 15-year span there will be at least one emergency. Knowing you have covered vet access removes the biggest risk in the whole setup.\n\nIf you can check that box, the rest of the feasibility picture works for your life as you've described it. Get a bonded pair from a reputable USDA-licensed breeder, start with the BML diet, and expect 2-3 months before they're fully comfortable. The pocket-sleeping relationship your roommate had is real and achievable.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "I found an exotic vet three miles from me who sees sugar gliders — I called while we were talking. I'm doing this. I'm going to get a bonded pair, I've already found a breeder with good reviews in my state. I feel clear on it.",
+      "ai_response": "That's the right move — calling the vet mid-conversation is exactly the kind of concrete action that separates people who think about exotic pets from people who actually succeed with them. A bonded pair from a breeder with an established exotic vet on file before day one is about as well-positioned as you can be. Enjoy the setup process — the cage enrichment design for gliders is actually fun. Good luck.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-conflict-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm having a really hard time with my son right now and I don't even know what the actual problem is. He's 24, he moved back home after his startup failed, and he's been here for seven months. At first I was fine with it — he needed time to recover, I get that. But now I feel like he's just... stopped. He's not looking for jobs, he's not doing anything, he sleeps until noon, he's on his computer all night. When I try to bring it up he either shuts down or we get into a fight and he accuses me of not supporting him and I feel terrible. And then I doubt myself — like maybe he IS depressed and I'm being too harsh. Or maybe I'm enabling him. I don't know which of those is true. My husband thinks we should just let it play out and I disagree but I also don't know what I want to do differently. I feel like a bad mother either way.",
+      "ai_response": "That feeling of being bad either way — too harsh or too enabling — is one of the harder places to be as a parent. It's not a sign you're getting it wrong; it usually means you're taking the situation seriously enough to hold both possibilities at once.\n\nThe two things you're worried about — that he's depressed and needs patience, and that he's drifting in a way that patience is making worse — aren't actually mutually exclusive. They can both be true at the same time, and the response to each doesn't have to be all-or-nothing.\n\nA few things I'm curious about: when you say he's on his computer all night — do you have any sense of what he's doing? Is it gaming, is it something work-adjacent, is it genuinely unclear? And in the seven months, has there been any period where he seemed more engaged or like he was moving toward something, or has it been consistently like this? I'm trying to understand whether this is a flat plateau or whether there's been any variation.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Mostly gaming, some YouTube. There was about a month — maybe months three and four — where he was doing some freelance web stuff and seemed more like himself. That stopped around November and I don't know why. He also stopped going to the gym around then, which he used to do regularly. I hadn't connected those two things until just now. I'm wondering if something happened in November that I don't know about. When I try to ask directly he says he's fine. I do think he might be depressed — I think I've been avoiding saying that word even to myself. But I also don't know how to help with that and I don't want to make it worse by pushing the wrong way.",
+      "ai_response": "The November shift is significant — the combination of stopping the freelance work, stopping the gym, and retreating into passive screen time is a recognizable pattern that often does track with depression or a depressive episode rather than just motivational stagnation. The fact that there was a more functional period before November makes it more likely that something changed, not that this is simply who he is right now.\n\nOn how to help without pushing the wrong way: the instinct to avoid naming it is common, but in most cases the person who's struggling already knows something is wrong — what they often don't have is permission to talk about it or acknowledgment that it's real. A conversation that opens with curiosity rather than concern about behavior ('I've noticed you seemed different around November and I've been wondering if you're okay — not okay as in doing enough, just okay as in feeling alright') often lands better than anything framed around productivity.\n\nOn the question of support versus enabling — those usually become more distinct once you can separate the emotional support from the structural situation. Being emotionally present and curious is not enabling. Having no timeline, no expectations, and no conversation about what comes next is the part that can drift into enabling. Those can be handled separately.\n\nDo you think he would be open to talking to someone — a therapist or counselor — if you brought it up gently? Or has that been tried or ruled out?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I haven't brought up therapy because I was afraid he'd take it as me saying something was wrong with him. But hearing you say that he probably already knows something is off — that actually changes how I'm thinking about it. I don't think he'd resist it as much as I've been imagining. I've decided I want to try a different kind of conversation with him — not about what he's doing or not doing, just about how he's been feeling since November. And I want to mention therapy not as a fix but just as an option I'd help with if he wanted it. I'm going to leave the job and timeline stuff out of it entirely for now. My husband and I also need to get on the same page and I think I'm going to ask him to let me take the lead on this and explain why.",
+      "ai_response": "That's a coherent approach and it distinguishes between the things that actually need to happen in the right order. Addressing what's underneath before pressing on logistics is usually more productive — and if depression is real, the freelance work and job search are unlikely to move until the emotional piece shifts anyway.\n\nGetting aligned with your husband is worth doing before the conversation with your son. 'Let me take the lead on this' is a clear enough ask, but it helps to tell him what that means specifically — so he doesn't inadvertently undercut the conversation by circling back to the job question in the same week.\n\nOne small thing for the conversation itself: if you mention therapy, framing it as 'something I'd want to look into together — like helping figure out who to talk to' rather than handing him a task tends to reduce the activation energy. It keeps it collaborative rather than putting the burden on him to initiate alone.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I had both conversations. My husband agreed to let me lead — he actually said he was relieved because he didn't know what to do either. And I talked to my son. He cried. He said he feels like a failure and that the startup failing hit him harder than he let on and he's been ashamed about it. He's open to therapy. I found a therapist who works with young adults, I'm going to send him the link and offer to help with insurance. I don't need more advice — I just want to close this out. I feel like I've been paralyzed for months and what finally moved me was separating the support question from the structure question. I'm still going to have the conversation about next steps eventually, but not yet.",
+      "ai_response": "That took real care and patience to navigate, and the instinct to separate those two things — support now, structure later — was the right one. The shame piece he named is often what's underneath the shutdown, and it usually can't be reached by pushing on productivity first.\n\nThe therapist outreach is a good next step. Let him come to it at his own pace once you send the link. You've done the hard part.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

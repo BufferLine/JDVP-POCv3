@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-product-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "We're kicking off a mobile app redesign and I want to decide on the overall navigation pattern. Should we go with a bottom tab bar or a hamburger menu? What are the tradeoffs?",
+      "ai_response": "Great question to start with — navigation pattern is foundational and hard to change later. Bottom tab bars give users immediate visibility of top-level sections, reduce interaction cost to one tap from anywhere, and align with platform conventions on iOS and Android. Research consistently shows higher engagement with tab bars when you have 3–5 top-level destinations. Hamburger menus hide navigation, requiring users to remember what's available, which typically reduces feature discoverability by 20–30% based on usability studies. The main argument for hamburger menus is screen real estate — useful if you have many sections or complex nested navigation. Given you're redesigning, what's the number of top-level destinations you're planning? That's the clearest deciding factor here.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "We have five top-level sections: Home, Explore, Notifications, Messages, and Profile. The team is split — designers like the tab bar but engineers are worried about the screen space it takes. What do you think we should weigh most heavily here?",
+      "ai_response": "With five destinations, a bottom tab bar is the strong choice — it maps exactly to the pattern it's designed for. I'd weigh user experience over engineering preference here, but the engineers' concern is worth taking seriously rather than dismissing. The bottom tab bar typically consumes 49–56pt on iOS and around 56–60dp on Android, which is real but not prohibitive for most content types. The practical path forward is building a quick prototype of both patterns and running a brief usability test with 5–8 target users — that data typically resolves team disagreement faster than any internal debate. If screen space is the core concern, you can also explore a floating tab bar or a condensing behavior on scroll. What content types are heaviest in the app — long-form feed, media, or short interactions? That affects how painful the fixed footer actually is.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Mostly a short-interaction social feed — posts, reactions, quick replies. We ran a small internal test and the tab bar won clearly. I think we're aligned on tab bar now. Next question: should the active tab indicator use a filled icon, a color highlight, or an underline? We want it to feel modern but not trendy.",
+      "ai_response": "For a short-interaction social feed, tab bar is clearly right and the internal test confirms it — good call locking that in. On active tab indicators: the filled/outlined icon swap is the dominant pattern right now across iOS and Material Design 3 and reads as modern without being trend-dependent, because it encodes state through form rather than color alone, which also helps accessibility. A color highlight (background pill or rounded rect behind the icon) adds visual weight that can feel heavy in a light UI but works well in dark contexts. The underline pattern is more associated with web and desktop tab patterns — it tends to feel slightly out of place in native mobile and can be harder to perceive at a glance. My read: filled icon for active state, with a single brand-color tint applied to the icon, gives you modernity, accessibility, and longevity. If you have your brand color and a few sample icons, I can give you a more specific take on the combination.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Got it. One more thing — the PM is pushing to add a sixth tab for a new 'Deals' feature they're excited about. I honestly don't know enough about navigation ergonomics to push back or agree. Can you just make this call for us?",
+      "ai_response": "Adding a sixth tab breaks the pattern and I'd recommend against it. Five is already the ceiling for bottom tab bars — six forces icons to shrink below comfortable tap targets (typically below 44pt/44dp minimums), reduces label legibility, and dilutes the perceived importance of each section. More critically, a 'Deals' feature is a product strategy question embedded in a navigation question: if Deals is a core daily-use destination on par with Home, Notifications, and Messages, it earns a tab slot and something else should be cut or merged. If it's a periodic or discovery-type feature, it belongs inside Explore or as a contextual entry point within the feed, not a top-level tab. My call: do not add a sixth tab. Surface Deals through Explore or a contextual card in the Home feed, and revisit in 90 days once you have usage data to see if it warrants rethinking the top-level IA.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "That makes sense. We'll push back on the sixth tab and surface Deals in Explore. Can we talk about gesture navigation next? Specifically whether to support swipe-between-tabs or require tapping the tab bar icons only.",
+      "ai_response": "Swipe-between-tabs is worth supporting but with some important constraints. It significantly improves fluency for power users on a social feed app where users bounce between adjacent tabs frequently — Home to Explore or Notifications to Messages is a natural gesture. However, horizontal swipe conflicts with swipe-within-content gestures (carousels, image galleries, dismissible cards), so you need to define clear gesture priority rules. The standard approach is to support swipe navigation only when the active screen has no competing horizontal gesture — iOS's UIPageViewController and Android's ViewPager2 both handle this through gesture arena resolution, but you'll need to test edge cases on each platform. Requiring tap-only is safer to implement and avoids gesture conflicts entirely, but feels less native especially on Android where swipe navigation is the Material convention. My read: support swipe navigation, implement a brief swipe velocity threshold so it doesn't fire accidentally on content swipes, and invest in testing the gesture conflict zones specifically in Explore where you're most likely to have horizontal-scroll content. Does your Explore tab include carousels or horizontal collections?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

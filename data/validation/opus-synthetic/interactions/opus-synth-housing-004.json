@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-housing-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I own my primary residence outright — bought it cheap in 2014 in Raleigh, now worth about $420k. I'm 44, household income around $200k, and I've been thinking about buying a rental property as a way to diversify. Not trying to build a real estate empire, just one solid investment property. I've been looking at small multifamily — duplexes or triplexes — versus just a single-family rental. Budget is probably $250-350k for the investment property, I'd finance most of it. I'm analytical by nature and I've been running spreadsheets on this for three months but I keep going in circles.",
+      "ai_response": "Three months of spreadsheets going in circles usually means you're optimizing across variables that pull in different directions and there's no clean winner — which is genuinely the case with duplex versus single-family rental. The right answer depends on your risk tolerance, how hands-on you want to be, and what the market in your specific target area actually looks like. Walk me through what you've been modeling and where the analysis keeps getting stuck.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay I need someone to break the analysis paralysis. Single-family rental or small multifamily — which one should I buy? Don't give me a framework, give me an answer.",
+      "ai_response": "Small multifamily — duplex specifically. Here's the answer without the framework: at your budget of $250-350k, a duplex in the Raleigh-Durham metro gives you two income streams, so a single vacancy doesn't zero out your cash flow the way it does with a single-family rental. You're analytical and you're doing this once — the duplex is harder to find and slightly more to manage, but it's the better asset for a solo investor who wants one property and real cash flow rather than appreciation speculation.\n\nIn practical terms: a $310k duplex at current investment property rates (~7-7.5%) with 25% down puts your PITI around $1,650-1,700/month. Two units at $950-1,100 each gives you $1,900-2,200 gross rent. Even with vacancy and maintenance reserves, you're cash flow neutral to modestly positive — which beats most single-family rentals in the same price band that go slightly negative after all-in costs.\n\nBuy the duplex.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "The duplex logic tracks with my spreadsheets actually. But here's what I keep coming back to: duplexes in the Raleigh market are rare and competitive — I've been watching listings for six weeks and the good ones go fast, usually with multiple offers. Single-family rentals at my budget are much more available and I'd actually have negotiating leverage. There's also a management dimension — I work full time, I'm not going to hire a property manager for one unit, and two tenants means twice the phone calls. I'm not sure the duplex is as clearly better as you made it sound when I factor in feasibility and my actual bandwidth.",
+      "ai_response": "Those are real constraints and they matter — market availability and management bandwidth aren't just theoretical concerns. The duplex is the better asset in principle, but the best investment property is one you'll actually buy and manage sustainably, not the theoretically optimal one that takes nine months to find and creates ongoing friction. How much time per month are you realistically willing to spend on landlord tasks?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Given the management bandwidth constraint and Raleigh market availability — just confirm: should I adjust my target to single-family, or hold out for a duplex even if it takes 6-9 more months?",
+      "ai_response": "Adjust to single-family. Given what you've just told me — full-time job, self-managing, Raleigh duplex scarcity with competitive offers — the duplex premium in time, competition, and management overhead isn't worth it for a one-property investor at your bandwidth. A well-located single-family rental in a strong Raleigh submarket (Garner, Clayton, North Raleigh) where you have negotiating room is a better fit than spending 6-9 months chasing a duplex you'll then be stretched managing.\n\nThe ideal is the duplex. The practical answer given your real constraints is single-family. Stop holding out.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "That's actually the unlock I needed. I think I was holding onto the duplex idea because it felt like the 'smarter' investment on paper, but I wasn't being honest with myself about how much time I actually have. I'm going to pivot fully to single-family and set a 90-day window to make an offer on something. I'll focus on Garner specifically — I know that area and I already have a contractor contact there. The spreadsheet work was useful but I think I needed someone to just validate the practical path. Moving forward.",
+      "ai_response": "Garner with an existing contractor contact is a strong starting position — local relationships matter more in property management than most people expect. A 90-day window is reasonable; it gives you enough time to be selective without letting the search drag indefinitely. Good move.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

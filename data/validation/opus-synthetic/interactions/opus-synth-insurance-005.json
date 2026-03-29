@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-insurance-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My employer just added dental insurance as a new benefit and I have 10 days to enroll before the window closes. There are three options: a basic PPO at $18/month, a more comprehensive PPO at $34/month, and an HMO at $12/month. I haven't been to a dentist in about two years — some light anxiety about it, nothing pathological. My teeth feel fine but I know I should go. My wife is on her own employer's dental plan. I don't have much frame of reference here — can you help me understand what to look at?",
+      "ai_response": "Dental insurance works pretty differently from health insurance, so it helps to understand the underlying structure before comparing tiers.\n\n**The core dental coverage categories:**\n- **Preventive** (cleanings, X-rays, exams): Almost all plans cover this at 100%, or close to it. Two cleanings per year are standard.\n- **Basic restorative** (fillings, simple extractions): Typically covered at 70–80% after a small deductible.\n- **Major restorative** (crowns, root canals, bridges, dentures): Usually covered at 50%, subject to annual maximum.\n- **Annual maximum**: Most dental plans have a hard cap on what they'll pay per year — commonly $1,000–2,000. Once you hit the max, you pay 100% out of pocket for the rest of the year.\n\n**PPO vs. HMO for dental:**\nA dental HMO (sometimes called DHMO or prepaid plan) requires you to use a specific primary care dentist within the network. Costs are lower but flexibility is severely limited. If you don't already have a dentist in the HMO network — or if you want any choice — this is restrictive.\nA dental PPO lets you see any dentist, with better reimbursement rates for in-network providers. More flexibility, slightly higher cost.\n\nGiven you haven't been in two years, there's some probability your first dental visit involves more than just a cleaning — a cavity or two from deferred care is common. That shifts the math toward the more comprehensive plan.\n\nWhat does each plan list as the annual maximum and the major restorative coverage percentage? Those two numbers will tell us a lot.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I looked it up. Basic PPO ($18/month): $1,000 annual max, preventive 100%, basic 80%, major 50%, $50 deductible. Comprehensive PPO ($34/month): $2,000 annual max, preventive 100%, basic 80%, major 60%, $25 deductible, also includes orthodontics up to $1,500 lifetime. HMO ($12/month): no annual max listed, fixed copays for everything, I have to pick from a list of 14 dentists in my area. I looked up the HMO network and my previous dentist isn't in it, and the reviews of the network dentists are honestly pretty bad. I don't need orthodontics. There's also a waiting period of 12 months for major services on the basic PPO but not on the comprehensive. I feel completely overwhelmed. Which one should I pick?",
+      "ai_response": "Go with the comprehensive PPO at $34/month. Here is the complete reasoning.\n\nThe HMO is disqualified. Poor network quality and losing access to your previous dentist — even if you haven't used them in two years — is not worth $6/month. Network dentist quality is real and matters.\n\nBetween the two PPOs, the comprehensive is the right choice for your specific situation, primarily because of the 12-month major services waiting period on the basic PPO. You've deferred dental care for two years. There's a meaningful probability that your catch-up visit surfaces a filling (basic) or something more involved — a crown, a root canal (major). If you go basic and need a crown in month 3, you pay 100% out of pocket until the waiting period ends. A crown runs $1,200–1,800 out of pocket. That one event costs more than the comprehensive's premium premium for 10 years.\n\nThe comprehensive also has a $2,000 annual max versus $1,000 — which matters if you need multiple procedures in year one — and a lower deductible ($25 vs. $50).\n\n**Annual cost comparison:**\n- Basic PPO: $18 × 12 = $216/year in premiums\n- Comprehensive PPO: $34 × 12 = $408/year in premiums\n- Difference: $192/year\n\nThe $192 premium difference buys you: no waiting period for major work, double the annual maximum, the lower deductible, and better major coverage percentage (60% vs. 50%). Given your deferred care status, that's a reasonable trade even in a best-case scenario where you have no issues.\n\nEnroll in the comprehensive PPO before the window closes and schedule a cleaning in the first month. Don't let the anxiety delay it — most people find the anxiety worse than the actual visit.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I enrolled in the comprehensive PPO — good call, I feel better about it. I went to the dentist last week for the first time in two years. Two small cavities, one filling done already, one scheduled. No major work needed — I got lucky. But the dentist also recommended a night guard because I apparently grind my teeth. She said it would be $550 out of pocket because dental insurance usually doesn't cover them well. I checked my plan and it looks like coverage is 'varies by plan' which is not helpful. Is this worth pursuing with insurance or should I just pay out of pocket?",
+      "ai_response": "It is worth pursuing — the answer is probably 50% coverage after deductible, not zero, but you have to ask specifically.\n\nNight guards occupy an awkward coverage category. They're classified as either a basic or major appliance depending on the carrier, and coverage is genuinely inconsistent. Some comprehensive PPO plans cover them at 50% of the contracted rate as a major appliance; others exclude them as a cosmetic or non-essential item. 'Varies by plan' in the plan document usually means the carrier will make a determination based on the specific procedure code your dentist submits.\n\nHere is what to do before paying $550:\n\n1. **Ask your dentist's billing staff what CDT code they'll use.** The most common codes for night guards are D9940 (occlusal guard) or D5985 (oral device/appliance). Ask them to verify which code they intend to submit.\n\n2. **Call your insurance carrier** (number on your insurance card) and ask specifically: 'Is procedure code D9940 covered under my plan, and if so, at what percentage after deductible?' Get the representative's name and a confirmation number. This is a pre-verification call and the carrier's answer is the most reliable source.\n\n3. **If covered at 50%:** Your out-of-pocket after the $25 deductible would be roughly $262–275, depending on the contracted rate. Worth it.\n\n4. **If not covered:** You're at $550, but also check if your dentist offers a payment plan or if a dental school in your area makes guards at lower cost. Lab-fabricated guards through dental schools often run $200–300.\n\nThe phone call to the carrier takes 10 minutes and could save you $275. Do that before authorizing the work.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I called the carrier — they confirmed D9940 is covered at 50% after deductible under my plan. So I'll pay about $263 and I've already hit my deductible this year from the fillings. I'm also thinking ahead — my annual max is $2,000 and between the two fillings and the night guard I'll have used maybe $900–1,000 of it. Should I try to use the remaining maximum before year-end or is that not how this works?",
+      "ai_response": "It partly works that way, and it's a reasonable instinct — but the framing matters.\n\nThe annual maximum resets January 1st regardless of how much you used. If you have recommended treatment that you've been deferring, doing it before year-end to stay within the current year's maximum is a legitimate strategy. Dental offices see this every November and December. The key word is 'recommended' — don't invent procedures to use coverage.\n\nGiven your situation, here is what makes sense to think through:\n\n**Your second filling.** Is it already scheduled? If it's scheduled for January, consider moving it to December. It's already in the treatment plan, so there's no 'inventing' — you're just timing it to your benefit.\n\n**Ask your dentist about anything else on the radar.** At your recent visit, did they flag any watch areas — early decay, marginal fillings, anything they noted to recheck in 6 months? If so, ask whether treating them now versus waiting is clinically appropriate. If your dentist says a tooth is borderline and will likely need a filling in the next year, doing it now within your current maximum is prudent.\n\n**What not to do.** Don't request treatments the dentist doesn't recommend just to absorb coverage. Unnecessary dental work carries real clinical risk (damage to healthy tooth structure, anesthesia exposure) and the short-term financial logic doesn't justify it.\n\n**Practical math.** You have roughly $1,000–1,100 of maximum remaining. A filling runs $150–250 after coverage. If your second filling is in that range, you'll have $800+ of unused maximum — and that's fine. Unused maximum does not carry over, but that's not a loss, it's just insurance working as designed. The goal was protection against unexpected high costs, not consuming every dollar.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

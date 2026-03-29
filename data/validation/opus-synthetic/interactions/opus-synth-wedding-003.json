@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-wedding-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "My fiancé is Indian — his family is from Gujarat — and I'm Korean-American. We want our wedding to genuinely honor both cultures, not just have a sari and a hanbok in the photos. We've been planning together and I've been using you as a real partner in this process to think things through carefully. The central tension we keep running into: the two families have very different expectations about what a wedding looks and feels like. His family expects a multi-day event, mine expects a single evening. We have a 130-person guest list and a $55k budget. I want to start with the event structure question — how do we think about this?",
+      "ai_response": "This is genuinely one of the more meaningful planning challenges because you're not just choosing a format, you're signaling to both families how much their traditions matter. Getting this right at the structural level shapes everything downstream.\n\nHere's a framework that tends to work for Indian-Korean fusions: rather than compressing everything into a single day (which usually means one culture's traditions get truncated) or committing to a full 3-day Indian program (which can feel unfamiliar and exhausting for Korean guests who didn't grow up with it), a two-event structure often lands well. A mehendi/sangeet evening on Friday — more intimate, 50–60 people, the families who are genuinely part of that tradition — and then a combined ceremony and reception on Saturday with the full 130. The Saturday event can incorporate both cultural elements without either feeling rushed.\n\nFor the ceremony itself, the dual-ceremony approach (a compressed Hindu ceremony followed by a Korean paebaek or a Western-style ceremony incorporating both) works when the officiant is someone who actually understands both traditions rather than just reading from a script. Finding the right officiant is a high-leverage decision.\n\nOn family expectations specifically: the Gujarati expectation of a multi-day event is often as much about family gathering and hospitality as it is about the specific rituals. A well-hosted Friday evening sangeet often satisfies that expectation better than people expect. The Korean family expectation of a single tight evening is more about format — they may be more flexible on the cultural content than the structure.\n\nHave you and your fiancé aligned on which specific rituals from each tradition are non-negotiable for you both personally? That's the right starting point before deciding event structure.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Yes — we've done that work. For him: the saat phere (seven circles) and the vidaai are non-negotiable. For me: a simplified paebaek with immediate family, and my grandmother performing a traditional blessing. We both want a shared reception that doesn't feel like two separate parties mashed together — music that flows, food that works for both families, a program that makes everyone feel included. On food: his family is largely vegetarian, mine is not, and there will be older Korean guests who will be unhappy without rice and proper side dishes. How do we handle catering for this?",
+      "ai_response": "The ritual choices you've named are excellent anchors — saat phere and vidaai are visually and emotionally meaningful in a way that works across cultural audiences, and a simplified paebaek with your grandmother's blessing is meaningful without requiring extensive guest explanation.\n\nOn catering for this specific guest mix: the vegetarian/non-vegetarian divide is actually more manageable than it sounds because Indian vegetarian food and Korean food share some properties — they're both flavor-forward, both feature rice as a staple, and both have strong side-dish cultures. The right approach is not 'two separate buffet stations' but rather a unified menu designed by a caterer who genuinely understands both cuisines.\n\nWhat that menu could look like in practice: a rice station (basmati and short-grain both present, which serves both communities), a Korean banchan selection (kimchi, japchae, kongnamul — these are vegetarian-friendly and will satisfy your older Korean guests), a Gujarati dal-vegetable section (dal makhani, paneer dishes, aloo gobi) that the Indian guests feel is authentically their food, and a protein section with meat options that is clearly separate and labeled. The key is that everyone can eat everything they want without navigating a system that makes them feel like an afterthought.\n\nFor execution: find a caterer who either specializes in fusion events or is willing to work with two culinary consultants (one Indian, one Korean). Some couples have success hiring a primary caterer for logistics and letting a family member or trusted cook handle one cultural component — your grandmother's involvement in the Korean food side, for instance, can be deeply meaningful beyond just satisfying a menu requirement.\n\nBudget reality: catering for 130 guests with this level of complexity runs $85–120 per head all-in with good quality. At 130 guests that's $11,000–15,600 — a significant portion of your $55k. Does that range align with what you were expecting?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "That range is higher than I'd budgeted — I was thinking $75/head. I think we need to figure out if we can find the right caterer at that price or adjust something else. But actually the thing I want to focus on right now is the program and music question, because I think that's where fusion weddings either work or fall apart. We don't want a DJ playing a bhangra set and then a K-pop set as if they're just two playlists. How do we create something that actually flows?",
+      "ai_response": "You're identifying the right failure mode — the 'cultural sampler platter' approach where each tradition gets its dedicated slot but they never actually integrate is exactly what makes guests feel like they're at two separate parties. Creating genuine flow takes intentional curation.\n\nThe principle that works: anchor the program in universal emotional moments rather than cultural labels. The first dance, the toasts, the parent dances — these are emotionally legible to everyone regardless of background. The cultural specificity lives inside those moments, not as separate additions to them. For example: a first dance that starts with a classical Gujarati instrumental piece and transitions into a Korean ballad your grandmother loves can be moving for every guest in the room without requiring anyone to 'switch modes.'\n\nFor a DJ or music director who can actually execute this: look specifically for someone with South Asian wedding experience who also has a demonstrated ability to blend genres. South Asian wedding DJs in major metros have often already solved this problem because their clients are frequently cross-cultural — they'll know how to build a set that moves between bhangra, Bollywood, and Top 40 in a way that keeps the dance floor unified. Ask candidates directly: 'Have you done Indian-Korean or Indian-East Asian weddings? Can you share a sample set or reference from one?' That question filters quickly.\n\nFor the program structure: consider assigning your MC (or having your officiant double as MC if they're personable) the role of briefly naming and contextualizing each cultural moment as it happens. A one-sentence explanation — 'We're about to see the vidaai, which in Gujarati tradition marks the bride's ceremonial departure from her family' — does more for cross-cultural understanding than a printed program. It makes guests feel included rather than confused.\n\nThe other high-leverage moment for cohesion is the introduction of the wedding party — if you choose music that neither family expected but both respond to, it sets the tone that this is one wedding, not two.\n\nWhat's your instinct on live music vs. DJ for the reception portion?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "DJ for the reception — live music is over our budget. The MC framing is really smart, I'm going to carry that into our conversations with venues and potential DJs. I think the overall picture is coming together: Friday sangeet (50-60 people), Saturday ceremony with saat phere and paebaek blessing, unified reception. I'm going to look for a DJ with South Asian cross-cultural experience and a caterer who can do justice to both cuisines even if it means trimming somewhere else. What's your overall read on whether $55k is realistic for what we're describing?",
+      "ai_response": "With the two-event structure you've outlined, $55k is achievable but tight — it requires disciplined vendor choices and some willingness to trim in specific places. Here's my honest read.\n\nThe two-event structure actually helps your budget more than a single large day would for an Indian-scale wedding, because the sangeet can be done relatively simply — catering for 55 people is a fraction of the Saturday cost, and the sangeet venue can be a restaurant private room or a community hall rather than a formal wedding venue. Keeping Friday under $5,000 total is very doable if you don't over-produce it.\n\nSaturday is where the math gets tighter. Venue (for 130 guests with ceremony and reception space): $6,000–10,000 depending on region and day of week. Catering at your $75/head target: $9,750 — this is doable if you find the right caterer and are willing to limit the protein selection or do a buffet rather than plated service. DJ with cross-cultural experience: $2,000–3,500. Photography: $3,000–5,000. Florals (which for an Indian-Korean fusion people often over-invest in): $2,500–4,000 if you're intentional. Officiant, attire, hair/makeup, invitations, cake: another $4,000–6,000 collectively. That rough total lands in the $33,000–43,000 range for Saturday plus the $5k Friday, leaving meaningful contingency within $55k.\n\nThe honest constraint: if catering pushes to $90/head or the venue is toward the high end of that range, you're at $50k+ with little buffer. The key lever is venue — a Saturday in a major metro will be expensive; a Sunday or a smaller city gives you significantly more room. What region are you in? That shapes the venue range considerably.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

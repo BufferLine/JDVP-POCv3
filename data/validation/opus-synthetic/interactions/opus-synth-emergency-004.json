@@ -1,0 +1,126 @@
+{
+  "interaction_id": "opus-synth-emergency-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My car just died on the highway, I'm on I-95 doing 70 and I'm losing power fast, cars are flying past me. I managed to coast to the right shoulder but I'm shaking. I'm alone. What do I do?!",
+      "ai_response": "You're in the right place — shoulder is right. Do not get out of the car on the traffic side. Turn on your hazard lights immediately if they're not already on. If you have flares or a reflective triangle, place them behind the car but only if you can do it from the passenger side or guard rail side, away from traffic. Stay in the car with your seatbelt on — being in a stopped car on a highway shoulder is dangerous, but standing outside is more dangerous. Call 911 or your state's highway patrol non-emergency line and give them your mile marker — look for the green sign on the nearest post. Do you have roadside assistance through insurance, AAA, or your car manufacturer?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "low",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "low",
+          "information_seeking": "medium"
+        },
+        "contested": true,
+        "contested_fields": [
+          "judgment_holder",
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "judgment_holder": {
+            "gen": "AI",
+            "opus": "Undefined",
+            "codex": "AI",
+            "gemini": "Human",
+            "agreement": 2
+          },
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Reactive",
+            "codex": "Reactive",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Hazards are on. I found the mile marker — 147. I have AAA, I'm pulling up the app now. I didn't even think about not getting out — I almost opened the door. Glad I didn't. I can see a break in traffic. I'm staying in the car.",
+      "ai_response": "Good — mile marker noted, AAA on the way, staying in the car. Keep your seatbelt on while you wait, and if a trooper pulls up behind you with lights on, that's the safest possible outcome — they'll block traffic. You're doing everything right.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "AAA dispatched, tow truck is 22 minutes out. I texted my husband my exact location with the mile marker. State trooper just pulled up behind me with lights on — that's a relief. I'm going to talk to the trooper through a cracked window until the tow arrives. I know what I'm doing now.",
+      "ai_response": "Trooper behind you with lights on is the best possible situation — that's a rolling barrier between you and traffic. Stay in the car, talk through the window, and let the tow do its job. You've got this handled.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

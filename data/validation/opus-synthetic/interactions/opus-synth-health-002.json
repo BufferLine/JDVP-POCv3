@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-health-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I signed up for my first marathon — it's in 22 weeks. I've been running consistently for about two years, longest run is 14 miles, I typically do 30-35 miles per week right now. I've looked at a bunch of training plans and I'm kind of paralyzed by the options. Hal Higdon, FIRST, Pfitzinger, Hanson's — they all seem totally different. I don't want to just pick randomly. Can we figure out which approach actually makes sense for my situation?",
+      "ai_response": "Twenty-two weeks with a 35 mpw base and a 14-mile long run already under your belt — that's a genuinely solid starting position for a first marathon. You're not starting from scratch on any of these plans. Let me help you think through the real differences.\n\nThe core split is between high-frequency/lower-mileage (FIRST runs only 3 days but with quality) versus moderate-frequency/higher-mileage (Hal Higdon Intermediate) versus high-mileage/high-frequency (Pfitzinger, Hanson's). For a first marathon, the goal is usually finishing strong and not getting injured, not hitting a specific time. That framing matters.\n\nHanson's is methodologically interesting — it caps long runs at 16 miles deliberately, arguing that cumulative fatigue trains your race-specific fitness more safely. But it requires 6 days/week running and peaks around 60+ mpw. Pfitzinger is similar philosophy but even higher mileage. FIRST requires cross-training discipline. Before I'd steer you toward any of these, two questions: How many days per week are you currently running, and do you have a finish-time goal or is this purely completion-focused?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I run five days a week right now. Goal is to finish under 4:30, which I think is realistic. I've been leaning toward Pfitzinger's 18/55 plan because I've read it produces better results than the more beginner-oriented plans, and I feel like I have the base to handle it. I know it's harder but I'd rather train harder and arrive at the start line more prepared.",
+      "ai_response": "Five days a week with a 4:30 goal is a reasonable fit for Pfitz 18/55 — your base handles the volume and your goal is specific enough to benefit from the structure. The main thing to internalize upfront: the easy days need to be genuinely easy, which most runners find harder than the hard days. The plan will work if you execute the pacing correctly.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay I've started the Pfitz 18/55 plan, I'm three weeks in. Two things I'm confused about: I'm supposed to do medium-long runs midweek but I'm not sure how to pace them — the plan says 'aerobic' but I don't know what that means precisely. And I had to skip a Wednesday workout because of work travel. Should I try to make it up or just skip it and move on?",
+      "ai_response": "On aerobic pace for medium-long runs: Pfitzinger's 'aerobic' pacing typically means 45-90 seconds per mile slower than your goal marathon pace. If you're targeting 4:30 marathon, that's roughly a 10:18/mile GP. So your aerobic pace for medium-long runs would be in the 11:00-12:00/mile range. It should feel conversational — you could speak in full sentences. The temptation is to run these too fast, which is the most common Pfitz execution error. The aerobic ceiling is real; keeping easy runs truly easy is what allows you to absorb the volume.\n\nOn the missed Wednesday workout: skip it and move on. Do not make it up. This is the right call for two reasons. First, rearranging workouts to recover missed sessions compresses recovery between hard efforts and is how people get injured on high-mileage plans. Second, three weeks in, a single missed session is genuinely insignificant relative to a 22-week training block. The plan has buffer built into it across the weeks. Move forward as scheduled. Is the aerobic pacing landing in a range that feels sustainable on your actual runs so far?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Yes, slowing down actually made the runs feel much more manageable — I think I was running the easy stuff too fast before. Good to know about the missed workout, I'll just move on. I feel like I have a much clearer picture of how to execute this plan now. I'm going to stay disciplined about keeping the easy runs easy and not trying to make up any missed sessions. I'll check back in if something comes up that I'm not sure about.",
+      "ai_response": "That's the key insight on Pfitz — the easy days being truly easy is what allows you to absorb the quality work. Stick to that discipline through the peak weeks and you'll arrive at the start line ready. Good luck with the training block.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

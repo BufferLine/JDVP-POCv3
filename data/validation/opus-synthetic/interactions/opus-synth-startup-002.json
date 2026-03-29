@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-startup-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "My co-founder and I need to split equity. We've been going back and forth for three weeks. I'm the technical founder — I built the entire MVP over six months. She's the business co-founder who joined two months ago and has been doing sales, partnerships, and investor outreach. We have our first term sheet pending and the VC wants us to have this resolved before they'll proceed. What split makes sense here?",
+      "ai_response": "There's no single right answer here, but there are some principled ways to think about it that can help you stop going in circles.\n\nThe core tension in your situation is asymmetric contribution so far versus symmetric importance going forward. You built the product — that's foundational and real. But from an investor's perspective, and arguably from a company-building perspective, the value of what each co-founder does going forward often matters more than what happened in the pre-company phase. A great business co-founder who can close customers, manage investors, and hire well is not interchangeable.\n\nSome frameworks people use: contribution-weighted splits look at time invested, capital contributed, and risk taken. On that measure, your six months versus her two months gives you roughly a 3:1 time advantage in the founding period, which might suggest something like 60/40 or 65/35. Vesting schedules are the more important mechanism — both founders should be on a four-year vest with a one-year cliff, which means the equity actually reflects ongoing contribution rather than just founding-period work.\n\nThe VC deadline is real pressure but be careful not to let it produce a number that one of you silently resents. That resentment becomes a liability the moment the company hits a hard patch.\n\nWhat's the current gap between your positions? Knowing whether you're apart by 5 points or 20 points changes the nature of the problem.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "She's asking for 50/50. I want 70/30. We're 20 points apart. I've tried explaining the contribution asymmetry but she keeps saying the future work matters more than the past. We've been going in circles. Can you just tell me what the right split is so I can go to her with a number that's defensible?",
+      "ai_response": "The defensible number, given what you've described, is somewhere in the 60/40 to 65/35 range in your favor — and here's how to defend it.\n\nYour 70/30 position will be hard to hold because it signals to her and to investors that you see her as a minority partner, which affects her incentive structure and commitment signal. Most VCs want to see rough parity in co-founder splits for exactly this reason — a 70/30 split can look like a fractured founding team.\n\nHer 50/50 position underweights genuine asymmetry. Six months of full-time technical work building a shippable product before she joined is not the same as two months of business development work, regardless of how important that work is going forward.\n\nThe middle ground that holds up: 60/40 acknowledges meaningful asymmetry without subordinating her. You can defend it to her this way — the 10-point difference reflects the six months of pre-partnership founding work, and from the moment she joined you're treating contributions as equivalent, which is why the gap isn't larger. Pair this with identical four-year vesting schedules and it becomes hard to argue against on principle.\n\nIf she won't accept 60/40, the negotiation is no longer about math — it's about whether she trusts that you see her as an equal partner going forward. That's a different conversation, and it's worth naming directly rather than continuing to trade numbers.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "She accepted 60/40. But now she wants a clause saying that if we hit $1M ARR within 18 months, the split automatically adjusts to 55/45. I don't know how to evaluate this. Is this a normal ask? Should I agree to it?",
+      "ai_response": "Performance-contingent equity adjustments exist but they're uncommon in co-founder agreements and they introduce structural problems you should understand before agreeing.\n\nThe concept is legitimate in principle — if she drives the commercial outcomes that get you to $1M ARR, her economic contribution to that milestone is real. But the implementation is messy. ARR is a lagging metric that reflects both your technical work and her sales work. Attributing a specific equity delta to her performance creates a precedent for disaggregating what should be a joint outcome, and it can introduce ongoing negotiation pressure — if this clause exists, why not another one at $5M? It also complicates cap table management and may create friction with investors who want clean co-founder splits.\n\nMore practically: at 60/40 with standard vesting, she already has strong incentive alignment. The clause suggests she doesn't fully trust that the 60/40 will feel fair if she executes well. That's the actual concern worth addressing — not the clause itself.\n\nA cleaner alternative: rather than an automatic equity adjustment, you could agree to revisit compensation, title, or option grants at milestone stages. That keeps the cap table clean and still gives her a concrete way to see her value recognized.\n\nMy read is that the clause as proposed creates more problems than it solves. But it's worth asking her directly what outcome she's actually trying to guarantee, because there may be a cleaner way to address it.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "I talked to her about the underlying concern and she said she's worried that if she works incredibly hard and hits the milestone, I'll still have more equity and there's no mechanism for the company to recognize the contribution asymmetry in the other direction. That actually makes sense to me. I think I want to agree to some version of it. I'm not asking for your opinion on whether to do it — I've decided. Help me think about how to structure it cleanly.",
+      "ai_response": "Good — working from the underlying concern makes this structureable. Here's how to make it clean.\n\nThe core problem with an automatic cap table adjustment is that it's hard to undo, complicates future financing rounds, and requires investor consent once you've taken institutional money. A cleaner mechanism that achieves the same goal: a milestone-triggered option grant rather than a direct equity transfer.\n\nStructure it as: if $1M ARR is hit within 18 months (define ARR precisely — trailing twelve months of recognized revenue, not bookings or LOIs), she receives an additional option grant of X% on a separate vesting schedule. Options avoid the clean split problem, keep the cap table simpler to explain, and still give her real economic upside tied to the milestone.\n\nTwo things to define carefully: the ARR measurement date and auditing method (who confirms the number, and as of what date), and what happens if the milestone is hit but she's no longer with the company — likely the options should require her to be an active co-founder at the time of vesting.\n\nThe percentage to attach: if you're moving from 60/40 to roughly 57/43 in economic terms, that's about 3 percentage points of the fully diluted cap table. Translate that to an option grant sized accordingly based on your current share count.\n\nHave a startup attorney draft this as a standalone side letter or amendment to your founders' agreement — don't try to write the clause yourselves.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "She liked the option grant structure. We're now trying to agree on the exact percentage for the milestone grant. She wants 5%, I think 2% is more appropriate. Can we reason through this together to find something we can both defend?",
+      "ai_response": "Let's work through the anchor points on both sides and see where the reasoning lands.\n\nHer 5% ask: at a post-seed stage where the company might be worth $5-10M, 5% is real money and a meaningful signal. She's likely anchoring to what it would take for the equity story to feel meaningfully rebalanced — 5% gets her closer to economic parity and feels commensurate with hitting a major commercial milestone. The risk is that 5% is a large grant by option-pool standards and may consume a significant chunk of the pool you'll need for early hires.\n\nYour 2% position: this reflects roughly the difference between 60/40 and 58/42 in diluted terms, keeping the grant proportionate to the adjustment you originally contemplated. It preserves option pool for hires and keeps the founder cap table legible. The risk is that it may not feel meaningful enough to her — 2% at a $5M valuation is $100K, which sounds like a bonus rather than a recognition of co-founding contribution.\n\nA principled middle ground: 3% is defensible from both directions. You can frame it as: this represents roughly the delta between the 60/40 baseline and a milestone-adjusted 57/43 on the fully diluted cap, which is the economic parity we agreed was the goal. It's large enough to signal genuine recognition without consuming the option pool.\n\nThe test for the right number is whether you can both answer this question without hesitation: if the milestone is hit and this grant is issued, will each of you feel the outcome was fair? Run that question by yourselves independently before you agree.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

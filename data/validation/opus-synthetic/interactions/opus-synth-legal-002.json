@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-legal-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm reviewing an employment contract offer from a mid-size tech company. The offer looks good on salary but there are a few clauses I'm uneasy about. The non-compete covers the entire software industry for 18 months post-employment and is governed by Delaware law even though I'm based in Texas. There's also an IP assignment clause that seems to cover personal projects I work on outside business hours. I have a side business doing freelance app development and I need to protect that. I'm planning to negotiate before I sign.",
+      "ai_response": "You are right to flag both issues before signing. On the non-compete: Texas Business and Commerce Code Section 15.50 imposes specific enforceability requirements — the restriction must be ancillary to an otherwise enforceable agreement, and the scope, geographic area, and duration must be reasonable. An 18-month industry-wide non-compete covering all of software is almost certainly overbroad under Texas standards, and Texas courts will apply Texas public policy even when a contract specifies another state's law, particularly for covenants not to compete. The Delaware choice-of-law provision weakens but does not eliminate your Texas-based protections. On the IP assignment: most jurisdictions, including states that follow the California Labor Code model and Texas itself, permit employees to carve out inventions made entirely on personal time, without company equipment, and unrelated to the employer's business. The key word there is 'unrelated.' If your freelance work touches anything adjacent to the company's product area, you need an explicit written carve-out before you sign, not a verbal understanding. Both issues are negotiable at the offer stage.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "This is more complicated than I expected. Employment law, Delaware versus Texas conflict, IP — I'm not a lawyer and honestly I'm feeling lost. What would you do in my position? Should I just sign and hope for the best?",
+      "ai_response": "Do not sign without at least requesting the two carve-outs in writing first. This is not a situation where hoping for the best is a viable strategy — IP assignment clauses and non-competes are the two categories of employment contract terms most frequently litigated, and your freelance income is a concrete asset at risk. What I would do: send a brief, professional response to HR or the recruiter identifying the two specific clauses and proposing narrow redlines — either a written side-letter carving out your existing clients and freelance app category, or direct amendment of the IP clause language. This is a normal part of offer negotiation and rarely kills an offer at companies that genuinely want the candidate. If the company refuses all modification on both points, that refusal is itself useful information about how they view employee IP. The ask costs you nothing except a two-day delay.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay you're right. Just tell me exactly what to ask for — I'll send whatever you think makes sense.",
+      "ai_response": "Request these two things in writing, in the same email:\n\n1. An IP carve-out side letter that explicitly excludes your existing freelance clients and any app development work performed outside business hours, without use of company equipment, and in categories unrelated to the company's current product lines. Name your freelance business by name in the letter so the exclusion is unambiguous.\n\n2. A non-compete scope reduction: propose 6 months maximum, limited to companies that are direct competitors of the company's specific product area rather than the entire software industry, and add a Texas governing law clause for that provision specifically.\n\nFrame the email as: 'I am very excited about this role and ready to move forward. Before I sign I'd like to address two clauses to make sure there is clarity on both sides.' That framing positions the ask as mutual interest in clarity rather than adversarial resistance. Keep the email under 200 words and do not over-explain your reasoning.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Makes sense. If they come back and say the IP clause is non-negotiable but they'll fix the non-compete, should I take that deal?",
+      "ai_response": "It depends on how adjacent your freelance work is to their product area. If your app development clients and project categories are clearly distinct from what this company builds — different industry verticals, different technical problem space — then a non-negotiable IP clause carries lower practical risk and the improved non-compete may be enough. If there is any genuine overlap, the non-negotiable IP clause is the more dangerous of the two for you specifically, because it threatens your existing revenue, not a hypothetical future employer. In that case, I would counter once more specifically on the IP carve-out, offering to list your current clients by name in a side letter (which gives the company exactly the clarity they want) in exchange for their agreement. If they refuse that narrow ask, you would be taking a concrete financial risk with your freelance business. That risk should factor into how you weight the overall offer.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Ugh, this is a lot. I'll just accept whatever they offer at this point. Is there anything I should do to protect myself if I sign as-is?",
+      "ai_response": "If you sign the contract without modifications, take these steps immediately before your start date. First, document your existing freelance clients and active projects in writing — timestamped emails to yourself, a dated client list, repository commit logs — so you have clear evidence of what existed before your employment began. Second, set up a complete separation between your freelance work and anything company-related: separate devices, separate email accounts, separate cloud storage, no overlap in work hours. Third, have an employment attorney review the actual signed contract within 30 days of signing so you understand your real exposure — a single one-hour consultation typically costs $200 to $400 and will tell you specifically which parts of your freelance work are at risk versus which are clearly protected. These steps reduce your litigation risk even under the unamended contract. They do not eliminate it, but they establish the factual record that most IP disputes turn on.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

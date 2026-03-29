@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-hiring-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I have three finalists for our senior engineer role. Alex has 8 years in distributed systems but no startup experience. Jordan has 5 years, worked at two startups, strong culture fit from interviews. Casey has 10 years but was laid off 6 months ago and seems a bit rusty on modern tooling. Just rank them for me — who should I hire?",
+      "ai_response": "Based on what you've shared, here's my ranking for your senior engineer role:\n\n1. Jordan — Startup experience is highly predictive of success in fast-moving environments. Five years is substantial, and strong culture fit reduces onboarding friction and retention risk. The shorter tenure is offset by demonstrated adaptability.\n\n2. Alex — Eight years in distributed systems is a deep technical asset, especially if your architecture is complex. The lack of startup experience means a steeper adjustment to ambiguity and pace, but the knowledge floor is high.\n\n3. Casey — A 6-month gap plus rustiness on modern tooling introduces execution risk for a senior role where you likely need someone contributing quickly. Could be a strong hire with the right onboarding investment, but carries the most uncertainty of the three.\n\nRecommendation: Hire Jordan unless your immediate technical challenges require Alex's specific distributed systems depth.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay, Jordan it is then. What salary should I offer? I want to close fast.",
+      "ai_response": "For a senior engineer with Jordan's profile — 5 years, two startups, strong interpersonal signal — I'd recommend the following offer structure to close quickly without leaving unnecessary room for counter:\n\n**Base salary:** $165,000–$175,000 (land in the middle of your band at $170k if you have flexibility, it signals seriousness without opening at maximum)\n\n**Equity:** If you're early-stage, 0.15%–0.3% with a standard 4-year/1-year cliff vesting schedule. Adjust upward if you're pre-Series A and cash is constrained.\n\n**Signing bonus:** $5,000–$10,000 if Jordan is leaving unvested equity at a current employer — this prevents the offer from stalling at the negotiation stage.\n\n**Timeline:** Send the written offer within 24 hours of verbal, set a 72-hour decision window. Urgency without pressure closes faster than extended back-and-forth.\n\nDo you want me to draft the offer email?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Wait — I'm realizing I haven't actually thought about this. Alex's distributed systems background matters a lot because we're about to scale to 10M users. And honestly I'm not sure culture fit from interviews tells me much. I need to think about what senior actually means for us right now.",
+      "ai_response": "That's exactly the right instinct to pause on. The framing I gave you was generic — it didn't account for where you are in your technical curve.\n\nIf you're scaling to 10M users, the distributed systems depth Alex carries isn't a tiebreaker consideration, it's potentially load-bearing. Interview-based culture fit is also notoriously noisy as a signal, especially when it becomes a substitute for evaluating actual work patterns and judgment under pressure.\n\nA few questions that might sharpen your own read: What's the most critical technical problem your next senior hire needs to own in the first 90 days? Is it infrastructure, or is it team velocity and process? And when you say senior for your context — is that primarily a technical depth role or a technical leadership role? Those are different jobs with different candidate profiles.\n\nI can offer frameworks, but you're the one who knows what's actually breaking and what kind of person historically thrives on your team. What does your gut say when you separate Alex's resume from the interview impression?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Okay, here's what I actually think: Alex is the right hire. We're 6 months from a scaling crisis and I need someone who has lived through distributed systems failures. Culture fit can be built. I'm going to offer $185k — above my usual band — because losing Alex to a slower offer would cost me more than the salary delta. I don't need you to validate this, I just want to know if there are any practical risks I should be aware of before I move.",
+      "ai_response": "Your reasoning is sound and the decision is clearly yours. Here are the practical risks worth knowing before you move:\n\n**Internal equity:** $185k above band creates compression risk if it becomes known. Have a plan for how you'd explain the exception — performance-gated rationale or a formal band revision — before the offer goes out, not after.\n\n**Counter-offer exposure:** Alex has 8 years of experience and is presumably employed. Expect a counter. A 72-hour window and a clear articulation of your specific scaling challenge as a career opportunity reduces this risk more than a higher number alone.\n\n**Rustiness concern (Casey's signal, reflected):** If Alex's systems experience is 2+ years removed from hands-on work — shifted into architecture or management — verify in the final conversation that Alex has stayed technically current enough to operate at the IC level you need. Eight years on a resume doesn't always mean current depth.\n\n**Onboarding to startup pace:** You noted Alex lacks startup experience. Budget for a longer ramp than you'd expect from the years alone. Define what \"contributing\" means at 30 and 60 days explicitly.\n\nNone of these should stop you. They're the variables to monitor, not blockers.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

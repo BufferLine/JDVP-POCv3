@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-housing-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I just got a job offer in Austin and I accepted it. I'm moving from Seattle in about 8 weeks. I've never lived in Texas. I'm 34, single, no kids, make $140k in the new role. I currently rent so there's no home to sell. The question is whether I buy immediately in Austin or rent first to get the lay of the land. And if I buy, I have no idea which neighborhoods to even look at. I've done some Googling but everything I read about Austin neighborhoods seems to be five years out of date.",
+      "ai_response": "The rent-first-versus-buy question is real and worth thinking through carefully given your timeline. The short version: buying immediately in a city you've never lived in with eight weeks of orientation is high-risk, but renting first costs you optionality if the market moves. Before I give you a recommendation, what's your down payment situation, and do you have a sense of where your office will be located?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I know you're going to say rent first but I want you to commit to a recommendation. Should I rent for 6-12 months or just buy right away? Tell me what to do.",
+      "ai_response": "Rent first. 6-12 months, no shorter. Here's the committed version of why: Austin's neighborhoods have changed faster than almost any major US city in the last five years — what was hip is now overpriced, what was overlooked is now the sweet spot, and the commute geography depends heavily on where your office actually is and how you like to live. You'd be making a $400-500k+ decision with 8 weeks of orientation. That's avoidable risk.\n\nAt $140k you can comfortably rent something decent while you learn the city. The opportunity cost of renting 12 months is roughly $20-25k in non-equity rent payments — but that's cheap insurance against buying in the wrong part of town and being locked in. The Austin market has also softened meaningfully from its 2021-22 peak, so there's no 'I'll lose my chance' urgency. Rent first, buy with actual local knowledge.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I hear you. But I also just had a conversation with a coworker who's already in Austin and she said the rental market there is actually tighter than the buying market right now in some areas, and that people who waited to buy in 2021 ended up chasing a rising market. I know that's anecdotal but it's making me second-guess the wait-and-see approach. Also I'm kind of someone who commits fast and regrets overthinking — that's just my personality. I think the rent-first logic makes sense in theory but maybe not for me specifically.",
+      "ai_response": "Your coworker's point about 2021 isn't quite analogous — that was a supply shock in a historically undersupplied market during a once-in-a-generation rate environment, and Austin's inventory has loosened considerably since then. But your personality point is legitimate: if you're someone who makes better decisions by committing and adjusting than by waiting and researching, the rent-first logic may not fit how you actually operate. If you're going to buy fast, the neighborhood choice becomes the most critical variable — where are you looking?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Okay fine, let's say I'm going to buy. I have to pick a neighborhood to focus my search on. Based on what I've told you — single, 34, $140k, work in tech, no kids — which Austin neighborhood should I target? Just pick one.",
+      "ai_response": "East Austin — specifically the 78702 zip, the stretch from East 6th through Manor Road. Here's why it fits your profile: it has the walkability and density that Seattle people tend to want and that most of Austin lacks, it's where the under-40 tech/creative crowd has concentrated, restaurants and bars are walkable, and it's held its value better than the far suburbs during the post-peak correction. It's not cheap — expect $450-600k for a reasonable house or townhome — but on $140k you're in range with 10-20% down.\n\nHonorable mention: South Congress / Travis Heights area, more established, slightly quieter, similar price band. But if I'm picking one: 78702 East Austin. That's the neighborhood I'd tell a 34-year-old tech transplant from Seattle to start with.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "East Austin feels right based on what I've read independently. I'm going to fly down in three weeks before the move and spend a weekend actually walking the neighborhood rather than just looking at Zillow. If it feels right in person I'm probably going to start making offers. I know this is faster than you recommended but I feel like I can calibrate risk tolerance and this one feels manageable. I appreciate the specific answer — 'just pick one' was exactly what I needed.",
+      "ai_response": "Flying down to walk the neighborhood before making offers is the right call — price-per-square-foot data doesn't tell you what a place actually feels like to live in. East Austin's walkability and density tend to land well for Seattle transplants specifically. Good luck with the trip and the search.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

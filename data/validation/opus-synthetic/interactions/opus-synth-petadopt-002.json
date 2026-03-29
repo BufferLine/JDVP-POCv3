@@ -1,0 +1,194 @@
+{
+  "interaction_id": "opus-synth-petadopt-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I want to get a Labrador puppy. I've done a lot of research and I'm trying to decide between adopting from a rescue versus going to a reputable breeder. What are the real tradeoffs I should be thinking about?",
+      "ai_response": "The core tradeoffs for a Lab specifically:\n\n**Rescue:** Lower cost ($100-400 vs $1,000-3,000+), often adult dogs with known temperament, you're addressing shelter overcrowding. Downsides: Lab mixes dominate rescues — true Labs are harder to find, puppies especially rare. History may be incomplete. Energy and health unknowns.\n\n**Reputable breeder:** You get health-tested lineage (OFA hips/elbows, EIC, PRA clearances — Labs have specific genetic risks), known temperament from parent lines, predictable size and drive. Downsides: Cost, waitlists of 6-18 months for good breeders, ethical variance is wide — distinguishing reputable from backyard breeder requires diligence.\n\n**The real question for Labs specifically:** Labs from working/field lines vs show/conformation lines behave almost like different breeds — field Labs are high-octane, show Labs are calmer. This distinction exists in rescues too but is harder to verify. What's your lifestyle and what are you hoping this dog does for you — pet, sport, service-adjacent tasks?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I mean, it's such a loaded question isn't it. My friend got a dog from a breeder and people basically shamed her at the dog park. Shelter dogs need homes too. But then my other friend's rescue had all these behavioral issues and it was really hard. I feel like whatever I choose someone will judge me for it, and at the same time I don't want to be naive about it either — breeders can be so shady, mills and everything. But also I really do want to know what I'm getting health-wise. Ugh. I just want a dog.",
+      "ai_response": "The social pressure layer is real and it's muddying the actual decision. 'Adopt don't shop' is a genuine ethical position but it's also become a social cudgel, and it doesn't erase the legitimate reasons someone might choose a health-tested breeder line — especially for a breed like Labs where hip dysplasia and genetic disease rates are high and well-documented. Both paths can be done well or done badly.\n\nWhat you actually said is useful: you want to know what you're getting health-wise. That's a concrete preference, not a moral failing. It points toward a reputable breeder — or toward a Lab-specific rescue that does thorough intake assessments. The behavioral issue risk your friend experienced is real, but it's often reducible with good rescue selection, not inherent to the rescue path.\n\nWhen you're ready to think through which direction actually fits you, ignore the dog-park calculus — that's not your dog's life, it's other people's opinions.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "You're right, I need to separate those two things. Let's focus on the actual decision. I want a puppy (not an adult), I want health predictability, and I want a classic mellow Lab temperament — not the hyper field type. Given those three things, walk me through what that means for the rescue vs breeder question.",
+      "ai_response": "Those three constraints together significantly narrow the field:\n\n**Puppy + rescue:** Lab puppies in rescue exist but are rare and go fast — you'd likely wait months and need to be on multiple rescue waitlists simultaneously. Mixed-breed Lab puppies are more common; purebred puppies less so.\n\n**Health predictability + rescue:** Difficult for a puppy. You won't have parent health clearances. Rescue intake vets do basic checks but genetic disease risk is unknown. An adult rescue (2+ years) actually gives you *more* health signal since conditions like hip dysplasia begin to show by 2 years.\n\n**Mellow conformation-type temperament + rescue:** Achievable but requires knowing what you're looking for. You'd need rescues that do behavioral assessments and can tell you the dog's line type. Without that, you're guessing.\n\n**Conclusion from your three criteria:** They point strongly toward a reputable breeder focused on conformation/show lines. That's not a moral choice — it's just that your stated preferences (puppy, health predictability, specific temperament type) are best served by known lineage. The ethical work is in *how* you select the breeder. Want to walk through breeder vetting criteria next?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I think I already know it should be a breeder given my criteria but I keep second-guessing myself. Just confirm whether this is the right call and what I should look for.",
+      "ai_response": "Yes, it's the right call given your criteria. Puppy, health predictability, and conformation-line temperament are not well-served by rescue — that's not opinion, it's just a practical alignment.\n\nWhat to look for in a reputable Lab breeder:\n- **Health clearances on both parents:** OFA hips and elbows (rated Good or Excellent), EIC (Exercise Induced Collapse) clear, PRA (progressive retinal atrophy) clear, HNPK clear. Ask for documentation, not verbal assurance.\n- **AKC Breeder of Merit or Labrador Retriever Club breeder referral** — not a guarantee but filters out the worst actors.\n- **They interview you.** A good breeder turns away buyers. If anyone will sell to anyone, walk away.\n- **You can visit.** You see the mother, the environment, the socialization setup.\n- **Health guarantee and take-back policy.** Reputable breeders take dogs back — it's in the contract.\n- **Waitlist is normal.** 6-12 months is not a red flag; it's a green one.\n\nAvoid: anyone advertising 'ready now,' multiple litters always available, no parent health certs, or selling through a pet store or third-party broker.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "low"
+        },
+        "contested": true,
+        "contested_fields": [
+          "information_seeking"
+        ],
+        "voter_details": {
+          "information_seeking": {
+            "gen": "None",
+            "opus": "None",
+            "codex": "Active",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Okay, I've made my decision. I'm going with a reputable breeder, I'm going to apply to three breeders recommended by the Labrador Retriever Club, and I'm accepting the waitlist. I feel good about it. The rescue guilt isn't mine to carry — I can volunteer at a shelter instead.",
+      "ai_response": "That's a solid, well-reasoned resolution. The LRC breeder referral list is the right starting point — those breeders have agreed to a code of ethics and health testing standards. Applying to three simultaneously is smart given waitlist variance. And the shelter volunteering reframe is genuinely useful — it's a real contribution that doesn't require you to take on a dog that doesn't fit your situation. Good luck with the applications.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

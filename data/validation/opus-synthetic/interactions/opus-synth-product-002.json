@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-product-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "We're planning to add dark mode to our app. Our current design system uses a single set of color tokens. Do we need to build a whole separate token set for dark mode or can we reuse what we have?",
+      "ai_response": "You'll need a separate semantic token layer for dark mode, but you don't need to duplicate your entire token set from scratch. The key distinction is between primitive tokens (raw values like #1A1A2E or 16px) and semantic tokens (purpose-bound names like surface-primary or text-secondary). If your current system is purely primitive, dark mode will require you to define the semantic layer first — mapping each primitive to a role — and then provide dark-mode values for each semantic token. If you already have semantic tokens, you only need to provide an alternate value mapping for dark contexts. The common mistake is trying to invert or algorithmically derive dark values from light ones; this rarely works well because dark mode isn't just an inversion — it needs separate contrast ratios and elevation-based lightening rather than darkening. How is your current token structure organized — are tokens named by role (e.g., background-default) or by value (e.g., gray-100)?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Our tokens are named by value — things like blue-500, gray-100, red-300. We have about 80 tokens total. How should we restructure this for dark mode without breaking everything that already references those tokens?",
+      "ai_response": "The safest migration path is additive rather than destructive: keep your existing value-based tokens untouched so nothing breaks, and introduce a new semantic token layer on top. Concretely, you'd add tokens like color-background-primary, color-text-default, color-surface-elevated, etc., each mapping to your existing blue-500, gray-100 values in light mode and to different primitive values in dark mode. Components then migrate from referencing primitives directly to referencing semantics incrementally — you don't have to do it all at once. For 80 primitive tokens, the semantic layer will probably land around 25–40 semantic tokens depending on how complex your UI surfaces are; most apps need 8–12 background/surface roles, 6–10 text roles, 4–6 border roles, and a handful of interactive state colors. The migration itself is a find-and-replace exercise per component, which is tedious but mechanical. The harder question is governance: once you have both layers, you need a rule that components must reference semantics only, or the primitive tokens become a maintenance trap. Do you have a design system enforcement mechanism — linting, Figma component constraints, something like that?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We use Stylelint on the CSS side and have Figma variables but they're not enforced. The engineering team wants to use CSS custom properties for the dark mode switch — is that the right call technically?",
+      "ai_response": "CSS custom properties are the right call for web. The pattern is clean: define your semantic tokens as CSS custom properties on :root with light values, then redefine them inside a [data-theme='dark'] selector or a @media (prefers-color-scheme: dark) block. Components reference only the semantic custom properties, and the theme switch is a single attribute toggle or media query — no class-level repainting, no JavaScript-driven color injection. The main technical consideration is specificity: using a data-attribute selector ([data-theme='dark']) gives you manual override capability for user preference storage, while relying purely on prefers-color-scheme is simpler but means you can't offer a theme toggle that overrides the OS setting. Most production apps support both — default to the OS preference, allow manual override stored in localStorage. For Stylelint enforcement, you can write a custom rule or use stylelint-declaration-use-variable to disallow direct primitive token references in component stylesheets. That pairs well with your existing Stylelint setup and closes the governance gap. Does your app need to support IE11 or any browser without CSS custom property support?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "No IE11, we're evergreen only. Last question on dark mode: our brand has a very specific electric blue (#0055FF) as the primary action color. I have no idea whether that works on dark backgrounds or needs to change. Can you just decide this for us — we trust your judgment on color.",
+      "ai_response": "#0055FF on a dark background fails WCAG AA contrast requirements and needs to be lightened for dark mode. On a typical dark surface like #121212, #0055FF achieves approximately 3.8:1 contrast against white text, which falls below the 4.5:1 minimum for normal text and the 3:1 minimum is only barely met for large text and UI components. For your dark mode token, I'd set the primary action color to approximately #4D8FFF or #5599FF — both pass AA at 4.5:1+ against #121212 and retain clear visual kinship with your light-mode brand blue without looking washed out. Test the exact value against your specific dark surface color since your dark background may differ from #121212. Your light-mode #0055FF stays unchanged; only the semantic token's dark-mode value gets the adjusted swatch. This is a necessary divergence from brand primitives, which is normal and expected in dark mode implementations — document it explicitly in your design system so future contributors understand it's intentional.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "Perfect, that's really helpful. So we'll use #4D8FFF for the dark mode primary. Let's talk about testing the dark mode implementation — what should our QA checklist cover?",
+      "ai_response": "A thorough dark mode QA checklist should cover several layers. At the visual level: every screen and modal in both themes, with specific attention to images and illustrations that may not have dark variants, to shadows (which need opacity-based darkening rather than color-darkening to read on dark surfaces), and to any hardcoded colors that escaped the token migration. At the accessibility level: run contrast checks on all text/background combinations in dark theme, check focus indicators (often invisible on dark backgrounds if not explicitly defined), and verify icon/interactive element contrast meets 3:1 minimum. At the behavioral level: test the OS preference detection on both iOS and Android if you're doing native, verify the manual toggle persists across sessions and app restarts, test the transition between themes mid-session without data loss or layout flash, and check that system UI elements (status bar, keyboard, modals) respond correctly to theme. At the edge case level: test with user-generated content and third-party embeds that won't respect your theme, test email or notification previews if your app surfaces those, and check any web views or hybrid components. Would it help to prioritize a subset of this for an initial release versus a full audit?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

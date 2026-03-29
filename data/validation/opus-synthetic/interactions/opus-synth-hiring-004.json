@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-hiring-004",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "My team lead of 4 years just gave notice. I have two internal candidates who want the role: Sam, who is technically strong but has never managed people and is a bit socially awkward in group settings. Avery, who is beloved by the team but struggled in the one complex project they owned last year. Who should I promote?",
+      "ai_response": "Based on what you've described, I'd lean toward Avery — with significant caveats.\n\nHere's the core reasoning: replacing a 4-year team lead with someone who has never managed is a high-variance bet. The transition moment matters — your team already lost a known quantity and needs stability more than technical performance right now. Avery's existing trust with the team is a structural asset in that context. Social awkwardness in group settings, for a team lead role, creates real friction in the core function of the job.\n\nThe caveats are real though: Avery's struggle on the complex project last year is either a skills gap or a situational failure — and the distinction matters enormously. Was it a project management failure, a technical failure, a resourcing problem, or a support gap? If the failure was situational and Avery understands what went wrong, it's promotable. If the failure exposed a ceiling in judgment or ownership, promoting them into a harder job amplifies the problem.\n\nWhat happened with that project, in your read? That's the deciding variable.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "The project failure was partly my fault — I under-resourced it. But I still don't fully trust Avery's judgment under pressure. Just tell me who to pick so I can move on.",
+      "ai_response": "Given your trust read on Avery's judgment and the fact that the project failure was partly structural, I'd recommend Sam — but only if you're willing to invest in the transition.\n\nHere's the revised reasoning: if you don't trust Avery's judgment under pressure, that's a disqualifying signal for a team lead role where pressure is the default state. The social awkwardness concern is real but more addressable than a judgment gap — communication patterns can be coached; reliability under pressure is harder to develop quickly.\n\nThe investment Sam requires: explicit management onboarding (not just the promotion), a clear 60-day ramp with you as active support, and a candid conversation with the team about why you chose Sam. If the team feels Avery was passed over without explanation, you risk losing both the new lead and team trust simultaneously.\n\nAlternatively: if you genuinely can't distinguish between the two, that's a signal the answer may be neither — and you may need an external hire. But if you have to choose between these two candidates, and you don't trust Avery's pressure-judgment, Sam is the pick.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "medium",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I keep asking you to decide and then immediately giving you reasons why neither candidate is right. I think I'm avoiding something. When I'm honest with myself, I think I want to hire externally but I feel guilty because I told both Sam and Avery they were being considered. How do I think through the guilt versus the right decision?",
+      "ai_response": "The guilt is worth examining, but it shouldn't be the decision variable.\n\nYou didn't make Sam and Avery a promise — you told them they were being considered. That's accurate. Being considered means they're in the pool, not that the pool is closed. Hiring externally when the internal candidates don't fully fit is a legitimate outcome of that process, and it's more honest than promoting someone into a role they'll struggle in because you feel obligated.\n\nThe harder question is: what does \"externally\" solve that Sam and Avery don't? If it's technical skills or management track record, an external hire could provide that. If it's your own need to avoid a difficult conversation with two people you've worked with for years, that's not something an external hire fixes — it just relocates the discomfort.\n\nThe guilt also contains useful information: you clearly care about both people. That's a management asset, not a flaw. The question is whether you're willing to let that care translate into honest conversations — telling Sam and Avery directly what you need that isn't quite there yet, and whether there's a path for them — rather than a promotion decision made to avoid those conversations.\n\nWhat would you tell Sam and Avery if you knew the decision wouldn't damage your relationship with them?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I've decided. I'm hiring externally. The right answer for the team and the business is someone with actual management experience coming in from outside. I'm going to have honest individual conversations with Sam and Avery this week — telling them specifically what would make them ready for the next lead role, and committing to a development plan for both of them. I'm not asking you to validate this. What I want is: what are the three things I must get right in those two conversations?",
+      "ai_response": "Three things you must get right in those conversations:\n\n**1. Name the gap, not the person.** The message cannot be \"you weren't right for this.\" It must be specific and skills-based: what concrete capability or experience is the external candidate bringing that isn't yet present, and what would close that gap. Vague feedback feels like a cover for bias or politics. Specific feedback is something they can act on and — critically — hold you accountable to follow through on.\n\n**2. The development plan must be real, not consolation.** If you say \"here's what would make you ready for the next lead role\" and nothing happens in the next six months, you will lose both of them. Before these conversations happen, have at least one concrete commitment ready for each person — a project, a scope expansion, a skill investment — that isn't contingent on their performance, it's your commitment to the development path. Walk in with something tangible.\n\n**3. Give them room to be disappointed without interpreting it as disloyalty.** Sam and Avery are allowed to be upset. They're allowed to take a few days to process. The conversation going badly in the moment doesn't mean your relationship is over or that you made the wrong call. Rushing to resolve their discomfort in the room — over-explaining, over-promising — is where these conversations typically go wrong. Say what's true, make your commitment, and let them respond on their own timeline.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

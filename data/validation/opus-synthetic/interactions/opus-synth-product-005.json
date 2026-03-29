@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-product-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "We're redesigning our analytics dashboard. Users say it feels overwhelming — too much data shown at once. How do we think about information hierarchy for a data-dense dashboard?",
+      "ai_response": "The core problem with overwhelming dashboards is usually not the amount of data but the absence of hierarchy — everything is presented at equal visual weight, so users can't quickly identify what matters. Information hierarchy on a dashboard requires you to answer one design question first: what decision or action is the primary thing a user comes to this dashboard to do? Everything else should be secondary to that. Practically, this maps to three tiers of information: the primary metric or KPI that answers the main question at a glance (large, prominent, above the fold), supporting metrics that provide context for the primary (medium weight, adjacent), and detailed drill-down data that users access intentionally when they want depth (lower priority, collapsible or on demand). The most common mistake is treating all metrics as tier-one — a dashboard where 12 KPI cards have equal visual weight communicates nothing. What type of users are primary consumers of this dashboard — executives looking for directional signals, analysts doing detailed investigation, or operators managing real-time state?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Primary users are operations managers — they monitor live service health, respond to issues, and check daily performance trends. They use it throughout the day, multiple times. Right now we show 18 metrics simultaneously. What's a good target number to show by default?",
+      "ai_response": "For operations managers doing live monitoring and trend checking, the right default view is 5–7 metrics maximum, not 18. Operations contexts put a premium on fast anomaly detection — the user needs to see whether something is wrong within seconds, and more than 7 data points defeats that goal because attention is distributed too broadly to detect deviations quickly. The classic operations dashboard design principle is status at a glance: use the primary view to answer 'is anything broken or degrading right now,' and surface the other 11–13 metrics either in a secondary panel, as expandable sections by category, or in a detail view triggered by clicking into a metric. For an operations manager specifically, the 5–7 default metrics should be the ones most directly tied to service health decisions — uptime, error rate, response latency, queue depth, or whatever your domain equivalents are. The rest of your current 18 are probably either confirmatory metrics (nice to see when investigating a problem but not needed for initial detection) or historical context metrics (trends that matter for weekly reviews but not live monitoring). Do you have data on which of the 18 metrics users actually interact with most versus which ones they scroll past?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We have clickstream data showing the top 5 interacted metrics are: error rate, p95 latency, active users, deployment status, and alert count. The other 13 get minimal interaction. Should we just hide the bottom 13 behind a 'more' toggle or build something more sophisticated?",
+      "ai_response": "A 'more' toggle is the right first move — it's fast to build, testable, and probably sufficient. The more sophisticated options only pay off if the toggle approach reveals problems. Concretely: promote your top 5 as the default hero metrics, give them clear visual differentiation (larger text, bolder treatment, more whitespace), and put the remaining 13 under a collapsible 'All metrics' section below. The toggle should remember its state per user session so power users who want all 18 visible don't have to re-expand every visit. Before building anything more complex, run the toggle version for 4–6 weeks and observe: do users expand the full view frequently (suggesting the 13 are more useful than clickstream implies), do they never expand it (suggesting you could remove those metrics or archive them entirely), or do they expand selectively for specific metrics (suggesting a pinning or customization feature is worth building). The sophistication trap with dashboards is building role-based views, personalization engines, and configurable layouts before validating that the simpler hierarchy already solves the problem. The clickstream data you have strongly suggests the simpler approach will work. Does your current dashboard support any form of user personalization, or is it currently a single shared view for all operations managers?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Currently a single shared view. The team is now debating the grid layout for the top 5 metrics. One designer wants a 5-column horizontal row of equal cards, another wants a 2-3 asymmetric layout with one large hero card. Neither is willing to back down and it's blocking us. Pick one and give us a reason so we can move forward.",
+      "ai_response": "Use the asymmetric 2-3 layout with one large hero card. The 5-column equal row is the wrong pattern for operations monitoring because it encodes the implicit message that all five metrics are equally important, which contradicts the decision your clickstream data already made for you — error rate and alert count are more critical than active users for service health decisions. The asymmetric layout lets you visually rank the metrics by operational urgency: error rate or alert count as the large hero (it gets noticed first, it gets glanced at most frequently throughout the day), p95 latency and deployment status in medium cards alongside it, active users in a smaller supporting position. This hierarchy means an operator scanning the dashboard at 2am during an incident knows exactly where to look first without having to parse five equal-weight cards. The 5-column layout also has practical problems: on typical monitor widths, five equal cards produce narrow cards with limited space for trend sparklines or contextual data, and at any responsive breakpoint they either stack awkwardly or require horizontal scrolling. The asymmetric layout is also more visually interesting and distinctive — it reads as a designed artifact rather than a data table.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "medium",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "Asymmetric it is. Last question: the hero card will show error rate. What data visualizations should we use inside it versus the smaller supporting cards to make the hierarchy feel right?",
+      "ai_response": "The hero error rate card should lead with a large, high-contrast current value — the number itself, formatted simply (e.g., '0.4%' or '12 errors/min') — paired with a directional indicator showing change from the baseline period (up/down arrow with delta value and color coding). Below that, a compact sparkline covering the last 24 hours gives trend context without requiring interaction. The visual weight comes from the number being large and readable from across a room — operations managers often glance at monitors while on calls. For the supporting cards, each should have a smaller current value, a minimal trend indicator (just the directional arrow and delta, no sparkline), and a status chip or color band that communicates good/warning/critical at a glance. The key principle is that the hero card earns more information density because users will look at it most — the supporting cards should be fast-scan only, communicating status in under one second without requiring the user to read numbers carefully. Avoid putting sparklines in the small cards unless you have enough card height to render them legibly; a sparkline too small to read is worse than no sparkline. For the alert count card specifically, a numeric badge pattern with a severity breakdown (e.g., '3 critical, 7 warning') outperforms a chart visualization because the operational question is 'how many and how bad,' not 'what's the trend.'",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

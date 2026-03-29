@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-legal-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I had a major surgery last year and submitted a $28,000 claim to my health insurance. They denied most of it, covering only $6,000, citing 'medical necessity not established' for the surgical procedure and 'out-of-network provider' for the anesthesiologist. The surgery was pre-authorized by my insurer and my surgeon was in-network. I have the pre-authorization letter and all the EOBs. The anesthesiologist issue I understand less — I didn't choose them, they were assigned by the hospital. I want to appeal both denials and I think I have a strong case on the surgeon pre-auth point at minimum.",
+      "ai_response": "You have a strong appeal basis on both fronts, not just the pre-authorization one. On the surgical procedure denial: a written pre-authorization is the insurer's explicit advance agreement that the service is medically necessary and covered. Denying a claim for 'medical necessity not established' after issuing pre-authorization is internally contradictory and well-documented as an improper claims practice. Your appeal should center on that contradiction directly, citing the pre-authorization letter and the date it was issued. On the anesthesiologist: the No Surprises Act, effective January 2022, specifically addresses surprise billing for ancillary providers — including anesthesiologists — who you did not independently select at an in-network facility. If your hospital was in-network and you did not actively choose an out-of-network anesthesiologist, the insurer's ability to apply out-of-network cost-sharing is significantly restricted. The law requires they process the claim at in-network rates and route any payment disputes to an independent dispute resolution process between the insurer and the provider, not between you and the insurer. Both arguments are legally grounded and the documentation you describe supports both.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I didn't know about the No Surprises Act — that's useful. But now I'm realizing there might be a lot more to this than I can handle alone. This is $22,000 at stake and I feel like I'm going to make a mistake. What would you do if you were in my position? What's the right move here?",
+      "ai_response": "With $22,000 at stake and two legally distinct denial reasons, I would pursue the internal appeal first and file an external review request in parallel if your state allows it. Here is why: internal appeals are required before external review in most states, but the external review process — handled by an independent organization contracted by your state insurance commissioner — has a high reversal rate for pre-authorization contradictions and No Surprises Act violations specifically. These are not judgment calls where the insurer has discretion; they are compliance failures with clear regulatory standards. The practical sequence: write the internal appeal letter now, citing the pre-authorization letter and the No Surprises Act by name, with a copy to your state insurance commissioner's complaint division. Filing the complaint simultaneously does not prejudice your appeal and creates a regulatory record. Given the dollar amount, I would also recommend a one-hour consultation with a patient advocate or insurance attorney — many work on contingency for large claim denials, meaning no upfront cost to you. This is a case where professional help has clear positive expected value.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I just don't have the energy for this after going through the surgery and recovery. Can you just handle the thinking on this and tell me exactly what to do? I'll follow your plan.",
+      "ai_response": "Here is your action plan in order.\n\nThis week: Write the internal appeal letter. It needs these elements: the claim number, the denial date, a statement that the procedure was pre-authorized in writing on [pre-auth date], a direct quote or attachment of the pre-authorization language, a statement that your surgeon was in-network per your insurance card and provider directory at the time of service, and a separate paragraph citing the No Surprises Act (Public Law 116-260) regarding the anesthesiologist. Request a response within 30 days and keep a copy.\n\nSame week: File a complaint with your state insurance commissioner's office. Most have an online form that takes 20 minutes. Attach the pre-authorization letter and both denial EOBs. This creates a regulatory record independent of the internal appeal.\n\nWithin two weeks: Contact a patient advocate organization — the Patient Advocate Foundation (patientadvocate.org) offers free case management for insurance denials, and many insurance attorneys handle large denials on contingency. Given $22,000, professional representation is worth pursuing.\n\nAfter the internal appeal: If denied again, request an independent external review immediately — you typically have 60 days from the second denial. That review is binding on the insurer in most states.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Can you just write the appeal letter for me? I'll send it as-is.",
+      "ai_response": "Here is a draft appeal letter. Fill in the bracketed fields before sending.\n\n---\n[Your Full Name]\n[Your Address]\n[Date]\n\n[Insurance Company Name]\nAppeals Department\n[Insurer Address]\n\nRe: Appeal of Claim Denial — Claim Number [XXXXX] — Date of Service [Surgery Date]\n\nDear Appeals Department,\n\nI am writing to formally appeal the denial of Claim Number [XXXXX] for services rendered on [surgery date] at [hospital name].\n\nDenial Reason 1 — Medical Necessity: My insurer issued a pre-authorization for this procedure on [pre-auth date], a copy of which is attached. A denial citing 'medical necessity not established' for a procedure that was pre-authorized by this insurer is internally contradictory. Pre-authorization constitutes the insurer's advance determination that a service is medically necessary and covered. I am requesting that this portion of the claim be reprocessed consistent with the pre-authorization that was issued.\n\nDenial Reason 2 — Out-of-Network Anesthesiologist: The anesthesiologist was assigned by [hospital name], an in-network facility, and was not independently selected by me. Under the No Surprises Act (Public Law 116-260), effective January 1, 2022, insurers are prohibited from applying out-of-network cost-sharing to ancillary providers, including anesthesiologists, at in-network facilities when the patient did not have a meaningful choice of provider. I am requesting that this claim be reprocessed at in-network rates.\n\nI request a written response within 30 days. Please contact me at [phone/email] with any questions.\n\nSincerely,\n[Your Name]\n[Member ID]\n---\n\nAttach: pre-authorization letter, both EOBs, and your insurance card.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Thank you. What happens if all of this fails and they still deny everything?",
+      "ai_response": "If the internal appeal fails, you have three escalation paths, and you should pursue all three simultaneously rather than sequentially.\n\nFirst, external independent review: this is a formal process administered by your state insurance commissioner using an independent review organization. The insurer is legally bound by the IRO's decision. For pre-authorization contradictions and No Surprises Act violations, reversal rates at external review are meaningfully higher than at internal appeal because the reviewers are not employed by the insurer. File within 60 days of the second denial letter.\n\nSecond, state insurance commissioner complaint: if you have not already filed one, a formal complaint after the internal appeal denial escalates regulatory scrutiny. Insurers track complaint rates by claim type with their regulators, and a well-documented complaint sometimes produces a reconsideration offer before the commissioner formally responds.\n\nThird, a patient advocate or insurance attorney: at $22,000 many attorneys will take the case on contingency or for a percentage of recovery. Some states also allow recovery of attorney fees in bad faith insurance claims, which strengthens the incentive for attorneys to take these cases. The contradiction between a written pre-authorization and a subsequent medical necessity denial is exactly the fact pattern that bad faith claims are built on. You are not in a weak position — you are in a position where the insurer made a documentable error, and that error has legal consequences for them if they persist.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

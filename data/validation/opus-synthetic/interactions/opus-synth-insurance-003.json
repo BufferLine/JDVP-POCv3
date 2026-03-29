@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-insurance-003",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm shopping homeowner's insurance for the first time — we close on a house in 45 days, 1,940 sq ft colonial in suburban Connecticut, built 1987, updated roof in 2018, no claims history. My lender requires coverage before closing. I got three quotes and they're pretty different: Travelers at $1,820/year, Amica at $2,150/year, and Liberty Mutual at $1,640/year. I'm leaning toward Liberty Mutual because it's cheapest but I've heard mixed things. What should I be looking at to compare these properly?",
+      "ai_response": "Price is the starting point, not the ending point. The three things that matter most beyond premium are coverage structure, claims handling reputation, and the specific policy terms that determine what actually gets paid.\n\n**Coverage structure — the key questions for each quote:**\n- Is the dwelling covered at replacement cost or actual cash value? Replacement cost pays to rebuild at current construction costs; ACV depreciates for age. You want replacement cost.\n- What is the dwelling coverage amount, and how was it calculated? It should reflect the cost to rebuild the structure — not the market value of the property. These are often significantly different. A 1,940 sq ft Connecticut colonial built to current code might cost $250–350/sq ft to rebuild, meaning $485,000–680,000 in replacement cost. If the coverage limit is set too low, you're underinsured.\n- Is there extended replacement cost or guaranteed replacement cost available? This provides a buffer above the stated limit if rebuild costs exceed the estimate — important with construction inflation.\n\n**On Liberty Mutual.** The mixed reputation is real. Their AM Best rating is strong (A), meaning financial stability is fine. The concern is claims handling — they've received above-average complaint ratios in some years on the NAIC complaint index. That's not disqualifying, but it's worth noting that the 'cheapest' option sometimes reflects tighter claims adjustment.\n\n**On Amica.** Amica is consistently rated among the best for homeowner claims satisfaction despite higher premiums. They're a mutual company, which aligns their incentives differently than stock insurers.\n\nCan you share the dwelling coverage limits and deductible structures from each quote?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay here are the details. Travelers: $380,000 dwelling, replacement cost, $1,000 deductible, extended replacement cost up to 125%. Amica: $395,000 dwelling, replacement cost, $1,000 deductible, guaranteed replacement cost (no cap). Liberty Mutual: $350,000 dwelling, replacement cost, $1,000 deductible, no extended replacement cost. I'm buying the house for $485,000 but I know the land is worth something and the rebuild cost is less — I estimated around $360,000 for the structure. There are also flood and earthquake riders I can add. I live 3 miles from a river but not in a flood zone per the FEMA map. This is getting overwhelming. Can you just tell me which one to pick?",
+      "ai_response": "Go with Travelers.\n\nHere is the reasoning.\n\nLiberty Mutual is out. At $350,000 dwelling coverage with no extended replacement cost buffer, you're underinsured. Connecticut construction costs have risen sharply and labor costs are high in the northeast. If you suffer a total loss and rebuilding runs $410,000, you're covering $60,000 out of pocket. That risk isn't worth a $180/year premium savings over Travelers.\n\nAmica versus Travelers is the real decision. Amica's guaranteed replacement cost is genuinely superior — it has no cap if rebuild costs exceed the dwelling limit. That's a meaningful benefit. However, the $330/year premium difference ($2,150 vs. $1,820) over 10 years is $3,300. Travelers' 125% extended replacement cost takes your $380,000 limit to $475,000 — and your estimated rebuild cost is $360,000, meaning you'd need an extraordinary cost overrun to exceed even the base limit, let alone the 125% cap. For a 1987 colonial with a 2018 roof, that scenario is unlikely enough that the $330/year premium delta isn't justified.\n\nOn flood: 3 miles from a river with no FEMA flood zone designation is relatively low risk, but FEMA maps are periodically updated and don't capture all scenarios. Standard homeowner's policies exclude flood regardless of carrier. A separate NFIP (National Flood Insurance Program) policy runs roughly $700–1,200/year in a low-risk zone. Given your location, this is worth getting a quote on — it doesn't need to be decided today, but don't assume you're covered under the homeowner's policy.\n\nEarthquake: Connecticut is a low seismic risk area. I would skip it.\n\nBind Travelers before closing, get a flood quote within 30 days.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "medium",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "That makes a lot of sense and I appreciate the direct answer. I'm going with Travelers. I did get a flood quote from NFIP — it came back at $890/year for $250,000 dwelling and $100,000 contents coverage. My mortgage is $388,000, so the dwelling coverage would cover the lender's requirement. I'm not sure if the contents coverage is right though — my wife thinks we should insure more but I'm not convinced. How do we think about the right contents number?",
+      "ai_response": "Your wife's instinct is probably right, and here's a framework to test it.\n\nContents coverage (personal property) in a flood policy covers what the flood actually damages — furniture, appliances, clothing, electronics, kitchenware, and anything else in the home. The standard exercise is a room-by-room mental inventory: if you had to replace everything in your living room, dining room, kitchen, bedrooms, and basement from scratch at today's retail prices, what does that sum to?\n\nFor a furnished 1,940 sq ft home, $100,000 sounds like a lot until you run the numbers. A typical breakdown:\n- Furniture across all rooms: $15,000–30,000\n- Kitchen appliances and equipment: $5,000–10,000\n- Electronics (TVs, computers, audio): $5,000–10,000\n- Clothing for two adults: $8,000–15,000\n- Bedding, linens, household goods: $5,000–8,000\n- Miscellaneous (tools, sporting equipment, books, decor): $5,000–15,000\n\nTotal: easily $43,000–88,000 before any high-value items. If you have any jewelry, artwork, instruments, or collectibles of significance, those can add quickly.\n\n$100,000 is probably adequate for a mid-range furnished home, but if you have above-average furnishings, significant electronics, or collectibles, you might be underinsured. The NFIP contents limit caps at $100,000 — if you want more, you'd need a separate excess flood policy, which is available through private carriers.\n\nI'd suggest spending 20 minutes doing the room-by-room exercise together. If you hit $80,000+ before getting to high-value items, that's a signal to look at excess coverage.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "medium",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We did the room-by-room and came up with about $82,000 in contents not counting my wife's jewelry which is probably another $15,000. So we're right at the $100,000 NFIP cap. Should we get an excess flood policy or is there a better way to cover the jewelry specifically?",
+      "ai_response": "For the jewelry, the better and more cost-effective path is a scheduled personal property floater — not excess flood coverage.\n\nHere is why: flood is a specific peril. A scheduled jewelry floater covers the jewelry against a much broader set of losses — theft, accidental damage, mysterious disappearance, travel losses — not just flood. Travelers (your new homeowner's carrier) almost certainly offers this as a rider. For $15,000 in jewelry, a scheduled floater typically runs $150–300/year and provides worldwide coverage with no deductible and replacement cost valuation. You'll need a recent appraisal or receipt documentation to schedule items.\n\nFor the flood contents gap: you're at $82,000 in contents with a $100,000 NFIP limit, which means your base flood exposure is covered with $18,000 of buffer. Given that you're in a low flood-risk zone, the probability of a total contents loss is low. The remaining exposure doesn't justify the cost and complexity of an excess flood policy unless you're adding significant contents above the $100,000 threshold.\n\nAction items in priority order:\n1. Bind Travelers homeowner's policy before closing\n2. Add a scheduled jewelry floater to the Travelers policy — call them and ask specifically about scheduling the $15,000 in jewelry\n3. Bind the NFIP flood policy within 30 days (there's a 30-day waiting period before coverage is active, so don't wait until the first storm forecast)\n4. Revisit excess flood only if you add significant high-value contents in the future",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

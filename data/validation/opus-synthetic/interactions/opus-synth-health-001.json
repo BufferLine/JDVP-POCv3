@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-health-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I was diagnosed with Type 2 diabetes about three months ago and my doctor gave me a referral to a dietitian but the wait list is six weeks. In the meantime I've been trying to figure out what I should actually be eating. I've heard so many conflicting things — low carb, Mediterranean, no sugar obviously, but also that fruit is okay? I'm honestly overwhelmed. I make most of my own meals and I'm willing to change things, I just don't know where to start. Can we think through this together?",
+      "ai_response": "That's a reasonable place to start, and the conflicting information you're encountering is real — the research on dietary approaches for Type 2 management has genuinely evolved. The core principle that holds across most evidence-based approaches is glycemic control: keeping postprandial blood glucose spikes lower and more stable. That's the shared goal whether you end up doing low-carb, Mediterranean, or something else.\n\nA few things worth thinking through together: First, what does your current eating pattern actually look like on a typical day? That matters a lot before recommending any direction, because the biggest wins usually come from the highest-impact changes specific to your existing diet. Second, has your doctor mentioned any HbA1c targets or medication context? That affects how aggressively you'd want to restrict carbohydrates. Third, on fruit — you're right that it's not simply off-limits. Whole fruit has fiber that blunts the glucose response; juice does not. Berries specifically are very low glycemic. The nuance is real. What does a typical day of eating look like for you right now?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Usually breakfast is toast with peanut butter or sometimes cereal. Lunch I grab something at work — usually a sandwich or a burrito. Dinner is whatever I cook, which varies a lot but often pasta or rice dishes. I snack on crackers or chips in the afternoon. My HbA1c was 7.4 at diagnosis, doctor wants it under 7.0 in three months. She has me on metformin. I've been reading about low-carb diets being really effective for Type 2 and I think I want to try that approach. I'm going to start replacing the grain-heavy stuff with vegetables and protein and see how it goes.",
+      "ai_response": "That's a clear-eyed read of your diet and a reasonable direction to move. Low-carb is well-supported for improving HbA1c, and replacing the grain-heavy staples with protein and vegetables addresses your highest-glycemic meals first. A practical starting point: keep the peanut butter, swap the bread for eggs; keep the protein in the burrito, lose the wrap.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Okay so I've started replacing breakfast and lunch — eggs in the morning instead of toast, salads with chicken at work instead of burritos. But I'm struggling with dinner because I've been cooking pasta and rice dishes my whole life and the substitutions feel terrible. Cauliflower rice is just depressing. Are there other options that are actually satisfying? Also wondering if I should be tracking carbs precisely or just being generally lower-carb.",
+      "ai_response": "On the dinner substitutions — cauliflower rice being depressing is a very common experience, and you don't have to use it. A more sustainable approach for many people is to reframe the meal structure rather than substitute textures. Instead of pasta-dish-with-pasta-replaced, think: protein center + two substantial vegetable sides + a fat component. A well-seasoned roasted chicken thigh with roasted broccoli and a tahini drizzle is satisfying in a way that no cauliflower-pasta approximation is. Bean-based dishes like lentil stew or black bean soup are also worth keeping — they're higher in carbs than meat but the fiber content makes them much more glycemically manageable than refined grains.\n\nOn tracking precision: for your HbA1c target of getting from 7.4 to under 7.0 in three months, some degree of structure helps — but precise gram-counting is not required for everyone. A practical middle path is to track your net carbs loosely for two to three weeks until you have an intuitive sense of where you're landing, then relax the explicit tracking. Many people doing this approach aim for 100-130g net carbs per day as a moderate-low target that's sustainable and still impactful. Strict low-carb is under 50g, which produces faster results but is harder to maintain. Given that you're on metformin and your baseline isn't extremely high, the moderate target may be enough to hit your 7.0 goal. What's your sense of whether you want to go strict or moderate?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I think I'll go moderate — the strict version sounds like it would make me miserable and I'm more likely to stick with something sustainable. I'm going to aim for roughly 100-130g net carbs, keep focusing on protein and vegetables as the base of meals, and stop trying to replicate pasta dishes and just cook differently. I feel a lot clearer on this now. I'll track loosely for the next few weeks and see how my numbers look. Thanks for thinking through it with me.",
+      "ai_response": "That's a well-reasoned plan — sustainable beats optimal every time when you're making a long-term lifestyle change. The 100-130g target gives you real flexibility while still producing meaningful HbA1c improvement on metformin. Good luck at your follow-up; the loose tracking approach should give you useful signal within a few weeks.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

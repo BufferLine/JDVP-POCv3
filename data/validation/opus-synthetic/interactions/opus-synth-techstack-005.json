@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-techstack-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "human_input": "I'm building an API for a platform that serves both a web frontend and a mobile app. The platform is content-heavy — users have profiles, posts, comments, follows, notifications, and a feed. I'm deciding between REST and GraphQL. I've built REST APIs before but never GraphQL. The mobile team is asking for GraphQL because they want flexible queries. How should I think about this decision?",
+      "ai_response": "This is a decision where the mobile team's request is actually pointing at a real problem, and it's worth understanding what problem they're solving before deciding whether GraphQL is the right solution.\n\nWhat the mobile team likely wants: the ability to fetch exactly the data they need for a given screen in a single request, without over-fetching (getting fields they don't use, wasting bandwidth) or under-fetching (needing multiple round trips to assemble a screen). Mobile apps on constrained networks feel this more acutely than web apps. GraphQL was designed precisely for this use case — it lets the client specify exactly what fields it needs, and it can compose multiple resources into a single query.\n\nWhat REST's actual weaknesses are for your use case: a feed in a social platform is a classic REST pain point. A feed item might need: user profile fields, post content, first three comments with commenter profiles, like count, and whether the current user has liked it. In naive REST, this is five or six requests, or it requires a bespoke endpoint like /feed that you maintain separately. GraphQL handles this naturally — one query, client specifies the shape.\n\nWhat GraphQL costs: significant upfront complexity. You need a schema definition, resolvers for every field, a DataLoader implementation to avoid N+1 queries (this is non-negotiable — without DataLoader, GraphQL will generate a database query per list item), and clients need a GraphQL client library (Apollo Client or urql). The learning curve for the backend team is real, and the operational tooling (debugging, monitoring, rate limiting) is less mature than REST.\n\nFor content-heavy social platforms specifically: GraphQL has genuine advantages. The feed, notification, and profile screens in a social app are exactly the use cases where query flexibility reduces both client complexity and server round trips. Companies like GitHub, Twitter, and Shopify moved to GraphQL for their developer APIs for these reasons.\n\nThe question that determines the right answer: how much does your mobile team's bandwidth and latency environment matter? And is the mobile team's request coming from experience shipping GraphQL before, or from general preference? That affects whether they'll own part of the implementation.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "The mobile team has used GraphQL with Apollo Client before so they're not flying blind. Bandwidth matters — we're targeting markets in Southeast Asia where connectivity is patchy. The DataLoader point is new to me though. Can you explain why it's non-negotiable and what the N+1 problem actually looks like in a social feed context?",
+      "ai_response": "The N+1 problem is one of the most common performance traps in GraphQL and understanding it concretely is essential before you build anything.\n\nHere's what it looks like for a social feed: suppose a user requests their feed with the following GraphQL query: feed items, each with the post content and the author's name and avatar. Your feed resolver fetches 20 feed items — that's 1 database query. Then for each feed item, GraphQL calls the user resolver to get the author's profile. That's 20 separate database queries, one per item. Total: 21 queries to render one screen. If each feed item also shows the first three comments, and each comment needs its author's profile, you're now at 1 + 20 + 60 + 60 = 141 queries for a single feed page load. This is why it's called N+1: one query to get the list, then N queries to resolve each item's nested fields.\n\nIn REST, you would typically join or batch these in the endpoint implementation. GraphQL's resolver model makes batching opt-in rather than default, which is why naive implementations are so much slower than REST equivalents.\n\nDataLoader solves this through batching and caching within a single request. Instead of executing a database query per resolver call, DataLoader collects all the user IDs requested during a feed render, then executes one batched query: SELECT * FROM users WHERE id IN (1, 2, 3, ... 20). The result is cached for the duration of the request so if the same user appears multiple times in a feed, they're fetched once. With DataLoader properly implemented, the feed example above collapses to roughly: 1 query for feed items, 1 batched query for all post authors, 1 batched query for all comment authors — 3 queries instead of 141.\n\nWhy it's non-negotiable: without DataLoader, GraphQL APIs under real load will exhaust your database connection pool and exhibit dramatically worse performance than equivalent REST endpoints. This surprises teams that benchmark GraphQL against a small dataset and then deploy to production. The DataLoader implementation isn't complex — the library handles the batching logic; you write the batch fetch function — but it needs to be part of your initial design, not retrofitted.\n\nGiven that your mobile team already knows Apollo Client, do they have experience on the backend side with resolver implementation and DataLoader, or is that your team's responsibility?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "The backend is my team's responsibility — I have three backend engineers. The mobile team handles their own Apollo Client integration. DataLoader is making GraphQL feel more tractable to me — it's a known pattern with a known solution. But I'm still uncertain about one thing: authorization. In REST, I know exactly what a given endpoint returns and I can apply authorization at the endpoint level. In GraphQL, how do you handle authorization when any field could theoretically be in any query?",
+      "ai_response": "Authorization in GraphQL is one of the genuinely harder design problems, and your instinct that it's more complex than REST is correct. But it's solvable with the right pattern.\n\nThe wrong pattern: schema-level authorization middleware that checks permissions before executing the query. This sounds like the REST analogue but it doesn't compose well — you end up with coarse-grained access control that either over-restricts (blocking valid queries) or requires complex exception logic.\n\nThe right pattern for your use case: resolver-level authorization. Authorization logic lives in each resolver, not at the schema boundary. When a user requests a field, the resolver checks whether the requesting user has permission to see that data before returning it. This is fine-grained, composable, and mirrors where the data access logic already lives. For a social platform the rules are usually: public content (posts, profiles) is visible to authenticated users; private content (DMs, draft posts, account settings) is restricted to the owner or specific roles; notification content is restricted to the recipient.\n\nThe practical implementation: pass a context object to every resolver containing the authenticated user identity (resolved from the JWT or session at request time). Each resolver that touches sensitive data checks context.currentUser before returning. For fields that should return null rather than throw an error when unauthorized — a profile's private email, for example — return null from the resolver. For fields where an unauthorized request should surface as an error, throw a GraphQL AuthenticationError. Most GraphQL server libraries (Apollo Server, Strawberry for Python, graphql-java) have standard error types for this.\n\nThe pattern that scales well: a permission helper function that each resolver calls. Something like assertCanRead(context.currentUser, resource) that throws an AuthenticationError if the check fails, or a canRead(context.currentUser, resource) predicate that returns a boolean. This centralizes your authorization rules rather than scattering them across resolvers, making auditing and policy changes manageable.\n\nFor a social feed with follows, privacy settings, and notifications: your authorization rules are mostly 'is the requesting user the owner or a follower with appropriate privacy level.' These are simple per-object checks that resolver-level authorization handles cleanly. The main case where this approach requires care is query depth attacks — a malicious client could construct a deeply nested query that generates enormous work. Implement query depth limiting (most GraphQL server libraries have this as a plugin) to cap the maximum query depth.\n\nDoes your platform have any content that should be partially visible — for example, a post preview visible to non-followers but full content restricted? Those partial visibility cases are where authorization design gets interesting.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "No partial visibility cases — it's either public or private based on follow status. So resolver-level authorization with a permission helper is clean enough for our model. I'm basically convinced GraphQL is right for us. But I want to make sure I'm not missing a practical operational concern. How do you handle API versioning in GraphQL? In REST I'd use /v1/ and /v2/ path prefixes. GraphQL seems like it should make versioning unnecessary but I've heard that's an oversimplification.",
+      "ai_response": "The 'GraphQL doesn't need versioning' claim is partially true and partially oversimplified, and it's worth understanding exactly where the boundary is.\n\nWhat's true: GraphQL's schema evolution model is designed around additive changes. You can add new types, fields, and arguments to an existing schema without breaking existing clients — they simply ignore fields they don't know about. This is a genuine advantage over REST where adding a field to a response payload can break strict client parsers. For the class of changes that are purely additive, GraphQL's evolution model is better than REST's versioning model.\n\nWhere it breaks down: breaking changes. Removing a field, renaming a field, changing a field's type, or changing the semantics of an existing field are all breaking changes regardless of whether you're using GraphQL or REST. GraphQL gives you a formal deprecation mechanism (@deprecated directive with a reason string) that lets you mark fields as deprecated and track which clients are still using them before removal. This is a better process than REST, but it's a process — not an elimination of the versioning problem.\n\nFor your practical situation: the deprecation workflow is: add the new field, mark the old field @deprecated with a migration note, give clients a migration window (typically 30-60 days for internal clients), monitor which clients are still querying the deprecated field using query analytics, remove the field once usage reaches zero. This workflow requires that you have query analytics — the ability to see which fields are actually being queried and by which clients. Apollo Studio (free tier available) provides this for Apollo Server; other GraphQL servers have similar tooling or can log structured query data to your existing analytics infrastructure.\n\nFor a web + mobile split: the operational concern is that mobile apps have slow release cycles. A deprecated field that your web frontend stops using in two weeks might still be used by the mobile app version currently in the App Store for another 60 days. Build your deprecation windows around your mobile app release and update cadence, not your web deployment cadence.\n\nPractical recommendation: start without schema versioning. Use additive evolution for new features, use the deprecation mechanism for breaking changes, and implement query analytics from day one so you can monitor field usage. The absence of path-based versioning is genuinely a benefit — it simplifies your client contract and avoids the coordination overhead of managing v1/v2 parallel implementations.\n\nYou're not missing a significant operational concern beyond deprecation management. Is your backend stack Python, Node, or something else? That affects which GraphQL server library you'd use.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 5,
+      "human_input": "Python backend with FastAPI. I'm going with GraphQL — Strawberry looks like the right library for the FastAPI ecosystem. I'll implement DataLoader from day one, resolver-level authorization with a permission helper, query depth limiting, and Apollo Studio for query analytics. The deprecation workflow for mobile versioning is exactly the kind of operational nuance I needed. This is the decision.",
+      "ai_response": "Strawberry with FastAPI is a well-matched combination — Strawberry's Python type annotation-based schema definition integrates naturally with FastAPI's Pydantic models and async support. The async resolver model in Strawberry is also important for your use case: async resolvers let you await DataLoader batch functions without blocking, which is critical for performance under the load patterns of a social feed.\n\nA few implementation notes worth capturing: Strawberry's DataLoader implementation uses strawberry.dataloader — define your batch load functions as async functions and instantiate a DataLoader per request in your FastAPI dependency injection context, not as a module-level singleton. Module-level DataLoaders would share their cache across requests, which is a correctness bug. The per-request instantiation pattern is documented in Strawberry's examples.\n\nFor query depth limiting, the strawberry-django-plus library has a query depth validator, or you can implement a simple custom validation rule using Strawberry's schema validation hook — it's about 20 lines of code. Set the limit to 7-10 for a social platform; deeply nested queries beyond that are almost certainly either malformed or adversarial.\n\nFor Apollo Studio integration with a non-Apollo server: Strawberry can emit Apollo-compatible usage reporting via the apollo-reporting-protocol; the Strawberry documentation covers this. Alternatively, you can log structured query data (operation name, field selection set, user agent, latency) to your existing logging infrastructure and query it there — that's sufficient for monitoring field deprecation without Apollo Studio's dependency.\n\nYou've designed this carefully and the choices are internally consistent. Solid decision.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

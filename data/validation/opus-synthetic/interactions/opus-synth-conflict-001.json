@@ -1,0 +1,150 @@
+{
+  "interaction_id": "opus-synth-conflict-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I don't even know where to start. My coworker Marcus has been making my life hell for like eight months and I just — I snapped at my manager today because of it and now I'm the one who looks bad. Like he undermines me in meetings, takes credit for my work on the Chen project, and just last week he told a client something that directly contradicted what I had already told them without even looping me in. And everyone just thinks he's this charming great guy. I've been going back and forth on whether to say something to HR or my manager or just document everything or just quit. I don't know. I'm exhausted and angry and I think I'm starting to make mistakes at work because I'm so distracted by all of this. Should I go to HR? Should I just try to avoid him? I honestly don't know what the right move is here.",
+      "ai_response": "That sounds genuinely exhausting — the combination of the substantive damage to your work and the social dynamic where he reads as charming makes this particularly hard to navigate. You're not being irrational; the situation you're describing has real professional stakes.\n\nBefore thinking through options, a few things would help clarify which path makes most sense. When you say he took credit for your work on the Chen project — was that in front of your manager, to the client, in some documentation? And the client contradiction last week: was your manager aware that happened, and did it create a visible problem, or did it stay contained?\n\nThe reason I ask is that the calculus between going to HR, going to your manager directly, or building a documentation trail first depends a lot on whether there's already a paper trail of impact your manager can see, versus whether this is mostly your word against his. Those are meaningfully different situations.\n\nWhat's your read on your manager? Do you think they're oblivious to the dynamic, or do you think they've noticed but haven't said anything?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Reactive",
+            "opus": "Reactive",
+            "codex": "Active",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "The Chen project thing happened in a team meeting — he basically summarized the whole deliverable as his idea and my manager was right there and didn't say anything. I don't know if that means she didn't notice or she just let it slide. The client thing caused a real problem — I had to spend two days cleaning it up and I told my manager about it but kind of framed it as 'miscommunication' because I didn't want to sound like I was whining. I think my manager notices something is off but she's conflict-averse and probably hoping it resolves itself. Your point about word-against-his is making me think — I should probably have a clearer record before I do anything formal. But I'm also worried that if I wait too long to escalate it just keeps getting worse. I guess I'm starting to see this more like a two-stage thing — build the case first, then decide whether to bring it up.",
+      "ai_response": "That framing — build the case first, then decide on escalation — is a sound way to structure this. It also takes some of the pressure off the immediate decision, which I think might be part of why you've been feeling paralyzed.\n\nOn the documentation side: the most useful record captures dates, what was said or done, who was present, and what the concrete impact was. The Chen meeting and the client contradiction are both good anchors — write those up now while they're fresh, even as informal notes. The fact that the client issue cost you two days of cleanup is a concrete business impact, not just an interpersonal complaint, and that distinction matters when you do eventually bring this to someone.\n\nOn the 'framing it as miscommunication' point — that was probably instinctive self-protection, but it means your manager currently doesn't have an accurate picture of what happened. You're not required to go back and correct that right now, but it's worth knowing that when you do escalate, you may need to reframe that incident more accurately, which will feel awkward after having softened it.\n\nOn timing: the concern about waiting isn't wrong, but you're not looking at months of documentation here — a few weeks of consistent notes is usually enough to show a pattern. The more urgent question might be: is there a specific upcoming situation — a project, a meeting, a client interaction — where you can see him creating the same problem again? If so, that's worth being prepared for specifically.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Yes — we're both on the Whitmore account starting next week and that's exactly where I'm worried it'll happen again. I'm going to document everything from Chen and the client situation tonight. And I've decided I'm not going to HR yet — I think going to my manager first is the right call because HR feels like a nuclear option and I don't think I'm there yet. I'm going to set up a one-on-one with her next week, after I see how the first Whitmore meeting goes, and I'm going to be direct about what's been happening instead of softening it. I think I've been making myself invisible in these situations and that's part of the problem.",
+      "ai_response": "That's a clear plan and it addresses the right things — the documentation gives you something concrete to point to, going to your manager before HR preserves the relationship and keeps options open, and naming the pattern directly rather than softening it corrects what's been obscuring the situation.\n\nThe Whitmore account is actually useful timing. You'll have a live example unfolding in real time, which is easier to bring to your manager than a historical pattern she may not have tracked. One thing worth thinking through before that first meeting: what specific outcome do you want from the conversation with your manager? 'I need her to be aware' and 'I need something to actually change' are different asks and lead to different conversations. Being clear on that beforehand will help you know whether the meeting accomplished what you needed.\n\nOn making yourself invisible — that's a real observation. Part of what makes Marcus's behavior effective is that it occupies space you're leaving open. You don't have to be combative, but having your contributions explicitly visible in meetings and documented in writing changes the dynamic.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I want a specific outcome — I want my manager to acknowledge what's been happening and commit to something concrete, even if that's just 'I'll pay closer attention in meetings.' Vague awareness isn't enough anymore. The Whitmore meeting is Monday and I'm going in with my contributions clearly staked out in the pre-read I'm writing this weekend. I'll document anything that happens in that meeting same day. Manager one-on-one Thursday. I'm not asking for your opinion on whether this is the right call — I know it is. I just want to think through how to open that conversation with my manager without it sounding like I'm just complaining about a colleague.",
+      "ai_response": "Open with impact on the work, not on how you feel about Marcus. Something like: 'I want to flag a pattern that's been affecting my ability to do my job effectively, and I want to make sure you have the full picture.' That framing signals this is a professional matter with business stakes, not a personality complaint.\n\nThen anchor it to the concrete incidents — the Chen meeting, the client situation and the two days of cleanup it cost, and anything that comes out of Whitmore Monday. Lead with the impact each time: what it cost in time, client confidence, or project quality. Keep Marcus's behavior factual and behavioral rather than characterizing his intent — 'he summarized the deliverable as his contribution without attributing the work' is stronger than 'he always takes credit.'\n\nClose by asking for something specific: 'I'd like us to agree on how we handle attribution and client communication when we're both on an account.' That gives her something to act on rather than just absorb.\n\nIf she gets defensive or minimizes it, you can say: 'I've been framing some of these as miscommunications, but I want to be more direct now because the pattern is affecting my work.' That re-anchors the conversation without being accusatory.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

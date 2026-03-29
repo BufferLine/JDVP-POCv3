@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-education-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I have no idea what to do about my daughter's schooling next year. Everyone keeps asking me whether I'm going to send her to the public school or pay for private. I'm so overwhelmed. Can you just tell me what's the right choice? I trust you more than I trust myself on this.",
+      "ai_response": "I can hear how overwhelmed you are, and I want to help make this easier. Based on what you've described, here is a direct recommendation: enroll her in the local public school. Public schools offer socialization with a diverse peer group, are free, and the quality gap with private schools is often smaller than parents expect — especially at the elementary level. Unless you have specific concerns about safety or academic gaps at your local school, public is the default-sensible choice. I'd suggest visiting the school once before registration closes, but I wouldn't agonize further. Does this feel like a path you can act on?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay but... I visited the public school last spring and the class sizes were really big — like 30 kids per teacher. My daughter is shy and gets lost in big groups. Does that actually matter, or am I overthinking it? And what would private even give her that's different?",
+      "ai_response": "That detail matters — you're not overthinking it. For a shy child, class size can meaningfully affect how much individual attention and teacher relationship-building she gets. Research does show that students in smaller classes (under 20) tend to participate more and report feeling more seen, which is especially relevant for introverted learners. Private schools in most areas average 15–18 students per class, and many emphasize advisor or homeroom structures that explicitly track quieter kids. That said, private school is a significant financial and logistical commitment. The real question is: how does she handle environments where she has to advocate for herself? If she shuts down, that's a signal worth taking seriously. What's your read on that?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "She definitely shuts down. I've seen it at birthday parties. But also — the private school near us has a very specific religious curriculum and I'm not religious, so that's a problem. And I hadn't even mentioned: we'd have to take out a loan to afford it. I don't think the AI answer of 'public school is fine' was quite right for our situation, and I also don't think private is straightforwardly the answer either. I need to think about this differently.",
+      "ai_response": "You're right to push back — those are load-bearing constraints I didn't have before, and they change the picture substantially. A faith-based curriculum misaligned with your values, plus debt, is a real cost that compounds over time. The original recommendation was too generic. Given what you've just named, it might be worth mapping a third path: whether there are charter schools, magnet programs, or smaller public options in your district that could offer lower student-to-teacher ratios without the financial or values tension. Some districts also have gifted or special-interest programs that draw quieter, more focused peer cohorts. Have you looked into what your district actually offers beyond the default neighborhood school?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I just looked it up and there's actually a district magnet school focused on project-based learning with classes capped at 18. I had no idea that existed. I'm going to pursue that. I'll request a tour this week and start the application. Thank you for helping me think through it — I'm glad I didn't just go with the first answer.",
+      "ai_response": "That sounds like a genuinely well-fitted option — small class size, a structured pedagogical approach that often works well for quieter, thoughtful kids, and no financial or values compromise. Requesting a tour is exactly the right next step; seeing how the teachers manage the room will tell you a lot about whether it's the right environment for her. You did the actual work here — you knew the constraints that mattered, you pushed back when the framing was off, and you found the option. Good luck with the application.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

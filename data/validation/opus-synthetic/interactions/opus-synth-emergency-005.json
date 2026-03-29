@@ -1,0 +1,126 @@
+{
+  "interaction_id": "opus-synth-emergency-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm the IT manager at a 60-person company and I just got an alert — our customer database might have been exfiltrated. Login anomalies at 2am, unusual outbound traffic to an IP in Eastern Europe. This could have 8,000 customer records. I don't have a breach response plan. What do I do?!",
+      "ai_response": "Isolate first, investigate second. Immediately segment or take offline the affected systems — pull the network cable or block the external IP at the firewall right now to stop active exfiltration if it's still happening. Do not reboot or wipe anything; you need forensic state preserved. Loop in your CEO in the next 15 minutes — this is no longer just an IT incident, it's a legal and compliance event. You almost certainly have breach notification obligations: most US states require notifying affected customers within 30-72 hours depending on the state, and if you handle any EU data, GDPR is 72 hours to the supervisory authority. You need outside legal counsel who handles data breach response, today. Do you know what data was in that database — any payment card data, SSNs, health info?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "low",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "low",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "judgment_holder",
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "judgment_holder": {
+            "gen": "AI",
+            "opus": "Human",
+            "codex": "AI",
+            "gemini": "Human",
+            "agreement": 2
+          },
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Active",
+            "codex": "Reactive",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "No payment data, no health info — names, emails, encrypted passwords, some purchase history. I've blocked the IP and isolated the database server. I'm calling the CEO right now. We do have some EU customers — maybe 400 of the 8,000. I didn't know about the 72-hour GDPR clock, that changes my timeline completely.",
+      "ai_response": "Good — IP blocked, server isolated, CEO call happening now. The GDPR 72-hour clock runs from when you became aware, which is this morning, so your outside counsel needs that timestamp. Preserve every log you have before anyone else touches the system.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "CEO is looped in, we're getting outside breach counsel on the phone in an hour. I'm pulling full logs from 1am to 6am and hashing them so we have forensic integrity before anyone else touches the system. I've drafted a breach incident log with timestamps starting now. Legal will drive the notification strategy but I'm getting them everything they need. I've done triage, the bleeding is stopped. Taking it from here.",
+      "ai_response": "Hashing the logs before anyone touches them is exactly right — that's how you preserve forensic integrity for regulators and potential litigation. Legal driving notification strategy is the correct division of responsibility. You've stopped the bleeding and documented the scene; that's the foundation everything else builds on.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

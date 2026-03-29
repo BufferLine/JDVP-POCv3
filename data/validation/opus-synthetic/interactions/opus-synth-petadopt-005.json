@@ -1,0 +1,182 @@
+{
+  "interaction_id": "opus-synth-petadopt-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "We have a 4-year-old male neutered cat named Oscar. He's pretty confident, playful but not anxious. We're thinking about getting a second cat. What do we actually need to know to give this the best chance of working?",
+      "ai_response": "Second-cat introductions succeed or fail mostly on process, not luck. The key variables:\n\n**Matching for Oscar:** Confident, playful, non-anxious cats generally do well with another confident or moderately confident cat. A highly fearful second cat often triggers chase behavior even in non-aggressive cats — Oscar plays, fearful cat runs, Oscar chases, fearful cat never recovers. Avoid extremely shy rescues unless you have patience for months of work.\n\n**Age and sex pairing:** Opposite-sex pairings (male + female, both neutered) have the best success rates on average. Male + male works fine with proper introduction; female + female tends to be higher-conflict. A kitten introduced to an adult male often works — adult males are typically more tolerant of kittens than adult females are.\n\n**The introduction protocol matters enormously:**\n- Scent first: separate rooms, swap bedding before any visual contact\n- Visual introduction through a cracked door or baby gate before free access\n- Never just release a new cat into Oscar's territory — even if Oscar seems friendly, the new cat will be overwhelmed\n- Timeline: 2-3 weeks minimum before unsupervised cohabitation\n\n**Territorial resources:** Two litter boxes + one extra (rule of thumb: N+1). Separate food stations. Vertical space — if they need to avoid each other temporarily, height helps.\n\nWhat's driving the timing — are you looking now, or planning ahead? And is Oscar's play style more chase-and-wrestle or chase-and-bat-and-disengage?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Oscar is more chase-and-bat, he's not really a wrestler. We've been going back and forth on this for six months — my partner is worried Oscar will be miserable and we'll ruin his life. I keep thinking he'd actually love a companion, he seems bored sometimes. But then I second-guess myself when I watch him just sitting peacefully in a sunbeam and I think, is he actually unhappy or am I projecting? And maybe a kitten would stress him out. He hisses at the neighbors' cat through the window but that cat is also kind of aggressive. I don't know if that's relevant. And we have a small apartment. I keep going back and forth and part of me just wants someone to tell me he'll be fine.",
+      "ai_response": "The sunbeam question is a real one — cats who appear content in solitude often genuinely are. The 'bored' read is hard to confirm from the outside, and it's worth being honest that some of the drive to get a second cat may be about what you'd enjoy rather than what Oscar is lacking. That's not a reason not to do it, but it's worth separating the two.\n\nThe window aggression toward the neighbor's cat is less informative than it seems — territorial reactions to outdoor cats through glass are almost universal and don't predict indoor compatibility well. It's not irrelevant but it's not a red flag either.\n\nThe small apartment matters more than the hissing. Two cats in a small space need more vertical territory (tall cat trees, shelves) and more intentional resource placement to avoid resource-guarding conflict. It's manageable but requires setup.\n\nYour partner's concern about 'ruining Oscar's life' is an overcorrection — most healthy cats adjust to a well-introduced companion — but the hesitation isn't irrational. You've been going back and forth for six months: is there a specific sticking point, or is it mostly general uncertainty?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "medium",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Undefined",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "medium",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "low",
+          "information_seeking": "high"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Passive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Active",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "I think the main sticking point is kitten vs adult and where to get one. My partner would be more comfortable with an adult cat from a rescue that's been foster-assessed with other cats. I'm drawn to a kitten. Can we actually work through the tradeoffs for Oscar's situation specifically, given he's confident and chase-oriented?",
+      "ai_response": "**Kitten for Oscar (your preference):**\n- Chase-and-bat play style with a kitten: this is actually a reasonable match. Adult male cats often tolerate kittens because kittens signal submission instinctively — they aren't competitors.\n- Risk: kittens have relentless energy and will pester Oscar. Some adult cats find this exhausting. Oscar's confidence reduces this risk but doesn't eliminate it.\n- Introduction is more predictable — kittens are in a new environment too, less territorial history.\n- Unknown: you don't know the adult temperament yet. Usually resolves by 12-18 months.\n\n**Foster-assessed adult for Oscar (partner's preference):**\n- 'Cat-friendly confirmed' from a foster home is genuinely valuable data. You know the animal can cohabit.\n- Adult + adult male introductions take longer and require stricter protocol, but confident cats handle it better than anxious ones.\n- Oscar's chase tendency means you want an adult who doesn't flee — a confident or moderately bold adult. Specifically ask rescue: 'Does this cat flee from or face off against other cats?' You want the latter.\n- Temperament is fully known. No surprises at 18 months.\n\n**For your small apartment:** the adult rescue with confirmed cat-socialization actually has a slight edge — you're reducing the variable count in a smaller space.\n\n**Both paths are viable.** The difference is: kitten = higher energy disruption, slower certainty; adult rescue = upfront compatibility data, more careful intro protocol needed. Given your partner's comfort level, the foster-assessed adult is the lower-conflict path for the household — both for Oscar and for the two of you.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "This is helpful. We've been going back and forth too long — can you just make the call for us? Given Oscar's personality and our situation, what should we do?",
+      "ai_response": "Get a foster-assessed adult cat from a rescue, confirmed cat-friendly, with a confident or bold (not fearful) temperament.\n\nHere's why this is the right call for your specific situation: your small apartment raises the stakes on compatibility, and your partner's comfort matters for the household's ability to actually execute the introduction protocol correctly — stress in the humans leaks into the process. A foster-assessed adult gives you the compatibility data upfront and respects that constraint.\n\nFor Oscar specifically: confident male, chase-and-bat style, not a wrestler. Ask rescues explicitly for a cat that 'holds its ground' with other cats rather than fleeing. That's the Oscar-compatible trait more than any other.\n\nPractical next step: contact two or three local rescues and tell them exactly what you told me — confident adult male resident, small apartment, looking for a bold cat confirmed with other cats. Good rescue staff will match-make for you. This is a common request and they're usually good at it.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Actually, you know what — I want a kitten. I've wanted a kitten this whole time and I've been letting my partner's hesitation talk me out of what I actually want. We'll do the introduction right. I'm going to have that conversation with my partner tonight and tell them I want to try for a kitten from a rescue if one becomes available. That's my call.",
+      "ai_response": "That's a legitimate call — and the reasoning is sound if you back it up. Oscar's profile (confident, not anxious) and the adult-male-plus-kitten dynamic genuinely does work well. The key thing to bring to your partner is the commitment to strict protocol: separate room for 2-3 weeks, no free access until both cats are relaxed under the door. If your partner is more comfortable knowing there's a structured process rather than 'just throwing them together,' that framing often helps. Rescue kittens do come available — checking with local rescues and asking to be on a kitten notification list is the right move. Good luck with the conversation tonight.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

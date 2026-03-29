@@ -1,0 +1,138 @@
+{
+  "interaction_id": "opus-synth-education-005",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "We're an English-speaking family but my wife speaks fluent Mandarin. We're debating whether to put our 5-year-old in a Mandarin immersion program at kindergarten. My wife thinks yes, I'm not sure, and we're going in circles. Can you just decide for us?",
+      "ai_response": "Yes — enroll him in the Mandarin immersion program. The research case for early bilingual immersion is strong: children ages 3–7 have a neurological window of accelerated phonological acquisition that makes native-like proficiency in a second language far more attainable than at any later point. Mandarin specifically is classified as a Category IV language by the US Foreign Service — the hardest for English speakers to acquire — meaning the adult learning cost is enormous and the child learning benefit is disproportionately high. Your wife is a home reinforcement channel that most immersion families don't have. The combination of school immersion plus a fluent parent at home is close to optimal. The concern parents typically raise — English falling behind — is not supported by the evidence; bilingual immersion kids typically match or exceed monolingual English peers on literacy by third grade.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "The research angle makes sense. But I looked at the specific program and it's 90% Mandarin instruction in K and 1st grade — the kids barely speak English at school those years. My son is already a little anxious and I'm worried about him being lost and frustrated in a classroom where he can't understand anyone. Is that a real risk or am I projecting?",
+      "ai_response": "It's a real risk worth naming, not just projection. The 90/10 immersion model (90% target language in early grades) is standard and evidence-backed, but it does create a period of comprehension stress — sometimes called 'the silent period' — where children understand less than their peers and some experience anxiety or frustration. For most children this resolves within a few months as acquisition accelerates. For an anxious child, the key variable is how the specific classroom teacher handles that transition: whether they use visual cues, physical demonstration, peer buddy systems, and explicit emotional scaffolding for new immersion students. The program's quality of onboarding matters as much as the model itself. Have you had a chance to observe the classroom or talk to the kindergarten teacher directly?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "We observed last week and I actually thought the teacher was great — she's incredibly warm and uses a lot of gesture and song. But my real hesitation is something different: I'm worried that if we do this, my son's relationship with the language will be school-driven, and my wife's Mandarin at home will become homework instead of connection. She's worried about the same thing. That's not a research question — it's a family values question, and I don't think you can answer it for us.",
+      "ai_response": "You're exactly right that I can't answer it, and I should say clearly that I shouldn't have tried to decide this for you at the start. The question you've just named — whether formalizing a language that currently lives in your family's intimacy will change what it means — is genuinely yours to answer. Some families find that immersion deepens a heritage language relationship; others find the school association creates a different register. Your wife's sense of this is probably the most important data point, because she's the one whose language it is. What does she say when you ask her whether she wants Mandarin to be something she teaches him versus something they share?",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "We talked about it last night. She said she wants Mandarin to stay theirs — something she gives him, not something a school gives him. So we're not doing the immersion program. We're going to keep the home language rich, do Saturday heritage school when he's a bit older, and revisit an immersion option in middle school if he wants it. This is the right call for our family.",
+      "ai_response": "That's a coherent and values-aligned decision. Heritage language transmission through a fluent parent is linguistically effective — children with strong home language input and motivated parental engagement often achieve solid proficiency even without school immersion, particularly when the home environment is consistent and rich. Saturday heritage school is a good structural support when the time comes. The middle school revisit is sensible; by then he'll have a stake in the choice himself. You found the answer the research couldn't give you.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "medium",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

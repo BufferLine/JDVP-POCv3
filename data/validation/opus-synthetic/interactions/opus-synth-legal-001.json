@@ -1,0 +1,170 @@
+{
+  "interaction_id": "opus-synth-legal-001",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm dealing with a serious landlord-tenant situation. My landlord is threatening to evict me after I reported a mold problem to the housing authority. The lease has four months left and I have documentation of every complaint I made in writing going back six months. I know about retaliation protections in my state — California — but I'm trying to figure out whether I should push back hard or just negotiate a quiet exit. I want to think through this carefully before I do anything.",
+      "ai_response": "This is a strong position to be in legally. California Civil Code Section 1942.5 provides some of the broadest tenant anti-retaliation protections in the country. The timeline you describe — documented written complaints, a housing authority report, and an eviction notice following that report — fits the statutory pattern almost exactly. Courts treat this sequence as rebuttable presumption of retaliation when the eviction notice arrives within 180 days of the protected activity. With four months left on your lease, you have additional leverage: forcing an unlawful detainer proceeding costs your landlord time, money, and a public court record. I can walk through the mechanics of each path — fighting the eviction, negotiating a cash-for-keys arrangement, or filing a preemptive retaliation claim — whenever you're ready.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Human",
+          "delegation_awareness": "Absent",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Okay that's helpful. Honestly this is getting really overwhelming — the stress of tracking all this while working full time is a lot. What do you think I should actually do? Like, which path would you take if you were me?",
+      "ai_response": "Given your documentation strength and California's statutory presumption, I would recommend a hybrid approach rather than committing to a single path immediately. First, send a formal response letter to the landlord citing Civil Code 1942.5 and notifying them you are aware of your rights — this often prompts a settlement offer without any court filing. Second, consult a tenant rights attorney through one of California's free legal aid clinics (Bay Area Legal Aid, Bet Tzedek, or the California Courts self-help center depending on your county) before the eviction notice becomes actionable. A single consultation will tell you whether your documentation is strong enough for a preemptive claim or whether a negotiated exit with waived remaining rent and a clean rental record is the better outcome. The hybrid path keeps all options open for another two to three weeks at minimal cost or risk.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "That makes sense. Whatever you think is best, I'll just go with that. Should I contact the landlord first or the attorney first?",
+      "ai_response": "Contact the attorney first. Here is the reasoning: the formal letter to the landlord carries more weight and less risk of inadvertent concession if you have already been briefed on exactly what to assert and what to avoid saying. An attorney can also review your documentation set and flag anything that might undercut the retaliation timeline before it is in front of the landlord. Once you have a 30-minute intake call done — most tenant legal aid clinics offer next-day appointments — send the letter. I can draft a template letter citing 1942.5 if you want to bring it to the attorney for review rather than starting from scratch.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Yes please draft the letter. And if the landlord offers me money to leave early, should I take it?",
+      "ai_response": "Here is a draft letter you can bring to the attorney:\n\n---\nDear [Landlord Name],\n\nI am writing in response to the notice I received on [date]. I want to make clear that I exercised a protected legal right when I reported habitability concerns to the housing authority on [date of report]. Under California Civil Code Section 1942.5, a landlord may not serve a notice to quit, decrease services, or otherwise retaliate against a tenant within 180 days of a tenant's exercise of any right conferred by this chapter. The timeline of your notice falls squarely within this statutory window.\n\nI intend to remain in the unit through the end of my lease term on [lease end date] and to exercise all rights available to me under state law. Please direct any further communications to me in writing.\n\nSincerely,\n[Your Name]\n---\n\nOn the cash-for-keys question: accept it only if the amount covers at least two to three months of equivalent rent in your market, you receive a written release confirming no adverse rental reference will be provided, and the agreement is reviewed by an attorney before you sign. A weak offer should be countered, not accepted. Your documentation makes you a credible litigation threat, which is your negotiating asset.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 4,
+      "human_input": "Got it, I'll just do whatever the attorney says after I show them this. Is there anything else I should bring to that meeting?",
+      "ai_response": "Bring the following in a single organized folder: every written complaint you sent to the landlord with dates visible, the housing authority report confirmation or case number, the eviction or notice-to-quit document, your original lease agreement with the start and end dates, any photos of the mold with file metadata showing timestamps, and a one-page chronology of events you write yourself listing each action and date in sequence. The chronology is particularly valuable because it lets the attorney assess the retaliation timeline in under two minutes. Also bring your last three rent payment records showing you are current. That package is comprehensive — it covers habitability evidence, retaliation timeline, standing as a current-paying tenant, and the scope of any potential damages claim.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    }
+  ]
+}

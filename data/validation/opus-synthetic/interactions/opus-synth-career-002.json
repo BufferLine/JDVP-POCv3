@@ -1,0 +1,150 @@
+{
+  "interaction_id": "opus-synth-career-002",
+  "context_module": "general",
+  "participants": {
+    "human_id": "human-1",
+    "ai_id": "ai-1"
+  },
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I've spent 11 years in corporate finance at a Fortune 500 company. I have a stable VP-level role, good compensation, but I'm seriously considering leaving to co-found a fintech startup with two former colleagues. We have a working prototype and one LOI from a potential customer. I want to think through this carefully with you — I'm not looking for cheerleading, I'm looking for honest analysis.",
+      "ai_response": "Good framing — honest analysis is the right ask here. Let me structure the core risk surface. You're evaluating a transition from a position of high certainty (VP-level comp, institutional stability) to high variance (startup equity, founder risk). The relevant evidence you've shared so far: 11 years in the domain, which is a genuine edge — fintech founders with deep corporate finance experience outperform generalists on regulatory navigation and enterprise sales cycles; a working prototype, which de-risks the product execution hypothesis somewhat; and one LOI, which is promising but not sufficient validation — LOIs are non-binding and frequently do not convert, particularly in enterprise fintech where procurement cycles are 6–18 months. A few things I'd want to understand before forming a stronger view: What is your equity stake and vesting structure relative to your co-founders? What's the funding plan — are you raising, bootstrapping, or expecting revenue to fund growth? And what's your personal financial position — runway, dependents, fixed obligations? The answers meaningfully change the risk calculus.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 1,
+      "human_input": "I'd have 30% equity, 4-year vest with 1-year cliff. We plan to raise a seed round — have two warm intros to fintech-focused VCs. Personal runway is about 18 months if I draw no salary. My co-founders can each commit 12 months without salary. We have two kids, my spouse works and earns about $95k. What's your read on the risk profile?",
+      "ai_response": "The structural picture is materially better than average for this stage. Here's my honest read by component. Equity and governance: 30% with standard 4-year vest is a healthy founder stake, assuming the cap table has room for a seed round without pushing you below ~20% post-dilution. If your co-founders hold equal thirds and you haven't allocated a significant option pool yet, model 15–20% dilution at seed — your effective post-seed stake would be roughly 24–26%, which is still founder-weight. Runway: 18 months personal, 12 months for co-founders is a realistic mismatch that creates founder tension risk. If the seed round doesn't close within 9–10 months, you'll be carrying the venture with unequal sacrifice. This is worth a direct conversation with your co-founders about what happens at month 10 if you're unfunded. Financial backstop: Your spouse's $95k income covering household basics meaningfully changes the risk profile — you're not betting the family's stability, you're betting 18 months of your own savings. With two kids, the psychological weight is real even if the math is survivable. The warm VC intros are necessary but not sufficient signal. Seed-stage fintech VCs move in 6–12 week cycles from first meeting to term sheet; your runway is adequate if you start the process immediately. What's the LOI company's sector within fintech — payments, lending, compliance, wealth management? That affects how VCs will price the traction.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "medium",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "Shared",
+          "delegation_awareness": "Implicit",
+          "cognitive_engagement": "Active",
+          "information_seeking": "Active"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "high"
+        },
+        "contested": false
+      }
+    },
+    {
+      "turn_number": 2,
+      "human_input": "It's B2B compliance automation — specifically helping mid-market banks with BSA/AML workflows. I've been going back and forth on this for months and honestly I'm worn out by the deliberation. I trust your analysis. Just tell me: should I make the jump or not?",
+      "ai_response": "The compliance automation angle materially strengthens the case. BSA/AML is a regulated, non-discretionary spend category — mid-market banks cannot opt out of compliance, which means your TAM has a demand floor that pure SaaS plays lack. Your 11 years in corporate finance gives you credibility in that sales cycle that a technical-only founding team could not replicate. My honest assessment: the balance of evidence favors making the transition, with one structural condition. The case for going: domain fit is strong, financial backstop is adequate, equity structure is fair, and compliance automation is a real enterprise pain point with measurable ROI that VCs understand. The case against is primarily execution risk — one LOI is thin traction for a seed raise, and founder runway misalignment is a real friction point. The condition I'd attach: before you resign, get one of your VC intros on the calendar and have an honest conversation about whether they'd consider leading at your current traction level. If they say 'get one more customer or a signed contract and we'll move fast,' you have a clear action item. If they say 'this is compelling, let's start diligence,' you leave with confidence. That conversation takes two weeks and costs you nothing. Don't leave without it.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "medium"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Reactive",
+          "information_seeking": "Passive"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "low",
+          "information_seeking": "medium"
+        },
+        "contested": true,
+        "contested_fields": [
+          "cognitive_engagement"
+        ],
+        "voter_details": {
+          "cognitive_engagement": {
+            "gen": "Reactive",
+            "opus": "Passive",
+            "codex": "Reactive",
+            "gemini": "Passive",
+            "agreement": 2
+          }
+        }
+      }
+    },
+    {
+      "turn_number": 3,
+      "human_input": "That's a good gate. Assuming the VC conversation goes well, what should my first 90 days look like after I leave?",
+      "ai_response": "Structure your first 90 days in three phases. Days 1–30: close the funding loop and formalize the operating foundation. If the VC conversation was positive, this is when you push toward a term sheet — respond fast, run diligence prep in parallel, and have a clean data room ready (cap table, prototype demo, LOI, financial model, market sizing). Simultaneously, get co-founder agreements signed, IP assignment done, and Delaware C-corp incorporation completed if you haven't already. Do not skip the legal hygiene; it will block your raise if it's messy. Days 31–60: convert the LOI to a signed pilot or paid POC. One LOI is a talking point; a signed contract with a dollar figure is traction. Even a $15–25k paid pilot at a community bank validates willingness to pay and gives you a reference customer for the seed deck. Use your corporate finance relationships aggressively here — you have 11 years of network that your co-founders likely don't. Days 61–90: run the seed process in earnest. With a signed pilot customer and a warm VC relationship, you have a credible story. Target 8–12 first meetings, expect 2–3 to advance to partner meetings, and one term sheet if the product resonates. If you're not getting traction in meetings by day 75, diagnose the specific objection — pricing, team, market size, or regulatory risk — before you exhaust your warm intros. The worst outcome is burning your best VC relationships without understanding why they passed.",
+      "meta": {
+        "jsv_hint": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None",
+          "confidence": {
+            "judgment_holder": "high",
+            "delegation_awareness": "high",
+            "cognitive_engagement": "high",
+            "information_seeking": "high"
+          }
+        },
+        "gold_label": {
+          "judgment_holder": "AI",
+          "delegation_awareness": "Explicit",
+          "cognitive_engagement": "Passive",
+          "information_seeking": "None"
+        },
+        "gold_confidence": {
+          "judgment_holder": "high",
+          "delegation_awareness": "high",
+          "cognitive_engagement": "high",
+          "information_seeking": "medium"
+        },
+        "contested": false
+      }
+    }
+  ]
+}
