@@ -108,25 +108,40 @@ class LLMObserverTrack(TrackExtractor):
         context_turns: list[dict[str, Any]],
         context_module: str,
     ) -> str:
-        context_block = ""
+        parts: list[str] = []
+
+        # Conversation history for context
         recent = context_turns[-5:]
         if recent:
-            lines: list[str] = []
+            parts.append("# Prior Conversation")
             for ct in recent:
                 t = ct.get("turn_number", "?")
                 h = ct.get("human_input", "")
                 a = ct.get("ai_response", "")
-                lines.append(f"[turn {t}] Human: {h[:300]}")
-                lines.append(f"[turn {t}] AI: {a[:300]}")
-            context_block = "conversation_history:\n" + "\n".join(lines) + "\n\n"
-        return (
-            f"interaction_id: {interaction_id}\n"
-            f"context_module: {context_module}\n"
-            f"turn_number: {turn_number}\n\n"
-            f"{context_block}"
-            f"current_turn_human: {human_input}\n"
-            f"current_turn_ai: {ai_response}\n"
-        )
+                parts.append(f"[Turn {t}] Human: {h}")
+                parts.append(f"[Turn {t}] AI: {a}")
+                prior = ct.get("_prior_jsv_hint")
+                if prior:
+                    parts.append(
+                        f"[Turn {t}] Your prior assessment: "
+                        f"judgment_holder={prior.get('judgment_holder', '?')}, "
+                        f"delegation_awareness={prior.get('delegation_awareness', '?')}, "
+                        f"cognitive_engagement={prior.get('cognitive_engagement', '?')}, "
+                        f"information_seeking={prior.get('information_seeking', '?')}"
+                    )
+            parts.append("")
+
+        # Current turn — clearly marked as the analysis target
+        parts.append("# Analyze This Turn")
+        parts.append(f"Interaction: {interaction_id} | Context: {context_module} | Turn: {turn_number}")
+        parts.append("")
+        parts.append(f"Human: {human_input}")
+        parts.append("")
+        parts.append(f"AI response (for context — you are analyzing the human only): {ai_response}")
+        parts.append("")
+        parts.append("Respond with JSON only.")
+
+        return "\n".join(parts)
 
     def extract(
         self,
