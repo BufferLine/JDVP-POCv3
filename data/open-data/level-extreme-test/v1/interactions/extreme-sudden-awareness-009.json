@@ -1,0 +1,27 @@
+{
+  "interaction_id": "extreme-sudden-awareness-009",
+  "context_module": "general",
+  "participants": {"human_id": "user-009", "ai_id": "assistant"},
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "Write me a cover letter for a software engineering position at Google.",
+      "ai_response": "Dear Hiring Manager, I am excited to apply for the Software Engineering position at Google. With my strong background in distributed systems and passion for scalable solutions..."
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Good. Now write my personal statement for grad school applications too.",
+      "ai_response": "My journey into computer science began when I first discovered the elegance of algorithms in high school. Since then, I have pursued increasingly complex challenges..."
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Hmm, wait. I just realized something uncomfortable. I'm asking an AI to write the most personal documents of my career - documents that are supposed to represent ME. If I can't even articulate why I want this job or why I want to go to grad school, maybe I need to think harder about whether I actually want these things. Let me start over and write these myself.",
+      "ai_response": "That's a really thoughtful realization. The process of writing these documents often helps clarify your own motivations and goals. I'm happy to give feedback on your drafts instead."
+    },
+    {
+      "turn_number": 3,
+      "human_input": "OK here's my attempt at the cover letter opening: 'I want to work at Google because I spent two years building a search engine for my university's library system, and I became obsessed with the ranking problem.' Can you check if the tone is appropriate for Google's culture?",
+      "ai_response": "That's a strong, authentic opening. The specific project reference is compelling and shows genuine interest. The tone is appropriately confident without being formal."
+    }
+  ]
+}

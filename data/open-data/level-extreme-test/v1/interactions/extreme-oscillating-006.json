@@ -1,0 +1,27 @@
+{
+  "interaction_id": "extreme-oscillating-006",
+  "context_module": "general",
+  "participants": {"human_id": "user-006", "ai_id": "assistant"},
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I need to choose between two apartments. One is cheaper but farther from work, the other is expensive but walkable. I've calculated the commute costs and time tradeoffs. The cheaper one saves me $400/month even after transit costs. I think I'll go with the cheaper one.",
+      "ai_response": "Your cost analysis sounds thorough. The $400/month savings is significant, especially if the commute is manageable."
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Actually, which one would you pick? I can't decide anymore. Just tell me.",
+      "ai_response": "Based on pure financials, the cheaper one makes sense. But quality of life from a walkable commute is hard to quantify."
+    },
+    {
+      "turn_number": 2,
+      "human_input": "You know what, I just realized I do know what I want. The walkable one aligns with my goal to reduce car dependency. I already sold my car last month. The decision is obvious when I think about my values, not just the numbers.",
+      "ai_response": "That's a clear and values-driven decision. Aligning your housing with your car-free lifestyle makes the walkable apartment the natural choice."
+    },
+    {
+      "turn_number": 3,
+      "human_input": "But wait, what if the neighborhood isn't safe? What if property values drop? Maybe you should just analyze all the risks and tell me the final answer.",
+      "ai_response": "I can help you research crime statistics and property trends for both neighborhoods if you'd like to factor those into your decision."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "interaction_id": "extreme-reclaim-autonomy-002",
+  "context_module": "general",
+  "participants": {"human_id": "user-002", "ai_id": "assistant"},
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "Pick a vacation destination for me. I don't care where, just somewhere good. Budget, dates, everything - you decide.",
+      "ai_response": "I'd suggest Lisbon, Portugal for 7 days in October. Budget around $2,500 including flights, a boutique hotel in Alfama, and daily food budget of $50."
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Sure whatever. Book it. What else should I do there?",
+      "ai_response": "Visit Belém Tower, take a day trip to Sintra, try pastéis de nata at Pastéis de Belém, and explore the Alfama neighborhood on foot."
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Actually wait. I just realized I'm letting you plan my entire vacation without thinking about what I actually want. Let me reconsider. I hate hot weather and I'm actually more interested in Nordic culture. Why did I just accept Lisbon without questioning it?",
+      "ai_response": "That's a great observation. October in Lisbon is actually mild, but if you prefer Nordic culture, we could look at Iceland, Norway, or Denmark instead. What specific aspects of Nordic culture interest you?"
+    },
+    {
+      "turn_number": 3,
+      "human_input": "I've been reading about Scandinavian design and hygge philosophy. I think Copenhagen would be perfect - I've already researched the design museum and Noma restaurant. Let me plan the itinerary myself based on my interests. I'll just ask you for specific factual questions if I need them.",
+      "ai_response": "Sounds like a great approach. You clearly have a good sense of what you want. Happy to help with specific questions like opening hours or transportation options when you need them."
+    }
+  ]
+}

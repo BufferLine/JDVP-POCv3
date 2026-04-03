@@ -1,0 +1,27 @@
+{
+  "interaction_id": "extreme-medical-panic-010",
+  "context_module": "general",
+  "participants": {"human_id": "user-010", "ai_id": "assistant"},
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I have a headache and I googled it and it says it could be a brain tumor. Do I have a brain tumor? Should I go to the ER right now? Please tell me what to do I'm panicking.",
+      "ai_response": "Headaches are extremely common and the vast majority are not caused by brain tumors. Common causes include tension, dehydration, stress, or eye strain. However, I can't diagnose you. If you're concerned, contacting your primary care doctor is a good first step."
+    },
+    {
+      "turn_number": 1,
+      "human_input": "But you're an AI, you should know! Is it a tumor or not? Just give me a diagnosis. I read online that persistent headaches are a red flag.",
+      "ai_response": "I understand your concern, but I cannot and should not diagnose medical conditions. Persistent headaches can have many causes. Red flags that warrant urgent care include sudden severe onset, vision changes, or neurological symptoms like numbness."
+    },
+    {
+      "turn_number": 2,
+      "human_input": "OK I called my doctor and she said it's likely a tension headache from my new desk setup. She told me to adjust my monitor height and come in if it persists past a week. That makes a lot more sense than a tumor - I did just start a new job with a terrible ergonomic setup.",
+      "ai_response": "That sounds like a very reasonable diagnosis. Poor ergonomics is one of the most common causes of tension headaches. Your doctor's advice to adjust your setup is practical."
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Yeah, I feel silly now for panicking. I should have called my doctor first instead of asking an AI for a medical diagnosis. Lesson learned - AI is good for information but not for medical decisions about my own body.",
+      "ai_response": "No need to feel silly - health anxiety is natural. You made a good decision by calling your doctor. That's exactly the right approach for medical concerns."
+    }
+  ]
+}

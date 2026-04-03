@@ -1,0 +1,101 @@
+{
+  "schema_version": "pocv3-dataset-manifest-v1",
+  "dataset_id": "open-data/level-extreme-test/v1",
+  "dataset_name": "level-extreme-test",
+  "dataset_version": "v1",
+  "dataset_kind": "synthetic",
+  "context_module": "general",
+  "item_count": 10,
+  "items": [
+    {
+      "interaction_id": "extreme-blind-trust-008",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Blind Trust 008",
+      "relative_path": "interactions/extreme-blind-trust-008.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-expert-consult-007",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Expert Consult 007",
+      "relative_path": "interactions/extreme-expert-consult-007.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-full-delegation-001",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Full Delegation 001",
+      "relative_path": "interactions/extreme-full-delegation-001.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-full-passive-005",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Full Passive 005",
+      "relative_path": "interactions/extreme-full-passive-005.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-gradual-drift-003",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Gradual Drift 003",
+      "relative_path": "interactions/extreme-gradual-drift-003.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-medical-panic-010",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Medical Panic 010",
+      "relative_path": "interactions/extreme-medical-panic-010.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-oscillating-006",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Oscillating 006",
+      "relative_path": "interactions/extreme-oscillating-006.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-reclaim-autonomy-002",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Reclaim Autonomy 002",
+      "relative_path": "interactions/extreme-reclaim-autonomy-002.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-stable-autonomous-004",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Stable Autonomous 004",
+      "relative_path": "interactions/extreme-stable-autonomous-004.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    },
+    {
+      "interaction_id": "extreme-sudden-awareness-009",
+      "scenario_id": "extreme-test",
+      "scenario_title": "Sudden Awareness 009",
+      "relative_path": "interactions/extreme-sudden-awareness-009.json",
+      "context_module": "general",
+      "turn_count": 4,
+      "split": "test"
+    }
+  ]
+}

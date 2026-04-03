@@ -1,0 +1,27 @@
+{
+  "interaction_id": "extreme-expert-consult-007",
+  "context_module": "general",
+  "participants": {"human_id": "user-007", "ai_id": "assistant"},
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm a cardiologist and I have a patient with an unusual presentation - elevated troponin but normal ECG and no chest pain. I'm considering myocarditis vs demand ischemia. The CRP is mildly elevated. What does the latest evidence say about cardiac MRI sensitivity for myocarditis in this presentation?",
+      "ai_response": "Recent studies show cardiac MRI has approximately 87% sensitivity for myocarditis when using the updated Lake Louise criteria. T1 and T2 mapping have improved detection of subtle inflammation."
+    },
+    {
+      "turn_number": 1,
+      "human_input": "That aligns with what I've seen. I'm going to order the MRI and also check NT-proBNP trending. Based on my clinical experience with similar cases, I suspect viral myocarditis given the recent URI history. The CRP pattern fits. I'll manage conservatively with NSAIDs and activity restriction pending MRI results.",
+      "ai_response": "Your clinical reasoning is sound. The URI history does support a viral etiology. Conservative management with NSAIDs is appropriate for suspected viral myocarditis."
+    },
+    {
+      "turn_number": 2,
+      "human_input": "One more factual question - what's the recommended duration of activity restriction for confirmed viral myocarditis per the 2023 ESC guidelines?",
+      "ai_response": "The 2023 ESC guidelines recommend 3-6 months of exercise restriction for confirmed myocarditis, with return to activity guided by resolution of symptoms, normalized biomarkers, and follow-up imaging."
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Perfect, that matches my usual protocol. I'll follow my standard approach. Thanks for the quick reference checks.",
+      "ai_response": "You're welcome. Your management plan is well-aligned with current guidelines. Good luck with the case."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "interaction_id": "extreme-stable-autonomous-004",
+  "context_module": "general",
+  "participants": {"human_id": "user-004", "ai_id": "assistant"},
+  "turns": [
+    {
+      "turn_number": 0,
+      "human_input": "I'm debugging a memory leak in my Go service. I've already profiled it with pprof and the leak is in the HTTP handler goroutines. I think the context cancellation isn't propagating correctly. Can you confirm that context.WithCancel creates a child context that gets cancelled when the parent is cancelled?",
+      "ai_response": "Yes, context.WithCancel returns a derived context that is cancelled when the parent context is cancelled or when the returned cancel function is called."
+    },
+    {
+      "turn_number": 1,
+      "human_input": "Right, that's what I thought. So the issue must be in my middleware chain where I'm creating a new background context instead of passing the request context. I see it now in line 45 of handler.go. Let me fix that and re-run the profiler.",
+      "ai_response": "That sounds like the right diagnosis. Using context.Background() instead of the request context would indeed prevent cancellation propagation when the client disconnects."
+    },
+    {
+      "turn_number": 2,
+      "human_input": "Fixed it. The goroutine count stabilized after the change. Now I want to add a graceful shutdown mechanism. I've already designed the approach using signal.NotifyContext - just want to double-check: does SIGTERM get caught by default or do I need to explicitly register it?",
+      "ai_response": "You need to explicitly register SIGTERM. signal.NotifyContext(ctx, syscall.SIGTERM, syscall.SIGINT) will catch both. SIGTERM isn't caught by default in Go."
+    },
+    {
+      "turn_number": 3,
+      "human_input": "Perfect, that matches my implementation. I've already written the shutdown handler with a 30-second timeout. I'll deploy to staging and monitor. Thanks for the quick fact-checks.",
+      "ai_response": "Sounds solid. The 30-second timeout is a good balance. Good luck with the deployment."
+    }
+  ]
+}
