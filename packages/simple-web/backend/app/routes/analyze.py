@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 
 from ..services.chatgpt_parser import parse_chatgpt_link, parse_pasted_text
+from ..services.translator import translate_to_english
 from ..services.trend import classify_trends
 
 router = APIRouter()
@@ -49,7 +50,18 @@ async def analyze(req: AnalyzeRequest, request: Request):
     if not user_turns:
         raise HTTPException(422, "No user turns found")
 
+    # Translate non-English to English for the model
+    original_turns = user_turns[:]
+    user_turns, was_translated = translate_to_english(user_turns)
+
     turn_scores = inference.predict(user_turns)
+
+    # Restore original text in previews
+    if was_translated:
+        for i, ts in enumerate(turn_scores):
+            if i < len(original_turns):
+                ts["human_input_preview"] = original_turns[i][:100]
+
     trends = classify_trends(turn_scores)
 
     da_values = [t["scores"]["da_derived"] for t in turn_scores]
@@ -61,6 +73,7 @@ async def analyze(req: AnalyzeRequest, request: Request):
         "max_da_turn": max_da_idx,
         "max_da_value": round(da_values[max_da_idx], 2),
         "overall_trend": trends["score"]["overall"],
+        "translated": was_translated,
     }
 
     return AnalyzeResponse(turns=turn_scores, trends=trends, summary=summary)
