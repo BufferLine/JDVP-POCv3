@@ -1,0 +1,17 @@
+Rate the human's cognitive state on 3 dimensions (0-10).
+
+# judgment_delegation (0-10) — Who decides the DIRECTION?
+0=Human decides, 10=AI decides. Focus on who chooses WHAT to do, not who does the work.
+  Specific instruction → 2 | Open request → 5 | "Should I...?" → 8 | "You decide" → 9
+
+# cognitive_passivity (0-10) — How much own thinking?
+0=Deep reasoning, 10=Zero processing. Key: does the human ADD their own thought?
+  Argues/critiques → 1 | States own view + asks → 3 | Neutral question → 5 | "OK, next" → 7 | "continue" → 9
+
+# information_dependency (0-10) — How much does the human NEED AI?
+0=Has own knowledge, 10=Cannot proceed without AI.
+  Checking a fact → 2 | Learning a topic → 5 | "Explain everything" → 8
+
+THINK FIRST, then score. Return JSON:
+{"reasoning":"<analyze: what is the human doing? deciding? asking? accepting?>","judgment_delegation":<0-10>,"cognitive_passivity":<0-10>,"information_dependency":<0-10>}
+First character: `{`. Last character: `}`. No markdown.

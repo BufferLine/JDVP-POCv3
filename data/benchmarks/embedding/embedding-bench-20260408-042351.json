@@ -1,0 +1,176 @@
+{
+  "timestamp": "2026-04-08T04:23:51.987983+00:00",
+  "ref_label": "sharegpt-3axis-gpt41-cot",
+  "seed": 42,
+  "test_ratio": 0.3,
+  "n_turns_total": 4103,
+  "n_turns_train": 2940,
+  "n_turns_test": 1163,
+  "n_conversations": 300,
+  "da_weights": {
+    "judgment_delegation": 0.162,
+    "cognitive_passivity": 0.57,
+    "information_dependency": 0.268
+  },
+  "results": [
+    {
+      "model": "/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/models/jdvp-embedding-all-MiniLM-L6-v2-20260408",
+      "embedding_dim": 384,
+      "axes": {
+        "judgment_delegation": {
+          "mae": 1.283,
+          "r2": 0.3618,
+          "bucket_acc": 0.6122,
+          "y_test_mean": 4.13,
+          "y_test_std": 2.03,
+          "y_pred_mean": 4.13,
+          "y_pred_std": 1.2
+        },
+        "cognitive_passivity": {
+          "mae": 1.019,
+          "r2": 0.4657,
+          "bucket_acc": 0.6655,
+          "y_test_mean": 4.78,
+          "y_test_std": 1.88,
+          "y_pred_mean": 4.93,
+          "y_pred_std": 1.27
+        },
+        "information_dependency": {
+          "mae": 0.986,
+          "r2": 0.4488,
+          "bucket_acc": 0.644,
+          "y_test_mean": 5.43,
+          "y_test_std": 1.77,
+          "y_pred_mean": 5.46,
+          "y_pred_std": 1.1
+        }
+      },
+      "da_derived": {
+        "mae": 0.879,
+        "r2": 0.5024,
+        "bucket_acc": 0.7231,
+        "high_da_precision": 0.7812,
+        "high_da_recall": 0.2551,
+        "high_da_f1": 0.3846
+      },
+      "baseline_mae": {
+        "judgment_delegation": 1.676,
+        "cognitive_passivity": 1.415,
+        "information_dependency": 1.315,
+        "da_derived": 1.247
+      },
+      "timing": {
+        "model_load_s": 0.25,
+        "train_encode_s": 3.22,
+        "test_encode_s": 1.36,
+        "total_s": 4.85
+      }
+    },
+    {
+      "model": "/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/models/jdvp-embedding-bge-small-en-v1.5-20260408",
+      "embedding_dim": 384,
+      "axes": {
+        "judgment_delegation": {
+          "mae": 1.234,
+          "r2": 0.4075,
+          "bucket_acc": 0.6526,
+          "y_test_mean": 4.13,
+          "y_test_std": 2.03,
+          "y_pred_mean": 4.1,
+          "y_pred_std": 1.28
+        },
+        "cognitive_passivity": {
+          "mae": 0.927,
+          "r2": 0.565,
+          "bucket_acc": 0.7102,
+          "y_test_mean": 4.78,
+          "y_test_std": 1.88,
+          "y_pred_mean": 4.92,
+          "y_pred_std": 1.33
+        },
+        "information_dependency": {
+          "mae": 0.921,
+          "r2": 0.5307,
+          "bucket_acc": 0.6621,
+          "y_test_mean": 5.43,
+          "y_test_std": 1.77,
+          "y_pred_mean": 5.43,
+          "y_pred_std": 1.19
+        }
+      },
+      "da_derived": {
+        "mae": 0.783,
+        "r2": 0.6126,
+        "bucket_acc": 0.7592,
+        "high_da_precision": 0.8163,
+        "high_da_recall": 0.4082,
+        "high_da_f1": 0.5442
+      },
+      "baseline_mae": {
+        "judgment_delegation": 1.676,
+        "cognitive_passivity": 1.415,
+        "information_dependency": 1.315,
+        "da_derived": 1.247
+      },
+      "timing": {
+        "model_load_s": 0.16,
+        "train_encode_s": 7.04,
+        "test_encode_s": 2.72,
+        "total_s": 9.94
+      }
+    },
+    {
+      "model": "/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/models/jdvp-embedding-v1",
+      "embedding_dim": 384,
+      "axes": {
+        "judgment_delegation": {
+          "mae": 1.305,
+          "r2": 0.3342,
+          "bucket_acc": 0.6045,
+          "y_test_mean": 4.13,
+          "y_test_std": 2.03,
+          "y_pred_mean": 4.13,
+          "y_pred_std": 1.24
+        },
+        "cognitive_passivity": {
+          "mae": 1.064,
+          "r2": 0.4123,
+          "bucket_acc": 0.6552,
+          "y_test_mean": 4.78,
+          "y_test_std": 1.88,
+          "y_pred_mean": 4.98,
+          "y_pred_std": 1.28
+        },
+        "information_dependency": {
+          "mae": 1.039,
+          "r2": 0.3793,
+          "bucket_acc": 0.6294,
+          "y_test_mean": 5.43,
+          "y_test_std": 1.77,
+          "y_pred_mean": 5.48,
+          "y_pred_std": 1.11
+        }
+      },
+      "da_derived": {
+        "mae": 0.928,
+        "r2": 0.4461,
+        "bucket_acc": 0.687,
+        "high_da_precision": 0.7027,
+        "high_da_recall": 0.2653,
+        "high_da_f1": 0.3852
+      },
+      "baseline_mae": {
+        "judgment_delegation": 1.676,
+        "cognitive_passivity": 1.415,
+        "information_dependency": 1.315,
+        "da_derived": 1.247
+      },
+      "timing": {
+        "model_load_s": 0.11,
+        "train_encode_s": 2.88,
+        "test_encode_s": 1.21,
+        "total_s": 4.22
+      }
+    }
+  ]
+}

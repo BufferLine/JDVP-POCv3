@@ -1,0 +1,1894 @@
+{
+  "timestamp": "2026-04-08T04:10:36.068442+00:00",
+  "ref_labels": [
+    "sharegpt-3axis-gpt41-cot",
+    "sharegpt-3axis-sonnet-cot",
+    "sharegpt-3axis-gemma4-26b-cot",
+    "sharegpt-3axis-deepseek-cot"
+  ],
+  "seed": 42,
+  "n_conversations": 300,
+  "results": [
+    {
+      "model": "all-MiniLM-L6-v2",
+      "embedding_dim": 384,
+      "score_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.5444,
+          "confusion_matrix": [
+            [
+              27,
+              5,
+              13
+            ],
+            [
+              1,
+              0,
+              5
+            ],
+            [
+              12,
+              5,
+              22
+            ]
+          ],
+          "distribution_true": {
+            "falling": 39,
+            "rising": 45,
+            "stable": 6
+          },
+          "distribution_pred": {
+            "falling": 40,
+            "rising": 40,
+            "stable": 10
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.5333,
+          "confusion_matrix": [
+            [
+              33,
+              12,
+              12
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              12,
+              6,
+              14
+            ]
+          ],
+          "distribution_true": {
+            "falling": 32,
+            "rising": 57,
+            "stable": 1
+          },
+          "distribution_pred": {
+            "stable": 19,
+            "rising": 45,
+            "falling": 26
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.6,
+          "confusion_matrix": [
+            [
+              43,
+              6,
+              16
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              5,
+              8,
+              10
+            ]
+          ],
+          "distribution_true": {
+            "rising": 65,
+            "falling": 23,
+            "stable": 2
+          },
+          "distribution_pred": {
+            "falling": 26,
+            "rising": 49,
+            "stable": 15
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.5222,
+          "confusion_matrix": [
+            [
+              37,
+              11,
+              12
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              7,
+              10,
+              8
+            ]
+          ],
+          "distribution_true": {
+            "rising": 60,
+            "falling": 25,
+            "stable": 5
+          },
+          "distribution_pred": {
+            "stable": 23,
+            "rising": 45,
+            "falling": 22
+          }
+        },
+        "overall": {
+          "accuracy": 0.5889,
+          "confusion_matrix": [
+            [
+              37,
+              7,
+              13
+            ],
+            [
+              2,
+              0,
+              2
+            ],
+            [
+              7,
+              6,
+              16
+            ]
+          ],
+          "distribution_true": {
+            "falling": 29,
+            "rising": 57,
+            "stable": 4
+          },
+          "distribution_pred": {
+            "falling": 31,
+            "rising": 46,
+            "stable": 13
+          }
+        }
+      },
+      "bucket_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6,
+          "confusion_matrix": [
+            [
+              1,
+              17,
+              1
+            ],
+            [
+              3,
+              51,
+              6
+            ],
+            [
+              1,
+              8,
+              2
+            ]
+          ],
+          "distribution_true": {
+            "falling": 11,
+            "stable": 60,
+            "rising": 19
+          },
+          "distribution_pred": {
+            "falling": 9,
+            "rising": 5,
+            "stable": 76
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.7444,
+          "confusion_matrix": [
+            [
+              4,
+              8,
+              1
+            ],
+            [
+              5,
+              62,
+              2
+            ],
+            [
+              1,
+              6,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 13,
+            "falling": 8
+          },
+          "distribution_pred": {
+            "stable": 76,
+            "rising": 10,
+            "falling": 4
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.6333,
+          "confusion_matrix": [
+            [
+              4,
+              12,
+              0
+            ],
+            [
+              11,
+              53,
+              5
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 16,
+            "falling": 5
+          },
+          "distribution_pred": {
+            "stable": 70,
+            "rising": 15,
+            "falling": 5
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.7444,
+          "confusion_matrix": [
+            [
+              2,
+              10,
+              1
+            ],
+            [
+              7,
+              65,
+              1
+            ],
+            [
+              0,
+              4,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 73,
+            "rising": 13,
+            "falling": 4
+          },
+          "distribution_pred": {
+            "stable": 79,
+            "rising": 9,
+            "falling": 2
+          }
+        },
+        "overall": {
+          "accuracy": 0.7778,
+          "confusion_matrix": [
+            [
+              2,
+              12,
+              1
+            ],
+            [
+              2,
+              68,
+              0
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 70,
+            "falling": 5,
+            "rising": 15
+          },
+          "distribution_pred": {
+            "stable": 85,
+            "rising": 4,
+            "falling": 1
+          }
+        }
+      },
+      "overall_score_accuracy": 0.5889,
+      "overall_bucket_accuracy": 0.7778,
+      "high_consensus_accuracy": 0.6462,
+      "n_test_conversations": 90,
+      "n_test_turns": 1163,
+      "timing_s": 11.81
+    },
+    {
+      "model": "all-MiniLM-L12-v2",
+      "embedding_dim": 384,
+      "score_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.4778,
+          "confusion_matrix": [
+            [
+              23,
+              10,
+              12
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              14,
+              6,
+              19
+            ]
+          ],
+          "distribution_true": {
+            "falling": 39,
+            "rising": 45,
+            "stable": 6
+          },
+          "distribution_pred": {
+            "rising": 39,
+            "falling": 34,
+            "stable": 17
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.5667,
+          "confusion_matrix": [
+            [
+              35,
+              15,
+              7
+            ],
+            [
+              0,
+              0,
+              1
+            ],
+            [
+              14,
+              2,
+              16
+            ]
+          ],
+          "distribution_true": {
+            "falling": 32,
+            "rising": 57,
+            "stable": 1
+          },
+          "distribution_pred": {
+            "rising": 49,
+            "stable": 17,
+            "falling": 24
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.5444,
+          "confusion_matrix": [
+            [
+              39,
+              14,
+              12
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              9,
+              5,
+              9
+            ]
+          ],
+          "distribution_true": {
+            "rising": 65,
+            "falling": 23,
+            "stable": 2
+          },
+          "distribution_pred": {
+            "stable": 20,
+            "falling": 21,
+            "rising": 49
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.6,
+          "confusion_matrix": [
+            [
+              38,
+              12,
+              10
+            ],
+            [
+              1,
+              3,
+              1
+            ],
+            [
+              9,
+              3,
+              13
+            ]
+          ],
+          "distribution_true": {
+            "rising": 60,
+            "falling": 25,
+            "stable": 5
+          },
+          "distribution_pred": {
+            "rising": 48,
+            "stable": 18,
+            "falling": 24
+          }
+        },
+        "overall": {
+          "accuracy": 0.5667,
+          "confusion_matrix": [
+            [
+              38,
+              9,
+              10
+            ],
+            [
+              1,
+              1,
+              2
+            ],
+            [
+              13,
+              4,
+              12
+            ]
+          ],
+          "distribution_true": {
+            "falling": 29,
+            "rising": 57,
+            "stable": 4
+          },
+          "distribution_pred": {
+            "rising": 52,
+            "falling": 24,
+            "stable": 14
+          }
+        }
+      },
+      "bucket_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6,
+          "confusion_matrix": [
+            [
+              3,
+              15,
+              1
+            ],
+            [
+              6,
+              51,
+              3
+            ],
+            [
+              1,
+              10,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "falling": 11,
+            "stable": 60,
+            "rising": 19
+          },
+          "distribution_pred": {
+            "stable": 76,
+            "falling": 4,
+            "rising": 10
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.7,
+          "confusion_matrix": [
+            [
+              3,
+              10,
+              0
+            ],
+            [
+              7,
+              60,
+              2
+            ],
+            [
+              0,
+              8,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 13,
+            "falling": 8
+          },
+          "distribution_pred": {
+            "stable": 78,
+            "rising": 10,
+            "falling": 2
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.6222,
+          "confusion_matrix": [
+            [
+              2,
+              14,
+              0
+            ],
+            [
+              12,
+              54,
+              3
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 16,
+            "falling": 5
+          },
+          "distribution_pred": {
+            "stable": 73,
+            "falling": 3,
+            "rising": 14
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.7333,
+          "confusion_matrix": [
+            [
+              1,
+              12,
+              0
+            ],
+            [
+              6,
+              65,
+              2
+            ],
+            [
+              0,
+              4,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 73,
+            "rising": 13,
+            "falling": 4
+          },
+          "distribution_pred": {
+            "stable": 81,
+            "rising": 7,
+            "falling": 2
+          }
+        },
+        "overall": {
+          "accuracy": 0.7333,
+          "confusion_matrix": [
+            [
+              1,
+              14,
+              0
+            ],
+            [
+              5,
+              65,
+              0
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 70,
+            "falling": 5,
+            "rising": 15
+          },
+          "distribution_pred": {
+            "stable": 84,
+            "rising": 6
+          }
+        }
+      },
+      "overall_score_accuracy": 0.5667,
+      "overall_bucket_accuracy": 0.7333,
+      "high_consensus_accuracy": 0.6308,
+      "n_test_conversations": 90,
+      "n_test_turns": 1163,
+      "timing_s": 11.53
+    },
+    {
+      "model": "BAAI/bge-small-en-v1.5",
+      "embedding_dim": 384,
+      "score_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.5333,
+          "confusion_matrix": [
+            [
+              21,
+              10,
+              14
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              9,
+              4,
+              26
+            ]
+          ],
+          "distribution_true": {
+            "falling": 39,
+            "rising": 45,
+            "stable": 6
+          },
+          "distribution_pred": {
+            "falling": 43,
+            "rising": 32,
+            "stable": 15
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.4778,
+          "confusion_matrix": [
+            [
+              24,
+              12,
+              21
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              5,
+              8,
+              19
+            ]
+          ],
+          "distribution_true": {
+            "falling": 32,
+            "rising": 57,
+            "stable": 1
+          },
+          "distribution_pred": {
+            "falling": 40,
+            "stable": 20,
+            "rising": 30
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.4333,
+          "confusion_matrix": [
+            [
+              27,
+              23,
+              15
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              9,
+              3,
+              11
+            ]
+          ],
+          "distribution_true": {
+            "rising": 65,
+            "falling": 23,
+            "stable": 2
+          },
+          "distribution_pred": {
+            "falling": 26,
+            "stable": 27,
+            "rising": 37
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.4111,
+          "confusion_matrix": [
+            [
+              24,
+              14,
+              22
+            ],
+            [
+              3,
+              0,
+              2
+            ],
+            [
+              7,
+              5,
+              13
+            ]
+          ],
+          "distribution_true": {
+            "rising": 60,
+            "falling": 25,
+            "stable": 5
+          },
+          "distribution_pred": {
+            "falling": 37,
+            "rising": 34,
+            "stable": 19
+          }
+        },
+        "overall": {
+          "accuracy": 0.4556,
+          "confusion_matrix": [
+            [
+              24,
+              14,
+              19
+            ],
+            [
+              1,
+              1,
+              2
+            ],
+            [
+              9,
+              4,
+              16
+            ]
+          ],
+          "distribution_true": {
+            "falling": 29,
+            "rising": 57,
+            "stable": 4
+          },
+          "distribution_pred": {
+            "falling": 37,
+            "rising": 34,
+            "stable": 19
+          }
+        }
+      },
+      "bucket_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6222,
+          "confusion_matrix": [
+            [
+              0,
+              19,
+              0
+            ],
+            [
+              1,
+              52,
+              7
+            ],
+            [
+              1,
+              6,
+              4
+            ]
+          ],
+          "distribution_true": {
+            "falling": 11,
+            "stable": 60,
+            "rising": 19
+          },
+          "distribution_pred": {
+            "falling": 11,
+            "stable": 77,
+            "rising": 2
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.7333,
+          "confusion_matrix": [
+            [
+              2,
+              11,
+              0
+            ],
+            [
+              3,
+              63,
+              3
+            ],
+            [
+              0,
+              7,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 13,
+            "falling": 8
+          },
+          "distribution_pred": {
+            "stable": 81,
+            "falling": 4,
+            "rising": 5
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.6556,
+          "confusion_matrix": [
+            [
+              3,
+              13,
+              0
+            ],
+            [
+              5,
+              56,
+              8
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 16,
+            "falling": 5
+          },
+          "distribution_pred": {
+            "stable": 74,
+            "falling": 8,
+            "rising": 8
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.7667,
+          "confusion_matrix": [
+            [
+              1,
+              12,
+              0
+            ],
+            [
+              1,
+              67,
+              5
+            ],
+            [
+              0,
+              3,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "stable": 73,
+            "rising": 13,
+            "falling": 4
+          },
+          "distribution_pred": {
+            "stable": 82,
+            "falling": 6,
+            "rising": 2
+          }
+        },
+        "overall": {
+          "accuracy": 0.7778,
+          "confusion_matrix": [
+            [
+              1,
+              14,
+              0
+            ],
+            [
+              0,
+              69,
+              1
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 70,
+            "falling": 5,
+            "rising": 15
+          },
+          "distribution_pred": {
+            "stable": 88,
+            "rising": 1,
+            "falling": 1
+          }
+        }
+      },
+      "overall_score_accuracy": 0.4556,
+      "overall_bucket_accuracy": 0.7778,
+      "high_consensus_accuracy": 0.4615,
+      "n_test_conversations": 90,
+      "n_test_turns": 1163,
+      "timing_s": 23.68
+    },
+    {
+      "model": "BAAI/bge-base-en-v1.5",
+      "embedding_dim": 768,
+      "score_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.4889,
+          "confusion_matrix": [
+            [
+              22,
+              15,
+              8
+            ],
+            [
+              0,
+              1,
+              5
+            ],
+            [
+              11,
+              7,
+              21
+            ]
+          ],
+          "distribution_true": {
+            "falling": 39,
+            "rising": 45,
+            "stable": 6
+          },
+          "distribution_pred": {
+            "rising": 33,
+            "falling": 34,
+            "stable": 23
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.5556,
+          "confusion_matrix": [
+            [
+              27,
+              14,
+              16
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              2,
+              8,
+              22
+            ]
+          ],
+          "distribution_true": {
+            "falling": 32,
+            "rising": 57,
+            "stable": 1
+          },
+          "distribution_pred": {
+            "falling": 38,
+            "rising": 29,
+            "stable": 23
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.5667,
+          "confusion_matrix": [
+            [
+              41,
+              11,
+              13
+            ],
+            [
+              2,
+              0,
+              0
+            ],
+            [
+              4,
+              9,
+              10
+            ]
+          ],
+          "distribution_true": {
+            "rising": 65,
+            "falling": 23,
+            "stable": 2
+          },
+          "distribution_pred": {
+            "stable": 20,
+            "falling": 23,
+            "rising": 47
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.4667,
+          "confusion_matrix": [
+            [
+              28,
+              17,
+              15
+            ],
+            [
+              1,
+              3,
+              1
+            ],
+            [
+              4,
+              10,
+              11
+            ]
+          ],
+          "distribution_true": {
+            "rising": 60,
+            "falling": 25,
+            "stable": 5
+          },
+          "distribution_pred": {
+            "stable": 30,
+            "falling": 27,
+            "rising": 33
+          }
+        },
+        "overall": {
+          "accuracy": 0.4889,
+          "confusion_matrix": [
+            [
+              29,
+              15,
+              13
+            ],
+            [
+              1,
+              1,
+              2
+            ],
+            [
+              4,
+              11,
+              14
+            ]
+          ],
+          "distribution_true": {
+            "falling": 29,
+            "rising": 57,
+            "stable": 4
+          },
+          "distribution_pred": {
+            "stable": 27,
+            "falling": 29,
+            "rising": 34
+          }
+        }
+      },
+      "bucket_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6333,
+          "confusion_matrix": [
+            [
+              1,
+              17,
+              1
+            ],
+            [
+              3,
+              55,
+              2
+            ],
+            [
+              1,
+              9,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "falling": 11,
+            "stable": 60,
+            "rising": 19
+          },
+          "distribution_pred": {
+            "stable": 81,
+            "rising": 5,
+            "falling": 4
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.7333,
+          "confusion_matrix": [
+            [
+              2,
+              11,
+              0
+            ],
+            [
+              3,
+              64,
+              2
+            ],
+            [
+              0,
+              8,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 13,
+            "falling": 8
+          },
+          "distribution_pred": {
+            "stable": 83,
+            "falling": 2,
+            "rising": 5
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.6111,
+          "confusion_matrix": [
+            [
+              0,
+              16,
+              0
+            ],
+            [
+              8,
+              55,
+              6
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 16,
+            "falling": 5
+          },
+          "distribution_pred": {
+            "stable": 76,
+            "falling": 6,
+            "rising": 8
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.7889,
+          "confusion_matrix": [
+            [
+              2,
+              11,
+              0
+            ],
+            [
+              1,
+              69,
+              3
+            ],
+            [
+              0,
+              4,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 73,
+            "rising": 13,
+            "falling": 4
+          },
+          "distribution_pred": {
+            "stable": 84,
+            "falling": 3,
+            "rising": 3
+          }
+        },
+        "overall": {
+          "accuracy": 0.7444,
+          "confusion_matrix": [
+            [
+              1,
+              14,
+              0
+            ],
+            [
+              2,
+              66,
+              2
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 70,
+            "falling": 5,
+            "rising": 15
+          },
+          "distribution_pred": {
+            "stable": 85,
+            "falling": 2,
+            "rising": 3
+          }
+        }
+      },
+      "overall_score_accuracy": 0.4889,
+      "overall_bucket_accuracy": 0.7444,
+      "high_consensus_accuracy": 0.5385,
+      "n_test_conversations": 90,
+      "n_test_turns": 1163,
+      "timing_s": 41.54
+    },
+    {
+      "model": "thenlper/gte-small",
+      "embedding_dim": 384,
+      "score_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.4667,
+          "confusion_matrix": [
+            [
+              19,
+              13,
+              13
+            ],
+            [
+              2,
+              1,
+              3
+            ],
+            [
+              10,
+              7,
+              22
+            ]
+          ],
+          "distribution_true": {
+            "falling": 39,
+            "rising": 45,
+            "stable": 6
+          },
+          "distribution_pred": {
+            "falling": 38,
+            "stable": 21,
+            "rising": 31
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.3667,
+          "confusion_matrix": [
+            [
+              20,
+              23,
+              14
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              7,
+              12,
+              13
+            ]
+          ],
+          "distribution_true": {
+            "falling": 32,
+            "rising": 57,
+            "stable": 1
+          },
+          "distribution_pred": {
+            "stable": 35,
+            "rising": 28,
+            "falling": 27
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.4222,
+          "confusion_matrix": [
+            [
+              28,
+              20,
+              17
+            ],
+            [
+              2,
+              0,
+              0
+            ],
+            [
+              9,
+              4,
+              10
+            ]
+          ],
+          "distribution_true": {
+            "rising": 65,
+            "falling": 23,
+            "stable": 2
+          },
+          "distribution_pred": {
+            "stable": 24,
+            "rising": 39,
+            "falling": 27
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.3667,
+          "confusion_matrix": [
+            [
+              22,
+              21,
+              17
+            ],
+            [
+              2,
+              2,
+              1
+            ],
+            [
+              9,
+              7,
+              9
+            ]
+          ],
+          "distribution_true": {
+            "rising": 60,
+            "falling": 25,
+            "stable": 5
+          },
+          "distribution_pred": {
+            "stable": 30,
+            "rising": 33,
+            "falling": 27
+          }
+        },
+        "overall": {
+          "accuracy": 0.4222,
+          "confusion_matrix": [
+            [
+              26,
+              13,
+              18
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              10,
+              9,
+              10
+            ]
+          ],
+          "distribution_true": {
+            "falling": 29,
+            "rising": 57,
+            "stable": 4
+          },
+          "distribution_pred": {
+            "stable": 24,
+            "rising": 37,
+            "falling": 29
+          }
+        }
+      },
+      "bucket_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6333,
+          "confusion_matrix": [
+            [
+              0,
+              19,
+              0
+            ],
+            [
+              1,
+              54,
+              5
+            ],
+            [
+              1,
+              7,
+              3
+            ]
+          ],
+          "distribution_true": {
+            "falling": 11,
+            "stable": 60,
+            "rising": 19
+          },
+          "distribution_pred": {
+            "falling": 8,
+            "stable": 80,
+            "rising": 2
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.7333,
+          "confusion_matrix": [
+            [
+              0,
+              13,
+              0
+            ],
+            [
+              2,
+              65,
+              2
+            ],
+            [
+              0,
+              7,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 13,
+            "falling": 8
+          },
+          "distribution_pred": {
+            "stable": 85,
+            "rising": 2,
+            "falling": 3
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.6,
+          "confusion_matrix": [
+            [
+              1,
+              14,
+              1
+            ],
+            [
+              11,
+              52,
+              6
+            ],
+            [
+              0,
+              4,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 16,
+            "falling": 5
+          },
+          "distribution_pred": {
+            "stable": 70,
+            "rising": 12,
+            "falling": 8
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.8,
+          "confusion_matrix": [
+            [
+              0,
+              13,
+              0
+            ],
+            [
+              1,
+              71,
+              1
+            ],
+            [
+              0,
+              3,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "stable": 73,
+            "rising": 13,
+            "falling": 4
+          },
+          "distribution_pred": {
+            "stable": 87,
+            "rising": 1,
+            "falling": 2
+          }
+        },
+        "overall": {
+          "accuracy": 0.7667,
+          "confusion_matrix": [
+            [
+              0,
+              15,
+              0
+            ],
+            [
+              0,
+              69,
+              1
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 70,
+            "falling": 5,
+            "rising": 15
+          },
+          "distribution_pred": {
+            "stable": 89,
+            "falling": 1
+          }
+        }
+      },
+      "overall_score_accuracy": 0.4222,
+      "overall_bucket_accuracy": 0.7667,
+      "high_consensus_accuracy": 0.4308,
+      "n_test_conversations": 90,
+      "n_test_turns": 1163,
+      "timing_s": 20.47
+    },
+    {
+      "model": "models/jdvp-embedding-v1",
+      "embedding_dim": 384,
+      "score_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6667,
+          "confusion_matrix": [
+            [
+              39,
+              3,
+              3
+            ],
+            [
+              1,
+              0,
+              5
+            ],
+            [
+              14,
+              4,
+              21
+            ]
+          ],
+          "distribution_true": {
+            "falling": 39,
+            "rising": 45,
+            "stable": 6
+          },
+          "distribution_pred": {
+            "rising": 54,
+            "stable": 7,
+            "falling": 29
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.6778,
+          "confusion_matrix": [
+            [
+              48,
+              6,
+              3
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              10,
+              9,
+              13
+            ]
+          ],
+          "distribution_true": {
+            "falling": 32,
+            "rising": 57,
+            "stable": 1
+          },
+          "distribution_pred": {
+            "stable": 15,
+            "rising": 59,
+            "falling": 16
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.7778,
+          "confusion_matrix": [
+            [
+              56,
+              7,
+              2
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              9,
+              2,
+              12
+            ]
+          ],
+          "distribution_true": {
+            "rising": 65,
+            "falling": 23,
+            "stable": 2
+          },
+          "distribution_pred": {
+            "rising": 65,
+            "stable": 11,
+            "falling": 14
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.6444,
+          "confusion_matrix": [
+            [
+              46,
+              12,
+              2
+            ],
+            [
+              3,
+              1,
+              1
+            ],
+            [
+              6,
+              8,
+              11
+            ]
+          ],
+          "distribution_true": {
+            "rising": 60,
+            "falling": 25,
+            "stable": 5
+          },
+          "distribution_pred": {
+            "stable": 21,
+            "rising": 55,
+            "falling": 14
+          }
+        },
+        "overall": {
+          "accuracy": 0.6889,
+          "confusion_matrix": [
+            [
+              49,
+              5,
+              3
+            ],
+            [
+              4,
+              0,
+              0
+            ],
+            [
+              11,
+              5,
+              13
+            ]
+          ],
+          "distribution_true": {
+            "falling": 29,
+            "rising": 57,
+            "stable": 4
+          },
+          "distribution_pred": {
+            "rising": 64,
+            "stable": 10,
+            "falling": 16
+          }
+        }
+      },
+      "bucket_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6222,
+          "confusion_matrix": [
+            [
+              3,
+              16,
+              0
+            ],
+            [
+              3,
+              52,
+              5
+            ],
+            [
+              0,
+              10,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "falling": 11,
+            "stable": 60,
+            "rising": 19
+          },
+          "distribution_pred": {
+            "stable": 78,
+            "falling": 6,
+            "rising": 6
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.7667,
+          "confusion_matrix": [
+            [
+              6,
+              7,
+              0
+            ],
+            [
+              6,
+              62,
+              1
+            ],
+            [
+              0,
+              7,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 13,
+            "falling": 8
+          },
+          "distribution_pred": {
+            "stable": 76,
+            "rising": 12,
+            "falling": 2
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.6222,
+          "confusion_matrix": [
+            [
+              7,
+              9,
+              0
+            ],
+            [
+              16,
+              49,
+              4
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 16,
+            "falling": 5
+          },
+          "distribution_pred": {
+            "stable": 63,
+            "rising": 23,
+            "falling": 4
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.7778,
+          "confusion_matrix": [
+            [
+              4,
+              9,
+              0
+            ],
+            [
+              6,
+              66,
+              1
+            ],
+            [
+              0,
+              4,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 73,
+            "rising": 13,
+            "falling": 4
+          },
+          "distribution_pred": {
+            "stable": 79,
+            "rising": 10,
+            "falling": 1
+          }
+        },
+        "overall": {
+          "accuracy": 0.8111,
+          "confusion_matrix": [
+            [
+              5,
+              10,
+              0
+            ],
+            [
+              2,
+              68,
+              0
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 70,
+            "falling": 5,
+            "rising": 15
+          },
+          "distribution_pred": {
+            "stable": 83,
+            "rising": 7
+          }
+        }
+      },
+      "overall_score_accuracy": 0.6889,
+      "overall_bucket_accuracy": 0.8111,
+      "high_consensus_accuracy": 0.8462,
+      "n_test_conversations": 90,
+      "n_test_turns": 1163,
+      "timing_s": 7.83
+    }
+  ]
+}

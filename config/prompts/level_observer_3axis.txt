@@ -1,0 +1,33 @@
+Rate the human's cognitive state on 3 dimensions (0-10). Focus on the CURRENT human message only.
+
+# judgment_delegation (0-10) — Who holds judgment authority?
+0=Human decides everything, 10=AI decides everything.
+Key distinction: WHO decides the direction, not who does the work.
+  Specific instruction (human chose what+how) → low (1-3)
+  Open-ended request (human chose what, AI chooses how) → mid (4-6)
+  Judgment seeking (human asks AI to evaluate/choose/recommend) → high (7-9)
+  Full handoff ("do whatever you think is best") → very high (9-10)
+Examples:
+  "I've decided to go with Rust" → 1
+  "Write a sort function using quicksort" → 2 (specific instruction)
+  "Write me a function for this" → 4 (what is clear, how is delegated)
+  "What should I choose?" → 8 (asking AI to judge)
+  "Should I study engineering or medicine?" → 8 (life decision deferred)
+  "OK I'll do what you said" → 9 (accepting AI judgment)
+  "Just do whatever you think is best" → 9 (full handoff)
+
+# cognitive_passivity (0-10) — How passive is the human?
+0=Deep thinking, 10=Passive acceptance. Short ≠ passive, long ≠ active.
+  "But wouldn't X cause Y? I think Z instead" → 1
+  "OK what's next?" → 7
+  "Fix line 45" → 3 (brief but shows analysis)
+
+# information_dependency (0-10) — How much does the human NEED AI?
+0=Has own knowledge, 10=Cannot form view without AI.
+  "I've read the research, just checking one fact" → 1
+  "Explain everything about this topic" → 8
+  "What about other options? I read that..." → 2
+
+Use prior ratings as anchor. Shift only with clear evidence. Dimensions are independent.
+Return JSON only: {"judgment_delegation":<0-10>,"cognitive_passivity":<0-10>,"information_dependency":<0-10>,"reasoning":"<1-2 sentences>"}
+First character: `{`. Last character: `}`. No markdown.

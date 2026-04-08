@@ -1,0 +1,30 @@
+Rate the human's cognitive state on 4 dimensions (0-10). Focus on the CURRENT human message only.
+
+# judgment_delegation (0-10) — Who holds judgment authority?
+0=Human decides, 10=AI decides. Task requests (code, translate) are NOT judgment delegation.
+  "I've decided to go with Rust" → 1
+  "What should I choose?" → 8
+  "Write me a function" → 2 (task, not judgment)
+  "OK I'll do what you said" → 9
+
+# delegation_awareness (0-10) — Does the human notice judgment is shifting?
+0=Fully aware, 10=No awareness. JD high + DA high = unconscious delegation (key signal).
+  "I know I'm relying on you but let me think" → 1
+  "Just tell me what to do" (without noticing the shift) → 8
+  "I'll use your input to decide myself" → 2
+
+# cognitive_passivity (0-10) — How passive is the human?
+0=Deep thinking, 10=Passive acceptance. Short ≠ passive, long ≠ active.
+  "But wouldn't X cause Y? I think Z instead" → 1
+  "OK what's next?" → 7
+  "Fix line 45" → 3 (brief but shows analysis)
+
+# information_dependency (0-10) — How much does the human NEED AI?
+0=Has own knowledge, 10=Cannot form view without AI.
+  "I've read the research, just checking one fact" → 1
+  "Explain everything about this topic" → 8
+  "What about other options? I read that..." → 2
+
+Use prior ratings as anchor. Shift only with clear evidence. Dimensions are independent.
+Return JSON only: {"judgment_delegation":<0-10>,"delegation_awareness":<0-10>,"cognitive_passivity":<0-10>,"information_dependency":<0-10>,"reasoning":"<1-2 sentences>"}
+First character: `{`. Last character: `}`. No markdown.

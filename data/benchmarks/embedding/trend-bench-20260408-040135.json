@@ -1,0 +1,326 @@
+{
+  "timestamp": "2026-04-08T04:01:35.768002+00:00",
+  "ref_labels": [
+    "sharegpt-3axis-gpt41-cot",
+    "sharegpt-3axis-sonnet-cot",
+    "sharegpt-3axis-gemma4-26b-cot",
+    "sharegpt-3axis-deepseek-cot"
+  ],
+  "seed": 42,
+  "n_conversations": 300,
+  "results": [
+    {
+      "model": "/Users/sangwon0001/Projects/bufferline/JDVP-POCv3/models/jdvp-embedding-v1",
+      "embedding_dim": 384,
+      "score_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6667,
+          "confusion_matrix": [
+            [
+              39,
+              3,
+              3
+            ],
+            [
+              1,
+              0,
+              5
+            ],
+            [
+              14,
+              4,
+              21
+            ]
+          ],
+          "distribution_true": {
+            "falling": 39,
+            "rising": 45,
+            "stable": 6
+          },
+          "distribution_pred": {
+            "rising": 54,
+            "stable": 7,
+            "falling": 29
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.6778,
+          "confusion_matrix": [
+            [
+              48,
+              6,
+              3
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              10,
+              9,
+              13
+            ]
+          ],
+          "distribution_true": {
+            "falling": 32,
+            "rising": 57,
+            "stable": 1
+          },
+          "distribution_pred": {
+            "stable": 15,
+            "rising": 59,
+            "falling": 16
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.7778,
+          "confusion_matrix": [
+            [
+              56,
+              7,
+              2
+            ],
+            [
+              0,
+              2,
+              0
+            ],
+            [
+              9,
+              2,
+              12
+            ]
+          ],
+          "distribution_true": {
+            "rising": 65,
+            "falling": 23,
+            "stable": 2
+          },
+          "distribution_pred": {
+            "rising": 65,
+            "stable": 11,
+            "falling": 14
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.6444,
+          "confusion_matrix": [
+            [
+              46,
+              12,
+              2
+            ],
+            [
+              3,
+              1,
+              1
+            ],
+            [
+              6,
+              8,
+              11
+            ]
+          ],
+          "distribution_true": {
+            "rising": 60,
+            "falling": 25,
+            "stable": 5
+          },
+          "distribution_pred": {
+            "stable": 21,
+            "rising": 55,
+            "falling": 14
+          }
+        },
+        "overall": {
+          "accuracy": 0.6889,
+          "confusion_matrix": [
+            [
+              49,
+              5,
+              3
+            ],
+            [
+              4,
+              0,
+              0
+            ],
+            [
+              11,
+              5,
+              13
+            ]
+          ],
+          "distribution_true": {
+            "falling": 29,
+            "rising": 57,
+            "stable": 4
+          },
+          "distribution_pred": {
+            "rising": 64,
+            "stable": 10,
+            "falling": 16
+          }
+        }
+      },
+      "bucket_trends": {
+        "judgment_delegation": {
+          "accuracy": 0.6222,
+          "confusion_matrix": [
+            [
+              3,
+              16,
+              0
+            ],
+            [
+              3,
+              52,
+              5
+            ],
+            [
+              0,
+              10,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "falling": 11,
+            "stable": 60,
+            "rising": 19
+          },
+          "distribution_pred": {
+            "stable": 78,
+            "falling": 6,
+            "rising": 6
+          }
+        },
+        "cognitive_passivity": {
+          "accuracy": 0.7667,
+          "confusion_matrix": [
+            [
+              6,
+              7,
+              0
+            ],
+            [
+              6,
+              62,
+              1
+            ],
+            [
+              0,
+              7,
+              1
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 13,
+            "falling": 8
+          },
+          "distribution_pred": {
+            "stable": 76,
+            "rising": 12,
+            "falling": 2
+          }
+        },
+        "information_dependency": {
+          "accuracy": 0.6222,
+          "confusion_matrix": [
+            [
+              7,
+              9,
+              0
+            ],
+            [
+              16,
+              49,
+              4
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 69,
+            "rising": 16,
+            "falling": 5
+          },
+          "distribution_pred": {
+            "stable": 63,
+            "rising": 23,
+            "falling": 4
+          }
+        },
+        "da_derived": {
+          "accuracy": 0.7778,
+          "confusion_matrix": [
+            [
+              4,
+              9,
+              0
+            ],
+            [
+              6,
+              66,
+              1
+            ],
+            [
+              0,
+              4,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 73,
+            "rising": 13,
+            "falling": 4
+          },
+          "distribution_pred": {
+            "stable": 79,
+            "rising": 10,
+            "falling": 1
+          }
+        },
+        "overall": {
+          "accuracy": 0.8111,
+          "confusion_matrix": [
+            [
+              5,
+              10,
+              0
+            ],
+            [
+              2,
+              68,
+              0
+            ],
+            [
+              0,
+              5,
+              0
+            ]
+          ],
+          "distribution_true": {
+            "stable": 70,
+            "falling": 5,
+            "rising": 15
+          },
+          "distribution_pred": {
+            "stable": 83,
+            "rising": 7
+          }
+        }
+      },
+      "overall_score_accuracy": 0.6889,
+      "overall_bucket_accuracy": 0.8111,
+      "high_consensus_accuracy": 0.8462,
+      "n_test_conversations": 90,
+      "n_test_turns": 1163,
+      "timing_s": 11.14
+    }
+  ]
+}

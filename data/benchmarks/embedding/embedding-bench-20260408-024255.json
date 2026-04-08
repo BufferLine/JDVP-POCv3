@@ -1,0 +1,70 @@
+{
+  "timestamp": "2026-04-08T02:42:55.867952+00:00",
+  "ref_label": "sharegpt-3axis-gpt41-cot",
+  "seed": 42,
+  "test_ratio": 0.3,
+  "n_turns_total": 4103,
+  "n_turns_train": 2940,
+  "n_turns_test": 1163,
+  "n_conversations": 300,
+  "da_weights": {
+    "judgment_delegation": 0.162,
+    "cognitive_passivity": 0.57,
+    "information_dependency": 0.268
+  },
+  "results": [
+    {
+      "model": "all-MiniLM-L6-v2",
+      "embedding_dim": 384,
+      "axes": {
+        "judgment_delegation": {
+          "mae": 1.568,
+          "r2": 0.018,
+          "bucket_acc": 0.5271,
+          "y_test_mean": 4.13,
+          "y_test_std": 2.03,
+          "y_pred_mean": 4.15,
+          "y_pred_std": 1.16
+        },
+        "cognitive_passivity": {
+          "mae": 1.379,
+          "r2": 0.0826,
+          "bucket_acc": 0.5692,
+          "y_test_mean": 4.78,
+          "y_test_std": 1.88,
+          "y_pred_mean": 5.07,
+          "y_pred_std": 1.13
+        },
+        "information_dependency": {
+          "mae": 1.31,
+          "r2": 0.0341,
+          "bucket_acc": 0.5804,
+          "y_test_mean": 5.43,
+          "y_test_std": 1.77,
+          "y_pred_mean": 5.48,
+          "y_pred_std": 1.04
+        }
+      },
+      "da_derived": {
+        "mae": 1.216,
+        "r2": 0.0817,
+        "bucket_acc": 0.6191,
+        "high_da_precision": 0.129,
+        "high_da_recall": 0.0408,
+        "high_da_f1": 0.062
+      },
+      "baseline_mae": {
+        "judgment_delegation": 1.676,
+        "cognitive_passivity": 1.415,
+        "information_dependency": 1.315,
+        "da_derived": 1.247
+      },
+      "timing": {
+        "model_load_s": 3.68,
+        "train_encode_s": 2.93,
+        "test_encode_s": 1.13,
+        "total_s": 7.77
+      }
+    }
+  ]
+}

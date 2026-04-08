@@ -1,0 +1,10 @@
+{
+  "base_model": "BAAI/bge-small-en-v1.5",
+  "n_pairs": 15000,
+  "epochs": 3,
+  "batch_size": 32,
+  "warmup_ratio": 0.1,
+  "seed": 42,
+  "training_time_s": 1543.3,
+  "timestamp": "2026-04-08T04:23:28.278982+00:00"
+}
