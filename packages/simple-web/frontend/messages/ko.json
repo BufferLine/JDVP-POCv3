@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "JDVP Analyzer",
+    "description": "AI 대화에서 판단 위임 패턴을 분석합니다"
+  },
+  "header": {
+    "title": "JDVP Analyzer",
+    "subtitle": "AI와의 대화에서 당신의 판단 위임 패턴을 확인해보세요",
+    "description": "ChatGPT 대화 링크를 입력하거나 대화 내용을 붙여넣으면, 대화 흐름에서 판단 위임이 어떻게 변화하는지 4개 축으로 분석합니다."
+  },
+  "input": {
+    "tabLink": "ChatGPT 링크",
+    "tabPaste": "텍스트 붙여넣기",
+    "linkPlaceholder": "https://chatgpt.com/share/...",
+    "pastePlaceholder": "Human: 안녕하세요\nAssistant: 안녕하세요!\nHuman: ...",
+    "analyze": "분석하기",
+    "analyzing": "분석 중...",
+    "linkHint": "ChatGPT에서 대화를 공유하면 생성되는 링크를 입력하세요",
+    "pasteHint": "'Human:' / 'Assistant:' 형식으로 대화를 붙여넣으세요"
+  },
+  "axes": {
+    "judgment_delegation": {
+      "label": "판단 위임",
+      "short": "JH",
+      "description": "의사결정의 주체가 누구인가? 높을수록 AI에게 판단을 맡기고, 낮을수록 사용자가 직접 판단합니다.",
+      "example_high": "\"이 중에서 뭐가 제일 좋아?\"",
+      "example_low": "\"A와 B를 비교해줘, 내가 결정할게\""
+    },
+    "cognitive_passivity": {
+      "label": "인지적 수동성",
+      "short": "CP",
+      "description": "사용자가 얼마나 수동적으로 정보를 받아들이는가? 높을수록 AI 출력을 검토 없이 수용하고, 낮을수록 비판적으로 검토합니다.",
+      "example_high": "\"그냥 해줘\", \"계속\"",
+      "example_low": "\"그 부분 근거가 뭐야?\""
+    },
+    "information_dependency": {
+      "label": "정보 의존도",
+      "short": "ID",
+      "description": "AI가 제공하는 정보에 얼마나 의존하는가? 높을수록 AI를 유일한 정보원으로 사용하고, 낮을수록 자신의 지식을 활용합니다.",
+      "example_high": "\"이게 맞아?\" (확인 없이)",
+      "example_low": "\"내가 알기론 X인데, 맞지?\""
+    },
+    "da_derived": {
+      "label": "종합 위임도",
+      "short": "DA",
+      "description": "3개 축(JH, CP, ID)의 가중 합산으로 산출된 종합적인 판단 위임 수준입니다. DA = 0.16×JH + 0.57×CP + 0.27×ID",
+      "example_high": "전반적으로 AI에 의존적인 대화",
+      "example_low": "주체적으로 AI를 도구로 활용하는 대화"
+    }
+  },
+  "trends": {
+    "title": "추세 분석",
+    "rising": "상승",
+    "falling": "하강",
+    "stable": "안정",
+    "scoreLabel": "점수 추세",
+    "bucketLabel": "구간 추세",
+    "slopeLabel": "기울기"
+  },
+  "summary": {
+    "title": "요약",
+    "turns": "대화 턴",
+    "avgDa": "평균 위임도",
+    "peakDa": "최고 위임도",
+    "trend": "전체 추세",
+    "levelLow": "낮음",
+    "levelMid": "보통",
+    "levelHigh": "높음"
+  },
+  "chart": {
+    "title": "턴별 분석 차트",
+    "subtitle": "각 턴에서의 4축 점수 변화 (0-10)",
+    "turnLabel": "턴"
+  },
+  "inflection": {
+    "title": "주요 변화 포인트",
+    "description": "급격한 위임도 변화가 감지된 구간입니다",
+    "increase": "급증",
+    "decrease": "급감",
+    "at": "턴"
+  },
+  "details": {
+    "title": "턴별 상세"
+  },
+  "disclaimer": {
+    "text": "입력된 대화 내용은 분석 목적으로만 사용되며, 서버에 저장되지 않습니다. 단, 서비스 품질 개선을 위해 익명화된 통계 데이터가 수집될 수 있습니다.",
+    "learnMore": "자세히 알아보기"
+  },
+  "footer": {
+    "poweredBy": "Powered by JDVP Protocol",
+    "bufferline": "BufferLine"
+  }
+}

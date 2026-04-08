@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "JDVP Analyzer",
+    "description": "Analyze judgment delegation patterns in AI conversations"
+  },
+  "header": {
+    "title": "JDVP Analyzer",
+    "subtitle": "Discover your judgment delegation patterns in AI conversations",
+    "description": "Enter a ChatGPT share link or paste a conversation to see how judgment delegation shifts across 4 axes throughout the conversation."
+  },
+  "input": {
+    "tabLink": "ChatGPT Link",
+    "tabPaste": "Paste Text",
+    "linkPlaceholder": "https://chatgpt.com/share/...",
+    "pastePlaceholder": "Human: Hello\nAssistant: Hi there!\nHuman: ...",
+    "analyze": "Analyze",
+    "analyzing": "Analyzing...",
+    "linkHint": "Enter the share link generated from ChatGPT",
+    "pasteHint": "Paste the conversation in 'Human:' / 'Assistant:' format"
+  },
+  "axes": {
+    "judgment_delegation": {
+      "label": "Judgment Delegation",
+      "short": "JH",
+      "description": "Who is making the decisions? Higher means the user delegates judgment to AI; lower means the user decides independently.",
+      "example_high": "\"Which one is the best?\"",
+      "example_low": "\"Compare A and B, I'll decide\""
+    },
+    "cognitive_passivity": {
+      "label": "Cognitive Passivity",
+      "short": "CP",
+      "description": "How passively does the user accept information? Higher means accepting AI output without review; lower means critically evaluating.",
+      "example_high": "\"Just do it\", \"Continue\"",
+      "example_low": "\"What's your evidence for that?\""
+    },
+    "information_dependency": {
+      "label": "Information Dependency",
+      "short": "ID",
+      "description": "How much does the user depend on AI-provided information? Higher means using AI as the sole source; lower means leveraging own knowledge.",
+      "example_high": "\"Is this correct?\" (without verification)",
+      "example_low": "\"As far as I know it's X, right?\""
+    },
+    "da_derived": {
+      "label": "Overall Delegation",
+      "short": "DA",
+      "description": "Weighted composite of 3 axes (JH, CP, ID) representing overall judgment delegation level. DA = 0.16×JH + 0.57×CP + 0.27×ID",
+      "example_high": "Conversations heavily reliant on AI",
+      "example_low": "Conversations where AI is used as a tool"
+    }
+  },
+  "trends": {
+    "title": "Trend Analysis",
+    "rising": "Rising",
+    "falling": "Falling",
+    "stable": "Stable",
+    "scoreLabel": "Score trend",
+    "bucketLabel": "Bucket trend",
+    "slopeLabel": "Slope"
+  },
+  "summary": {
+    "title": "Summary",
+    "turns": "Turns",
+    "avgDa": "Avg Delegation",
+    "peakDa": "Peak Delegation",
+    "trend": "Overall Trend",
+    "levelLow": "Low",
+    "levelMid": "Mid",
+    "levelHigh": "High"
+  },
+  "chart": {
+    "title": "Turn-by-Turn Analysis",
+    "subtitle": "Score changes across 4 axes per turn (0-10)",
+    "turnLabel": "Turn"
+  },
+  "inflection": {
+    "title": "Key Inflection Points",
+    "description": "Turns where significant delegation changes were detected",
+    "increase": "Surge",
+    "decrease": "Drop",
+    "at": "Turn"
+  },
+  "details": {
+    "title": "Turn Details"
+  },
+  "disclaimer": {
+    "text": "Conversation data is used for analysis only and is not stored on our servers. Anonymized usage statistics may be collected for service improvement.",
+    "learnMore": "Learn more"
+  },
+  "footer": {
+    "poweredBy": "Powered by JDVP Protocol",
+    "bufferline": "BufferLine"
+  }
+}
