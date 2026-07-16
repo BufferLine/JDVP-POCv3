@@ -10,3 +10,4 @@ data/generated-7turn-smoke/
 data/generated-local-trials/
 data/generated-smoke/
 data/logs/
+*.safetensors
