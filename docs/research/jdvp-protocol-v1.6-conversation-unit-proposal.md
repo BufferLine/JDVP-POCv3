@@ -9,6 +9,7 @@
 - [`2026-03-31-level-extraction-study.md`](./2026-03-31-level-extraction-study.md) — turn-level self-consistency ceiling
 - Multi-perspective protocol completeness review ([JDVP-POCv3 `docs/research/2026-07-15-protocol-completeness-review.md`](https://github.com/BufferLine/JDVP-POCv3/blob/main/docs/research/2026-07-15-protocol-completeness-review.md))
 **Companion**: [`jdvp-v1.6-low-cost-observer-guide.md`](./jdvp-v1.6-low-cost-observer-guide.md) — implementation and testing guide for low-cost observers
+**Revision note (2026-07-16)**: reliability figures corrected against the V3 Final Benchmark Report ([JDVP-POCv3 `docs/research/2026-07-16-v3-final-benchmark-report.md`](https://github.com/BufferLine/JDVP-POCv3/blob/main/docs/research/2026-07-16-v3-final-benchmark-report.md)), which applied this proposal's own Change 5 reporting standards to the evidence data. Two claims were corrected: raw trend agreement is now quoted chance-corrected (weighted κ≈0.51 over a 51.7% majority baseline), and "near-zero direct contradictions" is retracted (sign reversals are 13.7% of disagreements among strong observers).
 
 ---
 
@@ -16,7 +17,7 @@
 
 This proposal promotes the conversation (interaction) to a first-class measurement unit. It adds a canonical **Interaction Summary** artifact (trend, mean level, volatility, peak per dimension), reclassifies `delegation_awareness` as a **derived observable**, introduces a **decision-relevant turn** marker, upgrades confidence reporting from nominal labels to optional numeric uncertainty with an observer profile block, and defines **measurement reporting standards** (chance-corrected agreement, resampled confidence intervals, observer-conditioning disclosure, ordinal-robust aggregation).
 
-v1.5 documented the turn-level self-consistency ceiling (r≈0.56 on natural data) as a known limit but standardized no response to it. Our subsequent experiments show that conversation-level direction is substantially more reliable than turn-level position. v1.6 makes that reliable unit canonical.
+v1.5 documented the turn-level self-consistency ceiling (r≈0.56 on natural data) as a known limit but standardized no response to it. Our subsequent experiments show that conversation-level direction is the unit implementations actually rely on, and that it degrades more gracefully than position — disagreements concentrate at the stable boundary rather than reversing sign. Its reliability is nonetheless moderate once chance-corrected (weighted κ≈0.51), which is precisely why the artifact must carry the reporting standards of Change 5 rather than travel with raw percentages. v1.6 makes that operative unit canonical, with honest uncertainty attached.
 
 ## Motivation
 
@@ -28,9 +29,9 @@ Empirical results from the 6-model × 300-conversation study:
 |---|---|
 | Turn-level absolute levels | r=0.41–0.61 vs baseline; ±2 typical disagreement |
 | Turn-level DV correlation | r=0.36–0.53 |
-| Conversation-level trend (rising/stable/falling) | 65% four-model agreement; disagreements almost exclusively on the rising/stable boundary (slope ≈ ±0.1), near-zero direct contradictions |
+| Conversation-level trend (rising/stable/falling) | weighted κ≈0.51 [0.42–0.61] vs reference (raw 67.7% over a 51.7% majority-class baseline); 6-observer ordinal Krippendorff α=0.30; ~82–86% of disagreements sit on the rising/stable boundary (slope ≈ ±0.1), sign reversals are 13.7% of disagreements among the strong-4 observers (18.4% across all 6) |
 
-Unanimous four-model classification covered 117 conversations (37 rising, 65 stable, 15 falling); the 62 disagreement cases were boundary cases, not sign reversals. Direction survives observer noise; position does not. Yet the protocol currently defines JSV (position), DV (step), and Trajectory (step sequence) — and stops one derivation short of the unit implementations actually rely on.
+Unanimous four-model classification covered 118 conversations (37 rising, 67 stable, 14 falling). Disagreements concentrate at the stable boundary, but sign reversals persist at roughly 1 in 7 disagreements even among strong observers — direction degrades more gracefully than position, not cleanly. With matched, chance-corrected metrics both position and direction are moderate; the case for the aggregate artifact is that it is the unit implementations actually rely on and must therefore be standardized and honestly reported, not that it is highly reliable. The protocol currently defines JSV (position), DV (step), and Trajectory (step sequence) — and stops one derivation short of that unit.
 
 ### Problem 2: `delegation_awareness` fails as a directly measured variable
 
@@ -65,7 +66,7 @@ Both LLM and embedding observers misclassify task-passivity patterns ("continue 
 
 A methodological self-audit of our own studies identified three practices that inflate apparent reliability, and that any implementation will reproduce unless the protocol standardizes reporting:
 
-1. **Raw percent agreement without chance correction.** The 65% trend-agreement figure sits over a class distribution where `stable` alone covers ~55% of unanimous cases; a majority-class baseline scores far above the 33% naive chance level. Uncorrected percentages are not comparable across datasets with different base rates.
+1. **Raw percent agreement without chance correction.** The originally-reported 65% trend-agreement figure sits over a 51.7% majority-class baseline (`stable` dominates); chance-corrected it is weighted κ≈0.51 — moderate, not high. Uncorrected percentages are not comparable across datasets with different base rates. (This correction has since been applied throughout this proposal; see the V3 Final Benchmark Report.)
 2. **Single-run point estimates.** Observer-comparison deltas (e.g., DV correlation 0.53 vs 0.50) have been interpreted without confidence intervals; at n=300 conversations such differences may be within resampling noise.
 3. **Undisclosed observer conditioning.** The reference labeling pipeline passes the observer its own prior-turn scores as context. This anchoring plausibly smooths trajectories — inflating trend coherence and deflating volatility — and is currently invisible in the output record.
 
@@ -187,12 +188,12 @@ Normative requirements for any published JDVP measurement or observer comparison
 
 | Claim | Evidence |
 |---|---|
-| Conversation trend is the reliable unit | 65% 4-model trend agreement vs r≈0.003–0.53 turn-level DA/DV agreement; disagreements concentrated at slope ≈ ±0.1 |
+| Conversation trend is the operative unit | weighted κ≈0.51 [0.42–0.61] vs reference over a 51.7% majority baseline (raw 67.7%); 6-observer ordinal α=0.30; disagreements concentrated at slope ≈ ±0.1, sign reversals 13.7% of disagreements (strong-4) |
 | Derived DA beats direct DA | self-consistency +37% (0.470→0.645); inter-model r 0.003→0.613; std −54% |
 | Direct DA is observer-contaminated | DA=10 assigned to 24.4% of turns by one observer vs ≤0.5% by two others; removing it eliminated all DA>7 assignments outside jailbreak/roleplay content |
 | Task/judgment confusion is systematic | embedding screening misclassifies "continue please" passivity as high delegation; fixed only by decision-relevance filtering |
 | Linear derivation is the right form | quadratic R²=0.33 in-sample underperforms linear r=0.645 out-of-sample |
-| Reporting practices inflate apparent quality | 65% raw trend agreement vs ~55% majority-class baseline; reference pipeline conditions the observer on its own prior-turn scores without recording it |
+| Reporting practices inflate apparent quality | 67.7% raw trend agreement vs 51.7% majority-class baseline (weighted κ≈0.51); reference pipeline conditions the observer on its own prior-turn scores without recording it |
 
 ## Deferred (explicitly out of scope for v1.6)
 
@@ -213,6 +214,6 @@ Normative requirements for any published JDVP measurement or observer comparison
 ## Implementation Notes
 
 - Reference prompt: `config/prompts/level_observer_3axis_cot.txt` (3-axis CoT; "THINK FIRST, then score" + "who decides the DIRECTION, not who does the work").
-- Recommended observer floor: gemma4:26b local (DV correlation 0.53, trend agreement 65%, $0) or gpt-4.1-class API.
+- Recommended observer floor: gemma4:26b local (DV correlation 0.55 [0.51, 0.59], trend weighted κ 0.51 — statistically tied with sonnet-4/deepseek at $0) or gpt-4.1-class API.
 - Summary computation is pure arithmetic over existing artifacts — no new extraction cost.
 - POCv3 already implements trend classification and 4-model consensus; the schema work is codifying existing practice.
