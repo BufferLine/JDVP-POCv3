@@ -2,7 +2,7 @@
 
 Quick-reference kanban. Full detail: `docs/IMPLEMENTATION_PLAN.md`
 
-Updated: 2026-04-08
+Updated: 2026-07-15
 
 ## Done
 
@@ -50,6 +50,13 @@ Updated: 2026-04-08
 - [x] MiniLM-L6-v2 contrastive fine-tune — DA R²=0.446, High DA F1=0.39, 5ms inference
 - [x] 8-model embedding benchmark — pre-trained: nomic(0.207) > bge-base(0.191) > gte-base(0.156) > MiniLM(0.082)
 - [x] Fine-tune dominance confirmed — fine-tuned MiniLM(0.446) >> best pre-trained(0.207)
+
+### Research — Protocol Review & v1.6 Proposal (2026-07-15)
+- [x] Protocol completeness review — psychology/psychometrics/engineering/governance perspectives (`docs/research/2026-07-15-protocol-completeness-review.md`)
+- [x] v1.6 proposal draft (JDVP-2026-002) — Interaction Summary artifact, derived DA, decision-relevant marker, observer profile (`docs/research/jdvp-protocol-v1.6-conversation-unit-proposal.md`)
+- [x] v1.5 migration gap identified — upstream adopted level scoring, POCv3 core still v1.4 (issue #15)
+- [x] Positioning draft "From Tests to Traces" — test→trace psychometric argument, LLM-annotator literature, metrology thesis (`docs/research/2026-07-15-from-tests-to-traces-positioning.md`)
+- [x] Long-arc vision note — dyadic generalization (agent↔agent), design guardrails, sequencing (`docs/research/2026-07-15-long-arc-vision-dyadic-generalization.md`)
 
 ## In Progress
 
