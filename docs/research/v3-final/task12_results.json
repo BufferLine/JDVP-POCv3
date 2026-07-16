@@ -1,0 +1,1036 @@
+{
+  "reference": "gpt41",
+  "theta": 0.1,
+  "dimensions": {
+    "judgment_delegation": {
+      "models": {
+        "sonnet": {
+          "trend_raw_agreement": {
+            "point": 0.6133,
+            "ci_lo": 0.5567,
+            "ci_hi": 0.67,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.4326,
+            "ci_lo": 0.3469,
+            "ci_hi": 0.5156,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.5286,
+            "ci_lo": 0.4881,
+            "ci_hi": 0.5653,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.444,
+            "ci_lo": 0.4012,
+            "ci_hi": 0.4857,
+            "n": 300
+          }
+        },
+        "deepseek": {
+          "trend_raw_agreement": {
+            "point": 0.57,
+            "ci_lo": 0.5166,
+            "ci_hi": 0.6234,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.403,
+            "ci_lo": 0.3142,
+            "ci_hi": 0.4841,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.4596,
+            "ci_lo": 0.41,
+            "ci_hi": 0.5077,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.4093,
+            "ci_lo": 0.3667,
+            "ci_hi": 0.4521,
+            "n": 300
+          }
+        },
+        "nemotron": {
+          "trend_raw_agreement": {
+            "point": 0.4767,
+            "ci_lo": 0.42,
+            "ci_hi": 0.5333,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.2297,
+            "ci_lo": 0.139,
+            "ci_hi": 0.3196,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.1702,
+            "ci_lo": 0.136,
+            "ci_hi": 0.2038,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.1616,
+            "ci_lo": 0.1252,
+            "ci_hi": 0.1987,
+            "n": 300
+          }
+        },
+        "gpt54nano": {
+          "trend_raw_agreement": {
+            "point": 0.51,
+            "ci_lo": 0.4533,
+            "ci_hi": 0.5633,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.264,
+            "ci_lo": 0.1716,
+            "ci_hi": 0.3575,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.3161,
+            "ci_lo": 0.2704,
+            "ci_hi": 0.3585,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.2373,
+            "ci_lo": 0.1973,
+            "ci_hi": 0.2747,
+            "n": 300
+          }
+        },
+        "gemma4-26b": {
+          "trend_raw_agreement": {
+            "point": 0.6033,
+            "ci_lo": 0.5467,
+            "ci_hi": 0.66,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.4076,
+            "ci_lo": 0.3182,
+            "ci_hi": 0.4951,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.4969,
+            "ci_lo": 0.4588,
+            "ci_hi": 0.5343,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.4862,
+            "ci_lo": 0.4468,
+            "ci_hi": 0.526,
+            "n": 300
+          }
+        }
+      },
+      "krippendorff_alpha_ordinal": 0.3165,
+      "n_common_convos": 300,
+      "majority_class_baseline": 0.4172
+    },
+    "cognitive_passivity": {
+      "models": {
+        "sonnet": {
+          "trend_raw_agreement": {
+            "point": 0.64,
+            "ci_lo": 0.5833,
+            "ci_hi": 0.6967,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.4662,
+            "ci_lo": 0.3711,
+            "ci_hi": 0.5472,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.6071,
+            "ci_lo": 0.571,
+            "ci_hi": 0.6385,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.4825,
+            "ci_lo": 0.4384,
+            "ci_hi": 0.5252,
+            "n": 300
+          }
+        },
+        "deepseek": {
+          "trend_raw_agreement": {
+            "point": 0.6167,
+            "ci_lo": 0.56,
+            "ci_hi": 0.6733,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.4408,
+            "ci_lo": 0.3491,
+            "ci_hi": 0.5274,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.6321,
+            "ci_lo": 0.595,
+            "ci_hi": 0.6651,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.4688,
+            "ci_lo": 0.4275,
+            "ci_hi": 0.5102,
+            "n": 300
+          }
+        },
+        "nemotron": {
+          "trend_raw_agreement": {
+            "point": 0.4567,
+            "ci_lo": 0.4,
+            "ci_hi": 0.5133,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.1608,
+            "ci_lo": 0.0722,
+            "ci_hi": 0.253,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.1795,
+            "ci_lo": 0.1458,
+            "ci_hi": 0.2152,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.136,
+            "ci_lo": 0.0985,
+            "ci_hi": 0.1714,
+            "n": 300
+          }
+        },
+        "gpt54nano": {
+          "trend_raw_agreement": {
+            "point": 0.5533,
+            "ci_lo": 0.4933,
+            "ci_hi": 0.61,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.237,
+            "ci_lo": 0.1486,
+            "ci_hi": 0.328,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.4644,
+            "ci_lo": 0.4186,
+            "ci_hi": 0.5065,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.339,
+            "ci_lo": 0.2923,
+            "ci_hi": 0.3856,
+            "n": 300
+          }
+        },
+        "gemma4-26b": {
+          "trend_raw_agreement": {
+            "point": 0.6267,
+            "ci_lo": 0.57,
+            "ci_hi": 0.68,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.4469,
+            "ci_lo": 0.3567,
+            "ci_hi": 0.5316,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.5759,
+            "ci_lo": 0.5346,
+            "ci_hi": 0.6137,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.4881,
+            "ci_lo": 0.4493,
+            "ci_hi": 0.5241,
+            "n": 300
+          }
+        }
+      },
+      "krippendorff_alpha_ordinal": 0.2662,
+      "n_common_convos": 300,
+      "majority_class_baseline": 0.4711
+    },
+    "information_dependency": {
+      "models": {
+        "sonnet": {
+          "trend_raw_agreement": {
+            "point": 0.61,
+            "ci_lo": 0.56,
+            "ci_hi": 0.6667,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.4207,
+            "ci_lo": 0.3358,
+            "ci_hi": 0.5085,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.5783,
+            "ci_lo": 0.5363,
+            "ci_hi": 0.6134,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.5408,
+            "ci_lo": 0.4945,
+            "ci_hi": 0.5824,
+            "n": 300
+          }
+        },
+        "deepseek": {
+          "trend_raw_agreement": {
+            "point": 0.61,
+            "ci_lo": 0.5566,
+            "ci_hi": 0.6633,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.4114,
+            "ci_lo": 0.3152,
+            "ci_hi": 0.4993,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.5647,
+            "ci_lo": 0.521,
+            "ci_hi": 0.6045,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.5265,
+            "ci_lo": 0.4752,
+            "ci_hi": 0.5734,
+            "n": 300
+          }
+        },
+        "nemotron": {
+          "trend_raw_agreement": {
+            "point": 0.4433,
+            "ci_lo": 0.3833,
+            "ci_hi": 0.5,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.1975,
+            "ci_lo": 0.105,
+            "ci_hi": 0.2835,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.2164,
+            "ci_lo": 0.1785,
+            "ci_hi": 0.2543,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.1691,
+            "ci_lo": 0.128,
+            "ci_hi": 0.2108,
+            "n": 300
+          }
+        },
+        "gpt54nano": {
+          "trend_raw_agreement": {
+            "point": 0.56,
+            "ci_lo": 0.5,
+            "ci_hi": 0.6167,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.2961,
+            "ci_lo": 0.2108,
+            "ci_hi": 0.3799,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.4226,
+            "ci_lo": 0.3804,
+            "ci_hi": 0.4601,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.2988,
+            "ci_lo": 0.2571,
+            "ci_hi": 0.3378,
+            "n": 300
+          }
+        },
+        "gemma4-26b": {
+          "trend_raw_agreement": {
+            "point": 0.6833,
+            "ci_lo": 0.63,
+            "ci_hi": 0.7333,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.5543,
+            "ci_lo": 0.4739,
+            "ci_hi": 0.6281,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.6117,
+            "ci_lo": 0.5678,
+            "ci_hi": 0.6526,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.589,
+            "ci_lo": 0.5511,
+            "ci_hi": 0.6235,
+            "n": 300
+          }
+        }
+      },
+      "krippendorff_alpha_ordinal": 0.3218,
+      "n_common_convos": 300,
+      "majority_class_baseline": 0.455
+    },
+    "delegation_awareness_derived": {
+      "models": {
+        "sonnet": {
+          "trend_raw_agreement": {
+            "point": 0.7033,
+            "ci_lo": 0.6533,
+            "ci_hi": 0.7533,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.5279,
+            "ci_lo": 0.447,
+            "ci_hi": 0.6117,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.6266,
+            "ci_lo": 0.5931,
+            "ci_hi": 0.6556,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.5277,
+            "ci_lo": 0.4852,
+            "ci_hi": 0.5683,
+            "n": 300
+          }
+        },
+        "deepseek": {
+          "trend_raw_agreement": {
+            "point": 0.6267,
+            "ci_lo": 0.5733,
+            "ci_hi": 0.68,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.4134,
+            "ci_lo": 0.324,
+            "ci_hi": 0.5001,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.6512,
+            "ci_lo": 0.6165,
+            "ci_hi": 0.6823,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.5118,
+            "ci_lo": 0.4702,
+            "ci_hi": 0.5549,
+            "n": 300
+          }
+        },
+        "nemotron": {
+          "trend_raw_agreement": {
+            "point": 0.4433,
+            "ci_lo": 0.3867,
+            "ci_hi": 0.5,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.145,
+            "ci_lo": 0.0578,
+            "ci_hi": 0.2345,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.2283,
+            "ci_lo": 0.1936,
+            "ci_hi": 0.2652,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.1672,
+            "ci_lo": 0.1306,
+            "ci_hi": 0.2017,
+            "n": 300
+          }
+        },
+        "gpt54nano": {
+          "trend_raw_agreement": {
+            "point": 0.5933,
+            "ci_lo": 0.5367,
+            "ci_hi": 0.6467,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.2921,
+            "ci_lo": 0.209,
+            "ci_hi": 0.3775,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.4901,
+            "ci_lo": 0.4513,
+            "ci_hi": 0.5255,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.3812,
+            "ci_lo": 0.3359,
+            "ci_hi": 0.4265,
+            "n": 300
+          }
+        },
+        "gemma4-26b": {
+          "trend_raw_agreement": {
+            "point": 0.6767,
+            "ci_lo": 0.62,
+            "ci_hi": 0.7267,
+            "n": 300
+          },
+          "trend_weighted_kappa": {
+            "point": 0.5073,
+            "ci_lo": 0.4171,
+            "ci_hi": 0.5877,
+            "n": 300
+          },
+          "level_spearman": {
+            "point": 0.6093,
+            "ci_lo": 0.5683,
+            "ci_hi": 0.6448,
+            "n": 300
+          },
+          "dv_pearson": {
+            "point": 0.5525,
+            "ci_lo": 0.5119,
+            "ci_hi": 0.5904,
+            "n": 300
+          }
+        }
+      },
+      "krippendorff_alpha_ordinal": 0.3044,
+      "n_common_convos": 300,
+      "majority_class_baseline": 0.5167
+    }
+  },
+  "ranking_audit": [
+    {
+      "dimension": "JH",
+      "metric": "trend_weighted_kappa",
+      "higher": "sonnet",
+      "lower": "gemma4-26b",
+      "higher_pt": 0.4326,
+      "lower_pt": 0.4076,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "JH",
+      "metric": "trend_weighted_kappa",
+      "higher": "gemma4-26b",
+      "lower": "deepseek",
+      "higher_pt": 0.4076,
+      "lower_pt": 0.403,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "JH",
+      "metric": "trend_weighted_kappa",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.403,
+      "lower_pt": 0.264,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "JH",
+      "metric": "trend_weighted_kappa",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.264,
+      "lower_pt": 0.2297,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "JH",
+      "metric": "level_spearman",
+      "higher": "sonnet",
+      "lower": "gemma4-26b",
+      "higher_pt": 0.5286,
+      "lower_pt": 0.4969,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "JH",
+      "metric": "level_spearman",
+      "higher": "gemma4-26b",
+      "lower": "deepseek",
+      "higher_pt": 0.4969,
+      "lower_pt": 0.4596,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "JH",
+      "metric": "level_spearman",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.4596,
+      "lower_pt": 0.3161,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "JH",
+      "metric": "level_spearman",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.3161,
+      "lower_pt": 0.1702,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "JH",
+      "metric": "dv_pearson",
+      "higher": "gemma4-26b",
+      "lower": "sonnet",
+      "higher_pt": 0.4862,
+      "lower_pt": 0.444,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "JH",
+      "metric": "dv_pearson",
+      "higher": "sonnet",
+      "lower": "deepseek",
+      "higher_pt": 0.444,
+      "lower_pt": 0.4093,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "JH",
+      "metric": "dv_pearson",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.4093,
+      "lower_pt": 0.2373,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "JH",
+      "metric": "dv_pearson",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.2373,
+      "lower_pt": 0.1616,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "CP",
+      "metric": "trend_weighted_kappa",
+      "higher": "sonnet",
+      "lower": "gemma4-26b",
+      "higher_pt": 0.4662,
+      "lower_pt": 0.4469,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "CP",
+      "metric": "trend_weighted_kappa",
+      "higher": "gemma4-26b",
+      "lower": "deepseek",
+      "higher_pt": 0.4469,
+      "lower_pt": 0.4408,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "CP",
+      "metric": "trend_weighted_kappa",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.4408,
+      "lower_pt": 0.237,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "CP",
+      "metric": "trend_weighted_kappa",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.237,
+      "lower_pt": 0.1608,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "CP",
+      "metric": "level_spearman",
+      "higher": "deepseek",
+      "lower": "sonnet",
+      "higher_pt": 0.6321,
+      "lower_pt": 0.6071,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "CP",
+      "metric": "level_spearman",
+      "higher": "sonnet",
+      "lower": "gemma4-26b",
+      "higher_pt": 0.6071,
+      "lower_pt": 0.5759,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "CP",
+      "metric": "level_spearman",
+      "higher": "gemma4-26b",
+      "lower": "gpt54nano",
+      "higher_pt": 0.5759,
+      "lower_pt": 0.4644,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "CP",
+      "metric": "level_spearman",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.4644,
+      "lower_pt": 0.1795,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "CP",
+      "metric": "dv_pearson",
+      "higher": "gemma4-26b",
+      "lower": "sonnet",
+      "higher_pt": 0.4881,
+      "lower_pt": 0.4825,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "CP",
+      "metric": "dv_pearson",
+      "higher": "sonnet",
+      "lower": "deepseek",
+      "higher_pt": 0.4825,
+      "lower_pt": 0.4688,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "CP",
+      "metric": "dv_pearson",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.4688,
+      "lower_pt": 0.339,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "CP",
+      "metric": "dv_pearson",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.339,
+      "lower_pt": 0.136,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "ID",
+      "metric": "trend_weighted_kappa",
+      "higher": "gemma4-26b",
+      "lower": "sonnet",
+      "higher_pt": 0.5543,
+      "lower_pt": 0.4207,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "ID",
+      "metric": "trend_weighted_kappa",
+      "higher": "sonnet",
+      "lower": "deepseek",
+      "higher_pt": 0.4207,
+      "lower_pt": 0.4114,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "ID",
+      "metric": "trend_weighted_kappa",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.4114,
+      "lower_pt": 0.2961,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "ID",
+      "metric": "trend_weighted_kappa",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.2961,
+      "lower_pt": 0.1975,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "ID",
+      "metric": "level_spearman",
+      "higher": "gemma4-26b",
+      "lower": "sonnet",
+      "higher_pt": 0.6117,
+      "lower_pt": 0.5783,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "ID",
+      "metric": "level_spearman",
+      "higher": "sonnet",
+      "lower": "deepseek",
+      "higher_pt": 0.5783,
+      "lower_pt": 0.5647,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "ID",
+      "metric": "level_spearman",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.5647,
+      "lower_pt": 0.4226,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "ID",
+      "metric": "level_spearman",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.4226,
+      "lower_pt": 0.2164,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "ID",
+      "metric": "dv_pearson",
+      "higher": "gemma4-26b",
+      "lower": "sonnet",
+      "higher_pt": 0.589,
+      "lower_pt": 0.5408,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "ID",
+      "metric": "dv_pearson",
+      "higher": "sonnet",
+      "lower": "deepseek",
+      "higher_pt": 0.5408,
+      "lower_pt": 0.5265,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "ID",
+      "metric": "dv_pearson",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.5265,
+      "lower_pt": 0.2988,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "ID",
+      "metric": "dv_pearson",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.2988,
+      "lower_pt": 0.1691,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "DA",
+      "metric": "trend_weighted_kappa",
+      "higher": "sonnet",
+      "lower": "gemma4-26b",
+      "higher_pt": 0.5279,
+      "lower_pt": 0.5073,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "DA",
+      "metric": "trend_weighted_kappa",
+      "higher": "gemma4-26b",
+      "lower": "deepseek",
+      "higher_pt": 0.5073,
+      "lower_pt": 0.4134,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "DA",
+      "metric": "trend_weighted_kappa",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.4134,
+      "lower_pt": 0.2921,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "DA",
+      "metric": "trend_weighted_kappa",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.2921,
+      "lower_pt": 0.145,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "DA",
+      "metric": "level_spearman",
+      "higher": "deepseek",
+      "lower": "sonnet",
+      "higher_pt": 0.6512,
+      "lower_pt": 0.6266,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "DA",
+      "metric": "level_spearman",
+      "higher": "sonnet",
+      "lower": "gemma4-26b",
+      "higher_pt": 0.6266,
+      "lower_pt": 0.6093,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "DA",
+      "metric": "level_spearman",
+      "higher": "gemma4-26b",
+      "lower": "gpt54nano",
+      "higher_pt": 0.6093,
+      "lower_pt": 0.4901,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "DA",
+      "metric": "level_spearman",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.4901,
+      "lower_pt": 0.2283,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "DA",
+      "metric": "dv_pearson",
+      "higher": "gemma4-26b",
+      "lower": "sonnet",
+      "higher_pt": 0.5525,
+      "lower_pt": 0.5277,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "DA",
+      "metric": "dv_pearson",
+      "higher": "sonnet",
+      "lower": "deepseek",
+      "higher_pt": 0.5277,
+      "lower_pt": 0.5118,
+      "ci_overlap": true,
+      "claim_defensible": false
+    },
+    {
+      "dimension": "DA",
+      "metric": "dv_pearson",
+      "higher": "deepseek",
+      "lower": "gpt54nano",
+      "higher_pt": 0.5118,
+      "lower_pt": 0.3812,
+      "ci_overlap": false,
+      "claim_defensible": true
+    },
+    {
+      "dimension": "DA",
+      "metric": "dv_pearson",
+      "higher": "gpt54nano",
+      "lower": "nemotron",
+      "higher_pt": 0.3812,
+      "lower_pt": 0.1672,
+      "ci_overlap": false,
+      "claim_defensible": true
+    }
+  ]
+}

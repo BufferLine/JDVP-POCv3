@@ -1,0 +1,147 @@
+{
+  "reference": "gpt41",
+  "threshold": 7.0,
+  "positive_class": "level>=7",
+  "dimensions": {
+    "judgment_delegation": {
+      "models": {
+        "sonnet": {
+          "f1": 0.4747,
+          "ci_lo": 0.4306,
+          "ci_hi": 0.5186,
+          "n_convos": 300
+        },
+        "deepseek": {
+          "f1": 0.4789,
+          "ci_lo": 0.4331,
+          "ci_hi": 0.5257,
+          "n_convos": 300
+        },
+        "nemotron": {
+          "f1": 0.2588,
+          "ci_lo": 0.2289,
+          "ci_hi": 0.2911,
+          "n_convos": 300
+        },
+        "gpt54nano": {
+          "f1": 0.319,
+          "ci_lo": 0.279,
+          "ci_hi": 0.3627,
+          "n_convos": 300
+        },
+        "gemma4-26b": {
+          "f1": 0.4118,
+          "ci_lo": 0.362,
+          "ci_hi": 0.4591,
+          "n_convos": 300
+        }
+      },
+      "reference_base_rate": 0.1214
+    },
+    "cognitive_passivity": {
+      "models": {
+        "sonnet": {
+          "f1": 0.5273,
+          "ci_lo": 0.4764,
+          "ci_hi": 0.5757,
+          "n_convos": 300
+        },
+        "deepseek": {
+          "f1": 0.5395,
+          "ci_lo": 0.4875,
+          "ci_hi": 0.5886,
+          "n_convos": 300
+        },
+        "nemotron": {
+          "f1": 0.2618,
+          "ci_lo": 0.2238,
+          "ci_hi": 0.3002,
+          "n_convos": 300
+        },
+        "gpt54nano": {
+          "f1": 0.45,
+          "ci_lo": 0.3908,
+          "ci_hi": 0.5036,
+          "n_convos": 300
+        },
+        "gemma4-26b": {
+          "f1": 0.5267,
+          "ci_lo": 0.4838,
+          "ci_hi": 0.5681,
+          "n_convos": 300
+        }
+      },
+      "reference_base_rate": 0.1499
+    },
+    "information_dependency": {
+      "models": {
+        "sonnet": {
+          "f1": 0.4966,
+          "ci_lo": 0.4576,
+          "ci_hi": 0.5338,
+          "n_convos": 300
+        },
+        "deepseek": {
+          "f1": 0.4556,
+          "ci_lo": 0.4154,
+          "ci_hi": 0.4956,
+          "n_convos": 300
+        },
+        "nemotron": {
+          "f1": 0.3892,
+          "ci_lo": 0.3535,
+          "ci_hi": 0.4251,
+          "n_convos": 300
+        },
+        "gpt54nano": {
+          "f1": 0.3544,
+          "ci_lo": 0.314,
+          "ci_hi": 0.3924,
+          "n_convos": 300
+        },
+        "gemma4-26b": {
+          "f1": 0.563,
+          "ci_lo": 0.5184,
+          "ci_hi": 0.6015,
+          "n_convos": 300
+        }
+      },
+      "reference_base_rate": 0.2291
+    },
+    "delegation_awareness_derived": {
+      "models": {
+        "sonnet": {
+          "f1": 0.4496,
+          "ci_lo": 0.3855,
+          "ci_hi": 0.5049,
+          "n_convos": 300
+        },
+        "deepseek": {
+          "f1": 0.4484,
+          "ci_lo": 0.3848,
+          "ci_hi": 0.5019,
+          "n_convos": 300
+        },
+        "nemotron": {
+          "f1": 0.2022,
+          "ci_lo": 0.1627,
+          "ci_hi": 0.2451,
+          "n_convos": 300
+        },
+        "gpt54nano": {
+          "f1": 0.2693,
+          "ci_lo": 0.1946,
+          "ci_hi": 0.3388,
+          "n_convos": 300
+        },
+        "gemma4-26b": {
+          "f1": 0.452,
+          "ci_lo": 0.3866,
+          "ci_hi": 0.5137,
+          "n_convos": 300
+        }
+      },
+      "reference_base_rate": 0.0873
+    }
+  }
+}
