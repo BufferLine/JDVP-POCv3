@@ -65,6 +65,16 @@ class StaticResponseProvider:
                 turn_value = line.removeprefix("turn_number: ").strip()
                 if turn_value.isdigit():
                     turn_number = turn_value
+            elif line.startswith("Interaction: "):
+                # Current header format: "Interaction: <id> | Context: <module> | Turn: <n>"
+                for segment in line.split(" | "):
+                    segment = segment.strip()
+                    if segment.startswith("Interaction: "):
+                        interaction_id = segment.removeprefix("Interaction: ").strip()
+                    elif segment.startswith("Turn: "):
+                        turn_value = segment.removeprefix("Turn: ").strip()
+                        if turn_value.isdigit():
+                            turn_number = turn_value
 
         responses_by_key = payload.get("responses_by_key")
         if isinstance(responses_by_key, dict) and interaction_id is not None and turn_number is not None:
