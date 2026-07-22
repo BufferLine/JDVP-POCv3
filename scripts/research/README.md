@@ -26,7 +26,8 @@ that archive directly).
 ## Run
 
 ```bash
-python3 task12_agreement_ci.py    # Task 1+2: trend kappa / Spearman / DV, conversation bootstrap CIs
+python3 task12_agreement_ci.py    # Task 1+2: trend kappa / Spearman / DV, conversation bootstrap CIs,
+                                  #           pairwise sign-flip vs stable-boundary breakdown
 python3 task_f1_detection.py      # 3rd standard metric: high-delegation (level>=7) detection F1
 python3 task3_da_crosscorpus.py   # Task 3: DA-coefficient cross-corpus validation
 python3 task4_prior_ablation.py   # Task 4: prior-anchoring ablation analysis (needs the ablation labels)
