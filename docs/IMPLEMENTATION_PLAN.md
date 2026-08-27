@@ -204,21 +204,23 @@ The detailed boundary, validation gates, and relationship-profile distinctions a
 
 ### Priority 0: Canonical Schema Alignment
 
+Status: complete (2026-08-27).
+
 Goal:
 
-- move POCv3 from the vendored v1.4 categorical artifact schema to the canonical v1.5 level-based schema before expanding product-facing extraction behavior
+- maintain POCv3's canonical v1.5 level-based alignment as product-facing extraction behavior expands
 
 Tasks:
 
 1. document the v1.4-to-v1.5 input, JSV, DV, fixture, and test migration map
 2. refresh the vendored protocol snapshot from the canonical sibling repository
 3. adapt protocol-core derivation and schema validation to 0–10 levels and direct integer deltas
-4. convert or regenerate fixtures and baselines with explicit provenance
-5. update service DTO versions and migration documentation
+4. convert stable fixtures and scenario packs with explicit provenance
+5. retain a read-only compatibility path for legacy stored hints and add service-contract versioning only if the external payload changes
 
 Exit condition:
 
-- POCv3's generated artifacts, tests, vendored schemas, and documented protocol version agree with the canonical v1.5 surface
+- POCv3's generated artifacts, tests, vendored schemas, documented protocol version, stable fixtures, and scenario packs agree with the canonical v1.5 surface
 
 ### Priority 0.5: Low-Cost Human-AI Measurement Validation
 

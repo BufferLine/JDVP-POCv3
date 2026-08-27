@@ -197,10 +197,10 @@ class LLMObserverTrack(TrackExtractor):
                     "Always include all required fields and at least one evidence span.\n"
                     "required_schema_template:\n"
                     '{'
-                    '"judgment_holder":"Human|Shared|AI|Undefined",'
-                    '"delegation_awareness":"Explicit|Implicit|Absent",'
-                    '"cognitive_engagement":"Active|Reactive|Passive",'
-                    '"information_seeking":"Active|Passive|None",'
+                    '"judgment_holder":0,'
+                    '"delegation_awareness":0,'
+                    '"cognitive_engagement":0,'
+                    '"information_seeking":0,'
                     '"confidence":{'
                     '"judgment_holder":"high|medium|low",'
                     '"delegation_awareness":"high|medium|low",'

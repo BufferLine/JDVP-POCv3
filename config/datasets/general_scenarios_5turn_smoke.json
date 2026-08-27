@@ -49,10 +49,10 @@
           "meta": {
             "timestamp": "2026-03-12T10:00:00Z",
             "jsv_hint": {
-              "judgment_holder": "Human",
-              "delegation_awareness": "Explicit",
-              "cognitive_engagement": "Active",
-              "information_seeking": "Active",
+              "judgment_holder": 2,
+              "delegation_awareness": 2,
+              "cognitive_engagement": 2,
+              "information_seeking": 2,
               "confidence": {
                 "judgment_holder": "high",
                 "delegation_awareness": "high",
@@ -77,10 +77,10 @@
           "meta": {
             "timestamp": "2026-03-12T10:02:00Z",
             "jsv_hint": {
-              "judgment_holder": "Shared",
-              "delegation_awareness": "Explicit",
-              "cognitive_engagement": "Active",
-              "information_seeking": "Active",
+              "judgment_holder": 5,
+              "delegation_awareness": 2,
+              "cognitive_engagement": 2,
+              "information_seeking": 2,
               "confidence": {
                 "judgment_holder": "medium",
                 "delegation_awareness": "high",
@@ -105,10 +105,10 @@
           "meta": {
             "timestamp": "2026-03-12T10:04:00Z",
             "jsv_hint": {
-              "judgment_holder": "Shared",
-              "delegation_awareness": "Explicit",
-              "cognitive_engagement": "Active",
-              "information_seeking": "Active",
+              "judgment_holder": 5,
+              "delegation_awareness": 2,
+              "cognitive_engagement": 2,
+              "information_seeking": 2,
               "confidence": {
                 "judgment_holder": "medium",
                 "delegation_awareness": "high",
@@ -133,10 +133,10 @@
           "meta": {
             "timestamp": "2026-03-12T10:06:00Z",
             "jsv_hint": {
-              "judgment_holder": "Shared",
-              "delegation_awareness": "Explicit",
-              "cognitive_engagement": "Active",
-              "information_seeking": "Active",
+              "judgment_holder": 5,
+              "delegation_awareness": 2,
+              "cognitive_engagement": 2,
+              "information_seeking": 2,
               "confidence": {
                 "judgment_holder": "medium",
                 "delegation_awareness": "high",
@@ -161,10 +161,10 @@
           "meta": {
             "timestamp": "2026-03-12T10:08:00Z",
             "jsv_hint": {
-              "judgment_holder": "AI",
-              "delegation_awareness": "Implicit",
-              "cognitive_engagement": "Reactive",
-              "information_seeking": "Passive",
+              "judgment_holder": 9,
+              "delegation_awareness": 5,
+              "cognitive_engagement": 5,
+              "information_seeking": 5,
               "confidence": {
                 "judgment_holder": "medium",
                 "delegation_awareness": "medium",
@@ -222,10 +222,10 @@
           "meta": {
             "timestamp": "2026-03-12T11:00:00Z",
             "jsv_hint": {
-              "judgment_holder": "Human",
-              "delegation_awareness": "Explicit",
-              "cognitive_engagement": "Active",
-              "information_seeking": "Active",
+              "judgment_holder": 2,
+              "delegation_awareness": 2,
+              "cognitive_engagement": 2,
+              "information_seeking": 2,
               "confidence": {
                 "judgment_holder": "high",
                 "delegation_awareness": "high",
@@ -250,10 +250,10 @@
           "meta": {
             "timestamp": "2026-03-12T11:02:00Z",
             "jsv_hint": {
-              "judgment_holder": "Shared",
-              "delegation_awareness": "Explicit",
-              "cognitive_engagement": "Active",
-              "information_seeking": "Active",
+              "judgment_holder": 5,
+              "delegation_awareness": 2,
+              "cognitive_engagement": 2,
+              "information_seeking": 2,
               "confidence": {
                 "judgment_holder": "medium",
                 "delegation_awareness": "high",
@@ -278,10 +278,10 @@
           "meta": {
             "timestamp": "2026-03-12T11:04:00Z",
             "jsv_hint": {
-              "judgment_holder": "Shared",
-              "delegation_awareness": "Explicit",
-              "cognitive_engagement": "Active",
-              "information_seeking": "Active",
+              "judgment_holder": 5,
+              "delegation_awareness": 2,
+              "cognitive_engagement": 2,
+              "information_seeking": 2,
               "confidence": {
                 "judgment_holder": "medium",
                 "delegation_awareness": "high",
@@ -306,10 +306,10 @@
           "meta": {
             "timestamp": "2026-03-12T11:06:00Z",
             "jsv_hint": {
-              "judgment_holder": "Shared",
-              "delegation_awareness": "Explicit",
-              "cognitive_engagement": "Active",
-              "information_seeking": "Active",
+              "judgment_holder": 5,
+              "delegation_awareness": 2,
+              "cognitive_engagement": 2,
+              "information_seeking": 2,
               "confidence": {
                 "judgment_holder": "medium",
                 "delegation_awareness": "high",
@@ -334,10 +334,10 @@
           "meta": {
             "timestamp": "2026-03-12T11:08:00Z",
             "jsv_hint": {
-              "judgment_holder": "AI",
-              "delegation_awareness": "Implicit",
-              "cognitive_engagement": "Reactive",
-              "information_seeking": "Passive",
+              "judgment_holder": 9,
+              "delegation_awareness": 5,
+              "cognitive_engagement": 5,
+              "information_seeking": 5,
               "confidence": {
                 "judgment_holder": "medium",
                 "delegation_awareness": "medium",

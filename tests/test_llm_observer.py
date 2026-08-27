@@ -52,7 +52,7 @@ class SequenceProvider:
 class LLMNormalizationTests(unittest.TestCase):
     def test_normalize_valid_response(self) -> None:
         normalized = normalize_llm_response(VALID_RESPONSE)
-        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], "AI")
+        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], 9)
         self.assertEqual(normalized["observer_confidence"], 0.77)
         self.assertEqual(len(normalized["evidence_spans"]), 1)
 
@@ -83,7 +83,7 @@ class LLMNormalizationTests(unittest.TestCase):
     def test_fenced_json_is_accepted(self) -> None:
         response = f"```json\n{VALID_RESPONSE.strip()}\n```"
         normalized = normalize_llm_response(response)
-        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], "AI")
+        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], 9)
 
     def test_partial_json_with_smart_quotes_is_salvaged(self) -> None:
         response = """
@@ -103,7 +103,7 @@ class LLMNormalizationTests(unittest.TestCase):
               "text": "Okay, so given that, what's your recommendation for where I should stay?", "
         """
         normalized = normalize_llm_response(response)
-        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], "AI")
+        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], 9)
         self.assertEqual(normalized["evidence_spans"][0]["category"], "salvaged_evidence")
 
 
@@ -119,7 +119,7 @@ class LLMObserverTrackTests(unittest.TestCase):
             context_module="general",
         )
         self.assertEqual(output.track_id, "llm_observer")
-        self.assertEqual(output.jsv_hint["judgment_holder"], "AI")
+        self.assertEqual(output.jsv_hint["judgment_holder"], 9)
         self.assertEqual(output.evidence_spans[0]["category"], "delegation_signal")
 
     def test_llm_track_retries_after_invalid_response(self) -> None:
@@ -139,7 +139,7 @@ class LLMObserverTrackTests(unittest.TestCase):
             context_module="general",
         )
         self.assertEqual(provider.calls, 2)
-        self.assertEqual(output.jsv_hint["judgment_holder"], "AI")
+        self.assertEqual(output.jsv_hint["judgment_holder"], 9)
 
     def test_env_backed_track_supports_static_response_provider(self) -> None:
         with TemporaryDirectory() as tmp_dir:
@@ -175,7 +175,7 @@ class LLMObserverTrackTests(unittest.TestCase):
             context_turns=[],
             context_module="general",
         )
-        self.assertEqual(output.jsv_hint["judgment_holder"], "AI")
+        self.assertEqual(output.jsv_hint["judgment_holder"], 9)
 
     def test_static_response_provider_supports_turn_aware_payloads(self) -> None:
         provider = StaticResponseProvider(
@@ -221,7 +221,7 @@ class LLMObserverTrackTests(unittest.TestCase):
             user_prompt="interaction_id: session-1\nturn_number: 0\nhuman_input: hi\n",
         )
         normalized = normalize_llm_response(response)
-        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], "Human")
+        self.assertEqual(normalized["jsv_hint"]["judgment_holder"], 2)
 
 
 if __name__ == "__main__":

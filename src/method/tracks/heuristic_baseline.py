@@ -57,10 +57,10 @@ class HeuristicBaselineTrack(TrackExtractor):
     ) -> TrackOutput:
         text = human_input.lower()
         jsv_hint = {
-            "judgment_holder": "Undefined",
-            "delegation_awareness": "Absent",
-            "cognitive_engagement": "Passive",
-            "information_seeking": "None",
+            "judgment_holder": 5,
+            "delegation_awareness": 9,
+            "cognitive_engagement": 9,
+            "information_seeking": 9,
             "confidence": {
                 "judgment_holder": "low",
                 "delegation_awareness": "low",
@@ -73,43 +73,43 @@ class HeuristicBaselineTrack(TrackExtractor):
         notes: list[str] = []
 
         if any(phrase in text for phrase in HUMAN_LED_DECISION_PHRASES):
-            jsv_hint["judgment_holder"] = "Human"
-            jsv_hint["delegation_awareness"] = "Explicit"
-            jsv_hint["cognitive_engagement"] = "Active"
-            jsv_hint["information_seeking"] = "Active"
+            jsv_hint["judgment_holder"] = 2
+            jsv_hint["delegation_awareness"] = 2
+            jsv_hint["cognitive_engagement"] = 2
+            jsv_hint["information_seeking"] = 2
             evidence_spans.append({"text": human_input[:160], "category": "decision_support_signal"})
             confidence = 0.8
             notes.append("Detected human-led decision support request")
 
         if any(phrase in text for phrase in EXPLORATION_PHRASES):
-            jsv_hint["judgment_holder"] = "Shared"
-            jsv_hint["delegation_awareness"] = "Explicit"
-            jsv_hint["cognitive_engagement"] = "Active"
-            jsv_hint["information_seeking"] = "Active"
+            jsv_hint["judgment_holder"] = 5
+            jsv_hint["delegation_awareness"] = 2
+            jsv_hint["cognitive_engagement"] = 2
+            jsv_hint["information_seeking"] = 2
             evidence_spans.append({"text": human_input[:160], "category": "exploration_signal"})
             confidence = 0.76
             notes.append("Detected option exploration")
 
         if any(phrase in text for phrase in AI_DELEGATION_PHRASES):
-            jsv_hint["judgment_holder"] = "AI"
-            jsv_hint["delegation_awareness"] = "Explicit"
-            jsv_hint["cognitive_engagement"] = "Reactive"
-            jsv_hint["information_seeking"] = "Passive"
+            jsv_hint["judgment_holder"] = 9
+            jsv_hint["delegation_awareness"] = 2
+            jsv_hint["cognitive_engagement"] = 5
+            jsv_hint["information_seeking"] = 5
             evidence_spans.append({"text": human_input[:160], "category": "delegation_signal"})
             confidence = 0.82
             notes.append("Detected direct delegation request")
 
         if any(phrase in text for phrase in HUMAN_RETENTION_PHRASES):
-            jsv_hint["judgment_holder"] = "Human"
-            jsv_hint["delegation_awareness"] = "Explicit"
-            jsv_hint["cognitive_engagement"] = "Active"
-            jsv_hint["information_seeking"] = "Passive"
+            jsv_hint["judgment_holder"] = 2
+            jsv_hint["delegation_awareness"] = 2
+            jsv_hint["cognitive_engagement"] = 2
+            jsv_hint["information_seeking"] = 5
             evidence_spans.append({"text": human_input[:160], "category": "retention_signal"})
             confidence = 0.82
             notes.append("Detected retained human judgment")
 
-        if any(phrase in text for phrase in HEDGING_PHRASES) and jsv_hint["cognitive_engagement"] == "Active":
-            jsv_hint["cognitive_engagement"] = "Reactive"
+        if any(phrase in text for phrase in HEDGING_PHRASES) and jsv_hint["cognitive_engagement"] == 2:
+            jsv_hint["cognitive_engagement"] = 5
             evidence_spans.append({"text": human_input[:160], "category": "hedging_signal"})
             confidence = max(confidence, 0.72)
             notes.append("Detected hedging language")

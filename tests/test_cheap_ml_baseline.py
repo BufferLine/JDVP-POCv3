@@ -37,7 +37,7 @@ class CheapMLBaselineTests(unittest.TestCase):
                 context_module="general",
             )
             self.assertEqual(output.track_id, "cheap_ml_baseline")
-            self.assertIn(output.jsv_hint["judgment_holder"], {"Human", "Shared", "AI"})
+            self.assertIn(output.jsv_hint["judgment_holder"], {2, 5, 9})
             self.assertIn("confidence", output.jsv_hint)
 
     def test_env_backed_cheap_ml_track_uses_fewshot_pack(self) -> None:

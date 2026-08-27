@@ -16,7 +16,7 @@ Meaning:
 Meaning:
 
 - measurement of a human participant's observable critical-thinking practice while collaborating with an AI counterpart
-- JDVP v1 is the current conceptual profile; POCv3 currently implements its vendored v1.4 categorical form
+- JDVP v1 is the current conceptual profile; POCv3 implements its canonical v1.5 level-based form
 
 ### `interaction trace profile`
 

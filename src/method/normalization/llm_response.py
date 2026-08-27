@@ -6,7 +6,11 @@ import json
 import re
 from typing import Any
 
-from src.protocol_core.enums import CONFIDENCE_ENUM, CORE_ENUMS  # noqa: F401  (re-exported)
+from src.protocol_core.enums import (  # noqa: F401  (re-exported)
+    CONFIDENCE_ENUM,
+    CORE_FIELD_NAMES,
+    normalize_core_level,
+)
 SMART_QUOTES = str.maketrans({
     "“": '"',
     "”": '"',
@@ -99,21 +103,28 @@ def _extract_json_object(text: str) -> dict[str, Any]:
     return parsed
 
 
-def _extract_string_field(text: str, field_name: str) -> str | None:
-    match = re.search(rf'"{re.escape(field_name)}"\s*:\s*"([^"]+)"', text)
-    return match.group(1) if match else None
+def _extract_level_field(text: str, field_name: str) -> object | None:
+    match = re.search(rf'"{re.escape(field_name)}"\s*:\s*(-?\d+|"[^"]+")', text)
+    if not match:
+        return None
+    raw = match.group(1)
+    return int(raw) if raw.lstrip("-").isdigit() else raw.strip('"')
 
 
 def _salvage_partial_payload(text: str) -> dict[str, Any] | None:
     payload: dict[str, Any] = {}
-    for field_name in CORE_ENUMS:
-        value = _extract_string_field(text, field_name)
-        if value is None or value not in CORE_ENUMS[field_name]:
+    for field_name in CORE_FIELD_NAMES:
+        value = _extract_level_field(text, field_name)
+        if value is None:
             return None
-        payload[field_name] = value
+        try:
+            normalized_value = normalize_core_level(field_name, value)
+        except ValueError:
+            return None
+        payload[field_name] = normalized_value
 
     confidence: dict[str, str] = {}
-    for field_name in CORE_ENUMS:
+    for field_name in CORE_FIELD_NAMES:
         pattern = rf'"confidence"\s*:\s*\{{.*?"{re.escape(field_name)}"\s*:\s*"([^"]+)"'
         match = re.search(pattern, text, re.DOTALL)
         if not match or match.group(1) not in CONFIDENCE_ENUM:
@@ -135,7 +146,8 @@ def _salvage_partial_payload(text: str) -> dict[str, Any] | None:
         evidence_category = "salvaged_evidence"
     payload["evidence_spans"] = [{"text": evidence_text, "category": evidence_category}]
 
-    observer_notes = _extract_string_field(text, "observer_notes")
+    observer_notes_match = re.search(r'"observer_notes"\s*:\s*"([^"]+)"', text)
+    observer_notes = observer_notes_match.group(1) if observer_notes_match else None
     if observer_notes is not None:
         payload["observer_notes"] = observer_notes
     observer_confidence = re.search(r'"observer_confidence"\s*:\s*([0-9.]+)', text)
@@ -149,7 +161,7 @@ def _normalize_confidence(payload: dict[str, Any]) -> dict[str, str]:
     if not isinstance(confidence, dict):
         raise LLMNormalizationError("confidence must be an object")
     normalized: dict[str, str] = {}
-    for field_name in CORE_ENUMS:
+    for field_name in CORE_FIELD_NAMES:
         raw = confidence.get(field_name)
         if not isinstance(raw, str) or raw not in CONFIDENCE_ENUM:
             raise LLMNormalizationError(f"invalid confidence for {field_name}: {raw}")
@@ -184,11 +196,15 @@ def _normalize_evidence_spans(payload: dict[str, Any]) -> list[dict[str, str]]:
 def normalize_llm_response(text: str) -> dict[str, Any]:
     payload = _extract_json_object(text)
     normalized_hint: dict[str, Any] = {}
-    for field_name, allowed in CORE_ENUMS.items():
+    for field_name in CORE_FIELD_NAMES:
         raw = payload.get(field_name)
-        if not isinstance(raw, str) or raw not in allowed:
+        try:
+            normalized_value = normalize_core_level(field_name, raw)
+        except ValueError:
             raise LLMNormalizationError(f"invalid value for {field_name}: {raw}")
-        normalized_hint[field_name] = raw
+        if normalized_value is None:
+            raise LLMNormalizationError("judgment_holder must be an observable integer level in LLM output")
+        normalized_hint[field_name] = normalized_value
 
     normalized_hint["confidence"] = _normalize_confidence(payload)
     evidence_spans = _normalize_evidence_spans(payload)

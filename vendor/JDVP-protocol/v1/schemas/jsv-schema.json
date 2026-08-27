@@ -15,10 +15,10 @@
     "timestamp": { "type": "string", "format": "date-time" },
     "interaction_id": { "type": "string" },
     "turn_number": { "type": "integer", "minimum": 0 },
-    "judgment_holder": { "enum": ["Human", "AI", "Shared", "Undefined"] },
-    "delegation_awareness": { "enum": ["Explicit", "Implicit", "Absent"] },
-    "cognitive_engagement": { "enum": ["Active", "Reactive", "Passive"] },
-    "information_seeking": { "enum": ["Active", "Passive", "None"] },
+    "judgment_holder": { "type": ["integer", "null"], "minimum": 0, "maximum": 10 },
+    "delegation_awareness": { "type": "integer", "minimum": 0, "maximum": 10 },
+    "cognitive_engagement": { "type": "integer", "minimum": 0, "maximum": 10 },
+    "information_seeking": { "type": "integer", "minimum": 0, "maximum": 10 },
     "confidence": {
       "type": "object",
       "properties": {

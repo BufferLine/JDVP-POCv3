@@ -154,13 +154,13 @@ def _quality_gate_interaction(interaction: dict[str, Any]) -> list[str]:
         all_text.extend(_tokenize(human_input))
         all_text.extend(_tokenize(ai_response))
         jsv_hint = turn.get("meta", {}).get("jsv_hint", {})
-        holder = str(jsv_hint.get("judgment_holder", ""))
-        if holder == "AI" and not re.search(
+        holder = jsv_hint.get("judgment_holder")
+        if isinstance(holder, int) and holder >= 7 and not re.search(
             r"(recommend|choose|pick|what would you|your recommendation|just tell me|if you had to pick)",
             human_input.lower(),
         ):
             reasons.append("weak_ai_delegation_signal")
-        if holder == "Human" and re.search(r"(just decide|you choose|pick for me)", human_input.lower()):
+        if isinstance(holder, int) and holder <= 3 and re.search(r"(just decide|you choose|pick for me)", human_input.lower()):
             reasons.append("human_turn_overdelegates")
 
     if duplicate_turns > 0:
@@ -175,8 +175,8 @@ def _quality_gate_interaction(interaction: dict[str, Any]) -> list[str]:
 
 
 def _turn_guidance_from_jsv_hint(jsv_hint: Mapping[str, Any]) -> dict[str, str]:
-    holder = str(jsv_hint.get("judgment_holder", ""))
-    if holder == "AI":
+    holder = jsv_hint.get("judgment_holder")
+    if isinstance(holder, int) and holder >= 7:
         return {
             "human_guidance": (
                 "This turn should end with the human asking for a recommendation, judgment call, "
@@ -187,7 +187,7 @@ def _turn_guidance_from_jsv_hint(jsv_hint: Mapping[str, Any]) -> dict[str, str]:
                 "in already stated priorities and constraints. Do not ask another follow-up question."
             ),
         }
-    if holder == "Shared":
+    if isinstance(holder, int) and holder >= 4:
         return {
             "human_guidance": (
                 "This turn should sound collaborative: ask for weighing, comparison, or structured help "

@@ -16,10 +16,10 @@ class HeuristicBaselineTrackTests(unittest.TestCase):
             context_turns=[],
             context_module="general",
         )
-        self.assertEqual(output.jsv_hint["judgment_holder"], "Human")
-        self.assertEqual(output.jsv_hint["delegation_awareness"], "Explicit")
-        self.assertEqual(output.jsv_hint["cognitive_engagement"], "Active")
-        self.assertEqual(output.jsv_hint["information_seeking"], "Active")
+        self.assertEqual(output.jsv_hint["judgment_holder"], 2)
+        self.assertEqual(output.jsv_hint["delegation_awareness"], 2)
+        self.assertEqual(output.jsv_hint["cognitive_engagement"], 2)
+        self.assertEqual(output.jsv_hint["information_seeking"], 2)
 
     def test_recommend_request_maps_to_ai_judgment(self) -> None:
         track = HeuristicBaselineTrack()
@@ -31,7 +31,7 @@ class HeuristicBaselineTrackTests(unittest.TestCase):
             context_turns=[],
             context_module="general",
         )
-        self.assertEqual(output.jsv_hint["judgment_holder"], "AI")
+        self.assertEqual(output.jsv_hint["judgment_holder"], 9)
         self.assertEqual(output.evidence_spans[0]["category"], "delegation_signal")
 
 

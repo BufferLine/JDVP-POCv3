@@ -47,11 +47,11 @@ Current focus:
 
 ## Design Rule
 
-The checked-in implementation currently follows the vendored JDVP `v1.4` categorical snapshot for protocol artifacts. The sibling protocol repository has advanced to v1.5 level-based scoring, so schema alignment is a migration priority rather than a completed claim. See [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) and [docs/MIGRATION_NOTES.md](docs/MIGRATION_NOTES.md).
+POCv3 follows the canonical JDVP `v1.5` level-based schema for protocol artifacts. Legacy v1.4 categorical hints are accepted only to migrate stored fixtures and resumable extracts to canonical v1.5 output. See [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) and [docs/MIGRATION_NOTES.md](docs/MIGRATION_NOTES.md).
 
 - JSV output must align to canonical `v1/schemas/jsv-schema.json`
-- DV output must use ordinal derivation, not arbitrary transition constants
-- `delta_judgment_holder` becomes `null` when a transition includes `Undefined`
+- DV output must use direct integer level subtraction, not arbitrary transition constants
+- `delta_judgment_holder` becomes `null` when either state is unobservable (`null`)
 - Trajectories contain adjacent-turn DVs only
 
 ## Repository Layout

@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from src.method.fewshot.selector import load_fewshot_pack
-from src.protocol_core.jsv_types import CORE_FIELD_NAMES
+from src.protocol_core.enums import CORE_FIELD_NAMES, normalize_core_level
 from src.shared_utils import tokenize as _tokenize
 
 from .base import TrackExtractor, TrackOutput
@@ -184,7 +184,7 @@ class CheapMLBaselineTrack(TrackExtractor):
         confidence: dict[str, str] = {}
         for field_name in CORE_FIELD_NAMES:
             label, margin = self.field_models[field_name].predict(tokens)
-            jsv_hint[field_name] = label
+            jsv_hint[field_name] = normalize_core_level(field_name, label)
             confidence[field_name] = _margin_to_confidence(margin)
         jsv_hint["confidence"] = confidence
 

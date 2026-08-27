@@ -1,7 +1,8 @@
-"""Shared enum values and ordinals for JDVP v1.4 protocol fields.
+"""Shared values for the JDVP v1.5 level-based core fields.
 
-Single source of truth for field names, valid enum values, ordinal mappings,
-and confidence levels used across protocol_core and extraction tracks.
+Canonical core values are integer readings on the inclusive 0--10 scale.
+Legacy v1.4 categorical values are retained solely to migrate existing
+fixtures and resumable extracts into canonical v1.5 output.
 """
 
 from __future__ import annotations
@@ -14,26 +15,42 @@ CORE_FIELD_NAMES: tuple[str, ...] = (
     "information_seeking",
 )
 
-# Valid enum values for each core field.
-# judgment_holder includes "Undefined" as a valid LLM-response value even though
-# it does not appear in the ordinal map (ordinal transitions involving Undefined
-# are treated as None by dv_ordinal._delta).
-CORE_ENUMS: dict[str, frozenset[str]] = {
-    "judgment_holder": frozenset({"Human", "Shared", "AI", "Undefined"}),
-    "delegation_awareness": frozenset({"Explicit", "Implicit", "Absent"}),
-    "cognitive_engagement": frozenset({"Active", "Reactive", "Passive"}),
-    "information_seeking": frozenset({"Active", "Passive", "None"}),
+CORE_LEVEL_MIN = 0
+CORE_LEVEL_MAX = 10
+
+# Midpoints specified by the v1.5 migration guidance. They support migration
+# of stored v1.4 data; new tracks must emit numeric levels directly.
+LEGACY_CATEGORY_MIDPOINTS: dict[str, dict[str, int | None]] = {
+    "judgment_holder": {"Human": 2, "Shared": 5, "AI": 9, "Undefined": None},
+    "delegation_awareness": {"Explicit": 2, "Implicit": 5, "Absent": 9},
+    "cognitive_engagement": {"Active": 2, "Reactive": 5, "Passive": 9},
+    "information_seeking": {"Active": 2, "Passive": 5, "None": 9},
 }
 
-# Ordinal position of each enum value within its field.
-# "Undefined" is intentionally absent from judgment_holder here; callers that
-# need to handle it (e.g. dv_ordinal._delta) do so explicitly.
-CORE_ORDINALS: dict[str, dict[str, int]] = {
-    "judgment_holder": {"Human": 0, "Shared": 1, "AI": 2},
-    "delegation_awareness": {"Explicit": 0, "Implicit": 1, "Absent": 2},
-    "cognitive_engagement": {"Active": 0, "Reactive": 1, "Passive": 2},
-    "information_seeking": {"Active": 0, "Passive": 1, "None": 2},
-}
+
+def normalize_core_level(field_name: str, value: object) -> int | None:
+    """Return a canonical v1.5 level, accepting legacy input for migration.
+
+    Only ``judgment_holder`` may be null. ``bool`` is rejected even though it
+    is an ``int`` subclass because it is not a meaningful level reading.
+    """
+    if field_name not in CORE_FIELD_NAMES:
+        raise ValueError(f"unknown core field: {field_name}")
+    if value is None:
+        if field_name == "judgment_holder":
+            return None
+        raise ValueError(f"{field_name} must be an integer level")
+    if isinstance(value, bool):
+        raise ValueError(f"{field_name} must be an integer level")
+    if isinstance(value, int):
+        if CORE_LEVEL_MIN <= value <= CORE_LEVEL_MAX:
+            return value
+        raise ValueError(f"{field_name} level must be between {CORE_LEVEL_MIN} and {CORE_LEVEL_MAX}")
+    if isinstance(value, str) and value.isdigit():
+        return normalize_core_level(field_name, int(value))
+    if isinstance(value, str) and value in LEGACY_CATEGORY_MIDPOINTS[field_name]:
+        return LEGACY_CATEGORY_MIDPOINTS[field_name][value]
+    raise ValueError(f"invalid {field_name} level: {value!r}")
 
 # Valid confidence level values.
 CONFIDENCE_LEVELS: frozenset[str] = frozenset({"high", "medium", "low"})
