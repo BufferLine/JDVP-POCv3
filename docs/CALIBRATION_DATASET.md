@@ -40,3 +40,21 @@ python3 scripts/evaluate_calibration.py \
 ```
 
 The report provides pairwise human agreement, observer exact agreement and mean absolute error on adjudicated rows, plus any recorded per-turn latency and cost estimates. It must be read as calibration evidence, not a psychological assessment result.
+
+## Checked-in synthetic demo
+
+`data/calibration/demo-human-ai-v1/` is a fully synthetic three-turn demo paired with `data/fixtures/sample_interaction.json`. It is included to prove the dataset and reporting path end to end. It contains no human annotations and must not be reported as human calibration evidence.
+
+Run the deterministic fixture observer, then generate its report:
+
+```bash
+JDVP_ESTIMATED_COST_USD_PER_TURN=0 python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id calibration-demo-fixture-v1 \
+  --track fixture_hint
+
+python3 scripts/evaluate_calibration.py \
+  --dataset-root data/calibration/demo-human-ai-v1 \
+  --run-dir data/runs/calibration-demo-fixture-v1 \
+  --output data/runs/calibration-demo-fixture-v1/calibration_report.json
+```
