@@ -191,6 +191,52 @@ Operational additions beyond the original milestone text:
 
 ## Roadmap
 
+### Strategic Direction And Sequencing
+
+POCv3 is the measurement foundation for a staged product direction:
+
+1. low-cost, auditable interaction measurement
+2. tools that give participants or researchers useful reflective feedback
+3. separately validated critical-thinking practice assessment
+4. conformance, calibration, and assessment licensing only after independent validation
+
+The detailed boundary, validation gates, and relationship-profile distinctions are in [PRODUCT_STRATEGY.md](./PRODUCT_STRATEGY.md). This direction does not broaden the current JDVP v1 implementation: POCv3 remains a dyadic Human-AI research implementation until a future profile and data contract are explicitly designed and validated.
+
+### Priority 0: Canonical Schema Alignment
+
+Goal:
+
+- move POCv3 from the vendored v1.4 categorical artifact schema to the canonical v1.5 level-based schema before expanding product-facing extraction behavior
+
+Tasks:
+
+1. document the v1.4-to-v1.5 input, JSV, DV, fixture, and test migration map
+2. refresh the vendored protocol snapshot from the canonical sibling repository
+3. adapt protocol-core derivation and schema validation to 0–10 levels and direct integer deltas
+4. convert or regenerate fixtures and baselines with explicit provenance
+5. update service DTO versions and migration documentation
+
+Exit condition:
+
+- POCv3's generated artifacts, tests, vendored schemas, and documented protocol version agree with the canonical v1.5 surface
+
+### Priority 0.5: Low-Cost Human-AI Measurement Validation
+
+Goal:
+
+- establish the quality, latency, and unit-cost envelope required for a demand-led pilot
+
+Tasks:
+
+1. build a consented, human-annotated calibration set with multiple annotators
+2. compare deterministic signals, local/cheap observers, and selective adjudication
+3. store observer confidence, evidence spans, version identity, latency, and cost consistently
+4. define escalation rules for uncertain or calibration-sampled observations
+
+Exit condition:
+
+- one reproducible tiered extraction configuration meets a predeclared calibration, latency, and cost target for the chosen pilot
+
 ### Priority 1: Operational Recovery
 
 Goal:

@@ -2,6 +2,51 @@
 
 This document defines the working names used in POCv3 so dataset, run, benchmark, and track terms do not drift.
 
+## Product And Measurement Terms
+
+### `interaction measurement`
+
+Meaning:
+
+- auditable observation of authority allocation, delegation, verification, exploration, and related evidence in an interaction record
+- an umbrella term; it does not by itself imply a psychological assessment or an AI-governance decision
+
+### `Human-AI profile`
+
+Meaning:
+
+- measurement of a human participant's observable critical-thinking practice while collaborating with an AI counterpart
+- JDVP v1 is the current conceptual profile; POCv3 currently implements its vendored v1.4 categorical form
+
+### `interaction trace profile`
+
+Meaning:
+
+- a future, relationship-neutral profile over directly observable events such as delegation, approval, verification, tool calls, and evidence references
+- suitable for Human-Human, Agent-Agent, or multi-party interaction only after a separate contract and validation plan exist
+- must not infer human or agent inner cognition merely from an operational trace
+
+### `critical-thinking practice profile`
+
+Meaning:
+
+- a multi-axis, evidence-backed assessment interpretation built over validated Human-AI measurement
+- distinct from a single critical-thinking score
+
+### `critical-thinking score`
+
+Meaning:
+
+- an optional calibrated aggregate derived only after assessment validation
+- never a synonym for a raw JDVP field, a one-turn result, or an unvalidated model inference
+
+### `standard and licensing`
+
+Meaning:
+
+- future use of validated rubrics, calibration anchors, conformance tests, and reporting rules by third parties
+- not a claim to own critical thinking or to license unvalidated scores
+
 ## Tracks
 
 ### `fixture_hint`

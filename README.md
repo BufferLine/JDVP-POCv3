@@ -4,13 +4,15 @@ Proof-of-concept workspace for implementing JDVP against the current canonical p
 
 ## Intent
 
-POCv3 is a core-first implementation workspace.
+POCv3 is a core-first implementation workspace for interaction measurement research.
 
 It separates:
 
 - `protocol core`: canonical JSV/DV/Trajectory generation and schema validation
 - `method layer`: how JSVs are extracted from interaction evidence
 - `pipeline layer`: raw turns -> extraction -> protocol artifacts -> reports
+
+The product direction is documented separately in [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md): begin with low-cost, auditable interaction measurement; build useful reflective tools; validate any critical-thinking assessment separately; and pursue standard/licensing only after evidence supports it.
 
 ## Scope
 
@@ -45,7 +47,7 @@ Current focus:
 
 ## Design Rule
 
-POCv3 follows JDVP `v1.4` exactly for protocol artifacts.
+The checked-in implementation currently follows the vendored JDVP `v1.4` categorical snapshot for protocol artifacts. The sibling protocol repository has advanced to v1.5 level-based scoring, so schema alignment is a migration priority rather than a completed claim. See [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) and [docs/MIGRATION_NOTES.md](docs/MIGRATION_NOTES.md).
 
 - JSV output must align to canonical `v1/schemas/jsv-schema.json`
 - DV output must use ordinal derivation, not arbitrary transition constants

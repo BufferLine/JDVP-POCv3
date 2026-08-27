@@ -56,3 +56,13 @@ POCv3 uses a vendored copy of canonical protocol schemas for repeatable CI.
 
 This is an operational snapshot, not a new source of truth.
 The canonical semantics still belong to `JDVP-protocol`, and schema snapshots here must be refreshed from there.
+
+## Current Version-Alignment Gap
+
+POCv3's vendored snapshot and protocol core currently implement the JDVP v1.4 categorical surface. The canonical sibling protocol repository has since adopted v1.5 level-based scoring. The difference is semantic, not cosmetic:
+
+- core JSV fields change from categorical enums to 0–10 integer levels
+- core DV fields change from normalized ordinal fractions to direct integer deltas in `[-10, 10]`
+- legacy categorical fixtures require explicit midpoint conversion or regeneration; direct multiplication of prior DVs is not valid
+
+Until the migration is complete, POCv3 should describe itself as a v1.4-compatible research implementation, not as fully aligned with the current canonical protocol. The migration is prioritized in [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) and is a prerequisite for new product-facing extraction claims.

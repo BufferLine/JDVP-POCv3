@@ -16,7 +16,7 @@ JDVP POCv3 is a core-first implementation workspace for canonical JDVP artifact 
 - Root orchestration scripts: `scripts/`
 
 ## Scope
-- Canonical JSV, DV, and Trajectory generation aligned to JDVP `v1.4`
+- Canonical JSV, DV, and Trajectory generation aligned to the vendored JDVP `v1.4` snapshot; migrate to the canonical v1.5 level-based surface before expanding product-facing behavior
 - Deterministic, provider-backed, few-shot, and cheap-ML extraction tracks
 - Dataset generation for stable regression packs and richer research packs
 - Dataset-scoped execution, matrix runs, and benchmark summaries
@@ -40,6 +40,8 @@ JDVP POCv3 is a core-first implementation workspace for canonical JDVP artifact 
 ## Editing Rules
 - Preserve canonical JDVP semantics and schema alignment.
 - Keep protocol-core logic independent from extraction strategy.
+- Keep the current dyadic Human-AI JDVP profile distinct from any future Human-Human, Agent-Agent, or multi-party interaction-trace profile.
+- Do not present raw interaction measurements as validated critical-thinking scores; follow `docs/PRODUCT_STRATEGY.md` validation gates for assessment-facing work.
 - Keep stable regression data and richer research data explicitly separated.
 - When adding or renaming tracks, update:
   - `src/method/tracks/factory.py`
