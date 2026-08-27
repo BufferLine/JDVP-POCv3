@@ -73,31 +73,42 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--ridge-alpha", type=float, default=0.25)
     parser.add_argument("--include-contested", action="store_true")
+    parser.add_argument(
+        "--fit-all",
+        action="store_true",
+        help="Fit and score the same labeled turns for capacity diagnostics only; no holdout metric is produced.",
+    )
     args = parser.parse_args()
-    if not 0.0 < args.test_ratio < 1.0:
+    if not args.fit_all and not 0.0 < args.test_ratio < 1.0:
         raise ValueError("--test-ratio must be between 0 and 1")
 
     turns = load_labeled_turns(args.dataset_root, exclude_contested=not args.include_contested)
-    holdout_flags = [
-        is_holdout(turn["interaction_id"], test_ratio=args.test_ratio, seed=args.seed)
-        for turn in turns
-    ]
+    holdout_flags = (
+        [False] * len(turns)
+        if args.fit_all
+        else [
+            is_holdout(turn["interaction_id"], test_ratio=args.test_ratio, seed=args.seed)
+            for turn in turns
+        ]
+    )
     train_turns = [turn for turn, is_test in zip(turns, holdout_flags) if not is_test]
     test_turns = [turn for turn, is_test in zip(turns, holdout_flags) if is_test]
-    if not train_turns or not test_turns:
+    if not train_turns or (not args.fit_all and not test_turns):
         raise ValueError("grouped split produced an empty train or holdout set")
 
     embedder = SentenceTransformer(str(args.embedding_model), local_files_only=True)
     vectors = _unit_rows(embedder.encode([turn["text"] for turn in turns], show_progress_bar=True, batch_size=64))
     train_indices = [index for index, is_test in enumerate(holdout_flags) if not is_test]
     test_indices = [index for index, is_test in enumerate(holdout_flags) if is_test]
-    x_train, x_test = vectors[train_indices], vectors[test_indices]
+    x_train = vectors[train_indices]
+    x_test = vectors[test_indices] if test_indices else x_train
 
     heads: dict[str, dict[str, Any]] = {}
     metrics: dict[str, dict[str, float]] = {}
     for field_name in CORE_FIELD_NAMES:
         y_train = np.asarray([turn["labels"][field_name] for turn in train_turns], dtype=float)
-        y_test = np.asarray([turn["labels"][field_name] for turn in test_turns], dtype=float)
+        evaluation_turns = train_turns if args.fit_all else test_turns
+        y_test = np.asarray([turn["labels"][field_name] for turn in evaluation_turns], dtype=float)
         regressor = Ridge(alpha=args.ridge_alpha).fit(x_train, y_train)
         predicted = np.clip(regressor.predict(x_test), 0, 10)
         rounded = np.rint(predicted)
@@ -118,8 +129,9 @@ def main() -> None:
         "dataset_root": str(args.dataset_root.resolve()),
         "training_policy": {
             "exclude_contested": not args.include_contested,
-            "grouped_by": "interaction_id",
-            "test_ratio": args.test_ratio,
+            "evaluation_mode": "in_sample_diagnostic" if args.fit_all else "grouped_holdout",
+            "grouped_by": None if args.fit_all else "interaction_id",
+            "test_ratio": 0.0 if args.fit_all else args.test_ratio,
             "seed": args.seed,
             "ridge_alpha": args.ridge_alpha,
             "canonical_level_mapping": "legacy category labels normalized to JDVP v1.5 integer levels",
@@ -131,14 +143,15 @@ def main() -> None:
             "interactions_train": len({turn['interaction_id'] for turn in train_turns}),
             "interactions_holdout": len({turn['interaction_id'] for turn in test_turns}),
         },
-        "holdout_metrics": metrics,
+        ("in_sample_metrics" if args.fit_all else "holdout_metrics"): metrics,
         "heads": heads,
         "interpretation_boundary": "Scores inherit the declared label source and are not human-validated critical-thinking scores.",
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(artifact, indent=2) + "\n", encoding="utf-8")
     print(f"Embedding calibrator written: {args.output}")
-    print(json.dumps({"training_counts": artifact["training_counts"], "holdout_metrics": metrics}, indent=2))
+    metric_name = "in_sample_metrics" if args.fit_all else "holdout_metrics"
+    print(json.dumps({"training_counts": artifact["training_counts"], metric_name: metrics}, indent=2))
 
 
 if __name__ == "__main__":

@@ -362,6 +362,20 @@ python3 -m src.pipeline.run_poc \
 
 The artifact records its label source and grouped holdout metrics. Scores from synthetic or silver labels remain provisional until calibrated against adjudicated human labels.
 
+For a capacity diagnostic only, fit and score the same data explicitly:
+
+```bash
+python3 scripts/train_embedding_calibrator.py \
+  --dataset-root data/validation/opus-synthetic \
+  --embedding-model /absolute/path/to/complete/embedding-model \
+  --output data/models/embedding_calibrator/in-sample-diagnostic.json \
+  --label-source synthetic \
+  --ridge-alpha 0 \
+  --fit-all
+```
+
+This artifact is marked `in_sample_diagnostic` and must never be reported as held-out performance.
+
 M7 benchmark plan command:
 
 ```bash
