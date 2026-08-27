@@ -17,6 +17,8 @@ class TrackOutput:
     jsv_hint: dict[str, Any]
     evidence_spans: list[dict[str, str]] = field(default_factory=list)
     observer_confidence: float | None = None
+    latency_ms: float | None = None
+    estimated_cost_usd: float | None = None
     observer_notes: str = ""
     raw: dict[str, Any] = field(default_factory=dict)
 
@@ -26,6 +28,8 @@ class TrackOutput:
             "model_id": self.model_id,
             "prompt_version": self.prompt_version,
             "observer_confidence": self.observer_confidence,
+            "latency_ms": self.latency_ms,
+            "estimated_cost_usd": self.estimated_cost_usd,
             "observer_notes": self.observer_notes,
         }
 

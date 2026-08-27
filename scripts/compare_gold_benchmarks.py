@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.protocol_core.enums import CORE_FIELD_NAMES, CORE_ENUMS
+from src.protocol_core.enums import CORE_FIELD_NAMES
 
 GOLD_ROOT = ROOT / "data" / "validation" / "opus-synthetic"
 BENCHMARKS_DIR = GOLD_ROOT / "benchmarks"
