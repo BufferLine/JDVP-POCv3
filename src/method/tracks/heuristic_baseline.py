@@ -57,7 +57,7 @@ class HeuristicBaselineTrack(TrackExtractor):
     ) -> TrackOutput:
         text = human_input.lower()
         jsv_hint = {
-            "judgment_holder": 5,
+            "judgment_holder": None,
             "delegation_awareness": 9,
             "cognitive_engagement": 9,
             "information_seeking": 9,
@@ -116,7 +116,7 @@ class HeuristicBaselineTrack(TrackExtractor):
 
         if not evidence_spans:
             evidence_spans.append({"text": human_input[:160], "category": "default_excerpt"})
-            notes.append("Default baseline assignment")
+            notes.append("No judgment-holder signal; emitted null judgment_holder")
 
         return TrackOutput(
             track_id=self.track_id,

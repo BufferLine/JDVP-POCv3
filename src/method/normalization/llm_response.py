@@ -202,8 +202,8 @@ def normalize_llm_response(text: str) -> dict[str, Any]:
             normalized_value = normalize_core_level(field_name, raw)
         except ValueError:
             raise LLMNormalizationError(f"invalid value for {field_name}: {raw}")
-        if normalized_value is None:
-            raise LLMNormalizationError("judgment_holder must be an observable integer level in LLM output")
+        if normalized_value is None and field_name != "judgment_holder":
+            raise LLMNormalizationError(f"invalid null value for {field_name}")
         normalized_hint[field_name] = normalized_value
 
     normalized_hint["confidence"] = _normalize_confidence(payload)

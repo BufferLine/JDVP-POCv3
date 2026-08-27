@@ -61,6 +61,13 @@ class LLMNormalizationTests(unittest.TestCase):
         with self.assertRaises(LLMNormalizationError):
             normalize_llm_response(invalid)
 
+    def test_null_judgment_holder_is_accepted(self) -> None:
+        response = VALID_RESPONSE.replace('"judgment_holder": "AI"', '"judgment_holder": null')
+
+        normalized = normalize_llm_response(response)
+
+        self.assertIsNone(normalized["jsv_hint"]["judgment_holder"])
+
     def test_missing_evidence_is_rejected(self) -> None:
         invalid = """
         {

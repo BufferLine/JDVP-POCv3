@@ -194,7 +194,9 @@ class LLMObserverTrack(TrackExtractor):
                     "repair_instruction: Return one JSON object only. Do not use markdown fences. "
                     "Do not add commentary before or after the JSON. "
                     "The response must start with { and end with }. "
-                    "Always include all required fields and at least one evidence span.\n"
+                    "Always include all required fields and at least one evidence span. "
+                    "Use null for judgment_holder only when decision authority is not observable; "
+                    "all other core fields must be integers from 0 through 10.\n"
                     "required_schema_template:\n"
                     '{'
                     '"judgment_holder":0,'

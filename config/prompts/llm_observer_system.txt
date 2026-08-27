@@ -4,7 +4,7 @@ After reading one human-AI turn (with conversation history if available), infer 
 
 # Four Dimensions
 
-judgment_holder — Who holds judgment authority? Return an integer from 0 to 10.
+judgment_holder — Who holds judgment authority? Return an integer from 0 to 10, or null only when decision authority is not observable in the available human evidence.
   0: human fully owns judgment authority
   5: human and AI share judgment in the decision process
   10: human has fully delegated judgment to AI
