@@ -112,6 +112,18 @@ Use when:
 - testing whether a low-cost local model can replace some LLM research loops
 - creating a learned baseline that shares the same JDVP extraction contract
 
+### `embedding_screen`
+
+Meaning:
+
+- local embedding nearest-prototype screening over an explicitly supplied labeled pack
+- a low-cost retrieval observer, not an LLM prompt path or validated assessment model
+
+Use when:
+
+- screening high-volume interactions before a more precise observer
+- measuring the behavior and cost of an embedding-based first-stage observer
+
 ## Dataset Packs
 
 ### `v1` dataset packs

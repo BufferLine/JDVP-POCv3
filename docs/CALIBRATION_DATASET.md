@@ -58,3 +58,17 @@ python3 scripts/evaluate_calibration.py \
   --run-dir data/runs/calibration-demo-fixture-v1 \
   --output data/runs/calibration-demo-fixture-v1/calibration_report.json
 ```
+
+To exercise the intended low-cost observer path, use a complete local embedding model and an explicitly supplied prototype pack:
+
+```bash
+export JDVP_EMBEDDING_MODEL_PATH=/absolute/path/to/complete/embedding-model
+export JDVP_EMBEDDING_PROTOTYPE_PACK_PATH=data/fewshot/general-fixture-pack-v1.json
+
+JDVP_ESTIMATED_COST_USD_PER_TURN=0 python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id calibration-demo-embedding-v1 \
+  --track embedding_screen
+```
+
+The checked-in prototype pack contains the same fixture turns as this demo. That makes this a wiring smoke test only: it must not be read as an out-of-sample embedding result.

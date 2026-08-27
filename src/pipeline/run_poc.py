@@ -35,7 +35,7 @@ def main() -> None:
     parser.add_argument(
         "--track",
         default="fixture_hint",
-        choices=["fixture_hint", "heuristic_baseline", "llm_observer", "fewshot_prompt", "cheap_ml_baseline"],
+        choices=["fixture_hint", "heuristic_baseline", "llm_observer", "fewshot_prompt", "cheap_ml_baseline", "embedding_screen"],
     )
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()

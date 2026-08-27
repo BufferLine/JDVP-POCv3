@@ -330,6 +330,20 @@ python3 -m src.pipeline.run_poc \
 
 The current model path is still lightweight and local, but it opens the training-artifact boundary needed for a fuller learned-track workflow later.
 
+Embedding screening path:
+
+```bash
+export JDVP_EMBEDDING_MODEL_PATH=/absolute/path/to/complete/embedding-model
+export JDVP_EMBEDDING_PROTOTYPE_PACK_PATH=data/fewshot/general-fixture-pack-v1.json
+
+python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id embedding-screen-local \
+  --track embedding_screen
+```
+
+`embedding_screen` retrieves the nearest labeled prototype with a local embedding model. It is a high-volume screening stage, not a critical-thinking score or validated assessment.
+
 M7 benchmark plan command:
 
 ```bash
