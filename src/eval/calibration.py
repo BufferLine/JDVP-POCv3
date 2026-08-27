@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
@@ -146,7 +147,7 @@ def _summarize_run_metadata(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "turns_with_latency": len(latencies),
         "mean_latency_ms": round(sum(latencies) / len(latencies), 2) if latencies else None,
-        "p95_latency_ms": round(sorted(latencies)[max(0, int(len(latencies) * 0.95) - 1)], 2) if latencies else None,
+        "p95_latency_ms": round(sorted(latencies)[max(0, math.ceil(len(latencies) * 0.95) - 1)], 2) if latencies else None,
         "turns_with_cost_estimate": len(costs),
         "total_estimated_cost_usd": round(sum(costs), 6) if costs else None,
         "mean_estimated_cost_usd": round(sum(costs) / len(costs), 6) if costs else None,

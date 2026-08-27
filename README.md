@@ -344,6 +344,24 @@ python3 -m src.pipeline.run_poc \
 
 `embedding_screen` retrieves the nearest labeled prototype with a local embedding model. It is a high-volume screening stage, not a critical-thinking score or validated assessment.
 
+Calibrated four-axis embedding observer:
+
+```bash
+python3 scripts/train_embedding_calibrator.py \
+  --dataset-root data/validation/opus-synthetic \
+  --embedding-model /absolute/path/to/complete/embedding-model \
+  --output data/models/embedding_calibrator/opus-synthetic-v1.json \
+  --label-source synthetic
+
+export JDVP_EMBEDDING_CALIBRATOR_PATH=data/models/embedding_calibrator/opus-synthetic-v1.json
+python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id embedding-calibrated-local \
+  --track embedding_calibrated
+```
+
+The artifact records its label source and grouped holdout metrics. Scores from synthetic or silver labels remain provisional until calibrated against adjudicated human labels.
+
 M7 benchmark plan command:
 
 ```bash

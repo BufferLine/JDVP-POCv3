@@ -68,6 +68,16 @@ class CalibrationTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 load_calibration_dataset(root)
 
+    def test_latency_p95_uses_nearest_rank_for_small_runs(self) -> None:
+        report = build_calibration_report(
+            manifest={"measurement_profile": "human_ai"},
+            rows=[],
+            predictions={},
+            run_metadata=[{"latency_ms": 1.0}, {"latency_ms": 2.0}, {"latency_ms": 100.0}],
+        )
+
+        self.assertEqual(report["run_cost_and_latency"]["p95_latency_ms"], 100.0)
+
 
 if __name__ == "__main__":
     unittest.main()

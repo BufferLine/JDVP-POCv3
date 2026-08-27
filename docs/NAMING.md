@@ -124,6 +124,18 @@ Use when:
 - screening high-volume interactions before a more precise observer
 - measuring the behavior and cost of an embedding-based first-stage observer
 
+### `embedding_calibrated`
+
+Meaning:
+
+- an embedding encoder followed by one persisted regression calibration head per canonical JDVP axis
+- scores are bounded integers on the v1.5 0–10 scale and retain the artifact's training-label provenance
+
+Use when:
+
+- running a low-cost four-axis observer with a declared, reproducible calibration artifact
+- comparing held-out error and latency before deciding whether a turn requires LLM or human review
+
 ## Dataset Packs
 
 ### `v1` dataset packs
