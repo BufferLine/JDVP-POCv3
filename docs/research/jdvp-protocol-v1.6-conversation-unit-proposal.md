@@ -8,7 +8,7 @@
 - [`2026-04-06-derived-da-study.md`](./2026-04-06-derived-da-study.md) — 3-axis extraction, DA derivation, trend validation (6 models × 300 conversations × 4,103 turns)
 - [`2026-03-31-level-extraction-study.md`](./2026-03-31-level-extraction-study.md) — turn-level self-consistency ceiling
 - Multi-perspective protocol completeness review ([JDVP-POCv3 `docs/research/2026-07-15-protocol-completeness-review.md`](https://github.com/BufferLine/JDVP-POCv3/blob/main/docs/research/2026-07-15-protocol-completeness-review.md))
-**Companion**: [`jdvp-v1.6-low-cost-observer-guide.md`](./jdvp-v1.6-low-cost-observer-guide.md) — implementation and testing guide for low-cost observers
+**Companion**: [`MVP_MEASUREMENT_ARCHITECTURE.md`](../MVP_MEASUREMENT_ARCHITECTURE.md) — implementation boundary and testing path for low-cost observers
 **Revision note (2026-07-16)**: reliability figures corrected against the V3 Final Benchmark Report ([JDVP-POCv3 `docs/research/2026-07-16-v3-final-benchmark-report.md`](https://github.com/BufferLine/JDVP-POCv3/blob/main/docs/research/2026-07-16-v3-final-benchmark-report.md)), which applied this proposal's own Change 5 reporting standards to the evidence data. Two claims were corrected: raw trend agreement is now quoted chance-corrected (weighted κ≈0.51 over a 51.7% majority baseline), and "near-zero direct contradictions" is retracted (sign reversals are 13.7% of disagreements among strong observers).
 
 ---
@@ -16,6 +16,8 @@
 ## Summary
 
 This proposal promotes the conversation (interaction) to a first-class measurement unit. It adds a canonical **Interaction Summary** artifact (trend, mean level, volatility, peak per dimension), reclassifies `delegation_awareness` as a **derived observable**, introduces a **decision-relevant turn** marker, upgrades confidence reporting from nominal labels to optional numeric uncertainty with an observer profile block, and defines **measurement reporting standards** (chance-corrected agreement, resampled confidence intervals, observer-conditioning disclosure, ordinal-robust aggregation).
+
+The MVP may use an embedding-calibrated classifier as one observer implementation, but its continuous scores, model artifact, retrieval state, and escalation policy remain observer-layer metadata. This proposal does not add a critical-thinking score to canonical JDVP; that interpretation remains a separately validated product layer.
 
 v1.5 documented the turn-level self-consistency ceiling (r≈0.56 on natural data) as a known limit but standardized no response to it. Our subsequent experiments show that conversation-level direction is the unit implementations actually rely on, and that it degrades more gracefully than position — disagreements concentrate at the stable boundary rather than reversing sign. Its reliability is nonetheless moderate once chance-corrected (weighted κ≈0.51), which is precisely why the artifact must carry the reporting standards of Change 5 rather than travel with raw percentages. v1.6 makes that operative unit canonical, with honest uncertainty attached.
 

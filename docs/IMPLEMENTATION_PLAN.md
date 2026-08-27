@@ -239,6 +239,25 @@ Exit condition:
 
 - one reproducible tiered extraction configuration meets a predeclared calibration, latency, and cost target for the chosen pilot
 
+### Priority 0.6: Semantic Measurement MVP Readiness
+
+Goal:
+
+- make low-cost semantic interaction classification the explicit MVP foundation before building critical-thinking or licensing surfaces
+
+Tasks:
+
+1. maintain the `embedding_calibrated` observer as a versioned artifact separate from canonical JDVP semantics
+2. expand Human-AI training data with decision-relevant, task-delegation, and boundary-case coverage
+3. preserve independent teacher labels, disagreement, and label provenance; reserve human adjudication for anchors and difficult cases
+4. report interaction-held-out per-axis MAE, ordinal accuracy, high-signal false positives/false negatives, calibration, latency, and unit cost
+5. add uncertainty and out-of-distribution escalation from the local observer to a higher-capability observer or human reviewer
+6. prepare the JDVP v1.6 protocol proposal for observer provenance, decision relevance, and conversation-level measurement without changing v1.5 canonical artifacts prematurely
+
+Exit condition:
+
+- a consent-based MVP can describe observed interaction patterns with a documented low-cost quality/cost envelope, while critical-thinking practice profiles remain explicitly post-validation
+
 ### Priority 1: Operational Recovery
 
 Goal:

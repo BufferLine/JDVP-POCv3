@@ -12,7 +12,7 @@ It separates:
 - `method layer`: how JSVs are extracted from interaction evidence
 - `pipeline layer`: raw turns -> extraction -> protocol artifacts -> reports
 
-The product direction is documented separately in [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md): begin with low-cost, auditable interaction measurement; build useful reflective tools; validate any critical-thinking assessment separately; and pursue standard/licensing only after evidence supports it.
+The product direction is documented in [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) and [docs/MVP_MEASUREMENT_ARCHITECTURE.md](docs/MVP_MEASUREMENT_ARCHITECTURE.md): begin with low-cost, auditable semantic interaction measurement; use selective higher-capability or human review for uncertain cases; validate any critical-thinking assessment separately; and pursue standard/licensing only after evidence supports it.
 
 ## Scope
 
@@ -41,9 +41,10 @@ Current workspace status as of 2026-03-25:
 
 Current focus:
 
-- keep `v1` stable as the regression baseline
-- use `v2` and preview flows to expand research coverage without destabilizing CI
-- run a local 100-item `llm_turn_simulated` dataset-generation trial and tune rejection patterns before scaling up
+- preserve JDVP v1.5 canonical compatibility while preparing a reviewed v1.6 measurement extension
+- expand diverse, decision-relevant Human-AI data with interaction-level split hygiene
+- train and evaluate a low-cost embedding-calibrated observer with explicit label provenance and uncertainty escalation
+- keep critical-thinking practice profiles and licensing behind human calibration and construct-validation gates
 
 ## Design Rule
 
