@@ -137,7 +137,29 @@
       },
       "krippendorff_alpha_ordinal": 0.3165,
       "n_common_convos": 300,
-      "majority_class_baseline": 0.4172
+      "majority_class_baseline": 0.4172,
+      "sign_flips": {
+        "all6": {
+          "n_pairs": 15,
+          "n_observations": 4500,
+          "n_disagreements": 2123,
+          "n_sign_flips": 486,
+          "sign_flip_rate_of_disagreements": 0.2289,
+          "boundary_rate_of_disagreements": 0.7711,
+          "sign_flip_rate_of_observations": 0.108,
+          "disagreement_rate": 0.4718
+        },
+        "strong4": {
+          "n_pairs": 6,
+          "n_observations": 1800,
+          "n_disagreements": 726,
+          "n_sign_flips": 126,
+          "sign_flip_rate_of_disagreements": 0.1736,
+          "boundary_rate_of_disagreements": 0.8264,
+          "sign_flip_rate_of_observations": 0.07,
+          "disagreement_rate": 0.4033
+        }
+      }
     },
     "cognitive_passivity": {
       "models": {
@@ -274,7 +296,29 @@
       },
       "krippendorff_alpha_ordinal": 0.2662,
       "n_common_convos": 300,
-      "majority_class_baseline": 0.4711
+      "majority_class_baseline": 0.4711,
+      "sign_flips": {
+        "all6": {
+          "n_pairs": 15,
+          "n_observations": 4500,
+          "n_disagreements": 2065,
+          "n_sign_flips": 471,
+          "sign_flip_rate_of_disagreements": 0.2281,
+          "boundary_rate_of_disagreements": 0.7719,
+          "sign_flip_rate_of_observations": 0.1047,
+          "disagreement_rate": 0.4589
+        },
+        "strong4": {
+          "n_pairs": 6,
+          "n_observations": 1800,
+          "n_disagreements": 690,
+          "n_sign_flips": 119,
+          "sign_flip_rate_of_disagreements": 0.1725,
+          "boundary_rate_of_disagreements": 0.8275,
+          "sign_flip_rate_of_observations": 0.0661,
+          "disagreement_rate": 0.3833
+        }
+      }
     },
     "information_dependency": {
       "models": {
@@ -411,7 +455,29 @@
       },
       "krippendorff_alpha_ordinal": 0.3218,
       "n_common_convos": 300,
-      "majority_class_baseline": 0.455
+      "majority_class_baseline": 0.455,
+      "sign_flips": {
+        "all6": {
+          "n_pairs": 15,
+          "n_observations": 4500,
+          "n_disagreements": 2095,
+          "n_sign_flips": 390,
+          "sign_flip_rate_of_disagreements": 0.1862,
+          "boundary_rate_of_disagreements": 0.8138,
+          "sign_flip_rate_of_observations": 0.0867,
+          "disagreement_rate": 0.4656
+        },
+        "strong4": {
+          "n_pairs": 6,
+          "n_observations": 1800,
+          "n_disagreements": 711,
+          "n_sign_flips": 96,
+          "sign_flip_rate_of_disagreements": 0.135,
+          "boundary_rate_of_disagreements": 0.865,
+          "sign_flip_rate_of_observations": 0.0533,
+          "disagreement_rate": 0.395
+        }
+      }
     },
     "delegation_awareness_derived": {
       "models": {
@@ -548,7 +614,29 @@
       },
       "krippendorff_alpha_ordinal": 0.3044,
       "n_common_convos": 300,
-      "majority_class_baseline": 0.5167
+      "majority_class_baseline": 0.5167,
+      "sign_flips": {
+        "all6": {
+          "n_pairs": 15,
+          "n_observations": 4500,
+          "n_disagreements": 1931,
+          "n_sign_flips": 355,
+          "sign_flip_rate_of_disagreements": 0.1838,
+          "boundary_rate_of_disagreements": 0.8162,
+          "sign_flip_rate_of_observations": 0.0789,
+          "disagreement_rate": 0.4291
+        },
+        "strong4": {
+          "n_pairs": 6,
+          "n_observations": 1800,
+          "n_disagreements": 636,
+          "n_sign_flips": 87,
+          "sign_flip_rate_of_disagreements": 0.1368,
+          "boundary_rate_of_disagreements": 0.8632,
+          "sign_flip_rate_of_observations": 0.0483,
+          "disagreement_rate": 0.3533
+        }
+      }
     }
   },
   "ranking_audit": [

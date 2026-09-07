@@ -9,9 +9,10 @@ the three standard metrics with 95% CIs resampled at the CONVERSATION level:
   * turn-level position   : Spearman rho on absolute levels
   * change vector (DV)     : Pearson r on adjacent-turn deltas
 
-Also emits the multi-rater ordinal Krippendorff alpha per dimension and a
-ranking-stability audit: any "model A > model B" claim whose 95% CIs overlap is
-flagged for retraction.
+Also emits the multi-rater ordinal Krippendorff alpha per dimension, a
+ranking-stability audit (any "model A > model B" claim whose 95% CIs overlap is
+flagged for retraction), and a pairwise sign-flip breakdown that separates real
+direction reversals (rising<->falling) from stable-boundary disagreements.
 
 Output: docs/research/v3-final/task12_results.json
 """
@@ -27,6 +28,9 @@ from scipy import stats
 import jdvp_v3_lib as L
 
 REF = "gpt41"
+# The top tier identified by the ranking audit; used for the "strong-4" cut of
+# the sign-flip breakdown (nemotron and gpt54nano are the two weaker observers).
+STRONG_4 = ["gpt41", "sonnet", "deepseek", "gemma4-26b"]
 OUT = Path(__file__).resolve().parents[2] / "docs/research/v3-final"
 OUT.mkdir(parents=True, exist_ok=True)
 
@@ -111,6 +115,43 @@ def stat_pearson(units):
     return stats.pearsonr(ref, mod).statistic
 
 
+def sign_flip_breakdown(data, models, dim, theta=L.DEFAULT_THETA):
+    """Pairwise trend-disagreement breakdown over every observer pair in `models`.
+
+    Of the conversations where two observers disagree on the trend label, how
+    many are direct sign reversals (rising<->falling) rather than stable-boundary
+    disagreements (stable<->rising / stable<->falling)? This is what backs the
+    "disagreement concentrates at the boundary" claim -- and bounds it, since a
+    non-trivial reversal share means "near-zero contradictions" is overstated.
+    """
+    trends = {m: L.conversation_trends(data[m], dim, theta) for m in models}
+    n_obs = n_disagree = n_flip = 0
+    for m1, m2 in combinations(models, 2):
+        t1, t2 = trends[m1], trends[m2]
+        for iid in sorted(set(t1) & set(t2)):
+            a, b = t1[iid], t2[iid]
+            if a is None or b is None:
+                continue
+            n_obs += 1
+            if a == b:
+                continue
+            n_disagree += 1
+            if {a, b} == {"rising", "falling"}:
+                n_flip += 1
+    return {
+        "n_pairs": len(models) * (len(models) - 1) // 2,
+        "n_observations": n_obs,
+        "n_disagreements": n_disagree,
+        "n_sign_flips": n_flip,
+        # headline: share of DISAGREEMENTS that are true reversals
+        "sign_flip_rate_of_disagreements": _r(n_flip / n_disagree) if n_disagree else None,
+        "boundary_rate_of_disagreements": _r((n_disagree - n_flip) / n_disagree) if n_disagree else None,
+        # context: share of ALL compared conversations that reverse
+        "sign_flip_rate_of_observations": _r(n_flip / n_obs) if n_obs else None,
+        "disagreement_rate": _r(n_disagree / n_obs) if n_obs else None,
+    }
+
+
 def ci(units, fn, n_boot=2000, seed=0):
     pt, lo, hi, _ = L.bootstrap_ci(units, fn, n_boot=n_boot, seed=seed)
     return {"point": _r(pt), "ci_lo": _r(lo), "ci_hi": _r(hi), "n": len(units)}
@@ -138,6 +179,12 @@ def main():
         # pooled majority-class baseline across all observers' trends
         pooled = [trends[m][i] for i in common for m in L.SHAREGPT_MODELS]
         dres["majority_class_baseline"] = _r(L.majority_class_baseline(pooled))
+
+        # pairwise sign-flip breakdown (all 6 observers vs the strong-4 subset)
+        dres["sign_flips"] = {
+            "all6": sign_flip_breakdown(data, L.SHAREGPT_MODELS, dim),
+            "strong4": sign_flip_breakdown(data, STRONG_4, dim),
+        }
 
         for m in others:
             tu = trend_units(data, m, dim)
@@ -183,6 +230,11 @@ def main():
             def f(x): return f"{x['point']} [{x['ci_lo']},{x['ci_hi']}]"
             print(f"  {m:12s} {f(r['trend_raw_agreement']):>18s} {f(r['trend_weighted_kappa']):>20s} "
                   f"{f(r['level_spearman']):>18s} {f(r['dv_pearson']):>18s}")
+        for cut in ("all6", "strong4"):
+            s = d["sign_flips"][cut]
+            print(f"  sign flips ({cut:7s}): {s['n_sign_flips']}/{s['n_disagreements']} disagreements "
+                  f"= {s['sign_flip_rate_of_disagreements']} reversal "
+                  f"({s['boundary_rate_of_disagreements']} at stable boundary)")
         print()
     n_overlap = sum(1 for a in audit if a["ci_overlap"])
     print(f"Ranking audit: {n_overlap}/{len(audit)} adjacent-pair claims have overlapping CIs "
