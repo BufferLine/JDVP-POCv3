@@ -12,11 +12,11 @@ It separates:
 - `method layer`: how JSVs are extracted from interaction evidence
 - `pipeline layer`: raw turns -> extraction -> protocol artifacts -> reports
 
-The product direction is documented in [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) and [docs/MVP_MEASUREMENT_ARCHITECTURE.md](docs/MVP_MEASUREMENT_ARCHITECTURE.md): begin with low-cost, auditable semantic interaction measurement; use selective higher-capability or human review for uncertain cases; validate any critical-thinking assessment separately; and pursue standard/licensing only after evidence supports it.
+The project targets **Agent(Human|AI)–Agent(Human|AI)** judgment and critical-thinking measurement. Human–AI is the current implementation, not the full scope. An automated reference-AI, challenge, distillation, and evaluation loop will develop the framework and low-cost detector without a mandatory human-expert stage. See [product strategy](docs/PRODUCT_STRATEGY.md), [loop design](docs/AUTOMATED_RESEARCH_LOOP.md), and [implementation plan](docs/IMPLEMENTATION_PLAN.md).
 
 ## Scope
 
-Initial scope is deliberately narrow:
+Current implemented profile (broader relationship profiles are planned):
 
 - one human and one AI
 - one interaction at a time
@@ -26,7 +26,7 @@ Initial scope is deliberately narrow:
 
 ## Current Status
 
-Current workspace status as of 2026-03-25:
+Current workspace status as of 2026-09-07 (after PRs #19 and #21):
 
 - protocol-core generation and schema validation are implemented and covered by tests
 - extraction tracks are available for `fixture_hint`, `heuristic_baseline`, `llm_observer`, and `fewshot_prompt`
@@ -44,7 +44,8 @@ Current focus:
 - preserve JDVP v1.5 canonical compatibility while preparing a reviewed v1.6 measurement extension
 - expand diverse, decision-relevant Human-AI data with interaction-level split hygiene
 - train and evaluate a low-cost embedding-calibrated observer with explicit label provenance and uncertainty escalation
-- keep critical-thinking practice profiles and licensing behind human calibration and construct-validation gates
+- build the automated research loop; assess detector fidelity and framework validity separately
+- explore Human–Human risk-pattern review and AI–AI orchestration through separate profiles
 
 ## Design Rule
 
@@ -361,7 +362,7 @@ python3 -m src.pipeline.run_poc \
   --track embedding_calibrated
 ```
 
-The artifact records its label source and grouped holdout metrics. Scores from synthetic or silver labels remain provisional until calibrated against adjudicated human labels.
+The artifact records its label source and grouped holdout metrics. Scores retain their synthetic or AI-reference provenance. Teacher agreement is evaluated separately from framework validity; sampled external criteria and counterexample tests provide additional evidence.
 
 For a capacity diagnostic only, fit and score the same data explicitly:
 

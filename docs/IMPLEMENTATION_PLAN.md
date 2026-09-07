@@ -191,16 +191,23 @@ Operational additions beyond the original milestone text:
 
 ## Roadmap
 
-### Strategic Direction And Sequencing
+### Strategic Direction And Sequencing (2026-09-07)
 
-POCv3 is the measurement foundation for a staged product direction:
+Agent(Human|AI)–Agent(Human|AI) is the project scope. Human–AI v1.5 is the implemented profile. Develop the low-cost detector and critical-thinking framework together without a mandatory human-expert labeling or release stage. External behavior/outcome checks are sampled. See [PRODUCT_STRATEGY.md](./PRODUCT_STRATEGY.md) and [AUTOMATED_RESEARCH_LOOP.md](./AUTOMATED_RESEARCH_LOOP.md).
 
-1. low-cost, auditable interaction measurement
-2. tools that give participants or researchers useful reflective feedback
-3. separately validated critical-thinking practice assessment
-4. conformance, calibration, and assessment licensing only after independent validation
+The following milestones supersede the historical March working sequence and its human annotation prerequisite. All are planned unless explicitly marked complete.
 
-The detailed boundary, validation gates, and relationship-profile distinctions are in [PRODUCT_STRATEGY.md](./PRODUCT_STRATEGY.md). This direction does not broaden the current JDVP v1 implementation: POCv3 remains a dyadic Human-AI research implementation until a future profile and data contract are explicitly designed and validated.
+| Order | Deliverable | Exit evidence |
+| --- | --- | --- |
+| R0 | Freeze first experiment: rubric/profile, split and sample manifest, numeric quality/cost thresholds, reference configuration and budget | Versioned plan fixed before candidate evaluation; approved data sources available |
+| R1 | One recoverable sample → reference label → challenge → train → evaluate cycle on Human–AI | Artifacts traceable end to end, dissent/abstention preserved, fresh held-out report against simple/direct-reference baselines |
+| R2 | Input-specific uncertainty, axis evidence, context handling, targeted plus random sampling, framework counterexample suite | Coverage/error tradeoff, chance-corrected metrics and clustered CIs; style and behavioral-change tests; sampled external criteria |
+| R3 | Repeated bounded loops and automatic research-artifact promotion/retention | Predeclared improvements in held-out quality or total cost without framework/regression failures; rollback and exposed-test retirement exercised |
+| R4 | AI–AI profile proposal and controlled orchestration pilot | Typed trace contract reviewed upstream; task success/error/cost comparison with and without JDVP signals |
+| R5 | Human–Human profile and authorized risk-pattern pilot | Benign counterexamples, contextual uncertainty, scam/coercive-cult/gaslighting pattern evidence and false-alarm report; no definitive accusations |
+| R6 | Cross-profile framework and product validation | Demonstrated trajectory value over checklists, documented comparison limits, independent replication, repeated use/purchase evidence |
+
+R4/R5 extend the same research framework, not a replacement for critical-thinking measurement. Choose product expansion from experiment results; no profile is claimed validated by this roadmap.
 
 ### Priority 0: Canonical Schema Alignment
 
@@ -222,41 +229,13 @@ Exit condition:
 
 - POCv3's generated artifacts, tests, vendored schemas, documented protocol version, stable fixtures, and scenario packs agree with the canonical v1.5 surface
 
-### Priority 0.5: Low-Cost Human-AI Measurement Validation
+### Priority 0.5: Automated Measurement Loop
 
-Goal:
+Execute R0–R3 above using the existing embedding and calibration building blocks. Human experts are not a required dependency. Current blockers are sampling/orchestration, independent reference/challenge records, input-specific uncertainty, framework tests, and untouched evaluation hygiene; see the loop design for the exact contract.
 
-- establish the quality, latency, and unit-cost envelope required for a demand-led pilot
+### Priority 0.6: Relationship Profiles and Applications
 
-Tasks:
-
-1. build a consented, human-annotated calibration set with multiple annotators
-2. compare deterministic signals, local/cheap observers, and selective adjudication
-3. store observer confidence, evidence spans, version identity, latency, and cost consistently
-4. define escalation rules for uncertain or calibration-sampled observations
-
-Exit condition:
-
-- one reproducible tiered extraction configuration meets a predeclared calibration, latency, and cost target for the chosen pilot
-
-### Priority 0.6: Semantic Measurement MVP Readiness
-
-Goal:
-
-- make low-cost semantic interaction classification the explicit MVP foundation before building critical-thinking or licensing surfaces
-
-Tasks:
-
-1. maintain the `embedding_calibrated` observer as a versioned artifact separate from canonical JDVP semantics
-2. expand Human-AI training data with decision-relevant, task-delegation, and boundary-case coverage
-3. preserve independent teacher labels, disagreement, and label provenance; reserve human adjudication for anchors and difficult cases
-4. report interaction-held-out per-axis MAE, ordinal accuracy, high-signal false positives/false negatives, calibration, latency, and unit cost
-5. add uncertainty and out-of-distribution escalation from the local observer to a higher-capability observer or human reviewer
-6. prepare the JDVP v1.6 protocol proposal for observer provenance, decision relevance, and conversation-level measurement without changing v1.5 canonical artifacts prematurely
-
-Exit condition:
-
-- a consent-based MVP can describe observed interaction patterns with a documented low-cost quality/cost envelope, while critical-thinking practice profiles remain explicitly post-validation
+Execute R4–R6 after the first loop is reproducible. Keep proposed Agent–Agent metadata outside canonical v1.5 until reviewed upstream. Do not force current four-axis human semantics onto AI–AI or Human–Human records.
 
 ### Priority 1: Operational Recovery
 
@@ -368,7 +347,7 @@ Exit condition:
 
 - the project has a clear boundary between lightweight cataloging and more expensive orchestration work
 
-## Working Sequence (revised 2026-03-24)
+## Historical Working Sequence (2026-03-24; superseded by R0–R6)
 
 Revised based on 5-agent cross-analysis of trial100 results. Full analysis: `docs/ANALYSIS_REPORT_2026-03-24.md`.
 
@@ -395,7 +374,7 @@ Revised based on 5-agent cross-analysis of trial100 results. Full analysis: `doc
 10. **catalog integrity** — UNIQUE constraints, model_id in dataset_runs, atomic write_json
 11. **heuristic baseline upgrade** — ai_response analysis, regex pattern expansion
 
-Current next task:
+Historical next task at that checkpoint:
 
 - system prompt decision rubric (Phase A, item 1)
 
@@ -545,9 +524,9 @@ All items below were reproduced by 5 Codex workers during a targeted integrity a
 
 15. **eval_service.py:74** — all `FileNotFoundError` classified as `benchmark_plan_not_found` regardless of which file is actually missing
 
-## Deferred Automation
+## Historical Deferred Automation
 
-Only start this phase after M1-M8 justify the extra complexity.
+The R0–R3 bounded research loop now activates reference labeling, distillation, evaluation, and research-artifact promotion. The former deferral below is historical; production registries and unattended scheduled execution remain separate future work.
 
 Deferred tasks:
 

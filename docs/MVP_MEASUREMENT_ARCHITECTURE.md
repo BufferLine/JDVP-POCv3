@@ -2,7 +2,9 @@
 
 ## Product Claim
 
-The MVP should demonstrate a narrow, testable capability:
+The project covers Agent(Human|AI)–Agent(Human|AI); the implemented MVP substrate is Human–AI v1.5. Develop a low-cost detector and a critical-thinking measurement framework through the [automated research loop](./AUTOMATED_RESEARCH_LOOP.md), without a mandatory human-expert stage.
+
+The initial loop should demonstrate a narrow, testable capability:
 
 > Semantic interaction data can be used to extract observable patterns of judgment delegation, delegation awareness, cognitive engagement, and information seeking at low cost.
 
@@ -27,11 +29,11 @@ semantic interaction data
   -> explicit trace / rules
   -> embedding + calibrated four-axis classifier (<100 ms target)
   -> uncertainty or decision-relevance gate
-  -> selective high-capability LLM or human adjudication
+  -> selective high-capability reference AI and challenge pass
   -> auditable JDVP artifacts and participant-facing feedback
 ```
 
-The embedding classifier is a first-stage detector, not a replacement for validation. It should record a model artifact ID, label provenance, evidence, latency, and uncertainty on every result. A high-capability observer is used to label calibration data, review uncertain cases, and produce a teacher/reference comparison; it is not silently substituted for human evidence.
+The embedding classifier is a first-stage detector, not a replacement for validation. It should record a model artifact ID, label provenance, evidence, latency, and uncertainty on every result. A high-capability observer labels samples and reviews uncertain cases. Preserve AI-reference provenance and separate detector fidelity from framework validity; sample authorized external behavior/outcomes when text is insufficient.
 
 ## Current Feasibility Evidence
 
@@ -52,11 +54,11 @@ Scale data by information value, not only volume.
 
 1. Build diverse semantic interactions, especially decision-relevant turns and counterexamples that distinguish task execution from judgment delegation.
 2. Store independent labels from strong observers with model/prompt/version provenance and disagreement, rather than flattening them into an unexplained gold label.
-3. Route high-disagreement, high-impact, and boundary cases to human adjudication. Preserve dissent; do not replace it with an unmarked majority vote.
+3. Route high-disagreement, high-impact, and boundary cases to independent reference labeling and an AI challenge pass. Preserve dissent; do not replace it with an unmarked majority vote.
 4. Keep train/dev/test splits at the interaction level. Prevent the same conversation or template family from crossing the split boundary.
 5. Train the low-cost classifier on the declared label tier, then report per-axis MAE, ordinal/bucket accuracy, false-positive and false-negative rates, calibration, latency, and cost on an untouched holdout set.
 
-Strong models such as Sol or Fable may be valuable teachers, but their labels become a high-quality teacher tier only after blind comparison to the human-adjudicated anchor set. They are not assumed to be more accurate than humans by default.
+Select and version the reference model explicitly. Qualify it with counterexamples, invariance tests, reserved domains, and sampled external criteria. Human-expert approval is not required. Same-model agreement does not establish independent validity.
 
 ## MVP Readiness Gates
 
@@ -65,9 +67,13 @@ Before releasing a participant-facing MVP, the project should have:
 - a versioned Human-AI measurement profile and a decision-relevance policy;
 - a documented low-cost observer artifact with reproducible inference;
 - an interaction-level untouched evaluation set;
-- a human-adjudicated anchor set covering high-risk and boundary cases;
+- a versioned AI-reference anchor set with challenge results and unresolved cases, plus sampled external criteria;
 - observer disagreement, false-positive/false-negative, latency, and unit-cost reports;
-- uncertainty-based escalation to a higher-capability observer or human reviewer;
+- uncertainty-based escalation to a higher-capability reference observer and challenge pass;
 - participant-facing language that describes interaction patterns, not personal traits or diagnoses.
 
 The JDVP v1.6 proposal should formalize the profile, observer provenance, uncertainty, decision-relevant turn marker, and interaction summary only after the extension is reviewed in the protocol repository.
+
+## Planned Profile Expansion
+
+Human–Human adds authorized relationship records for evidence-backed scam, coercive/cult recruitment, and gaslighting pattern review. AI–AI adds typed agent/tool/action traces for orchestration experiments. Common candidate observables include authority movement, independent evidence, verification, and revision; interpretation and thresholds remain profile-specific. These are planned contracts, not capabilities of the existing human_input/ai_response schema. See R4–R6 in the implementation plan.
