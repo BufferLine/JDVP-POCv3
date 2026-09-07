@@ -242,10 +242,22 @@ Those may return later, but they are intentionally absent from initial POCv3 ope
 
 ## Automated Research Loop Plan (2026-09-07)
 
-The current operational priority is R0–R3 in [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md). [AUTOMATED_RESEARCH_LOOP.md](./AUTOMATED_RESEARCH_LOOP.md) defines the planned runner and artifact contract; no autonomous loop CLI or scheduled job exists yet.
+The current operational priority is R0–R3 in [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md). [AUTOMATED_RESEARCH_LOOP.md](./AUTOMATED_RESEARCH_LOOP.md) defines the planned runner and artifact contract; R0 plan freezing is available, while no autonomous loop runner or scheduled job exists yet.
 
 Reusable commands are `scripts/run_dataset.py`, `scripts/run_dataset_matrix.py`, `scripts/benchmark_dataset_matrix.py`, `scripts/train_embedding_calibrator.py`, and `scripts/evaluate_calibration.py`. Their current contracts remain unchanged. The last evaluator uses the legacy Human–AI calibration shape and reports exact agreement/MAE; it is not the complete framework-validity gate. Human-expert adjudication is not required by the new process.
 
 Before the first automated run, persist profile/rubric versions, authorized sources, reference model configuration, split hashes, sample quotas, thresholds, budget, and stop policy. Keep synthetic challenge data, AI-reference targets, and sampled external criteria distinct. Record completed stages in version-matched files/catalog entries so interrupted calls can resume without mixing experiments.
 
 Promotion selects a research artifact only. Publishing standards, production deployment, and enabling orchestration actions are separate operations. Future AI–AI and Human–Human records require explicit profile contracts; do not encode them as fake human/assistant turns to imply canonical support.
+
+### Freeze an R0 plan
+
+```bash
+python3 scripts/freeze_research_plan.py \
+  --config config/research/demo/plan.json \
+  --output /tmp/jdvp-r0-demo/frozen.json
+```
+
+Use a new output filename for every freeze; existing files are never overwritten. Paths in the plan are relative to its directory. The output contains source records and must follow their access restrictions. This command performs local validation and snapshots only, with no model calls or training. The fixture-based demo does not satisfy the real-data R0 gate. See the loop design for checks, limitations, and required real experiment inputs.
+
+All snapshot paths must be relative to and remain inside the plan directory; absolute paths, `..` components, and symlinks resolving outside are rejected for interaction, rubric, and external-evidence inputs. Place authorized input files inside that directory before freezing. Publication requires filesystem hard-link support (for example APFS/ext4); unsupported network mounts or container volumes fail without a non-atomic fallback. Use a compatible output filesystem.

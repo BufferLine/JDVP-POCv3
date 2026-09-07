@@ -195,7 +195,7 @@ Operational additions beyond the original milestone text:
 
 Agent(Human|AI)–Agent(Human|AI) is the project scope. Human–AI v1.5 is the implemented profile. Develop the low-cost detector and critical-thinking framework together without a mandatory human-expert labeling or release stage. External behavior/outcome checks are sampled. See [PRODUCT_STRATEGY.md](./PRODUCT_STRATEGY.md) and [AUTOMATED_RESEARCH_LOOP.md](./AUTOMATED_RESEARCH_LOOP.md).
 
-The following milestones supersede the historical March working sequence and its human annotation prerequisite. All are planned unless explicitly marked complete.
+The following milestones supersede the historical March working sequence and its human annotation prerequisite. R0 plan-freeze tooling is implemented; a real experiment has not yet been frozen. R1–R6 are planned.
 
 | Order | Deliverable | Exit evidence |
 | --- | --- | --- |
@@ -208,6 +208,8 @@ The following milestones supersede the historical March working sequence and its
 | R6 | Cross-profile framework and product validation | Demonstrated trajectory value over checklists, documented comparison limits, independent replication, repeated use/purchase evidence |
 
 R4/R5 extend the same research framework, not a replacement for critical-thinking measurement. Choose product expansion from experiment results; no profile is claimed validated by this roadmap.
+
+R0 implementation checkpoint (2026-09-07): `scripts/freeze_research_plan.py` validates a strict plan, checks declared split isolation, snapshots input bytes, and atomically creates a fingerprinted manifest. The synthetic demo is a wiring check only. Next: select authorized independent records and actual provider/model configurations, freeze real thresholds/budget, then implement R1 reference/challenge records and source-stratified calibration reporting. No provider calls have been made by the R0 tooling.
 
 ### Priority 0: Canonical Schema Alignment
 
