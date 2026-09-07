@@ -1,6 +1,12 @@
 # Human-AI Calibration Dataset
 
-This dataset establishes measurement reliability; it does not establish a critical-thinking score.
+This legacy Human–AI dataset contract supports measurement evaluation; the presence of a dataset does not establish reliability or a critical-thinking score. Human-expert annotation is no longer a required stage of the planned automated research loop.
+
+The current loader still requires `measurement_profile: "human_ai"` and `schema_version: "jdvp-human-calibration-v1"`; do not rename these wire values or claim other profile support without a code migration. Existing human annotations may be preserved, while AI-reference sources must be identified explicitly (for example annotator `kind: "ai_reference"` plus model/prompt versions in provenance). `adjudicated_labels` means an explicitly resolved target, not necessarily a human judgment. Synthetic demo rows remain synthetic. The future loop must persist independent labels, challenge results, abstentions, sampling policy, and framework versions in a separately versioned contract. See [AUTOMATED_RESEARCH_LOOP.md](./AUTOMATED_RESEARCH_LOOP.md).
+
+## Current Loader Limitation
+
+The loader validates `annotator_id` and labels, but does not validate or use annotator `kind` to separate sources. The report pools all annotation pairs into `annotator_agreement`; human and AI annotations can therefore be mixed in the same aggregate. Provenance fields above are documentation requirements, not currently enforced source-aware evaluation. Until source-stratified reporting is implemented, evaluate homogeneous source cohorts in separate datasets/runs and label their reports accordingly. A mixed-source aggregate must not be presented as human-only agreement or independent AI-reference agreement. Source validation and stratified reporting belong to the R1 contract migration.
 
 ## Layout
 
@@ -39,7 +45,7 @@ python3 scripts/evaluate_calibration.py \
   --output data/runs/<run-id>/calibration_report.json
 ```
 
-The report provides pairwise human agreement, observer exact agreement and mean absolute error on adjudicated rows, plus any recorded per-turn latency and cost estimates. It must be read as calibration evidence, not a psychological assessment result.
+The report provides pairwise annotator agreement (interpreted according to the declared label source), observer exact agreement and mean absolute error on adjudicated rows, plus any recorded per-turn latency and cost estimates. It must be read as calibration evidence, not a psychological assessment result.
 
 ## Checked-in synthetic demo
 

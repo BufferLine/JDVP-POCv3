@@ -11,6 +11,19 @@ Meaning:
 - auditable observation of authority allocation, delegation, verification, exploration, and related evidence in an interaction record
 - an umbrella term; it does not by itself imply a psychological assessment or an AI-governance decision
 
+### `Agent-Agent`
+
+- umbrella relationship Agent(Human|AI)–Agent(Human|AI), covering Human–Human, Human–AI, and AI–AI
+- never a synonym for AI–AI; use `AI-AI profile` for that specific relationship
+- describes framework scope, not current canonical schema support
+- terminology history: documents before 2026-09-07 sometimes used Agent-Agent for operational AI–AI traces; read those historical uses as AI–AI, not as the current umbrella definition
+
+### `AI reference` and `automated research loop`
+
+- a versioned high-capability model judgment, with evidence and challenge records; never mislabeled as human gold
+- sample → independent reference/challenge → framework tests → distillation → untouched evaluation → research-artifact promotion/retention
+- no mandatory human-expert labeling or approval stage; external criteria are sampled
+
 ### `Human-AI profile`
 
 Meaning:
@@ -23,14 +36,14 @@ Meaning:
 Meaning:
 
 - a future, relationship-neutral profile over directly observable events such as delegation, approval, verification, tool calls, and evidence references
-- suitable for Human-Human, Agent-Agent, or multi-party interaction only after a separate contract and validation plan exist
+- suitable for Human-Human, AI-AI, or multi-party interaction only after a separate contract and validation plan exist
 - must not infer human or agent inner cognition merely from an operational trace
 
 ### `critical-thinking practice profile`
 
 Meaning:
 
-- a multi-axis, evidence-backed assessment interpretation built over validated Human-AI measurement
+- a multi-axis, evidence-backed assessment interpretation built over validated relationship-specific measurement; Human-AI is the current implementation
 - distinct from a single critical-thinking score
 
 ### `critical-thinking score`
@@ -134,7 +147,7 @@ Meaning:
 Use when:
 
 - running a low-cost four-axis observer with a declared, reproducible calibration artifact
-- comparing held-out error and latency before deciding whether a turn requires LLM or human review
+- comparing held-out error and latency before deciding whether a turn requires reference-AI review
 
 ## Dataset Packs
 

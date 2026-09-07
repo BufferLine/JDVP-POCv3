@@ -3,7 +3,7 @@
 Sync note: Keep all content below this line identical between `AGENTS.md` and `CLAUDE.md` (title line may differ). Update both in the same commit.
 
 ## Project
-JDVP POCv3 is a core-first implementation workspace for canonical JDVP artifact generation, extraction-track evaluation, dataset-driven research loops, and lightweight operational recovery.
+JDVP POCv3 develops Agent(Human|AI)–Agent(Human|AI) judgment and critical-thinking measurement through automated research and low-cost detection. The current canonical implementation is the Human-AI v1.5 profile.
 
 ## Repository Structure
 - Core protocol logic: `src/protocol_core/`
@@ -40,7 +40,8 @@ JDVP POCv3 is a core-first implementation workspace for canonical JDVP artifact 
 ## Editing Rules
 - Preserve canonical JDVP semantics and schema alignment.
 - Keep protocol-core logic independent from extraction strategy.
-- Keep the current dyadic Human-AI JDVP profile distinct from any future Human-Human, Agent-Agent, or multi-party interaction-trace profile.
+- Agent-Agent is the umbrella for Human-Human, Human-AI, and AI-AI; never use it as a synonym for AI-AI. Keep profile semantics distinct and propose new contracts upstream before changing canonical v1.5.
+- Develop the low-cost detector and critical-thinking framework through the automated loop in docs/AUTOMATED_RESEARCH_LOOP.md. Human experts are not a required labeling, adjudication, or promotion gate; preserve reference provenance and sample external evidence.
 - Do not present raw interaction measurements as validated critical-thinking scores; follow `docs/PRODUCT_STRATEGY.md` validation gates for assessment-facing work.
 - Keep stable regression data and richer research data explicitly separated.
 - When adding or renaming tracks, update:
