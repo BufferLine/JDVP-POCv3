@@ -12,11 +12,11 @@ Known gaps: calibrated observer confidence currently derives from artifact-wide 
 
 `python3 scripts/freeze_research_plan.py --config config/research/demo/plan.json --output /tmp/jdvp-r0-demo/frozen.json`
 
-The strict `jdvp-research-plan-v1` contract requires model/provider/version metadata, rubric and external-evidence files, authorization declarations, split/domain/template labels, sampling policy, numerical thresholds (including detection level), budgets, and stop conditions. Paths resolve relative to the configuration file. Only the current `human_ai` profile is supported.
+The strict `jdvp-research-plan-v1` contract requires model/provider/version metadata, rubric and external-evidence files, authorization declarations, split/domain/template labels, sampling policy, numerical thresholds (including detection level), budgets, and stop conditions. Paths must be relative to the configuration file directory and resolve inside it; absolute paths, `..`, and escaping symlinks are rejected. Only the current `human_ai` profile is supported.
 
 The freezer validates raw input records, rejects duplicate IDs/identical file content, cross-split template families, training/dev use of reserved test domains, empty splits, absent reserved-domain examples, and a sampling pool exceeding train/dev size. It captures exact UTF-8 source text and SHA-256 hashes, plus split and schema fingerprints, in a single frozen manifest. It publishes atomically without replacing an existing output. This is application-level no-overwrite, not tamper-proof storage; restrict access to the manifest because it contains full source records.
 
-The checked-in demo reuses synthetic fixture text under three IDs solely to test wiring. Its declared families/domains and numerical thresholds are illustrative, not valid experimental separation or accepted product targets. The freezer cannot infer semantic duplicates, verify authorization, prove encoder non-exposure, or prove external criterion independence from byte checks. A real R0 experiment must supply actual independent records and predeclare its own targets.
+The checked-in demo reuses synthetic fixture text under three IDs solely to test wiring. Its declared families/domains and numerical thresholds are illustrative, not valid experimental separation or accepted product targets. External evidence must also differ byte-for-byte from the rubric. The freezer cannot infer semantic duplicates, verify authorization, prove encoder non-exposure, or prove external criterion independence from byte checks. A real R0 experiment must supply actual independent records and predeclare its own targets.
 
 This stage freezes intent only: it does not select samples, compute inclusion probabilities, call models, enforce runtime budgets, train, or promote artifacts. Those operations belong to R1 onward. Sampling quotas and probabilities for the eventual selected sample must be saved by that runner.
 
@@ -59,3 +59,7 @@ Before execution, set iteration/token/spend ceilings, retry limits, stop conditi
 - **Human–Human:** propose a separate profile and authorized corpus. Test benign counterexamples, contextual omissions, and evidence for isolation/authority pressure/judgment invalidation. Output tentative pattern evidence rather than definitive scam, cult, or gaslighting classifications.
 
 A shared axis survives only if its interpretation and utility are supported in each tested profile. Profile-specific axes and non-comparable outputs are valid outcomes.
+
+## R1 Input-Contract Follow-ups
+
+Before consuming real data, add a normalized interaction-body fingerprint excluding identity metadata to catch content copied under new IDs; update the wiring demo accordingly. Define an external-evidence record contract that validates linkage to the intended interaction IDs and observation window. R0 currently accepts opaque external text and does not validate that linkage. These checks supplement rather than establish semantic independence.

@@ -36,7 +36,12 @@ def _digest(data: bytes) -> str:
 
 
 def _snapshot(base: Path, name: str) -> dict[str, str]:
-    path = (base / name).resolve()
+    relative = Path(name)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise ValueError(f"snapshot path must stay within plan directory: {name}")
+    path = (base / relative).resolve()
+    if not path.is_relative_to(base.resolve()):
+        raise ValueError(f"snapshot path escapes plan directory: {name}")
     data = path.read_bytes()
     # Store exact UTF-8 bytes as text, not only a pointer to mutable input files.
     return {"sha256": _digest(data), "text": data.decode("utf-8")}
@@ -86,8 +91,8 @@ def build_frozen_plan(config_path: Path) -> dict[str, Any]:
     if not rubric["text"].strip():
         raise ValueError("rubric must not be empty")
     criteria = _snapshot(base, config["external_criteria"]["source_path"])
-    if not criteria["text"].strip() or criteria["sha256"] in seen_hashes:
-        raise ValueError("external criteria evidence must be nonempty and separate from input records")
+    if not criteria["text"].strip() or criteria["sha256"] in seen_hashes | {rubric["sha256"]}:
+        raise ValueError("external criteria evidence must be nonempty and separate from input records and rubric")
     body = {
         "schema_version": "jdvp-frozen-research-plan-v1",
         "plan": config,

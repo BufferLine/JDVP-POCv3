@@ -92,3 +92,35 @@ def test_content_and_split_policy_change_fingerprint(plan):
     assert after['split_sha256'] == before['split_sha256']
     change(plan, lambda c: c['thresholds'].update(min_recall=0.9))
     assert build_frozen_plan(plan)['plan_sha256'] != after['plan_sha256']
+
+
+@pytest.mark.parametrize("field", ["item", "rubric", "criteria"])
+@pytest.mark.parametrize("escape", ["absolute", "parent", "symlink"])
+def test_rejects_outside_snapshot_paths(plan, tmp_path, field, escape):
+    outside = tmp_path / "outside.json"
+    outside.write_text((plan.parent / "train.json").read_text())
+    if escape == "absolute":
+        name = str(outside)
+    elif escape == "parent":
+        name = "../outside.json"
+    else:
+        (plan.parent / "link.json").symlink_to(outside)
+        name = "link.json"
+    def edit(config):
+        if field == "item":
+            config["items"][0]["path"] = name
+        elif field == "rubric":
+            config["rubric_path"] = name
+        else:
+            config["external_criteria"]["source_path"] = name
+    change(plan, edit)
+    output = tmp_path / "frozen.json"
+    with pytest.raises(ValueError, match="plan directory"):
+        freeze_plan(plan, output)
+    assert not output.exists()
+
+
+def test_rejects_rubric_reused_as_external_evidence(plan):
+    change(plan, lambda c: c["external_criteria"].update(source_path="rubric.md"))
+    with pytest.raises(ValueError, match="separate.*rubric"):
+        build_frozen_plan(plan)
