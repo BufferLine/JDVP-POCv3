@@ -68,7 +68,7 @@ The business can eventually cover multiple interaction relationships, but they m
 
 | Profile | Primary observation | Current state |
 | --- | --- | --- |
-| Human-AI | Human cognitive practice while collaborating with AI | JDVP v1 concept; POCv3 implementation is currently v1.4-compatible and requires v1.5 migration |
+| Human-AI | Human cognitive practice while collaborating with AI | JDVP v1.5 is implemented in POCv3; human calibration and low-cost extraction validation remain required |
 | Human-Human | Observable deliberation, challenge, and responsibility between people | Future profile; requires its own construct validation |
 | Agent-Agent | Operational authority, approvals, verification, tool calls, and accountability | Future trace profile; does not infer agent cognition |
 | Multi-party | Authority and evidence flow across people, agents, and systems | Future graph-based extension |
@@ -89,6 +89,8 @@ explicit trace and deterministic rules -> low-cost local observer -> selective e
 - Store evidence spans, observer identity, confidence, and prompt/model version for every inferred observation.
 - Report uncertainty and aggregate across interactions; do not present a noisy individual turn as a stable trait judgment.
 
+The current implementation direction is specified in [MVP_MEASUREMENT_ARCHITECTURE.md](./MVP_MEASUREMENT_ARCHITECTURE.md). The MVP's technical claim is that semantic interaction data supports low-cost extraction of observable JDVP patterns. It is not a claim that a low-cost model alone validates critical thinking.
+
 ## Validation Gates
 
 No product layer may claim more than the evidence supports.
@@ -104,11 +106,12 @@ Human consent, data minimization, access controls, and a prohibition on automate
 
 ## Near-Term Priorities
 
-1. Migrate POCv3 from the vendored v1.4 categorical schema to the canonical v1.5 level-based schema before expanding extraction behavior.
-2. Establish a small human-annotated calibration set for the Human-AI profile, with two or more annotators and documented disagreement.
-3. Benchmark a tiered low-cost observer against the calibration set, measuring quality, latency, and unit cost.
-4. Select one demand-led, consent-based pilot where participants receive useful reflective feedback.
-5. Treat agent-agent tracing as a parallel discovery prototype only after the Human-AI measurement contract is stable.
+1. Update the JDVP measurement extension proposal with the Human-AI profile, decision-relevant-turn policy, observer provenance, uncertainty, and interaction-summary boundary.
+2. Establish a human-adjudicated anchor set for the Human-AI profile, with two or more annotators and documented disagreement.
+3. Scale a provenance-preserving teacher/synthetic label tier, emphasizing boundary and counterexample coverage rather than repeated templates.
+4. Benchmark the embedding-calibrated low-cost observer and selective higher-capability escalation against untouched interaction-held-out data, measuring false positives, false negatives, latency, and unit cost.
+5. Select one demand-led, consent-based pilot where participants receive useful reflective feedback.
+6. Treat agent-agent tracing as a parallel discovery prototype only after the Human-AI measurement contract is stable.
 
 ## Non-Goals
 

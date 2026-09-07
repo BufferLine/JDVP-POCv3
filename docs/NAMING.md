@@ -16,7 +16,7 @@ Meaning:
 Meaning:
 
 - measurement of a human participant's observable critical-thinking practice while collaborating with an AI counterpart
-- JDVP v1 is the current conceptual profile; POCv3 currently implements its vendored v1.4 categorical form
+- JDVP v1 is the current conceptual profile; POCv3 implements its canonical v1.5 level-based form
 
 ### `interaction trace profile`
 
@@ -111,6 +111,30 @@ Use when:
 
 - testing whether a low-cost local model can replace some LLM research loops
 - creating a learned baseline that shares the same JDVP extraction contract
+
+### `embedding_screen`
+
+Meaning:
+
+- local embedding nearest-prototype screening over an explicitly supplied labeled pack
+- a low-cost retrieval observer, not an LLM prompt path or validated assessment model
+
+Use when:
+
+- screening high-volume interactions before a more precise observer
+- measuring the behavior and cost of an embedding-based first-stage observer
+
+### `embedding_calibrated`
+
+Meaning:
+
+- an embedding encoder followed by one persisted regression calibration head per canonical JDVP axis
+- scores are bounded integers on the v1.5 0–10 scale and retain the artifact's training-label provenance
+
+Use when:
+
+- running a low-cost four-axis observer with a declared, reproducible calibration artifact
+- comparing held-out error and latency before deciding whether a turn requires LLM or human review
 
 ## Dataset Packs
 

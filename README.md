@@ -12,7 +12,7 @@ It separates:
 - `method layer`: how JSVs are extracted from interaction evidence
 - `pipeline layer`: raw turns -> extraction -> protocol artifacts -> reports
 
-The product direction is documented separately in [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md): begin with low-cost, auditable interaction measurement; build useful reflective tools; validate any critical-thinking assessment separately; and pursue standard/licensing only after evidence supports it.
+The product direction is documented in [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) and [docs/MVP_MEASUREMENT_ARCHITECTURE.md](docs/MVP_MEASUREMENT_ARCHITECTURE.md): begin with low-cost, auditable semantic interaction measurement; use selective higher-capability or human review for uncertain cases; validate any critical-thinking assessment separately; and pursue standard/licensing only after evidence supports it.
 
 ## Scope
 
@@ -41,17 +41,18 @@ Current workspace status as of 2026-03-25:
 
 Current focus:
 
-- keep `v1` stable as the regression baseline
-- use `v2` and preview flows to expand research coverage without destabilizing CI
-- run a local 100-item `llm_turn_simulated` dataset-generation trial and tune rejection patterns before scaling up
+- preserve JDVP v1.5 canonical compatibility while preparing a reviewed v1.6 measurement extension
+- expand diverse, decision-relevant Human-AI data with interaction-level split hygiene
+- train and evaluate a low-cost embedding-calibrated observer with explicit label provenance and uncertainty escalation
+- keep critical-thinking practice profiles and licensing behind human calibration and construct-validation gates
 
 ## Design Rule
 
-The checked-in implementation currently follows the vendored JDVP `v1.4` categorical snapshot for protocol artifacts. The sibling protocol repository has advanced to v1.5 level-based scoring, so schema alignment is a migration priority rather than a completed claim. See [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) and [docs/MIGRATION_NOTES.md](docs/MIGRATION_NOTES.md).
+POCv3 follows the canonical JDVP `v1.5` level-based schema for protocol artifacts. Legacy v1.4 categorical hints are accepted only to migrate stored fixtures and resumable extracts to canonical v1.5 output. See [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) and [docs/MIGRATION_NOTES.md](docs/MIGRATION_NOTES.md).
 
 - JSV output must align to canonical `v1/schemas/jsv-schema.json`
-- DV output must use ordinal derivation, not arbitrary transition constants
-- `delta_judgment_holder` becomes `null` when a transition includes `Undefined`
+- DV output must use direct integer level subtraction, not arbitrary transition constants
+- `delta_judgment_holder` becomes `null` when either state is unobservable (`null`)
 - Trajectories contain adjacent-turn DVs only
 
 ## Repository Layout
@@ -329,6 +330,52 @@ python3 -m src.pipeline.run_poc \
 ```
 
 The current model path is still lightweight and local, but it opens the training-artifact boundary needed for a fuller learned-track workflow later.
+
+Embedding screening path:
+
+```bash
+export JDVP_EMBEDDING_MODEL_PATH=/absolute/path/to/complete/embedding-model
+export JDVP_EMBEDDING_PROTOTYPE_PACK_PATH=data/fewshot/general-fixture-pack-v1.json
+
+python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id embedding-screen-local \
+  --track embedding_screen
+```
+
+`embedding_screen` retrieves the nearest labeled prototype with a local embedding model. It is a high-volume screening stage, not a critical-thinking score or validated assessment.
+
+Calibrated four-axis embedding observer:
+
+```bash
+python3 scripts/train_embedding_calibrator.py \
+  --dataset-root data/validation/opus-synthetic \
+  --embedding-model /absolute/path/to/complete/embedding-model \
+  --output data/models/embedding_calibrator/opus-synthetic-v1.json \
+  --label-source synthetic
+
+export JDVP_EMBEDDING_CALIBRATOR_PATH=data/models/embedding_calibrator/opus-synthetic-v1.json
+python3 -m src.pipeline.run_poc \
+  --input data/fixtures/sample_interaction.json \
+  --run-id embedding-calibrated-local \
+  --track embedding_calibrated
+```
+
+The artifact records its label source and grouped holdout metrics. Scores from synthetic or silver labels remain provisional until calibrated against adjudicated human labels.
+
+For a capacity diagnostic only, fit and score the same data explicitly:
+
+```bash
+python3 scripts/train_embedding_calibrator.py \
+  --dataset-root data/validation/opus-synthetic \
+  --embedding-model /absolute/path/to/complete/embedding-model \
+  --output data/models/embedding_calibrator/in-sample-diagnostic.json \
+  --label-source synthetic \
+  --ridge-alpha 0 \
+  --fit-all
+```
+
+This artifact is marked `in_sample_diagnostic` and must never be reported as held-out performance.
 
 M7 benchmark plan command:
 

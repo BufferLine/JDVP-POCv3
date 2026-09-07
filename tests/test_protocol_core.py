@@ -22,44 +22,44 @@ class ProtocolCoreTests(unittest.TestCase):
         before = {
             "interaction_id": "session-1",
             "turn_number": 1,
-            "judgment_holder": "Human",
-            "delegation_awareness": "Explicit",
-            "cognitive_engagement": "Active",
-            "information_seeking": "Active",
+            "judgment_holder": 2,
+            "delegation_awareness": 2,
+            "cognitive_engagement": 2,
+            "information_seeking": 2,
             "context_module": "general",
         }
         after = {
             "interaction_id": "session-1",
             "turn_number": 2,
-            "judgment_holder": "Shared",
-            "delegation_awareness": "Implicit",
-            "cognitive_engagement": "Reactive",
-            "information_seeking": "Passive",
+            "judgment_holder": 5,
+            "delegation_awareness": 5,
+            "cognitive_engagement": 5,
+            "information_seeking": 5,
             "context_module": "general",
         }
         dv = build_dv(before, after).to_dict()
-        self.assertEqual(dv["delta_judgment_holder"], 0.5)
-        self.assertEqual(dv["delta_delegation_awareness"], 0.5)
-        self.assertEqual(dv["delta_cognitive_engagement"], 0.5)
-        self.assertEqual(dv["delta_information_seeking"], 0.5)
+        self.assertEqual(dv["delta_judgment_holder"], 3)
+        self.assertEqual(dv["delta_delegation_awareness"], 3)
+        self.assertEqual(dv["delta_cognitive_engagement"], 3)
+        self.assertEqual(dv["delta_information_seeking"], 3)
 
     def test_undefined_judgment_holder_maps_to_null(self) -> None:
         before = {
             "interaction_id": "session-1",
             "turn_number": 1,
-            "judgment_holder": "Undefined",
-            "delegation_awareness": "Explicit",
-            "cognitive_engagement": "Active",
-            "information_seeking": "Active",
+            "judgment_holder": None,
+            "delegation_awareness": 2,
+            "cognitive_engagement": 2,
+            "information_seeking": 2,
             "context_module": "general",
         }
         after = {
             "interaction_id": "session-1",
             "turn_number": 2,
-            "judgment_holder": "AI",
-            "delegation_awareness": "Implicit",
-            "cognitive_engagement": "Reactive",
-            "information_seeking": "Passive",
+            "judgment_holder": 9,
+            "delegation_awareness": 5,
+            "cognitive_engagement": 5,
+            "information_seeking": 5,
             "context_module": "general",
         }
         dv = build_dv(before, after).to_dict()
@@ -91,23 +91,23 @@ class ProtocolCoreTests(unittest.TestCase):
             interaction_id="test-1",
             turn_number=0,
             timestamp="2026-01-01T00:00:00Z",
-            judgment_holder="Human",
-            delegation_awareness="Explicit",
-            cognitive_engagement="Active",
-            information_seeking="Active",
+            judgment_holder=2,
+            delegation_awareness=2,
+            cognitive_engagement=2,
+            information_seeking=2,
             context_module="general",
         )
         payload = jsv.to_dict()
         self.assertEqual(payload["interaction_id"], "test-1")
-        self.assertEqual(payload["judgment_holder"], "Human")
+        self.assertEqual(payload["judgment_holder"], 2)
         self.assertNotIn("extensions", payload)
 
     def test_build_jsv_from_hint_maps_fields(self) -> None:
         hint = {
-            "judgment_holder": "AI",
-            "delegation_awareness": "Implicit",
-            "cognitive_engagement": "Reactive",
-            "information_seeking": "Passive",
+            "judgment_holder": 9,
+            "delegation_awareness": 5,
+            "cognitive_engagement": 5,
+            "information_seeking": 5,
             "confidence": {"judgment_holder": "high", "delegation_awareness": "medium",
                            "cognitive_engagement": "low", "information_seeking": "high"},
         }
@@ -119,8 +119,8 @@ class ProtocolCoreTests(unittest.TestCase):
             hint=hint,
         )
         payload = jsv.to_dict()
-        self.assertEqual(payload["judgment_holder"], "AI")
-        self.assertEqual(payload["delegation_awareness"], "Implicit")
+        self.assertEqual(payload["judgment_holder"], 9)
+        self.assertEqual(payload["delegation_awareness"], 5)
         self.assertIn("confidence", payload)
 
     def test_build_jsv_invalid_confidence_raises(self) -> None:
@@ -129,10 +129,10 @@ class ProtocolCoreTests(unittest.TestCase):
                 interaction_id="test-3",
                 turn_number=0,
                 timestamp="2026-01-01T00:00:00Z",
-                judgment_holder="Human",
-                delegation_awareness="Explicit",
-                cognitive_engagement="Active",
-                information_seeking="Active",
+                judgment_holder=2,
+                delegation_awareness=2,
+                cognitive_engagement=2,
+                information_seeking=2,
                 confidence={"judgment_holder": "INVALID"},
             )
 
@@ -142,10 +142,10 @@ class ProtocolCoreTests(unittest.TestCase):
             interaction_id="test-v",
             turn_number=0,
             timestamp="2026-01-01T00:00:00Z",
-            judgment_holder="Human",
-            delegation_awareness="Explicit",
-            cognitive_engagement="Active",
-            information_seeking="Active",
+            judgment_holder=2,
+            delegation_awareness=2,
+            cognitive_engagement=2,
+            information_seeking=2,
         )
         validator.validate_jsv(jsv.to_dict())
 
@@ -155,10 +155,10 @@ class ProtocolCoreTests(unittest.TestCase):
             "interaction_id": "test-bad-ts",
             "turn_number": 0,
             "timestamp": "not-a-date",
-            "judgment_holder": "Human",
-            "delegation_awareness": "Explicit",
-            "cognitive_engagement": "Active",
-            "information_seeking": "Active",
+            "judgment_holder": 2,
+            "delegation_awareness": 2,
+            "cognitive_engagement": 2,
+            "information_seeking": 2,
             "context_module": "general",
         }
         with self.assertRaises(Exception):

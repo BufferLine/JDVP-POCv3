@@ -15,10 +15,10 @@
     "interaction_id": { "type": "string" },
     "from_turn": { "type": "integer", "minimum": 0 },
     "to_turn": { "type": "integer", "minimum": 0 },
-    "delta_judgment_holder": { "type": ["number", "null"], "minimum": -1.0, "maximum": 1.0 },
-    "delta_delegation_awareness": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
-    "delta_cognitive_engagement": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
-    "delta_information_seeking": { "type": "number", "minimum": -1.0, "maximum": 1.0 },
+    "delta_judgment_holder": { "type": ["integer", "null"], "minimum": -10, "maximum": 10 },
+    "delta_delegation_awareness": { "type": "integer", "minimum": -10, "maximum": 10 },
+    "delta_cognitive_engagement": { "type": "integer", "minimum": -10, "maximum": 10 },
+    "delta_information_seeking": { "type": "integer", "minimum": -10, "maximum": 10 },
     "context_module": {
       "enum": ["general", "mental_health", "policy_admin", "financial", "education"]
     },

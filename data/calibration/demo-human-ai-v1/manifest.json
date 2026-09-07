@@ -1,0 +1,21 @@
+{
+  "schema_version": "jdvp-human-calibration-v1",
+  "dataset_id": "demo-human-ai-v1",
+  "measurement_profile": "human_ai",
+  "consent_basis": "synthetic-demo-no-human-data",
+  "intended_use": "Pipeline demonstration only; this dataset is not human calibration evidence or a psychological assessment.",
+  "protocol_version": "JDVP v1.5",
+  "annotators": [
+    {
+      "annotator_id": "synthetic-a-01",
+      "kind": "synthetic_demo"
+    },
+    {
+      "annotator_id": "synthetic-a-02",
+      "kind": "synthetic_demo"
+    }
+  ],
+  "source_interactions": [
+    "data/fixtures/sample_interaction.json"
+  ]
+}

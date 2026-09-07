@@ -92,7 +92,7 @@ class FewshotPromptTests(unittest.TestCase):
             self.assertIn("fewshot_examples:", prompt)
             self.assertIn("\"turn_number\": 0", prompt)
             self.assertEqual(output.track_id, "fewshot_prompt")
-            self.assertEqual(output.jsv_hint["judgment_holder"], "AI")
+            self.assertEqual(output.jsv_hint["judgment_holder"], 9)
 
 
 if __name__ == "__main__":

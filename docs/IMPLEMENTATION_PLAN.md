@@ -204,21 +204,23 @@ The detailed boundary, validation gates, and relationship-profile distinctions a
 
 ### Priority 0: Canonical Schema Alignment
 
+Status: complete (2026-08-27).
+
 Goal:
 
-- move POCv3 from the vendored v1.4 categorical artifact schema to the canonical v1.5 level-based schema before expanding product-facing extraction behavior
+- maintain POCv3's canonical v1.5 level-based alignment as product-facing extraction behavior expands
 
 Tasks:
 
 1. document the v1.4-to-v1.5 input, JSV, DV, fixture, and test migration map
 2. refresh the vendored protocol snapshot from the canonical sibling repository
 3. adapt protocol-core derivation and schema validation to 0–10 levels and direct integer deltas
-4. convert or regenerate fixtures and baselines with explicit provenance
-5. update service DTO versions and migration documentation
+4. convert stable fixtures and scenario packs with explicit provenance
+5. retain a read-only compatibility path for legacy stored hints and add service-contract versioning only if the external payload changes
 
 Exit condition:
 
-- POCv3's generated artifacts, tests, vendored schemas, and documented protocol version agree with the canonical v1.5 surface
+- POCv3's generated artifacts, tests, vendored schemas, documented protocol version, stable fixtures, and scenario packs agree with the canonical v1.5 surface
 
 ### Priority 0.5: Low-Cost Human-AI Measurement Validation
 
@@ -236,6 +238,25 @@ Tasks:
 Exit condition:
 
 - one reproducible tiered extraction configuration meets a predeclared calibration, latency, and cost target for the chosen pilot
+
+### Priority 0.6: Semantic Measurement MVP Readiness
+
+Goal:
+
+- make low-cost semantic interaction classification the explicit MVP foundation before building critical-thinking or licensing surfaces
+
+Tasks:
+
+1. maintain the `embedding_calibrated` observer as a versioned artifact separate from canonical JDVP semantics
+2. expand Human-AI training data with decision-relevant, task-delegation, and boundary-case coverage
+3. preserve independent teacher labels, disagreement, and label provenance; reserve human adjudication for anchors and difficult cases
+4. report interaction-held-out per-axis MAE, ordinal accuracy, high-signal false positives/false negatives, calibration, latency, and unit cost
+5. add uncertainty and out-of-distribution escalation from the local observer to a higher-capability observer or human reviewer
+6. prepare the JDVP v1.6 protocol proposal for observer provenance, decision relevance, and conversation-level measurement without changing v1.5 canonical artifacts prematurely
+
+Exit condition:
+
+- a consent-based MVP can describe observed interaction patterns with a documented low-cost quality/cost envelope, while critical-thinking practice profiles remain explicitly post-validation
 
 ### Priority 1: Operational Recovery
 

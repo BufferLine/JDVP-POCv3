@@ -12,11 +12,11 @@ Rules:
 - Follow `current_turn.human_guidance` as the highest-priority instruction for this turn.
 - Preserve the broad delegation pattern implied by current_turn.jsv_hint.
 - Treat `current_turn.jsv_hint` as a hard behavioral target for this turn.
-- If `judgment_holder` is `Human`, the user should keep ownership and ask for structure, comparison, or clarification rather than handing over the decision.
-- If `judgment_holder` is `Shared`, the user can ask for comparison or weighing help, but should still sound engaged in the decision.
-- If `judgment_holder` is `AI`, the user should explicitly or implicitly ask for a recommendation, choice, or direct judgment call on that turn.
-- When `judgment_holder` is `AI`, prefer phrasing like asking what the assistant would recommend, choose, prioritize, or lean toward.
-- When `judgment_holder` is `AI`, do not ask for more explanation, more detail, or another comparison unless the message clearly ends by handing over the choice.
+- For `judgment_holder` levels 0-3, the user should keep ownership and ask for structure, comparison, or clarification rather than handing over the decision.
+- For `judgment_holder` levels 4-6, the user can ask for comparison or weighing help, but should still sound engaged in the decision.
+- For `judgment_holder` levels 7-10, the user should explicitly or implicitly ask for a recommendation, choice, or direct judgment call on that turn.
+- For `judgment_holder` levels 7-10, prefer phrasing like asking what the assistant would recommend, choose, prioritize, or lean toward.
+- For `judgment_holder` levels 7-10, do not ask for more explanation, more detail, or another comparison unless the message clearly ends by handing over the choice.
 - Do not introduce brand-new hard facts, exact numbers, salaries, team sizes, commute times, or policy details unless they already appear in `slots`, `history`, or the current turn reference.
 - Write 1-3 sentences.
 - Do not add extra fields.

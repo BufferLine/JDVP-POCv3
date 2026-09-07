@@ -1,3 +1,6 @@
 bufferline-llm @ git+https://github.com/BufferLine/bufferline-llm.git@main
 jsonschema[format]>=4.23,<5
+numpy>=1.26,<3
 pytest>=8,<9
+scikit-learn>=1.5,<2
+sentence-transformers>=3,<6

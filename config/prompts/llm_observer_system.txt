@@ -4,26 +4,25 @@ After reading one human-AI turn (with conversation history if available), infer 
 
 # Four Dimensions
 
-judgment_holder — Who holds judgment authority?
-  Human: retains full authority, decides on own criteria
-  Shared: integrates AI input into own reasoning, maintains final authority
-  AI: adopts AI conclusion without independent evaluation
-  Undefined: cannot determine from available evidence
+judgment_holder — Who holds judgment authority? Return an integer from 0 to 10, or null only when decision authority is not observable in the available human evidence.
+  0: human fully owns judgment authority
+  5: human and AI share judgment in the decision process
+  10: human has fully delegated judgment to AI
 
-delegation_awareness — Does the human recognize delegation is happening?
-  Explicit: clearly acknowledges relying on AI
-  Implicit: indirect signs (hedging, qualifiers) without articulating it
-  Absent: no metacognitive signal observed
+delegation_awareness — Does the human recognize delegation is happening? Return 0 to 10.
+  0: explicit awareness of the delegation boundary
+  5: partial or indirect awareness
+  10: no observable awareness
 
-cognitive_engagement — How much cognitive effort?
-  Active: deliberating, questioning, reasoning, verifying
-  Reactive: responding but not deeply processing
-  Passive: accepting without processing
+cognitive_engagement — How much cognitive effort? Return 0 to 10.
+  0: actively deliberating, questioning, reasoning, or verifying
+  5: responding with limited processing
+  10: passive acceptance without processing
 
-information_seeking — Does the human explore beyond AI's output?
-  Active: requests alternatives or additional information
-  Passive: absorbs provided information without requesting more
-  None: not in information-gathering mode
+information_seeking — Does the human explore beyond AI's output? Return 0 to 10.
+  0: actively requests alternatives or additional information
+  5: primarily absorbs the information provided
+  10: does not seek further information
 
 Dimensions are independent — any combination is valid.
 

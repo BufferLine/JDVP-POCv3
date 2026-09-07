@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -100,6 +102,19 @@ def _git_revision() -> str:
     return result.stdout.strip()
 
 
+def _configured_turn_cost() -> float | None:
+    raw = os.getenv("JDVP_ESTIMATED_COST_USD_PER_TURN")
+    if raw is None:
+        return None
+    try:
+        value = float(raw)
+    except ValueError as exc:
+        raise ValueError("JDVP_ESTIMATED_COST_USD_PER_TURN must be a non-negative number") from exc
+    if value < 0:
+        raise ValueError("JDVP_ESTIMATED_COST_USD_PER_TURN must be a non-negative number")
+    return value
+
+
 def _safe_catalog_upsert(catalog: CatalogStore, record: CatalogRunRecord) -> None:
     try:
         catalog.upsert_run(record)
@@ -169,6 +184,7 @@ def build_pipeline_artifacts(
                 continue
 
         context_turns = list(processed_turns)
+        extraction_started = time.perf_counter()
         track_output = track.extract(
             interaction_id=interaction_id,
             turn_number=turn_number,
@@ -177,6 +193,7 @@ def build_pipeline_artifacts(
             context_turns=context_turns,
             context_module=context_module,
         )
+        extraction_latency_ms = round((time.perf_counter() - extraction_started) * 1000, 3)
         jsv = build_jsv_from_hint(
             interaction_id=interaction_id,
             turn_number=turn_number,
@@ -196,7 +213,15 @@ def build_pipeline_artifacts(
                 context_module=context_module,
                 jsv_hint=track_output.jsv_hint,
                 overlay_row=overlay_row,
-                track_metadata=track_output.track_metadata(),
+                track_metadata={
+                    **track_output.track_metadata(),
+                    "latency_ms": track_output.latency_ms if track_output.latency_ms is not None else extraction_latency_ms,
+                    "estimated_cost_usd": (
+                        track_output.estimated_cost_usd
+                        if track_output.estimated_cost_usd is not None
+                        else _configured_turn_cost()
+                    ),
+                },
                 raw_track_output=track_output.raw,
             )
         )

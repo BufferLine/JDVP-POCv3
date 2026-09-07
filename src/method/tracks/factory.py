@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from .base import TrackExtractor
 from .cheap_ml_baseline import create_env_backed_cheap_ml_track
+from .embedding_calibrated import create_env_backed_embedding_calibrated_track
+from .embedding_screen import create_env_backed_embedding_screen_track
 from .fewshot_prompt import create_env_backed_fewshot_track
 from .fixture_hint import FixtureHintTrack
 from .heuristic_baseline import HeuristicBaselineTrack
@@ -21,4 +23,8 @@ def create_track(track_name: str) -> TrackExtractor:
         return create_env_backed_fewshot_track()
     if track_name == "cheap_ml_baseline":
         return create_env_backed_cheap_ml_track()
+    if track_name == "embedding_screen":
+        return create_env_backed_embedding_screen_track()
+    if track_name == "embedding_calibrated":
+        return create_env_backed_embedding_calibrated_track()
     raise ValueError(f"unknown track: {track_name}")

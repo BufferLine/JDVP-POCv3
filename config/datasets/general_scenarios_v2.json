@@ -51,10 +51,10 @@
               "meta": {
                 "timestamp": "2026-03-12T10:00:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -77,10 +77,10 @@
               "meta": {
                 "timestamp": "2026-03-12T10:02:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Shared",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 5,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "high",
@@ -103,10 +103,10 @@
               "meta": {
                 "timestamp": "2026-03-12T10:04:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "AI",
-                  "delegation_awareness": "Implicit",
-                  "cognitive_engagement": "Reactive",
-                  "information_seeking": "Passive",
+                  "judgment_holder": 9,
+                  "delegation_awareness": 5,
+                  "cognitive_engagement": 5,
+                  "information_seeking": 5,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "medium",
@@ -128,10 +128,10 @@
               "meta": {
                 "timestamp": "2026-03-12T10:00:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -148,10 +148,10 @@
               "meta": {
                 "timestamp": "2026-03-12T10:02:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Shared",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 5,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "high",
@@ -168,10 +168,10 @@
               "meta": {
                 "timestamp": "2026-03-12T10:03:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Passive",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 5,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -188,10 +188,10 @@
               "meta": {
                 "timestamp": "2026-03-12T10:04:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "AI",
-                  "delegation_awareness": "Implicit",
-                  "cognitive_engagement": "Reactive",
-                  "information_seeking": "Passive",
+                  "judgment_holder": 9,
+                  "delegation_awareness": 5,
+                  "cognitive_engagement": 5,
+                  "information_seeking": 5,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "medium",
@@ -214,10 +214,26 @@
         "ai_id": "ai-1"
       },
       "slot_options": {
-        "destination": ["Tokyo", "Seoul", "Taipei"],
-        "priority": ["budget", "food options", "walkability"],
-        "constraint": ["a short flight", "low hotel prices", "good public transit"],
-        "travel_style": ["solo", "with family", "for a quick weekend"]
+        "destination": [
+          "Tokyo",
+          "Seoul",
+          "Taipei"
+        ],
+        "priority": [
+          "budget",
+          "food options",
+          "walkability"
+        ],
+        "constraint": [
+          "a short flight",
+          "low hotel prices",
+          "good public transit"
+        ],
+        "travel_style": [
+          "solo",
+          "with family",
+          "for a quick weekend"
+        ]
       },
       "blueprints": [
         {
@@ -230,10 +246,10 @@
               "meta": {
                 "timestamp": "2026-03-12T11:00:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -250,10 +266,10 @@
               "meta": {
                 "timestamp": "2026-03-12T11:02:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Shared",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 5,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "medium",
@@ -270,10 +286,10 @@
               "meta": {
                 "timestamp": "2026-03-12T11:04:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "AI",
-                  "delegation_awareness": "Implicit",
-                  "cognitive_engagement": "Reactive",
-                  "information_seeking": "Passive",
+                  "judgment_holder": 9,
+                  "delegation_awareness": 5,
+                  "cognitive_engagement": 5,
+                  "information_seeking": 5,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "medium",
@@ -295,10 +311,10 @@
               "meta": {
                 "timestamp": "2026-03-12T11:00:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -315,10 +331,10 @@
               "meta": {
                 "timestamp": "2026-03-12T11:02:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Shared",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 5,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "medium",
@@ -335,10 +351,10 @@
               "meta": {
                 "timestamp": "2026-03-12T11:03:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Passive",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 5,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -355,10 +371,10 @@
               "meta": {
                 "timestamp": "2026-03-12T11:04:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Shared",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 5,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "high",
@@ -381,10 +397,26 @@
         "ai_id": "ai-1"
       },
       "slot_options": {
-        "goal": ["prepare for a product interview", "pass a certification exam", "learn enough Python for work"],
-        "time_window": ["two weeks", "one month", "six weekends"],
-        "weakness": ["system design", "practice consistency", "foundational theory"],
-        "constraint": ["limited weekday time", "low motivation after work", "a fixed exam date"]
+        "goal": [
+          "prepare for a product interview",
+          "pass a certification exam",
+          "learn enough Python for work"
+        ],
+        "time_window": [
+          "two weeks",
+          "one month",
+          "six weekends"
+        ],
+        "weakness": [
+          "system design",
+          "practice consistency",
+          "foundational theory"
+        ],
+        "constraint": [
+          "limited weekday time",
+          "low motivation after work",
+          "a fixed exam date"
+        ]
       },
       "blueprints": [
         {
@@ -397,10 +429,10 @@
               "meta": {
                 "timestamp": "2026-03-12T12:00:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -417,10 +449,10 @@
               "meta": {
                 "timestamp": "2026-03-12T12:02:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Shared",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 5,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "high",
@@ -437,10 +469,10 @@
               "meta": {
                 "timestamp": "2026-03-12T12:04:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "AI",
-                  "delegation_awareness": "Implicit",
-                  "cognitive_engagement": "Reactive",
-                  "information_seeking": "Passive",
+                  "judgment_holder": 9,
+                  "delegation_awareness": 5,
+                  "cognitive_engagement": 5,
+                  "information_seeking": 5,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "medium",
@@ -462,10 +494,10 @@
               "meta": {
                 "timestamp": "2026-03-12T12:00:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -482,10 +514,10 @@
               "meta": {
                 "timestamp": "2026-03-12T12:02:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Shared",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Active",
+                  "judgment_holder": 5,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 2,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "high",
@@ -502,10 +534,10 @@
               "meta": {
                 "timestamp": "2026-03-12T12:03:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "Human",
-                  "delegation_awareness": "Explicit",
-                  "cognitive_engagement": "Active",
-                  "information_seeking": "Passive",
+                  "judgment_holder": 2,
+                  "delegation_awareness": 2,
+                  "cognitive_engagement": 2,
+                  "information_seeking": 5,
                   "confidence": {
                     "judgment_holder": "high",
                     "delegation_awareness": "high",
@@ -522,10 +554,10 @@
               "meta": {
                 "timestamp": "2026-03-12T12:04:00Z",
                 "jsv_hint": {
-                  "judgment_holder": "AI",
-                  "delegation_awareness": "Implicit",
-                  "cognitive_engagement": "Reactive",
-                  "information_seeking": "Passive",
+                  "judgment_holder": 9,
+                  "delegation_awareness": 5,
+                  "cognitive_engagement": 5,
+                  "information_seeking": 5,
                   "confidence": {
                     "judgment_holder": "medium",
                     "delegation_awareness": "medium",

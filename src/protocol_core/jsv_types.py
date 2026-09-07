@@ -1,4 +1,4 @@
-"""Canonical JSV helpers aligned to JDVP v1.4."""
+"""Canonical JSV helpers aligned to JDVP v1.5."""
 
 from __future__ import annotations
 
@@ -7,7 +7,11 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any
 
-from src.protocol_core.enums import CONFIDENCE_LEVELS, CORE_FIELD_NAMES  # noqa: F401  (re-exported)
+from src.protocol_core.enums import (  # noqa: F401  (re-exported)
+    CONFIDENCE_LEVELS,
+    CORE_FIELD_NAMES,
+    normalize_core_level,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -50,10 +54,10 @@ def build_jsv(
     interaction_id: str,
     turn_number: int,
     timestamp: str | None,
-    judgment_holder: str,
-    delegation_awareness: str,
-    cognitive_engagement: str,
-    information_seeking: str,
+    judgment_holder: int | str | None,
+    delegation_awareness: int | str,
+    cognitive_engagement: int | str,
+    information_seeking: int | str,
     confidence: dict[str, Any] | None = None,
     context_module: str = "general",
     extensions: dict[str, Any] | None = None,
@@ -62,10 +66,10 @@ def build_jsv(
         "timestamp": _normalize_timestamp(timestamp),
         "interaction_id": interaction_id,
         "turn_number": int(turn_number),
-        "judgment_holder": judgment_holder,
-        "delegation_awareness": delegation_awareness,
-        "cognitive_engagement": cognitive_engagement,
-        "information_seeking": information_seeking,
+        "judgment_holder": normalize_core_level("judgment_holder", judgment_holder),
+        "delegation_awareness": normalize_core_level("delegation_awareness", delegation_awareness),
+        "cognitive_engagement": normalize_core_level("cognitive_engagement", cognitive_engagement),
+        "information_seeking": normalize_core_level("information_seeking", information_seeking),
         "context_module": context_module,
     }
     normalized_confidence = _normalize_confidence(confidence)
@@ -95,10 +99,10 @@ def build_jsv_from_hint(
         interaction_id=interaction_id,
         turn_number=turn_number,
         timestamp=timestamp,
-        judgment_holder=str(hint["judgment_holder"]),
-        delegation_awareness=str(hint["delegation_awareness"]),
-        cognitive_engagement=str(hint["cognitive_engagement"]),
-        information_seeking=str(hint["information_seeking"]),
+        judgment_holder=hint["judgment_holder"],
+        delegation_awareness=hint["delegation_awareness"],
+        cognitive_engagement=hint["cognitive_engagement"],
+        information_seeking=hint["information_seeking"],
         confidence=hint.get("confidence"),
         context_module=context_module,
         extensions=hint.get("extensions"),

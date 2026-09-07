@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build a minimal but correct implementation path for JDVP `v1.4`.
+Build a minimal but correct implementation path for JDVP `v1.5`.
 
 The first successful path is:
 
@@ -28,8 +28,8 @@ Modules:
 Responsibilities:
 
 - represent canonical JSV fields
-- derive DV values from ordinal state positions
-- apply `Undefined -> null` handling for `delta_judgment_holder`
+- derive DV values by direct subtraction of 0--10 levels
+- apply `null -> null` handling for `delta_judgment_holder`
 - enforce adjacent-turn continuity for trajectories
 - validate generated artifacts against canonical schemas in `JDVP-protocol/v1/schemas/`
 

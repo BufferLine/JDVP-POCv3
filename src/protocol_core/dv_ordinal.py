@@ -1,11 +1,11 @@
-"""Ordinal DV derivation aligned to JDVP v1.4."""
+"""Direct level-delta derivation aligned to JDVP v1.5."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any
 
-from src.protocol_core.enums import CORE_ORDINALS  # noqa: F401  (re-exported)
+from src.protocol_core.enums import normalize_core_level
 
 
 @dataclass(frozen=True)
@@ -18,14 +18,13 @@ class DVRecord:
         return dict(self.payload)
 
 
-def _delta(field_name: str, before: str, after: str) -> float | None:
-    ordinal_map = CORE_ORDINALS[field_name]
-    if field_name == "judgment_holder" and (before == "Undefined" or after == "Undefined"):
+def _delta(field_name: str, before: object, after: object) -> int | None:
+    before_level = normalize_core_level(field_name, before)
+    after_level = normalize_core_level(field_name, after)
+    if field_name == "judgment_holder" and (before_level is None or after_level is None):
         return None
-    if before not in ordinal_map or after not in ordinal_map:
-        raise ValueError(f"invalid ordinal transition for {field_name}: {before} -> {after}")
-    scale = len(ordinal_map) - 1
-    return (ordinal_map[after] - ordinal_map[before]) / scale
+    assert before_level is not None and after_level is not None
+    return after_level - before_level
 
 
 def build_dv(
@@ -44,23 +43,23 @@ def build_dv(
         "to_turn": after["turn_number"],
         "delta_judgment_holder": _delta(
             "judgment_holder",
-            str(before["judgment_holder"]),
-            str(after["judgment_holder"]),
+            before["judgment_holder"],
+            after["judgment_holder"],
         ),
         "delta_delegation_awareness": _delta(
             "delegation_awareness",
-            str(before["delegation_awareness"]),
-            str(after["delegation_awareness"]),
+            before["delegation_awareness"],
+            after["delegation_awareness"],
         ),
         "delta_cognitive_engagement": _delta(
             "cognitive_engagement",
-            str(before["cognitive_engagement"]),
-            str(after["cognitive_engagement"]),
+            before["cognitive_engagement"],
+            after["cognitive_engagement"],
         ),
         "delta_information_seeking": _delta(
             "information_seeking",
-            str(before["information_seeking"]),
-            str(after["information_seeking"]),
+            before["information_seeking"],
+            after["information_seeking"],
         ),
         "context_module": context_module,
     }

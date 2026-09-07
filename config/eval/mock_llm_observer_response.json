@@ -1,10 +1,10 @@
 {
   "responses_by_turn": {
     "0": {
-      "judgment_holder": "Human",
-      "delegation_awareness": "Explicit",
-      "cognitive_engagement": "Active",
-      "information_seeking": "Active",
+      "judgment_holder": 2,
+      "delegation_awareness": 2,
+      "cognitive_engagement": 2,
+      "information_seeking": 2,
       "confidence": {
         "judgment_holder": "high",
         "delegation_awareness": "high",
@@ -21,10 +21,10 @@
       "observer_notes": "Deterministic turn-aware benchmark response"
     },
     "1": {
-      "judgment_holder": "Shared",
-      "delegation_awareness": "Explicit",
-      "cognitive_engagement": "Active",
-      "information_seeking": "Active",
+      "judgment_holder": 5,
+      "delegation_awareness": 2,
+      "cognitive_engagement": 2,
+      "information_seeking": 2,
       "confidence": {
         "judgment_holder": "medium",
         "delegation_awareness": "medium",
@@ -41,10 +41,10 @@
       "observer_notes": "Deterministic turn-aware benchmark response"
     },
     "2": {
-      "judgment_holder": "AI",
-      "delegation_awareness": "Implicit",
-      "cognitive_engagement": "Reactive",
-      "information_seeking": "Passive",
+      "judgment_holder": 9,
+      "delegation_awareness": 5,
+      "cognitive_engagement": 5,
+      "information_seeking": 5,
       "confidence": {
         "judgment_holder": "medium",
         "delegation_awareness": "medium",
@@ -62,10 +62,10 @@
     }
   },
   "default_response": {
-    "judgment_holder": "AI",
-    "delegation_awareness": "Implicit",
-    "cognitive_engagement": "Reactive",
-    "information_seeking": "Passive",
+    "judgment_holder": 9,
+    "delegation_awareness": 5,
+    "cognitive_engagement": 5,
+    "information_seeking": 5,
     "confidence": {
       "judgment_holder": "medium",
       "delegation_awareness": "medium",

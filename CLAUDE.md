@@ -16,7 +16,7 @@ JDVP POCv3 is a core-first implementation workspace for canonical JDVP artifact 
 - Root orchestration scripts: `scripts/`
 
 ## Scope
-- Canonical JSV, DV, and Trajectory generation aligned to the vendored JDVP `v1.4` snapshot; migrate to the canonical v1.5 level-based surface before expanding product-facing behavior
+- Canonical JSV, DV, and Trajectory generation aligned to JDVP `v1.5` level-based schemas; accept v1.4 categories only through the explicit legacy migration adapter
 - Deterministic, provider-backed, few-shot, and cheap-ML extraction tracks
 - Dataset generation for stable regression packs and richer research packs
 - Dataset-scoped execution, matrix runs, and benchmark summaries

@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.protocol_core.enums import CORE_FIELD_NAMES, CORE_ENUMS
+from src.protocol_core.enums import CORE_FIELD_NAMES, normalize_core_level
 
 GOLD_ROOT = ROOT / "data" / "validation" / "opus-synthetic"
 BENCHMARKS_DIR = GOLD_ROOT / "benchmarks"
@@ -117,10 +117,20 @@ def compute_accuracy(
             for field in FIELDS:
                 gold_val = gl.get(field)
                 pred_val = jsv.get(field)
-                if gold_val is None:
+                try:
+                    normalized_gold = normalize_core_level(field, gold_val)
+                except ValueError:
                     continue
+                if normalized_gold is None:
+                    continue
+                try:
+                    normalized_pred = normalize_core_level(field, pred_val)
+                except ValueError:
+                    # Keep an invalid or missing prediction in the denominator
+                    # as an incorrect result, matching the pre-v1.5 behavior.
+                    normalized_pred = None
 
-                match = gold_val == pred_val
+                match = normalized_gold == normalized_pred
                 field_total[field] += 1
                 item_total += 1
                 if match:
@@ -134,6 +144,8 @@ def compute_accuracy(
                 turn_detail["fields"][field] = {
                     "gold": gold_val,
                     "predicted": pred_val,
+                    "normalized_gold": normalized_gold,
+                    "normalized_predicted": normalized_pred,
                     "correct": match,
                 }
 
@@ -200,8 +212,11 @@ def compute_disagreement(
             jsv_a = turns_a[tn].get("jsv_hint", {})
             jsv_b = turns_b[tn].get("jsv_hint", {})
             for field in FIELDS:
-                val_a = jsv_a.get(field)
-                val_b = jsv_b.get(field)
+                try:
+                    val_a = normalize_core_level(field, jsv_a.get(field))
+                    val_b = normalize_core_level(field, jsv_b.get(field))
+                except ValueError:
+                    continue
                 if val_a is not None and val_b is not None:
                     field_total[field] += 1
                     if val_a != val_b:

@@ -79,6 +79,13 @@ Current M8 note:
 - transport responses are versioned and serialized as success/error envelopes
 - HTTP transport is intentionally deferred until a real consumer needs it
 
+Current calibration note:
+
+- `docs/CALIBRATION_DATASET.md` defines the consented Human-AI annotation dataset contract
+- `scripts/evaluate_calibration.py` reports annotator agreement plus observer agreement, ordinal error, latency, and recorded cost estimates for one stored run
+- only explicitly adjudicated rows are observer targets; unresolved disagreement remains disagreement data, not implicit gold
+- set `JDVP_ESTIMATED_COST_USD_PER_TURN` when a provider or deployment has a known per-turn estimate; it is stored alongside each extract and is intentionally not inferred from an unknown provider price
+
 Current operational note:
 
 - `scripts/run_validation_suite.py` is the standard local and CI validation entrypoint
