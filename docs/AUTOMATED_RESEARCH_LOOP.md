@@ -13,12 +13,24 @@ Known gaps: calibrated observer confidence currently derives from artifact-wide 
 Each iteration must record framework/profile versions, participant types, dataset and split hashes, sampling policy/probabilities, reference model and prompt versions, detector artifact identity, conditioning policy, seed, budget, and parent iteration. Freeze the input manifest before reference labeling. Keep canonical v1.5 output separate from proposed profile metadata.
 
 1. **Sample:** combine a random audit slice with uncertainty, reference disagreement, boundary, and novel-domain slices. Declare quotas and selection probabilities; do not report targeted-sample error as population error without adjustment.
-2. **Label independently:** a high-capability reference (Astra is a candidate, selected explicitly at execution time) labels without seeing detector predictions or prior adjudication. Record axis-specific evidence, uncertainty, and unavailable context.
+2. **Label independently:** a high-capability reference selected explicitly at execution time, with provider and exact model ID/version recorded, labels without seeing detector predictions or prior adjudication. Record axis-specific evidence, uncertainty, and unavailable context.
 3. **Challenge:** a separate pass/model probes alternative interpretations and rubric violations. Store both judgments and a resolution or abstention. Same-model passes are not independent replications. Teacher claims are not human gold.
-4. **Test the framework:** generate style-preserving paraphrases and behavior-changing pairs; distinguish deliberate delegation from passive acceptance, substantive verification from performative disagreement, and independent consensus from copied evidence. Use authorized external action/outcome samples where the text cannot resolve the question. Missing evidence remains missing.
+4. **Test the framework:** generate style-preserving paraphrases and behavior-changing pairs; distinguish deliberate delegation from passive acceptance, substantive verification from performative disagreement, and independent consensus from copied evidence. Use authorized external action/outcome samples where the text cannot resolve the question. Missing evidence remains missing. Select external criteria from the profile-specific definitions below before the run.
 5. **Train:** distill declared reference labels into the low-cost observer. Isolate conversations, template families, and reserved domains across splits. Record encoder training provenance too; a head-only holdout cannot rule out encoder exposure.
 6. **Evaluate:** run a frozen evaluation set and baselines: deterministic rules, uncalibrated retrieval, direct reference analysis, presence/absence indicators, and single-turn versus trajectory ablation. Keep detector fidelity and framework validity reports separate.
 7. **Promote or retain:** apply predeclared per-profile thresholds and regression limits. Automatic promotion means selecting a research artifact, not deploying a product or publishing a standard. Retain the previous artifact on failure. A changed rubric starts a new framework version; retire exposed test sets into development and acquire a fresh reserve.
+
+## Sampled External Criteria
+
+“External” means evidence separate from the scored input and the reference label, not another model paraphrasing its own verdict. Predeclare the source, observation window, sampling rule, criterion, missing-data policy, and linkage to the interaction in R0.
+
+| Profile | Sampled criterion and evidence |
+| --- | --- |
+| AI–AI | Task success, executable test outcomes, or error propagation in held-out tool/execution logs; use independently specified task checks rather than the judge's score as success. |
+| Human–AI | Verification or correction observed in subsequent held-out turns, source-access records, or artifact revisions; a claim to have checked is distinct from a recorded checking action. |
+| Human–Human | Participant-provided follow-up outcome records, such as whether external verification occurred or a requested transfer was attempted/completed; record provenance and treat self-report as self-report, not definitive evidence of abuse or fraud. |
+
+Subsequent turns used as criteria must not also be exposed to the detector/reference for that prediction. Missing outcomes are unknown, not negative labels. These samples test associations and failure modes; they do not by themselves establish causal effects or universal construct validity.
 
 ## Metrics and Budget
 

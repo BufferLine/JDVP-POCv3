@@ -29,7 +29,7 @@ Current implemented profile (broader relationship profiles are planned):
 Current workspace status as of 2026-09-07 (after PRs #19 and #21):
 
 - protocol-core generation and schema validation are implemented and covered by tests
-- extraction tracks are available for `fixture_hint`, `heuristic_baseline`, `llm_observer`, and `fewshot_prompt`
+- extraction tracks are available for `fixture_hint`, `heuristic_baseline`, `llm_observer`, `fewshot_prompt`, `cheap_ml_baseline`, `embedding_screen`, and `embedding_calibrated`
 - run storage persists canonical outputs, per-turn extracts, manifests, and resumable checkpoints
 - benchmark and few-shot regression flows are implemented and used by the validation suite
 - dataset generation supports stable `v1` regression packs plus richer `v2` research packs with turn variants and mixed blueprints

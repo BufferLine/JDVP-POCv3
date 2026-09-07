@@ -16,6 +16,7 @@ Meaning:
 - umbrella relationship Agent(Human|AI)–Agent(Human|AI), covering Human–Human, Human–AI, and AI–AI
 - never a synonym for AI–AI; use `AI-AI profile` for that specific relationship
 - describes framework scope, not current canonical schema support
+- terminology history: documents before 2026-09-07 sometimes used Agent-Agent for operational AI–AI traces; read those historical uses as AI–AI, not as the current umbrella definition
 
 ### `AI reference` and `automated research loop`
 

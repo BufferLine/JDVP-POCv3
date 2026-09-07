@@ -199,7 +199,7 @@ The following milestones supersede the historical March working sequence and its
 
 | Order | Deliverable | Exit evidence |
 | --- | --- | --- |
-| R0 | Freeze first experiment: rubric/profile, split and sample manifest, numeric quality/cost thresholds, reference configuration and budget | Versioned plan fixed before candidate evaluation; approved data sources available |
+| R0 | Freeze first experiment: rubric/profile, split and sample manifest, numeric quality/cost thresholds, reference configuration and budget | Versioned plan fixed before candidate evaluation; authorized data sources and profile-specific external criteria, observation windows, sampling and missing-data policy declared (see loop design) |
 | R1 | One recoverable sample → reference label → challenge → train → evaluate cycle on Human–AI | Artifacts traceable end to end, dissent/abstention preserved, fresh held-out report against simple/direct-reference baselines |
 | R2 | Input-specific uncertainty, axis evidence, context handling, targeted plus random sampling, framework counterexample suite | Coverage/error tradeoff, chance-corrected metrics and clustered CIs; style and behavioral-change tests; sampled external criteria |
 | R3 | Repeated bounded loops and automatic research-artifact promotion/retention | Predeclared improvements in held-out quality or total cost without framework/regression failures; rollback and exposed-test retirement exercised |
@@ -231,7 +231,7 @@ Exit condition:
 
 ### Priority 0.5: Automated Measurement Loop
 
-Execute R0–R3 above using the existing embedding and calibration building blocks. Human experts are not a required dependency. Current blockers are sampling/orchestration, independent reference/challenge records, input-specific uncertainty, framework tests, and untouched evaluation hygiene; see the loop design for the exact contract.
+Execute R0–R3 above using the existing embedding and calibration building blocks. Human experts are not a required dependency. Current blockers are sampling/orchestration, independent reference/challenge records and source-stratified calibration reporting, input-specific uncertainty, framework tests, and untouched evaluation hygiene; see the loop design for the exact contract.
 
 ### Priority 0.6: Relationship Profiles and Applications
 
