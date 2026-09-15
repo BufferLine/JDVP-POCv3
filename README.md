@@ -44,7 +44,8 @@ Current focus:
 - preserve JDVP v1.5 canonical compatibility while preparing a reviewed v1.6 measurement extension
 - expand diverse, decision-relevant Human-AI data with interaction-level split hygiene
 - train and evaluate a low-cost embedding-calibrated observer with explicit label provenance and uncertainty escalation
-- build the automated research loop; assess detector fidelity and framework validity separately
+- R0 experiment plan validation/freezing is implemented; the autonomous reference/challenge loop is next
+- assess detector fidelity and framework validity separately
 - explore Human–Human risk-pattern review and AI–AI orchestration through separate profiles
 
 ## Design Rule

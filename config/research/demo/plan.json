@@ -1,0 +1,90 @@
+{
+  "schema_version": "jdvp-research-plan-v1",
+  "experiment_id": "r0-wiring-demo",
+  "framework_version": "demo-v1",
+  "measurement_profile": "human_ai",
+  "participant_types": [
+    "human",
+    "ai"
+  ],
+  "rubric_path": "rubric.md",
+  "reference": {
+    "provider": "fixture",
+    "model_id": "demo-no-execution",
+    "model_version": "v1",
+    "prompt_version": "demo-v1"
+  },
+  "challenger": {
+    "provider": "fixture",
+    "model_id": "demo-no-execution",
+    "model_version": "v1",
+    "prompt_version": "demo-v1"
+  },
+  "conditioning": "independent",
+  "seed": 42,
+  "parent_iteration": null,
+  "detector_artifact_id": "untrained-demo",
+  "encoder_training_provenance": "none; no model loaded",
+  "items": [
+    {
+      "path": "train.json",
+      "split": "train",
+      "template_family": "demo-train",
+      "domain": "demo-train",
+      "authorization_basis": "synthetic wiring fixture; no human records"
+    },
+    {
+      "path": "dev.json",
+      "split": "dev",
+      "template_family": "demo-dev",
+      "domain": "demo-dev",
+      "authorization_basis": "synthetic wiring fixture; no human records"
+    },
+    {
+      "path": "test.json",
+      "split": "test",
+      "template_family": "demo-test",
+      "domain": "demo-test",
+      "authorization_basis": "synthetic wiring fixture; no human records"
+    }
+  ],
+  "reserved_test_domains": [
+    "demo-test"
+  ],
+  "sampling": {
+    "random_audit_fraction": 0.5,
+    "targeted_policy": "demo only; no sample execution",
+    "max_items": 2
+  },
+  "thresholds": {
+    "max_mae": 2,
+    "min_precision": 0.8,
+    "min_recall": 0.8,
+    "min_coverage": 0.8,
+    "max_p95_latency_ms": 100,
+    "max_cost_usd_per_item": 0.01,
+    "max_framework_failure_rate": 0.1,
+    "max_mae_regression": 0.1,
+    "detection_level": 7
+  },
+  "budget": {
+    "max_iterations": 1,
+    "max_tokens": 1000,
+    "max_spend_usd": 0,
+    "max_retries": 0
+  },
+  "external_criteria": {
+    "source_path": "outcomes.json",
+    "authorization_basis": "synthetic demo",
+    "criterion": "subsequent verification observed",
+    "observation_window": "subsequent held-out turn",
+    "sampling_rule": "demo only",
+    "missing_data_policy": "unknown",
+    "linkage_key": "interaction_id"
+  },
+  "stop_conditions": [
+    "budget_exhausted",
+    "missing_required_evidence",
+    "regression"
+  ]
+}

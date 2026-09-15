@@ -1,0 +1,371 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "jdvp-research-plan-v1"
+    },
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "framework_version": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "measurement_profile": {
+      "const": "human_ai"
+    },
+    "participant_types": {
+      "const": [
+        "human",
+        "ai"
+      ]
+    },
+    "rubric_path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "reference": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "model_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "model_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "prompt_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "provider",
+        "model_id",
+        "model_version",
+        "prompt_version"
+      ],
+      "additionalProperties": false
+    },
+    "challenger": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "model_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "model_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "prompt_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "provider",
+        "model_id",
+        "model_version",
+        "prompt_version"
+      ],
+      "additionalProperties": false
+    },
+    "conditioning": {
+      "enum": [
+        "independent",
+        "prior_scores"
+      ]
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "parent_iteration": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "detector_artifact_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "encoder_training_provenance": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "split": {
+            "enum": [
+              "train",
+              "dev",
+              "test"
+            ]
+          },
+          "template_family": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "domain": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "authorization_basis": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "path",
+          "split",
+          "template_family",
+          "domain",
+          "authorization_basis"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "reserved_test_domains": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "sampling": {
+      "type": "object",
+      "properties": {
+        "random_audit_fraction": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "targeted_policy": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "max_items": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "random_audit_fraction",
+        "targeted_policy",
+        "max_items"
+      ],
+      "additionalProperties": false
+    },
+    "thresholds": {
+      "type": "object",
+      "properties": {
+        "max_mae": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "min_precision": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "min_recall": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "min_coverage": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "max_p95_latency_ms": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_cost_usd_per_item": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_framework_failure_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "max_mae_regression": {
+          "type": "number",
+          "minimum": 0
+        },
+        "detection_level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "max_mae",
+        "min_precision",
+        "min_recall",
+        "min_coverage",
+        "max_p95_latency_ms",
+        "max_cost_usd_per_item",
+        "max_framework_failure_rate",
+        "max_mae_regression",
+        "detection_level"
+      ],
+      "additionalProperties": false
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_iterations": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_spend_usd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max_retries": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "max_iterations",
+        "max_tokens",
+        "max_spend_usd",
+        "max_retries"
+      ],
+      "additionalProperties": false
+    },
+    "external_criteria": {
+      "type": "object",
+      "properties": {
+        "source_path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "authorization_basis": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "criterion": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "observation_window": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sampling_rule": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "missing_data_policy": {
+          "const": "unknown"
+        },
+        "linkage_key": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "source_path",
+        "authorization_basis",
+        "criterion",
+        "observation_window",
+        "sampling_rule",
+        "missing_data_policy",
+        "linkage_key"
+      ],
+      "additionalProperties": false
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "framework_version",
+    "measurement_profile",
+    "participant_types",
+    "rubric_path",
+    "reference",
+    "challenger",
+    "conditioning",
+    "seed",
+    "parent_iteration",
+    "detector_artifact_id",
+    "encoder_training_provenance",
+    "items",
+    "reserved_test_domains",
+    "sampling",
+    "thresholds",
+    "budget",
+    "external_criteria",
+    "stop_conditions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -62,6 +62,8 @@ def main() -> None:
 
     raw_schema = validate_schema(raw_schema_path)
     validate_schema(overlay_schema_path)
+    research_schema = validate_schema(ROOT / "src/contracts/research_plan.schema.json")
+    validate_instance(ROOT / "config/research/demo/plan.json", research_schema, "research plan demo")
     validate_instance(fixture_path, raw_schema, "fixture")
     validate_snapshot_manifest(ROOT / "vendor" / "JDVP-protocol" / "v1" / "schemas")
     print("OK: vendored schema snapshot manifest")

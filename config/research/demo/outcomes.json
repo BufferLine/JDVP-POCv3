@@ -1,0 +1,10 @@
+{
+  "kind": "synthetic_demo",
+  "records": [
+    {
+      "interaction_id": "r0-wiring-test",
+      "verification_observed": null
+    }
+  ],
+  "note": "No real outcome evidence; missing is unknown."
+}
